@@ -1,0 +1,58 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://mtr1990.github.io/portfolio/",
+  "dependencies": {
+    "@loadable/component": "^5.10.3",
+    "@material-ui/core": "^4.8.2",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/lab": "^4.0.0-alpha.37",
+    "autosuggest-highlight": "^3.1.1",
+    "axios": "^0.18.0",
+    "compass-mixins": "^0.12.10",
+    "feather-icons-react": "^0.3.2",
+    "formik": "^1.5.8",
+    "framer-motion": "^1.6.7",
+    "node-sass": "^4.12.0",
+    "nprogress": "^0.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-gsap": "^1.2.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "react-scrollmagic": "^2.1.1",
+    "react-svg": "^10.0.22",
+    "react-toastify": "^5.4.1",
+    "smooth-scrollbar": "^8.5.0",
+    "styled-components": "^4.4.0",
+    "use-dark-mode": "^2.3.1",
+    "yup": "^0.27.0"
+  },
+  "scripts": {
+    "start": "PORT=5000 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
+}
