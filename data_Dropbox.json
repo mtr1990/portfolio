@@ -1,0 +1,185 @@
+[
+    {
+        "id": "1",
+        "name": "Dropfoods Mobile",
+        "thumbnail": "https://www.dropbox.com/s/v9cpn6kaozwu2nj/Dropfoods_Mobile_Thumbnail.jpg?raw=1",
+        "hero": "https://www.dropbox.com/s/wt1v0k0i86dhrbo/Dropfoods_Mobile_Hero.jpg?raw=1",
+        "description": "Dropfoods is funded by Sugar Ventures, the most innovative and multi-discipline venture fund in Singapore. Sugar Ventures is one of the largest venture builders in Southeast Asia, nurturing greenfield ideas to change the world.",
+        "imglist": [
+            "https://www.dropbox.com/s/b9owgfj1nr5lgdx/Dropfoods_Mobile_Img_1.jpg?raw=1",
+            "https://www.dropbox.com/s/b44bj5o9oiq1bkv/Dropfoods_Mobile_Img_2.jpg?raw=1",
+            "https://www.dropbox.com/s/j3ufketqenkj6b3/Dropfoods_Mobile_Img_3.jpg?raw=1",
+            "https://www.dropbox.com/s/iuw8cdf7k0ah97u/Dropfoods_Mobile_Img_4.jpg?raw=1",
+            "https://www.dropbox.com/s/3qe6x2x7vdtc7el/Dropfoods_Mobile_Img_5.jpg?raw=1",
+            "https://www.dropbox.com/s/6nvhse0z0ghqu20/Dropfoods_Mobile_Img_6.jpg?raw=1"
+        ],
+        "videolist": []
+    },
+    {
+        "id": "2",
+        "name": "Dropfoods Vending Machine",
+        "thumbnail": "https://www.dropbox.com/s/wehjmumkwt3z0ye/Dropfoods_Vending_Thumbnail.jpg?raw=1",
+        "hero": "https://www.dropbox.com/s/1cjmdrqr6hpfig0/Dropfoods_Vending_Hero.jpg?raw=1",
+        "description": "Dropfoods is funded by Sugar Ventures, the most innovative and multi-discipline venture fund in Singapore. Sugar Ventures is one of the largest venture builders in Southeast Asia, nurturing greenfield ideas to change the world.",
+        "imglist": [
+            "https://www.dropbox.com/s/y6bwz1hgjkmojed/Dropfoods_Vending_Img_1.jpg?raw=1",
+            "https://www.dropbox.com/s/f8so7z3zcbdxj6a/Dropfoods_Vending_Img_2.jpg?raw=1",
+            "https://www.dropbox.com/s/zqvhon9510fa9ku/Dropfoods_Vending_Img_3.jpg?raw=1",
+            "https://www.dropbox.com/s/83pbpgpvqc416v1/Dropfoods_Vending_Img_4.jpg?raw=1",
+            "https://www.dropbox.com/s/9phccrb5hl1a829/Dropfoods_Vending_Img_5.jpg?raw=1",
+            "https://www.dropbox.com/s/k6edem89ctxdcl3/Dropfoods_Vending_Img_6.jpg?raw=1"
+        ],
+        "videolist": []
+    },
+    {
+        "id": "3",
+        "name": "Dropfoods Website",
+        "thumbnail": "https://www.dropbox.com/s/yyhmq3ukk5hbaay/Dropfoods_Website_Thumbnail.jpg?raw=1",
+        "hero": "https://www.dropbox.com/s/l7gqytgnleu5rap/Dropfoods_Website_Hero.jpg?raw=1",
+        "description": "Dropfoods is funded by Sugar Ventures, the most innovative and multi-discipline venture fund in Singapore. Sugar Ventures is one of the largest venture builders in Southeast Asia, nurturing greenfield ideas to change the world.",
+        "imglist": [
+            "https://www.dropbox.com/s/jwjhkog3iuq4qh4/Dropfoods_Website_Img_1.jpg?raw=1",
+            "https://www.dropbox.com/s/iyw08odzh116msd/Dropfoods_Website_Img_2.jpg?raw=1",
+            "https://www.dropbox.com/s/td83n1j9rqkao9a/Dropfoods_Website_Img_3.jpg?raw=1",
+            "https://www.dropbox.com/s/jo0qxrdli4sv2pm/Dropfoods_Website_Img_4.jpg?raw=1",
+            "https://www.dropbox.com/s/0tqzkc53sl7ljhz/Dropfoods_Website_Img_5.jpg?raw=1"
+        ],
+        "videolist": []
+    },
+    {
+        "id": "4",
+        "name": "Fileoptics",
+        "thumbnail": "https://www.dropbox.com/s/7e51gm0ku2kk087/Fileoptics_Thumbnail.jpg?raw=1",
+        "hero": "https://www.dropbox.com/s/sep38wg6lnxytcl/Fileoptics_Hero.jpg?raw=1",
+        "description": "The FileOptics suite is a ground up, in house developed system designed specifically to assist organizations reduce their reliance on paper records.",
+        "imglist": [
+            "https://www.dropbox.com/s/xknxd4clscz8zti/Fileoptics_Img_1.jpg?raw=1",
+            "https://www.dropbox.com/s/4bv8tp44rz2o2ep/Fileoptics_Img_2.jpg?raw=1",
+            "https://www.dropbox.com/s/yhzzyscb1ab3i1q/Fileoptics_Img_3.jpg?raw=1",
+            "https://www.dropbox.com/s/10q7po8qu6ez0gu/Fileoptics_Img_4.jpg?raw=1",
+            "https://www.dropbox.com/s/cbuk31i9qs3yfhv/Fileoptics_Img_5.jpg?raw=1",
+            "https://www.dropbox.com/s/qip8t7jk1e5cep2/Fileoptics_Img_6.jpg?raw=1"
+        ],
+        "videolist": []
+    },
+    {
+        "id": "5",
+        "name": "Hive",
+        "thumbnail": "https://www.dropbox.com/s/o9cno6klcpeylt0/Hive_Thumbnail.jpg?raw=1",
+        "hero": "https://www.dropbox.com/s/5d4usxj446vbesc/Hive_Hero.jpg?raw=1",
+        "description": "The Hive is an app that connects residents with apartment management.",
+        "imglist": [
+            "https://www.dropbox.com/s/nu5xhsqsuja0pt9/Hive_Img_1.jpg?raw=1",
+            "https://www.dropbox.com/s/3wqjj3xjgsrkaek/Hive_Img_2.jpg?raw=1",
+            "https://www.dropbox.com/s/x4i9utrh63syvqy/Hive_Img_3.jpg?raw=1",
+            "https://www.dropbox.com/s/vcitz3y8y0zktl6/Hive_Img_4.jpg?raw=1",
+            "https://www.dropbox.com/s/tylhipxkuz2i3e4/Hive_Img_5.jpg?raw=1"
+        ],
+        "videolist": []
+    },
+    {
+        "id": "6",
+        "name": "Invictus",
+        "thumbnail": "https://www.dropbox.com/s/ppcautvr76wxvvn/Invictus_Thumbnail.jpg?raw=1",
+        "hero": "https://www.dropbox.com/s/od439reie6ttb3z/Invictus_Hero.jpg?raw=1",
+        "description": "The Invictus is an international school project for foreign children in Singapore.",
+        "imglist": [
+            "https://www.dropbox.com/s/yozx94k3av3oh94/Invictus_Img_1.jpg?raw=1",
+            "https://www.dropbox.com/s/abua44b52ykt72n/Invictus_Img_2.jpg?raw=1",
+            "https://www.dropbox.com/s/045osubp714j39s/Invictus_Img_3.jpg?raw=1",
+            "https://www.dropbox.com/s/xymzd0fdqx7x4jf/Invictus_Img_4.jpg?raw=1",
+            "https://www.dropbox.com/s/79f5c4plae7tmb0/Invictus_Img_5.jpg?raw=1",
+            "https://www.dropbox.com/s/opfon62c1t8vrjd/Invictus_Img_6.jpg?raw=1"
+        ],
+        "videolist": []
+    },
+    {
+        "id": "7",
+        "name": "OEscore",
+        "thumbnail": "https://www.dropbox.com/s/v5y0xd5m0fn3jea/OEscore_Thumbnail.jpg?raw=1",
+        "hero": "https://www.dropbox.com/s/m2rskcb6girackw/OEscore_Hero.jpg?raw=1",
+        "description": "The OEscore simplifies the candidate screening process for recruiters and employers. By employing a skills-based testing approach, we can accurately measure a candidate’s competency to prequalify him/her for the interview.",
+        "imglist": [
+            "https://www.dropbox.com/s/hebn1n70npd3ozk/OEscore_Img_1.jpg?raw=1",
+            "https://www.dropbox.com/s/9p8c7idkbycnjbd/OEscore_Img_2.jpg?raw=1",
+            "https://www.dropbox.com/s/37x9o3fpi1navaj/OEscore_Img_3.jpg?raw=1",
+            "https://www.dropbox.com/s/2p1zda1iqpedlu3/OEscore_Img_4.jpg?raw=1",
+            "https://www.dropbox.com/s/0h9e98estkmusnp/OEscore_Img_5.jpg?raw=1",
+            "https://www.dropbox.com/s/gfcl0d82qw0dlgb/OEscore_Img_6.jpg?raw=1"
+        ],
+        "videolist": []
+    },
+    {
+        "id": "8",
+        "name": "PreIPO Club",
+        "thumbnail": "https://www.dropbox.com/s/auf9jwr1wfgxhhb/PreIPO_Thumbnail.jpg?raw=1",
+        "hero": "https://www.dropbox.com/s/5s2bzi3qlv2o5e7/PreIPO_Hero.jpg?raw=1",
+        "description": "PreIPO Club is a private platform for investment and private banks. We do not deal in securities but enable institutions to share deals on top start-up companies in key markets such as China, India, Singapore, Philippines, Malaysia and Vietnam.",
+        "imglist": [
+            "https://www.dropbox.com/s/6yznkznaeg2idx7/PreIPO_Img_1.jpg?raw=1",
+            "https://www.dropbox.com/s/kaul0498bbdq5p7/PreIPO_Img_2.jpg?raw=1",
+            "https://www.dropbox.com/s/1w7l4mbg2cwzjht/PreIPO_Img_3.jpg?raw=1",
+            "https://www.dropbox.com/s/tazunp8krq0ygz0/PreIPO_Img_4.jpg?raw=1"
+        ],
+        "videolist": []
+    },
+    {
+        "id": "9",
+        "name": "Belle Mode",
+        "thumbnail": "https://www.dropbox.com/s/6cp76j4tj39qbxk/BelleMode_Thumbnail.jpg?raw=1",
+        "hero": "https://www.dropbox.com/s/gtqpmalb8f9oka2/BelleMode_Hero.jpg?raw=1",
+        "description": "Fashion sales platform for women with the best price.",
+        "imglist": [
+            "https://www.dropbox.com/s/ny27ben8gqx4wf6/BelleMode_Img_1.jpg?raw=1",
+            "https://www.dropbox.com/s/6izcf7irdvf2j06/BelleMode_Img_2.jpg?raw=1",
+            "https://www.dropbox.com/s/6bledcz4s6jvho5/BelleMode_Img_3.jpg?raw=1",
+            "https://www.dropbox.com/s/zzq7b8nd9ryne3t/BelleMode_Img_4.jpg?raw=1"
+        ],
+        "videolist": []
+    },
+    {
+        "id": "10",
+        "name": "Printing",
+        "thumbnail": "https://www.dropbox.com/s/8o3azxy4915d8u3/Printing_Thumbnail.jpg?raw=1",
+        "hero": "https://www.dropbox.com/s/d0owdh91rb74a5q/Printing_Hero.jpg?raw=1",
+        "description": "Some designs for printing.",
+        "imglist": [
+            "https://www.dropbox.com/s/znwcm40wlww3bd0/Printing_Img_1.jpg?raw=1",
+            "https://www.dropbox.com/s/xt5odotrvkyoqv9/Printing_Img_2.jpg?raw=1",
+            "https://www.dropbox.com/s/svm4gpkhzov725s/Printing_Img_3.jpg?raw=1",
+            "https://www.dropbox.com/s/e3e1sym5ah1209d/Printing_Img_4.jpg?raw=1",
+            "https://www.dropbox.com/s/1d9dwvs1x8lu7j8/Printing_Img_5.jpg?raw=1",
+            "https://www.dropbox.com/s/jt7mcwnntkfvar1/Printing_Img_6.jpg?raw=1",
+            "https://www.dropbox.com/s/7w9cuy8mdp95g4u/Printing_Img_7.jpg?raw=1",
+            "https://www.dropbox.com/s/4hxdc133wc661rp/Printing_Img_8.jpg?raw=1",
+            "https://www.dropbox.com/s/mclmb6gsxyia7w7/Printing_Img_9.jpg?raw=1",
+            "https://www.dropbox.com/s/dj3r9dc6k87oo0i/Printing_Img_10.jpg?raw=1",
+            "https://www.dropbox.com/s/13nawvuvw71emu5/Printing_Img_11.jpg?raw=1",
+            "https://www.dropbox.com/s/wff05uu7634mygw/Printing_Img_12.jpg?raw=1",
+            "https://www.dropbox.com/s/zzzfwf84kv05pzi/Printing_Img_13.jpg?raw=1",
+            "https://www.dropbox.com/s/dhwvchokcx2crw3/Printing_Img_14.jpg?raw=1",
+            "https://www.dropbox.com/s/732xnq46z4bdtn2/Printing_Img_15.jpg?raw=1",
+            "https://www.dropbox.com/s/v5ro8dyvq125g2a/Printing_Img_16.jpg?raw=1",
+            "https://www.dropbox.com/s/dbnpo71vde1r6h9/Printing_Img_17.jpg?raw=1"
+        ],
+        "videolist": []
+    },
+    {
+        "id": "11",
+        "name": "Video Design",
+        "thumbnail": "https://www.dropbox.com/s/cl0cml2wqa0iq3m/Video_Thumbnail.jpg?raw=1",
+        "hero": "https://www.dropbox.com/s/54ag0sorrpgqfdy/Video_Hero.jpg?raw=1",
+        "description": "Some designs for Video.",
+        "imglist": [],
+        "videolist": [
+            {
+                "thumbnail": "https://www.dropbox.com/s/nvq8sh02yuqm5ts/thumbnail_Dropfoods.jpeg?raw=1",
+                "url": "https://www.dropbox.com/s/etx3u0updsij5nr/video_Dropfoods.mp4?raw=1"
+            },
+            {
+                "thumbnail": "https://www.dropbox.com/s/ew0gwvovyn36v2c/thumbnail_FileOptics.jpeg?raw=1",
+                "url": "https://www.dropbox.com/s/i9r7sqornvf90m0/video_FileOptics.mp4?raw=1"
+            }
+        ]
+    }
+]
