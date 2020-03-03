@@ -84,7 +84,7 @@ const AboutPage = () => {
 
 							<motion.div variants={varfadeInRight}>
 								<Typography variant="body1" gutterBottom>
-									My name is Trinh. I'm a senior designer
+									My name is Trinh. I'm a Full Stack Designer
 									based in HCMC. For over five years I've been
 									specializing in UI and UX design.
 								</Typography>
