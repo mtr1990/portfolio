@@ -24,6 +24,7 @@
     "react-scrollmagic": "^2.1.1",
     "react-svg": "^10.0.22",
     "react-toastify": "^5.4.1",
+    "react-typical": "^0.1.3",
     "smooth-scrollbar": "^8.5.0",
     "styled-components": "^4.4.0",
     "use-dark-mode": "^2.3.1",

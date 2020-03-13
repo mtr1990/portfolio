@@ -5,6 +5,7 @@ import { Header, LoadingPage, BtnAvatar, BtnDarkMode, BgBody } from "../common";
 import { ProjectItem } from "./project";
 import { varfadeInRight, varWrapExit, SmoothScroll } from "../utils";
 import { Container, Grid, Box, Typography } from "@material-ui/core";
+import Typical from "react-typical";
 
 export default class HomePage extends React.Component {
   constructor(props) {
@@ -42,6 +43,23 @@ export default class HomePage extends React.Component {
       <ProjectItem key={index} item={item} isDone={isDone} />
     ));
 
+    // const Display = `The creative designer with a passion for simple and
+    // functional design.`;
+
+    const Display = () => {
+      return (
+        <Typical
+          wrapper="span"
+          steps={[
+            "The creative designer",
+            1000,
+            "The creative designer with a passion for simple and functional design.",
+            500
+          ]}
+        />
+      );
+    };
+
     return (
       <>
         {!isDone ? (
@@ -60,8 +78,7 @@ export default class HomePage extends React.Component {
                   <motion.div variants={varfadeInRight}>
                     <Box height="100vh" display="flex" alignItems="center">
                       <Typography variant="h1">
-                        The creative designer with a passion for simple and
-                        functional design.
+                        <Display />
                       </Typography>
                     </Box>
                   </motion.div>
