@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Header, BtnDarkMode, BgBody } from "../common";
 import { img404 } from "../../assets";
-import { varbounce, varbounceIn, SmoothScroll } from "../utils";
+import { varbounce, varbounceIn, SmoothScrollbar } from "../utils";
 import { Box, Typography, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,7 @@ const NoMatchPage = () => (
 		<BgBody />
 		<BtnDarkMode />
 
-		<SmoothScroll>
+		<SmoothScrollbar>
 			<Header />
 
 			<Box
@@ -42,7 +42,7 @@ const NoMatchPage = () => (
 					Back to home
 				</Button>
 			</Box>
-		</SmoothScroll>
+		</SmoothScrollbar>
 	</motion.div>
 );
 

@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Header, BtnDarkMode, BgBody } from "../common";
 import { CurriculumView } from "./curriculum";
-import { varWrapBoth, varfadeInRight, SmoothScroll } from "../utils";
+import { varWrapBoth, varfadeInRight, SmoothScrollbar } from "../utils";
 import {
   Container,
   Grid,
@@ -11,14 +11,9 @@ import {
   Link,
   makeStyles
 } from "@material-ui/core";
-import Typical from "react-typical";
 
 const useStyles = makeStyles(theme => ({
-  "@global": {
-    ".styles_typicalWrapper__1_Uvh": {
-      whiteSpace: "pre"
-    }
-  },
+  "@global": {},
 
   contacts: {
     padding: theme.spacing(2),
@@ -63,16 +58,12 @@ const AboutPage = () => {
   };
 
   const Display = () => {
-    const Line1 = "Hello there 🤞";
-    const Line2 = "Hello there ✌️";
-    const Line3 = "My name is Trinh.";
-    const Line4 = "Nice to meet you!";
-
     return (
-      <Typical
-        wrapper="span"
-        steps={[Line1, 2400, Line2, 1200, Line3, 1200, Line4, 1200]}
-      />
+      <>
+        Hi there,
+        <br />
+        nice to meet you!
+      </>
     );
   };
 
@@ -87,7 +78,7 @@ const AboutPage = () => {
 
       <BtnDarkMode />
 
-      <SmoothScroll>
+      <SmoothScrollbar>
         <Header />
 
         <Box pt={20} className={classes.padding}>
@@ -178,7 +169,7 @@ const AboutPage = () => {
             </Grid>
           </Container>
         </Box>
-      </SmoothScroll>
+      </SmoothScrollbar>
 
       <CurriculumView onShow={open} onHide={handleClose} />
     </motion.div>

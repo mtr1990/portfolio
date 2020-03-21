@@ -3,9 +3,8 @@ import { API } from "../../config";
 import { motion } from "framer-motion";
 import { Header, LoadingPage, BtnAvatar, BtnDarkMode, BgBody } from "../common";
 import { ProjectItem } from "./project";
-import { varfadeInRight, varWrapExit, SmoothScroll } from "../utils";
+import { varfadeInRight, varWrapExit, SmoothScrollbar } from "../utils";
 import { Container, Grid, Box, Typography } from "@material-ui/core";
-import Typical from "react-typical";
 
 export default class HomePage extends React.Component {
   constructor(props) {
@@ -43,20 +42,11 @@ export default class HomePage extends React.Component {
       <ProjectItem key={index} item={item} isDone={isDone} />
     ));
 
-    // const Display = `The creative designer with a passion for simple and
-    // functional design.`;
-
     const Display = () => {
       return (
-        <Typical
-          wrapper="span"
-          steps={[
-            "The creative designer",
-            1000,
-            "The creative designer with a passion for simple and functional design.",
-            500
-          ]}
-        />
+        <>
+          The creative designer with a passion for simple and functional design.
+        </>
       );
     };
 
@@ -70,7 +60,7 @@ export default class HomePage extends React.Component {
 
             <BtnDarkMode />
 
-            <SmoothScroll>
+            <SmoothScrollbar>
               <Header />
 
               <Container>
@@ -92,7 +82,7 @@ export default class HomePage extends React.Component {
                   <Box height={160} />
                 </Grid>
               </Container>
-            </SmoothScroll>
+            </SmoothScrollbar>
 
             <BtnAvatar />
           </motion.div>

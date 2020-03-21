@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { NoMatchPage } from "../client";
 import { Header, Hero, BtnDarkMode } from "../common";
 import { ProjectDetailsContent, ProjectDetailsControls } from "./project";
-import { SmoothScroll, varfadeIn } from "../utils";
+import { SmoothScrollbar, varfadeIn } from "../utils";
 import { Box } from "@material-ui/core";
 
 class ProjectDetailsPage extends React.Component {
@@ -58,12 +58,12 @@ class ProjectDetailsPage extends React.Component {
 							<Hero img={currentItem} />
 						</motion.div>
 
-						<SmoothScroll>
+						<SmoothScrollbar>
 							<Header />
 							<Box height="100vh" />
 							{/********** Content ***********/}
 							<ProjectDetailsContent currentItem={currentItem} />
-						</SmoothScroll>
+						</SmoothScrollbar>
 
 						{/********** Controls ***********/}
 						<motion.div variants={varfadeIn}>
