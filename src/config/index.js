@@ -7,4 +7,3 @@ export { default as API } from "./api";
 export { default as DisplayFormikState } from "./helper";
 
 export { urlCV } from "./url";
-export { path_DASHBOARD } from "./paths";
