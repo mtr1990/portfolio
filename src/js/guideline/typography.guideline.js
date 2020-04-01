@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography } from "@material-ui/core";
 import { motion } from "framer-motion";
-import { GlLayout, GlBlock } from "./";
+import { GlLayout, GlBlock } from ".";
 import {
 	TypographyInfo,
 	TypographySuccess,

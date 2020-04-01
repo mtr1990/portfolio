@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
 import { motion } from "framer-motion";
-import { GlLayout } from "./";
+import { GlLayout } from ".";
 import {
 	MsgDelete,
 	MsgInfo,
