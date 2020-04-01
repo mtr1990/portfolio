@@ -43,6 +43,10 @@ const routes = [
     exact: true,
     component: GlColorPalettes
   },
+<<<<<<< HEAD
+=======
+
+>>>>>>> a8d48ca3934c9727b6cda7a7ca5d35fcd1f35535
   {
     path: "/guideline/typography",
     component: GlTypography

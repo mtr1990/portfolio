@@ -12,7 +12,7 @@ export {
 	TypographyInfo,
 	TypographySuccess,
 	TypographyWarning
-} from "./component/Typography";
+} from "./component/typography";
 
 /**
  * Material-theme
@@ -31,7 +31,7 @@ export {
 	BtnContainedSuccess,
 	BtnContainedWarning,
 	BtnContainedError
-} from "./component/buttons/BtnContained-Fab";
+} from "./component/buttons/btn-contained-fab";
 
 export {
 	BtnOutlinedBasic,
@@ -39,7 +39,7 @@ export {
 	BtnOutlinedSuccess,
 	BtnOutlinedWarning,
 	BtnOutlinedError
-} from "./component/buttons/BtnOutlined";
+} from "./component/buttons/btn-outlined";
 
 export {
 	BtnBasic,
@@ -52,7 +52,7 @@ export {
 	IconButtonSuccess,
 	IconButtonWarning,
 	IconButtonError
-} from "./component/buttons/BtnText-IconButton";
+} from "./component/buttons/btntext-iconbutton";
 
 /**
  * Material-theme
@@ -63,7 +63,7 @@ export {
 	CheckboxSuccess,
 	CheckboxWarning,
 	CheckboxError
-} from "./component/forms-controls/Checkbox";
+} from "./component/forms-controls/checkbox";
 
 /**
  * Material-theme
@@ -74,7 +74,7 @@ export {
 	RadioSuccess,
 	RadioWarning,
 	RadioError
-} from "./component/forms-controls/RadioButton";
+} from "./component/forms-controls/radio-button";
 
 /**
  * Material-theme
@@ -85,4 +85,4 @@ export {
 	SwitchSuccess,
 	SwitchWarning,
 	SwitchError
-} from "./component/forms-controls/SwitchButton";
+} from "./component/forms-controls/switch-button";

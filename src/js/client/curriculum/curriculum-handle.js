@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { API, urlCV } from "../../../config";
 import { Formik } from "formik";
+<<<<<<< HEAD:src/js/client/curriculum/curriculum-handle.js
 import { validationGetCV } from "../../utilities";
+=======
+import { validationGetCV } from "../../utils";
+>>>>>>> a8d48ca3934c9727b6cda7a7ca5d35fcd1f35535:src/js/client/curriculum/CurriculumHandle.js
 import { CurriculumForm } from ".";
 
 export default class CurriculumHandle extends Component {

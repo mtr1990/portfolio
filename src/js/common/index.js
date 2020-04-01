@@ -11,7 +11,11 @@ export { default as Hero } from "./hero";
 
 export { default as Spinners } from "./spinners";
 
+<<<<<<< HEAD
 export { default as LoadingPage } from "./page-loading";
+=======
+export { default as LoadingPage } from "./loading-page";
+>>>>>>> a8d48ca3934c9727b6cda7a7ca5d35fcd1f35535
 
 export { BtnAvatar, BtnDarkMode } from "./buttons-style";
 
