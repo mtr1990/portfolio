@@ -1,6 +1,6 @@
 /**
  * Curriculum
  */
-export { default as CurriculumForm } from "./CurriculumForm";
-export { default as CurriculumHandle } from "./CurriculumHandle";
-export { default as CurriculumView } from "./CurriculumView";
+export { default as CurriculumForm } from "./curriculum-form";
+export { default as CurriculumHandle } from "./curriculum-handle";
+export { default as CurriculumView } from "./curriculum-view";

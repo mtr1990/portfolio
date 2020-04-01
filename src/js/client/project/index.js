@@ -1,6 +1,6 @@
 /**
  * Project
  */
-export { default as ProjectItem } from "./ProjectItem";
-export { default as ProjectDetailsContent } from "./ProjectDetailsContent";
-export { default as ProjectDetailsControls } from "./ProjectDetailsControls";
+export { default as ProjectItem } from "./project-item";
+export { default as ProjectDetailsContent } from "./project-details-content";
+export { default as ProjectDetailsControls } from "./project-details-controls";

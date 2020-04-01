@@ -1,23 +1,23 @@
 /**
  * Common
  */
-export { default as Header } from "./Header";
+export { default as Header } from "./header";
 
-export { default as Logo } from "./Logo";
+export { default as Logo } from "./logo";
 
-export { default as BgBody } from "./BgBody";
+export { default as BgBody } from "./bg-body";
 
-export { default as Hero } from "./Hero";
+export { default as Hero } from "./hero";
 
-export { default as Spinners } from "./Spinners";
+export { default as Spinners } from "./spinners";
 
-export { default as LoadingPage } from "./LoadingPage";
+export { default as LoadingPage } from "./page-loading";
 
 export { BtnAvatar, BtnDarkMode } from "./buttons-style";
 
-export { default as ScrollComponent } from "./ScrollComponent";
+export { default as ScrollComponent } from "./scroll-component";
 
-export { ModalSmall, ModalFull } from "./Dialog";
+export { ModalSmall, ModalFull } from "./dialog";
 
 export {
 	MsgContainer,
@@ -26,4 +26,4 @@ export {
 	MsgSuccess,
 	MsgWarning,
 	MsgError
-} from "./MsgToast";
+} from "./msg-toast";

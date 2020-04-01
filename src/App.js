@@ -2,7 +2,7 @@ import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { Router, Switch, Route } from "react-router-dom";
 import { routes, history } from "./config";
-import { Nprogress } from "./js/utils";
+import { Nprogress } from "./js/utilities";
 import { MsgContainer } from "./js/common";
 import { ThemeWrap } from "./js/@material-ui-custom";
 

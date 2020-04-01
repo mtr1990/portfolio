@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { varfadeIn, varPath } from "../utils";
+import { varfadeIn, varPath } from "../utilities";
 import { Box, makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 

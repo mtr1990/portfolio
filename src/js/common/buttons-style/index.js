@@ -1,5 +1,5 @@
 /**
  * Buttons Style
  */
-export { default as BtnAvatar } from "./BtnAvatar";
-export { default as BtnDarkMode } from "./BtnDarkMode";
+export { default as BtnAvatar } from "./btn-avatar";
+export { default as BtnDarkMode } from "./btn-darkmode";

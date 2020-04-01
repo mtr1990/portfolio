@@ -2,8 +2,9 @@
  * Client
  */
 export {
-	HomePage,
-	AboutPage,
-	ProjectDetailsPage,
-	NoMatchPage
+  HomePage,
+  AboutPage,
+  ProjectDetailsPage,
+  NoMatchPage,
+  TestPage
 } from "./loadable";

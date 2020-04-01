@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@material-ui/core";
-import { Spinners } from "../common";
+import { Spinners } from ".";
 
 const Hero = ({ img }) => (
 	<Box width="100%" height="100vh" position="fixed" top={0} left={0}>
