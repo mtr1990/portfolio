@@ -44,7 +44,7 @@ export default class HomePage extends React.Component {
     const Display = () => {
       return (
         <>
-          The creative designer with a passion for simple and functional design.
+          The creative designer with a passion for simple and functional design..
         </>
       );
     };
