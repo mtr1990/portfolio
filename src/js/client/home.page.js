@@ -31,13 +31,8 @@ export default class HomePage extends React.Component {
   }
 
   componentDidMount() {
-<<<<<<< HEAD:src/js/client/home.page.js
-    this.getProjects();
-    // setTimeout(() => {}, 800);
-=======
     // setTimeout(() => {}, 800);
     this.getProjects();
->>>>>>> a8d48ca3934c9727b6cda7a7ca5d35fcd1f35535:src/js/client/HomePage.js
   }
 
   render() {
