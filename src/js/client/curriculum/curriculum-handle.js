@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { API, urlCV } from "../../../config";
 import { Formik } from "formik";
 import { validationGetCV } from "../../utils";
-import { CurriculumForm } from "./";
+import { CurriculumForm } from ".";
 
 export default class CurriculumHandle extends Component {
 	constructor(props) {

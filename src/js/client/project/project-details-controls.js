@@ -54,7 +54,7 @@ const ProjectDetailsControls = ({ prevItem, nextItem }) => {
 			>
 				<Box mr={2}>
 					{prevItem === undefined ? null : (
-						<Link to={"/projects/" + prevItem.id}>
+						<Link to={"/projects/" + prevItem._id}>
 							<motion.div
 								whileTap="tap"
 								whileHover="hover"
@@ -70,7 +70,7 @@ const ProjectDetailsControls = ({ prevItem, nextItem }) => {
 
 				<Box>
 					{nextItem === undefined ? null : (
-						<Link to={"/projects/" + nextItem.id}>
+						<Link to={"/projects/" + nextItem._id}>
 							<motion.div
 								whileTap="tap"
 								whileHover="hover"

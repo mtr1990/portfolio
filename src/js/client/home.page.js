@@ -10,18 +10,18 @@ export default class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      projectsList: [],
+      projects: [],
       isDone: undefined
     };
   }
 
-  // Get Project
-  async getProject() {
-    await API.get("myProjects")
+  // Get Projects
+  async getProjects() {
+    await API.get()
       .then(res => {
-        const projectsList = res.data;
+        const projects = res.data;
         this.setState({
-          projectsList,
+          projects,
           isDone: true
         });
       })
@@ -31,14 +31,13 @@ export default class HomePage extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.getProject();
-    }, 800);
+    // setTimeout(() => {}, 800);
+    this.getProjects();
   }
 
   render() {
-    let { projectsList, isDone } = this.state;
-    const ProjectItemList = projectsList.map((item, index) => (
+    let { projects, isDone } = this.state;
+    const ProjectItemList = projects.map((item, index) => (
       <ProjectItem key={index} item={item} isDone={isDone} />
     ));
 

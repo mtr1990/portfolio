@@ -1,6 +1,6 @@
-export { default as Nprogress } from "./Nprogress";
-export { default as ScrollMagic } from "./ScrollMagic";
-export { default as SmoothScrollbar } from "./SmoothScrollbar";
+export { default as Nprogress } from "./nprogress.utils";
+export { default as ScrollMagic } from "./scrollMagic.utils";
+export { default as SmoothScrollbar } from "./smoothScrollbar.utils";
 
 /**
  * Validation
@@ -9,7 +9,7 @@ export {
   validationGetCV,
   validationLogin,
   validationAddProject
-} from "./Validation";
+} from "./validation.utils";
 
 /**
  * Motion Variants
@@ -31,4 +31,4 @@ export {
   varbounce,
   varbounceIn,
   varZoomInOut
-} from "./Variants";
+} from "./variants.utils";

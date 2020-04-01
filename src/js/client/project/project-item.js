@@ -33,7 +33,7 @@ const ProjectItem = ({ item }) => {
 	return (
 		<Grid item xs={6}>
 			<motion.div variants={varZoomInOut}>
-				<Link to={"/projects/" + item.id}>
+				<Link to={"/projects/" + item._id}>
 					<ScrollMagic>
 						<motion.div
 							whileTap="tap"

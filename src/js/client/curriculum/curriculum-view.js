@@ -2,7 +2,7 @@ import React from "react";
 import FeatherIcon from "feather-icons-react";
 import { motion } from "framer-motion";
 import { varWrapEnter, varfadeInUp } from "../../utils";
-import { CurriculumHandle } from "./";
+import { CurriculumHandle } from ".";
 import { Box, Typography, IconButton } from "@material-ui/core";
 
 import { ModalSmall } from "../../common";

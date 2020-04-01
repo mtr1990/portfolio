@@ -1,5 +1,5 @@
 import React from "react";
-import { Logo } from "./";
+import { Logo } from ".";
 import { Container, Box, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
