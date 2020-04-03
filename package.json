@@ -9,7 +9,6 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/lab": "^4.0.0-alpha.37",
     "axios": "^0.18.0",
-    "compass-mixins": "^0.12.10",
     "feather-icons-react": "^0.3.2",
     "formik": "^1.5.8",
     "framer-motion": "^1.6.7",

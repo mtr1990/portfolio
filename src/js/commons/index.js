@@ -7,9 +7,12 @@ export { default as BgBody } from "./bg-body";
 export { default as Hero } from "./hero";
 export { default as Spinners } from "./spinners";
 export { default as LoadingPage } from "./loading-page";
-export { BtnAvatar, BtnDarkMode } from "./buttons-style";
+
 export { default as ScrollComponent } from "./scroll-component";
 export { ModalSmall, ModalFull } from "./dialog";
+
+export { default as BtnAvatar } from "./btn-avatar";
+export { default as BtnDarkMode } from "./btn-darkmode";
 
 export {
   MsgContainer,
