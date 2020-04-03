@@ -29,12 +29,12 @@ const routes = [
     component: AboutPage
   },
   {
-    path: "/test",
-    component: TestPage
-  },
-  {
     path: "/projects/:id",
     component: ProjectDetailsPage
+  },
+  {
+    path: "/test",
+    component: TestPage
   },
 
   // Guideline

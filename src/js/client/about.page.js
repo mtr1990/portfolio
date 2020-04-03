@@ -1,8 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Header, BtnDarkMode, BgBody } from "../common";
-import { CurriculumView } from "./curriculum";
-import { varWrapBoth, varfadeInRight, SmoothScrollbar } from "../utilities";
 import {
   Container,
   Grid,
@@ -11,10 +8,11 @@ import {
   Link,
   makeStyles
 } from "@material-ui/core";
+import { varWrapBoth, varfadeInRight, SmoothScrollbar } from "../utilities";
+import { Header, BtnDarkMode, BgBody } from "../commons";
+import { CurriculumView } from "./curriculum";
 
 const useStyles = makeStyles(theme => ({
-  "@global": {},
-
   contacts: {
     padding: theme.spacing(2),
     marginTop: theme.spacing(3),

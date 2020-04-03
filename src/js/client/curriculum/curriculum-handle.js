@@ -1,64 +1,55 @@
-import React, { Component } from "react";
-import { API, urlCV } from "../../../config";
+import React, { useState } from "react";
 import { Formik } from "formik";
+import { toast } from "react-toastify";
+import { API, urlCV } from "../../../config";
 import { validationGetCV } from "../../utilities";
+import { MsgSuccess, MsgError } from "../../commons";
 import { CurriculumForm } from ".";
 
-export default class CurriculumHandle extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      setCode: "Hello",
-      confirmCode: "",
-      date: new Date().toLocaleString()
-    };
-  }
+const CurriculumHandle = props => {
+  const [email] = useState("");
+  const [s_code] = useState("Hello");
+  const [c_code] = useState("");
 
-  openWindow = () => {
+  // Open Window
+  const openWindow = () => {
     window.open(urlCV, "_blank", "noopener noreferrer");
   };
 
-  // Post Data
-  async getCV(email, date) {
-    const info = {
-      email,
-      date
-    };
-    await API.post(`emailList`, info)
+  // getCV
+  const getCV = async email => {
+    const data = { email };
+    await API.post(`emails/save`, data)
       .then(res => {
-        console.log(res);
+        toast(<MsgSuccess txtMsg="Success!" />);
       })
       .catch(err => {
-        console.log(err);
+        toast(<MsgError txtMsg="Fail!" />);
       });
-  }
+  };
 
-  handleSubmit = (values, { props = this.props, setSubmitting }) => {
+  // Submit
+  const handleSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
-      this.openWindow();
       props.closeModal();
-      this.getCV(values.email, values.date);
+      openWindow();
+      getCV(values.email);
       setSubmitting(false);
     }, 800); // Important setTimeOut < 1000  RESOLVE popup blocked
     // console.log(JSON.stringify(values, null, 2));
-    return;
   };
 
-  render() {
-    let { date, email, setCode, confirmCode } = this.state;
-    return (
-      <Formik
-        initialValues={{
-          date,
-          email,
-          setCode,
-          confirmCode
-        }}
-        validationSchema={validationGetCV}
-        onSubmit={this.handleSubmit}
-        render={props => <CurriculumForm {...props} />}
-      />
-    );
-  }
-}
+  return (
+    <Formik
+      initialValues={{
+        email,
+        s_code,
+        c_code
+      }}
+      validationSchema={validationGetCV}
+      onSubmit={handleSubmit}
+      render={props => <CurriculumForm {...props} />}
+    />
+  );
+};
+export default CurriculumHandle;

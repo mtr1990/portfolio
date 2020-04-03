@@ -8,7 +8,7 @@ import {
 	varZoomInOut,
 	varTransition
 } from "../../utilities";
-import { Spinners } from "../../common";
+import { Spinners } from "../../commons";
 import { Grid, Box, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({

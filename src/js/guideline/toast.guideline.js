@@ -8,7 +8,7 @@ import {
 	MsgSuccess,
 	MsgWarning,
 	MsgError
-} from "../common";
+} from "../commons";
 
 const GlToast = () => (
 	<motion.div initial="initial" animate="enter" exit="exit">

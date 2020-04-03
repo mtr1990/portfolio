@@ -52,7 +52,7 @@ export {
 	IconButtonSuccess,
 	IconButtonWarning,
 	IconButtonError
-} from "./component/buttons/btntext-iconbutton";
+} from "./component/buttons/btn-text-iconbutton";
 
 /**
  * Material-theme

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-import { Logo } from "../../common";
+import { Logo } from "../../commons";
 import {
 	Box,
 	List,

@@ -3,7 +3,7 @@
  */
 export { default as GlLayout } from "./layouts/layout.layouts";
 export { default as GlMenuList } from "./layouts/menu.layouts";
-export { default as GlAppBar } from "./layouts/appBar.layouts";
+export { default as GlAppBar } from "./layouts/appbar.layouts";
 export { default as GlBlock } from "./layouts/block.layouts";
 
 export { default as GlColorPalettes } from "./palettes.guideline";

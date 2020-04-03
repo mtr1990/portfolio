@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Box, Hidden, Drawer, makeStyles, useTheme } from "@material-ui/core";
 import { GlMenuList, GlAppBar } from "..";
-import { BtnDarkMode } from "../../common";
+import { BtnDarkMode } from "../../commons";
 
 const drawerWidth = 240;
 

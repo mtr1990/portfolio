@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { varWrapEnter, varfadeInUp } from "../../utilities";
 import { CurriculumHandle } from ".";
 import { Box, Typography, IconButton } from "@material-ui/core";
-import { ModalSmall } from "../../common";
+import { ModalSmall } from "../../commons";
 
 const CurriculumView = ({ onShow, onHide }) => (
   <ModalSmall

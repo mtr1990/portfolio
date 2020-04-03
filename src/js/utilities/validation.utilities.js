@@ -8,8 +8,8 @@ export const validationGetCV = Yup.object().shape({
 		.email("Email must be a valid email address")
 		.required("Email is required"),
 
-	confirmCode: Yup.string()
-		.oneOf([Yup.ref("setCode"), null], "The code must be Hello")
+	c_code: Yup.string()
+		.oneOf([Yup.ref("s_code"), null], "The code must be Hello")
 		.required("Enter CODE is required")
 });
 
