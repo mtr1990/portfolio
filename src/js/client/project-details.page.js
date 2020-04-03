@@ -29,7 +29,7 @@ const ProjectDetailsPage = () => {
 
   // let ItemId = parseInt(props.match.params.id, 10);
   // let ItemId = props.match.params.id;
-  let { id } = useParams();
+  let { id } = useParams(); // Hook
   let ItemId = id;
 
   if (!projects) {

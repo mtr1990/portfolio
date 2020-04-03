@@ -11,7 +11,7 @@ import {
 	muiShadowsLight,
 	muiShadowsDark,
 	muiBorderRadius
-} from "./";
+} from ".";
 
 const ThemeWrap = props => {
 	const breakpoints = createBreakpoints({});
