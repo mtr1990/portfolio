@@ -5,11 +5,7 @@ export { default as SmoothScrollbar } from "./scroll-smooth.utilities";
 /**
  * Validation
  */
-export {
-  validationGetCV,
-  validationLogin,
-  validationAddProject
-} from "./validation.utilities";
+export { validationCVForm } from "./validation.utilities";
 
 /**
  * Motion Variants

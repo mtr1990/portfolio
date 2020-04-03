@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import { toast } from "react-toastify";
 import { API, urlCV } from "../../../config";
-import { validationGetCV } from "../../utilities";
+import { validationCVForm } from "../../utilities";
 import { MsgSuccess, MsgError } from "../../commons";
 import { CurriculumForm } from ".";
 
@@ -46,7 +46,7 @@ const CurriculumHandle = props => {
         s_code,
         c_code
       }}
-      validationSchema={validationGetCV}
+      validationSchema={validationCVForm}
       onSubmit={handleSubmit}
       render={props => <CurriculumForm {...props} />}
     />
