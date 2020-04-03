@@ -27,7 +27,7 @@ const HomePage = () => {
     getProjects();
   }, []);
 
-  const ProjectItemList = projects.map((item, index) => (
+  const ProjectList = projects.map((item, index) => (
     <ProjectItem key={index} item={item} isDone={isDone} />
   ));
 
@@ -64,7 +64,7 @@ const HomePage = () => {
 
                 <motion.div variants={varWrapExit}>
                   <Grid container spacing={3}>
-                    {ProjectItemList}
+                    {ProjectList}
                   </Grid>
                 </motion.div>
 
