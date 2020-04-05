@@ -28,9 +28,9 @@
     "yup": "^0.27.0"
   },
   "scripts": {
-    "start": "PORT=7979 react-scripts start",
+    "start": "PORT=2247 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"

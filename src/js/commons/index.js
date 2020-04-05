@@ -5,6 +5,7 @@ export { default as Header } from "./header";
 export { default as Logo } from "./logo";
 export { default as BgBody } from "./bg-body";
 export { default as Hero } from "./hero";
+
 export { default as Spinners } from "./spinners";
 export { default as LoadingPage } from "./loading-page";
 
@@ -20,5 +21,5 @@ export {
   MsgInfo,
   MsgSuccess,
   MsgWarning,
-  MsgError
+  MsgError,
 } from "./msg-toast";

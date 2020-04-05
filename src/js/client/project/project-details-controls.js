@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
 
 const ProjectDetailsControls = ({ prevItem, nextItem }) => {
   const classes = useStyles();
+
   return (
     <>
       <Link to="/">

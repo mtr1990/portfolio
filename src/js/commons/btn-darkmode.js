@@ -6,7 +6,7 @@ import { Checkbox, Box, makeStyles } from "@material-ui/core";
 import { varfadeIn, varIcon } from "../utilities";
 import { iMoon, iSun } from "../../assets";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   toggle: {
     padding: theme.spacing(1),
     width: theme.spacing(6),
@@ -14,23 +14,23 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
     backgroundColor: theme.palette.contrast.lower,
     "& svg": {
-      width: "100%"
-    }
+      width: "100%",
+    },
   },
   button: {
     [theme.breakpoints.up("md")]: {
       left: "48px",
-      bottom: "48px"
-    }
-  }
+      bottom: "48px",
+    },
+  },
 }));
 
-const Toggle = ({ checked, onChange }) => {
+const Toggle = ({ onChange }) => {
   const classes = useStyles();
   return (
     <Checkbox
       color="default"
-      defaultChecked={checked}
+      checked={true}
       onChange={onChange}
       icon={<ReactSVG src={iMoon} />}
       checkedIcon={<ReactSVG src={iSun} />}
@@ -44,23 +44,26 @@ const BtnDarkMode = ({ iShow }) => {
   const darkMode = useDarkMode(false, {
     classNameDark: "light-mode",
     classNameLight: "dark-mode",
-    storageKey: "isLight"
+    storageKey: "isLight",
   });
+
   return (
-    <Box
-      position="fixed"
-      left={24}
-      bottom={24}
-      zIndex="modal"
-      style={{ display: iShow }}
-      className={classes.button}
-    >
-      <motion.div variants={varfadeIn}>
-        <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
-          <Toggle checked={darkMode.value} onChange={darkMode.toggle} />
+    <>
+      <Box
+        position="fixed"
+        left={24}
+        bottom={24}
+        zIndex="modal"
+        style={{ display: iShow }}
+        className={classes.button}
+      >
+        <motion.div variants={varfadeIn}>
+          <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
+            <Toggle checked={darkMode.value} onChange={darkMode.toggle} />
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </Box>
+      </Box>
+    </>
   );
 };
 

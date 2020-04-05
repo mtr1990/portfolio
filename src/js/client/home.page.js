@@ -3,33 +3,41 @@ import { motion } from "framer-motion";
 import { Container, Grid, Box, Typography } from "@material-ui/core";
 import { API } from "../../config";
 import { varfadeInRight, varWrapExit, SmoothScrollbar } from "../utilities";
-import { Header, LoadingPage, BtnAvatar, BtnDarkMode, BgBody } from "../commons";
-import { ProjectItem } from "./project";
+import {
+  Header,
+  BtnAvatar,
+  BtnDarkMode,
+  BgBody,
+  LoadingPage,
+} from "../commons";
+import { ProjectList } from "./project";
 
 const HomePage = () => {
   const [projects, setProjects] = useState([]);
-  const [isDone, setIsDone] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // useEffect(() => {
+  //   getProjects();
+  // }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      getProjects();
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Get Projects
   const getProjects = async () => {
     await API.get("projects")
-      .then(res => {
+      .then((res) => {
         setProjects(res.data);
-        setIsDone(true);
+        setIsLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
-
-  useEffect(() => {
-    // setTimeout(() => {}, 800);
-    getProjects();
-  }, []);
-
-  const ProjectList = projects.map((item, index) => (
-    <ProjectItem key={index} item={item} isDone={isDone} />
-  ));
 
   const Display = () => {
     return (
@@ -41,41 +49,37 @@ const HomePage = () => {
 
   return (
     <>
-      {!isDone ? (
-        <LoadingPage />
-      ) : (
-        <motion.div initial="initial" animate="enter" exit="exit">
-          <BgBody />
+      <motion.div initial="initial" animate="enter" exit="exit">
+        <BgBody />
 
-          <BtnDarkMode />
+        <BtnDarkMode />
 
-          <SmoothScrollbar>
-            <Header />
+        {isLoading ? <LoadingPage /> : null}
 
-            <Container>
-              <Grid item md={8} lg={7}>
-                <motion.div variants={varfadeInRight}>
-                  <Box height="100vh" display="flex" alignItems="center">
-                    <Typography variant="h1">
-                      <Display />
-                    </Typography>
-                  </Box>
-                </motion.div>
+        <SmoothScrollbar>
+          <Header />
 
-                <motion.div variants={varWrapExit}>
-                  <Grid container spacing={3}>
-                    {ProjectList}
-                  </Grid>
-                </motion.div>
+          <Container>
+            <Grid item md={8} lg={7}>
+              <motion.div variants={varfadeInRight}>
+                <Box height="100vh" display="flex" alignItems="center">
+                  <Typography variant="h1" component="h1">
+                    <Display />
+                  </Typography>
+                </Box>
+              </motion.div>
 
-                <Box height={160} />
-              </Grid>
-            </Container>
-          </SmoothScrollbar>
+              <motion.div variants={varWrapExit}>
+                <Grid container spacing={3}>
+                  <ProjectList stateProject={projects} />
+                </Grid>
+              </motion.div>
+            </Grid>
+          </Container>
+        </SmoothScrollbar>
 
-          <BtnAvatar />
-        </motion.div>
-      )}
+        <BtnAvatar />
+      </motion.div>
     </>
   );
 };

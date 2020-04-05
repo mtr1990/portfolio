@@ -57,6 +57,7 @@ const ThemeWrap = (props) => {
   }
 
   const muiTheme = createMuiTheme(ThemeConfig);
+  // console.log(JSON.stringify(muiTheme.shape, null, 2));
 
   return (
     <ThemeProvider theme={muiTheme}>

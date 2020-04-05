@@ -2,12 +2,12 @@
  * Base Transition
  */
 const transitionEnter = {
-	duration: 0.88,
+	duration: 0.64,
 	ease: [0.43, 0.13, 0.23, 0.96]
 };
 
 const transitionExit = {
-	duration: 0.48,
+	duration: 0.32,
 	ease: [0.43, 0.13, 0.23, 0.96]
 };
 
