@@ -4,49 +4,50 @@ import { motion } from "framer-motion";
 import { Box } from "@material-ui/core";
 import { API } from "../../config";
 import { SmoothScrollbar, varfadeIn } from "../utilities";
-import { Header, Hero, BtnDarkMode, MsgError, LoadingPage } from "../commons";
+import { Header, Hero, BtnDarkMode, MsgError } from "../commons";
 import { ProjectDetailsContent, ProjectDetailsControls } from "./project";
 import { NoMatchPage } from ".";
 import { useParams } from "react-router-dom";
 
 const ProjectDetailsPage = () => {
   const [projects, setProjects] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   // Get Project By Id
   const getProjectById = async () => {
     await API.get("projects")
       .then((res) => {
         setProjects(res.data);
-        setIsLoading(false);
       })
       .catch((err) => {
-        toast(<MsgError txtMsg="Get Project Fail!" />);
+        toast(<MsgError txtMsg="Get Project Failed!" />);
       });
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      getProjectById();
-    }, 1000);
-    return () => clearTimeout(timer);
+    getProjectById();
   }, []);
 
   // let ItemId = parseInt(props.match.params.id, 10);
   // let ItemId = props.match.params.id;
-  let { id } = useParams(); // Hook
-  let ItemId = id;
+  let { name } = useParams(); // Hook
+  let ItemId = name;
 
   if (!projects) {
     return null;
   }
 
-  const currentItem = projects.find((item) => item._id === ItemId);
-  const currentIndex = projects.findIndex((item) => item._id === ItemId);
+  const currentItem = projects.find(
+    (item) => item.name.toLowerCase().replace(/\s+/g, "-") === ItemId
+  );
+  const currentIndex = projects.findIndex(
+    (item) => item.name.toLowerCase().replace(/\s+/g, "-") === ItemId
+  );
   const prevItem = projects[currentIndex - 1];
   const nextItem = projects[currentIndex + 1];
 
-  console.log("currentItem:", currentItem);
+  // console.log("currentItem:", currentItem.name);
+  // console.log("prevItem:", prevItem.name);
+  // console.log("nextItem:", nextItem.name);
 
   if (currentItem) {
     return (

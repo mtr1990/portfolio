@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     boxShadow: theme.shadows[24],
-    borderRadius: theme.shape.borderRadiusSm,
+    borderRadius: theme.shape.borderRadiusLg,
   },
   thumbnail: {
     position: "absolute",
@@ -33,11 +33,12 @@ const useStyles = makeStyles((theme) => ({
 
 const ProjectItem = ({ item }) => {
   const classes = useStyles();
+  const itemName = item.name.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <Grid item xs={6}>
       <motion.div variants={varZoomInOut}>
-        <Link to={"/projects/" + item._id}>
+        <Link to={"/projects/" + itemName}>
           <ScrollMagic>
             <motion.div
               whileTap="tap"
@@ -46,17 +47,15 @@ const ProjectItem = ({ item }) => {
               transition={varTransition}
             >
               <Box className={classes.item}>
-                {item ? (
-                  <motion.img
-                    src={item.thumbnail}
-                    alt="thumbnail"
-                    variants={varImg}
-                    transition={varTransition}
-                    className={classes.thumbnail}
-                  />
-                ) : (
-                  <Spinners />
-                )}
+                <motion.img
+                  src={item.thumbnail}
+                  alt="thumbnail"
+                  variants={varImg}
+                  transition={varTransition}
+                  className={classes.thumbnail}
+                />
+
+                <Spinners />
               </Box>
             </motion.div>
           </ScrollMagic>

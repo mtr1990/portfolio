@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 import { Container, Grid, Box, Typography } from "@material-ui/core";
 import { API } from "../../config";
 import { varfadeInRight, varWrapExit, SmoothScrollbar } from "../utilities";
@@ -9,6 +10,7 @@ import {
   BtnDarkMode,
   BgBody,
   LoadingPage,
+  MsgError,
 } from "../commons";
 import { ProjectList } from "./project";
 
@@ -16,16 +18,16 @@ const HomePage = () => {
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   getProjects();
-  // }, []);
-
   useEffect(() => {
-    const timer = setTimeout(() => {
-      getProjects();
-    }, 1000);
-    return () => clearTimeout(timer);
+    getProjects();
   }, []);
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     getProjects();
+  //   }, 1000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   // Get Projects
   const getProjects = async () => {
@@ -35,7 +37,7 @@ const HomePage = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        toast(<MsgError txtMsg="Get Projects Failed!" />);
       });
   };
 
@@ -70,9 +72,11 @@ const HomePage = () => {
               </motion.div>
 
               <motion.div variants={varWrapExit}>
-                <Grid container spacing={3}>
-                  <ProjectList stateProject={projects} />
-                </Grid>
+                <Box mb={20}>
+                  <Grid container spacing={4}>
+                    <ProjectList stateProject={projects} />
+                  </Grid>
+                </Box>
               </motion.div>
             </Grid>
           </Container>

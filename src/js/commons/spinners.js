@@ -12,7 +12,7 @@ const Spinners = () => (
 			bottom: 0,
 			left: 0,
 			margin: "auto",
-			// zIndex: "-1"
+			zIndex: "-1"
 		}}
 	/>
 );

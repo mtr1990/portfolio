@@ -24,7 +24,7 @@ const CurriculumHandle = props => {
         toast(<MsgSuccess txtMsg="Success!" />);
       })
       .catch(err => {
-        toast(<MsgError txtMsg="Fail!" />);
+        toast(<MsgError txtMsg="Failed!" />);
       });
   };
 

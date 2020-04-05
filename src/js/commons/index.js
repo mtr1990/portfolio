@@ -13,7 +13,7 @@ export { default as ScrollComponent } from "./scroll-component";
 export { ModalSmall, ModalFull } from "./dialog";
 
 export { default as BtnAvatar } from "./btn-avatar";
-export { default as BtnDarkMode } from "./btn-darkmode";
+export { default as BtnDarkMode } from "./btn-dark-mode";
 
 export {
   MsgContainer,

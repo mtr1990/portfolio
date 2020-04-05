@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
         top: 0,
         left: 0,
         width: "100%",
-        height: "4px",
+        height: "3px",
         zIndex: theme.zIndex.snackbar,
         background: theme.palette.primary.main
       },
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
         right: 0,
         width: "100px",
         height: "100%",
-        boxShadow: `0 0 4px ${theme.palette.primary.main}`,
+        boxShadow: `0 0 3px ${theme.palette.primary.main}`,
         transform: "rotate(4deg) translate(0px, -8px)"
       }
     }

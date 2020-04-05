@@ -1,5 +1,5 @@
 import React from "react";
-import { GlBlock } from "../";
+import { GlBlock } from ".";
 import {
 	Grid,
 	Typography,
@@ -16,7 +16,7 @@ import {
 	RadioSuccess,
 	RadioWarning,
 	RadioError
-} from "../../@material-ui-custom";
+} from "../@material-ui-custom";
 
 const GlRadioButton = () => {
 	return (

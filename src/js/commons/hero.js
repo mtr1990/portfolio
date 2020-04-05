@@ -1,19 +1,36 @@
 import React from "react";
-import { Box } from "@material-ui/core";
+import { Box, makeStyles } from "@material-ui/core";
+import { Spinners } from "../commons";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100vh",
+  },
+  hero: {
+    width: "100%",
+    height: "100vh",
+    backgroundSize: "cover",
+    backgroundPosition: "center center",
+  },
+}));
 
 const Hero = ({ item }) => {
+  const classes = useStyles();
+
   return (
-    <Box width="100%" height="100vh" position="fixed" top={0} left={0}>
+    <Box className={classes.root}>
       <Box
-        width="100%"
-        height="100vh"
+        className={classes.hero}
         style={{
           backgroundImage: `
 						 url(${item.hero})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
         }}
       />
+      <Spinners />
     </Box>
   );
 };

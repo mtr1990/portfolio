@@ -24,17 +24,17 @@ const ThemeWrap = (props) => {
     spacing: 8,
   });
 
-  const darkMode = useDarkMode(false, {
-    classNameDark: "light-mode",
-    classNameLight: "dark-mode",
-    storageKey: "isLight",
+  const { value } = useDarkMode(false, {
+    classNameDark: "light-theme",
+    classNameLight: "dark-theme",
+    storageKey: "lightMode",
   });
 
   const ThemeConfig = {
-    palette: darkMode.value ? muiPaletteLight : muiPaletteDark,
+    palette: value ? muiPaletteLight : muiPaletteDark,
     typography: muiTypography,
     breakpoints: muiBreakpoints,
-    shadows: darkMode.value ? muiShadowsLight : muiShadowsDark,
+    shadows: value ? muiShadowsLight : muiShadowsDark,
     shape: muiBorderRadius,
     overrides: {
       MuiTypography: {
@@ -50,7 +50,7 @@ const ThemeWrap = (props) => {
     },
   };
 
-  if (darkMode.value) {
+  if (value) {
     ThemeConfig.palette.type = "light";
   } else {
     ThemeConfig.palette.type = "dark";

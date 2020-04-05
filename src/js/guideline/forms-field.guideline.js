@@ -1,6 +1,6 @@
 import React from "react";
 import { Visibility } from "@material-ui/icons";
-import { GlBlock } from "../";
+import { GlBlock } from ".";
 import {
 	Grid,
 	Typography,

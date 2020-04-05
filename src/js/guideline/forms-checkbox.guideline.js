@@ -1,5 +1,5 @@
 import React from "react";
-import { GlBlock } from "../";
+import { GlBlock } from ".";
 import {
 	Typography,
 	FormGroup,
@@ -18,7 +18,7 @@ import {
 	CheckboxSuccess,
 	CheckboxWarning,
 	CheckboxError
-} from "../../@material-ui-custom";
+} from "../@material-ui-custom";
 
 const GlCheckbox = () => (
 	<GlBlock>
