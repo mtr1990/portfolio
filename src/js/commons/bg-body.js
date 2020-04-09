@@ -1,20 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { bgBodyDark, bgBodyLight } from "../../assets";
+// import { bgBodyDark, bgBodyLight } from "../../assets";
 import { varfadeIn } from "../utilities";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    height: "100vh",
-    backgroundImage:
-      theme.palette.type === "light"
-        ? `url(${bgBodyLight})`
-        : `url(${bgBodyDark})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center center",
-    transition: "all 160ms ease-in-out"
-  }
+    // height: "100vh",
+    // backgroundImage:
+    //   theme.palette.type === "light"
+    //     ? `url(${bgBodyLight})`
+    //     : `url(${bgBodyDark})`,
+    // backgroundSize: "cover",
+    // backgroundPosition: "center center",
+    // transition: "all 160ms ease-in-out",
+  },
 }));
 
 const BgBody = () => {

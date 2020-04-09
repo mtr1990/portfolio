@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     marginTop: theme.spacing(10),
-    boxShadow: theme.shadows[24],
+    boxShadow: theme.shadows[25].image,
     [theme.breakpoints.up("md")]: {
       "& > *": {
         marginTop: theme.spacing(20),

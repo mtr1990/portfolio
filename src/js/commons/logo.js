@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { varfadeIn, varPath } from "../utilities";
 import { Box, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   logo: {
     display: "table",
     position: "relative",
@@ -16,19 +16,20 @@ const useStyles = makeStyles(theme => ({
       display: "block",
       position: "absolute",
       "&.logo-foreground": {
-        stroke: theme.palette.primary.main
+        stroke: theme.palette.primary.main,
       },
       "&.logo-background": {
-        stroke: "rgba(250, 250, 250, 0.04)"
-      }
-    }
-  }
+        stroke: "rgba(250, 250, 250, 0.04)",
+      },
+    },
+  },
 }));
 
-const Logo = () => {
+const Logo = (props) => {
   const classes = useStyles();
+  
   return (
-    <Box className={classes.logo}>
+    <Box className={classes.logo} {...props}>
       <motion.svg
         viewBox="0 0 560 560"
         className="logo-foreground"

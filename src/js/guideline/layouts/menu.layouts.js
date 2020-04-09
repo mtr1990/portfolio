@@ -10,11 +10,15 @@ import {
   ListItemText,
 } from "@material-ui/core";
 import {
-  ColorLens as ColorLensIcon,
-  RadioButtonChecked as RadioButtonCheckedIcon,
-  VerticalSplit as VerticalSplitIcon,
-  TextFormat as TextFormatIcon,
+  ColorLens,
+  RadioButtonChecked,
+  VerticalSplit,
+  TextFormat,
+  BlurOn,
+  TabUnselected,
 } from "@material-ui/icons";
+
+import { path_GUIDELINE } from "../../../config";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   selected: {
-    backgroundColor: theme.palette.background.block,
+    backgroundColor: theme.palette.background.card,
     color: theme.palette.primary.main,
     "& > .MuiListItemIcon-root": {
       color: theme.palette.primary.main,
@@ -50,11 +54,11 @@ const GlMenuList = ({ location: { pathname } }) => {
             selected: classes.selected,
           }}
           component={Link}
-          to="/guideline"
-          selected={"/guideline" === pathname}
+          to={path_GUIDELINE.root}
+          selected={path_GUIDELINE.root === pathname}
         >
           <ListItemIcon>
-            <ColorLensIcon />
+            <ColorLens />
           </ListItemIcon>
           <ListItemText> Color Palettes</ListItemText>
         </ListItem>
@@ -66,11 +70,11 @@ const GlMenuList = ({ location: { pathname } }) => {
             selected: classes.selected,
           }}
           component={Link}
-          to="/guideline/typography"
-          selected={"/guideline/typography" === pathname}
+          to={path_GUIDELINE.typography}
+          selected={path_GUIDELINE.typography === pathname}
         >
           <ListItemIcon>
-            <TextFormatIcon />
+            <TextFormat />
           </ListItemIcon>
           <ListItemText>Typography</ListItemText>
         </ListItem>
@@ -82,11 +86,11 @@ const GlMenuList = ({ location: { pathname } }) => {
             selected: classes.selected,
           }}
           component={Link}
-          to="/guideline/buttons"
-          selected={"/guideline/buttons" === pathname}
+          to={path_GUIDELINE.buttons}
+          selected={path_GUIDELINE.buttons === pathname}
         >
           <ListItemIcon>
-            <RadioButtonCheckedIcon />
+            <RadioButtonChecked />
           </ListItemIcon>
           <ListItemText>Buttons</ListItemText>
         </ListItem>
@@ -98,11 +102,11 @@ const GlMenuList = ({ location: { pathname } }) => {
             selected: classes.selected,
           }}
           component={Link}
-          to="/guideline/forms"
-          selected={"/guideline/forms" === pathname}
+          to={path_GUIDELINE.forms}
+          selected={path_GUIDELINE.forms === pathname}
         >
           <ListItemIcon>
-            <VerticalSplitIcon />
+            <VerticalSplit />
           </ListItemIcon>
           <ListItemText>Forms</ListItemText>
         </ListItem>
@@ -114,11 +118,11 @@ const GlMenuList = ({ location: { pathname } }) => {
             selected: classes.selected,
           }}
           component={Link}
-          to="/guideline/toast"
-          selected={"/guideline/toast" === pathname}
+          to={path_GUIDELINE.toast}
+          selected={path_GUIDELINE.toast === pathname}
         >
           <ListItemIcon>
-            <VerticalSplitIcon />
+            <TabUnselected />
           </ListItemIcon>
           <ListItemText>Toast</ListItemText>
         </ListItem>
@@ -130,11 +134,11 @@ const GlMenuList = ({ location: { pathname } }) => {
             selected: classes.selected,
           }}
           component={Link}
-          to="/guideline/shadows"
-          selected={"/guideline/shadows" === pathname}
+          to={path_GUIDELINE.shadows}
+          selected={path_GUIDELINE.shadows === pathname}
         >
           <ListItemIcon>
-            <VerticalSplitIcon />
+            <BlurOn />
           </ListItemIcon>
           <ListItemText>Shadows</ListItemText>
         </ListItem>

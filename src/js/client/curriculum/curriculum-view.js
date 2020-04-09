@@ -1,9 +1,9 @@
 import React from "react";
-import FeatherIcon from "feather-icons-react";
 import { motion } from "framer-motion";
 import { varWrapEnter, varfadeInUp } from "../../utilities";
 import { CurriculumHandle } from ".";
 import { Box, Typography, IconButton } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
 import { ModalSmall } from "../../commons";
 
 const CurriculumView = ({ onShow, onHide }) => (
@@ -28,7 +28,7 @@ const CurriculumView = ({ onShow, onHide }) => (
 
       <Box position="absolute" top={8} right={8}>
         <IconButton aria-label="delete" onClick={onHide}>
-          <FeatherIcon icon="x" />
+          <Close />
         </IconButton>
       </Box>
     </motion.div>

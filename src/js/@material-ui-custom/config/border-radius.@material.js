@@ -1,5 +1,5 @@
 export const muiBorderRadius = {
-	borderRadius: 6,
+	borderRadius: 10,
 	borderRadiusXs: 8,
 	borderRadiusSm: 12,
 	borderRadiusMd: 16,

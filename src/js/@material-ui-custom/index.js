@@ -9,7 +9,7 @@ export { ThemeWrap } from "./config";
 export {
   TypographyInfo,
   TypographySuccess,
-  TypographyWarning
+  TypographyWarning,
 } from "./typography";
 
 /**
@@ -27,7 +27,7 @@ export {
   BtnContainedInfo,
   BtnContainedSuccess,
   BtnContainedWarning,
-  BtnContainedError
+  BtnContainedError,
 } from "./btn-contained-fab";
 
 export {
@@ -35,7 +35,7 @@ export {
   BtnOutlinedInfo,
   BtnOutlinedSuccess,
   BtnOutlinedWarning,
-  BtnOutlinedError
+  BtnOutlinedError,
 } from "./btn-outlined";
 
 export {
@@ -48,7 +48,7 @@ export {
   IconButtonInfo,
   IconButtonSuccess,
   IconButtonWarning,
-  IconButtonError
+  IconButtonError,
 } from "./btn-text-iconbutton";
 
 /**
@@ -58,7 +58,7 @@ export {
   CheckboxInfo,
   CheckboxSuccess,
   CheckboxWarning,
-  CheckboxError
+  CheckboxError,
 } from "./checkbox";
 
 /**
@@ -68,7 +68,7 @@ export {
   RadioInfo,
   RadioSuccess,
   RadioWarning,
-  RadioError
+  RadioError,
 } from "./radio-button";
 
 /**
@@ -78,5 +78,10 @@ export {
   SwitchInfo,
   SwitchSuccess,
   SwitchWarning,
-  SwitchError
+  SwitchError,
 } from "./switch-button";
+
+/**
+ * Snackbar
+ */
+export { SnackMessage, SnackContainer } from "./snackbars";

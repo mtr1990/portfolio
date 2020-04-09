@@ -1,22 +1,38 @@
-const font_primary = "Work Sans, Helvetica, Arial, sans-serif";
-const font_secondary = "Knockout, Helvetica, Arial, sans-serif";
+const font_primary = "Fira Sans, Helvetica, Arial, sans-serif";
+// const font_secondary = "Merriweather, Helvetica, Arial, sans-serif";
+
+const body_line_height = 1.5;
+const heading_line_height = "normal";
 
 export const muiTypography = {
-	fontFamily: font_primary,
-	h1: { fontFamily: font_secondary },
-	h2: { fontFamily: font_secondary },
-	h3: { fontFamily: font_secondary },
-	h4: { fontFamily: font_secondary },
-	h5: { fontFamily: font_secondary },
-	h6: { fontFamily: font_secondary },
+  fontFamily: font_primary,
 
-	subtitle1: { fontWeight: 700 },
-	subtitle2: { fontWeight: 700 },
+  h1: {
+    lineHeight: heading_line_height,
+    fontWeight: 400,
+  },
+  h2: {
+    lineHeight: heading_line_height,
+    fontWeight: 400,
+  },
+  h3: { lineHeight: heading_line_height, fontWeight: 500 },
+  h4: { lineHeight: heading_line_height, fontWeight: 500 },
+  h5: { lineHeight: heading_line_height, fontWeight: 500 },
+  h6: { lineHeight: heading_line_height, fontWeight: 500 },
 
-	body1: { fontWeight: 500 },
-	body2: { fontWeight: 500 },
+  subtitle1: { fontWeight: 500 },
+  subtitle2: { fontWeight: 500 },
 
-	button: { fontSize: 14, fontWeight: 700, textTransform: "uppercase" },
-	caption: { fontWeight: 500 },
-	overline: { fontWeight: 500 }
+  body1: {
+    fontWeight: 400,
+    lineHeight: body_line_height,
+  },
+  body2: {
+    fontWeight: 400,
+    lineHeight: body_line_height,
+  },
+
+  button: { fontSize: 14, fontWeight: 700, textTransform: "uppercase" },
+  caption: { fontWeight: 400 },
+  overline: { fontWeight: 400 },
 };

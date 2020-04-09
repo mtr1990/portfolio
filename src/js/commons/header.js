@@ -3,15 +3,16 @@ import { Logo } from ".";
 import { Container, Box, makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   position: {
     position: "absolute",
     top: theme.spacing(8),
     width: "100%",
+    zIndex: theme.zIndex.appBar,
     [theme.breakpoints.up("md")]: {
-      top: theme.spacing(12)
-    }
-  }
+      top: theme.spacing(12),
+    },
+  },
 }));
 
 const Header = () => {
@@ -19,7 +20,7 @@ const Header = () => {
   return (
     <Box className={classes.position}>
       <Container>
-        <Link to="/">
+        <Link to="/" style={{ display: "inline-block" }}>
           <Logo />
         </Link>
       </Container>

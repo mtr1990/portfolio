@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useSnackbar } from "notistack";
 import { Box } from "@material-ui/core";
 import { API } from "../../config";
 import { SmoothScrollbar, varfadeIn } from "../utilities";
-import { Header, Hero, BtnDarkMode, MsgError } from "../commons";
+import { Header, Hero, BtnDarkMode } from "../commons";
 import { ProjectDetailsContent, ProjectDetailsControls } from "./project";
 import { NoMatchPage } from ".";
-import { useParams } from "react-router-dom";
+import { SnackMessage } from "../@material-ui-custom";
 
 const ProjectDetailsPage = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const [projects, setProjects] = useState(null);
 
   // Get Project By Id
@@ -19,13 +22,17 @@ const ProjectDetailsPage = () => {
         setProjects(res.data);
       })
       .catch((err) => {
-        toast(<MsgError txtMsg="Get Project Failed!" />);
+        enqueueSnackbar("Get project error!", {
+          content: (key, message) => (
+            <SnackMessage id={key} message={message} variant="error" />
+          ),
+        });
       });
   };
 
   useEffect(() => {
     getProjectById();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // let ItemId = parseInt(props.match.params.id, 10);
   // let ItemId = props.match.params.id;
@@ -46,8 +53,8 @@ const ProjectDetailsPage = () => {
   const nextItem = projects[currentIndex + 1];
 
   // console.log("currentItem:", currentItem.name);
-  // console.log("prevItem:", prevItem.name);
-  // console.log("nextItem:", nextItem.name);
+  // console.log("prevItem:", prevItem);
+  // console.log("nextItem:", nextItem);
 
   if (currentItem) {
     return (

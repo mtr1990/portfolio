@@ -16,5 +16,5 @@ export { default as GlCheckbox } from "./forms-checkbox.guideline";
 export { default as GlRadioButton } from "./forms-radio-button.guideline";
 export { default as GlSwitch } from "./forms-switch.guideline";
 
-export { default as GlToast } from "./toast.guideline";
+export { default as GlSnackbars } from "./snackbars.guideline";
 export { default as GlShadows } from "./shadows.guideline";

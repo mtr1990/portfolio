@@ -6,13 +6,23 @@ import {
   Box,
   Typography,
   Link,
-  makeStyles
+  makeStyles,
 } from "@material-ui/core";
 import { varWrapBoth, varfadeInRight, SmoothScrollbar } from "../utilities";
 import { Header, BtnDarkMode, BgBody } from "../commons";
 import { CurriculumView } from "./curriculum";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
+  root: {
+    paddingTop: theme.spacing(20),
+    [theme.breakpoints.up("md")]: {
+      paddingTop: 0,
+      height: "100vh",
+      display: "flex",
+      alignItems: "center",
+    },
+  },
+
   contacts: {
     padding: theme.spacing(2),
     marginTop: theme.spacing(3),
@@ -24,25 +34,20 @@ const useStyles = makeStyles(theme => ({
       margin: 0,
       right: theme.spacing(8),
       bottom: theme.spacing(8),
-      borderColor: "transparent"
+      borderColor: "transparent",
     },
     "& > div": {
       marginBottom: theme.spacing(1),
       "&:last-child ": {
-        marginBottom: 0
+        marginBottom: 0,
       },
       [theme.breakpoints.up("md")]: {
         marginBottom: 0,
         marginLeft: theme.spacing(3),
-        display: "inline-block"
-      }
-    }
+        display: "inline-block",
+      },
+    },
   },
-  padding: {
-    [theme.breakpoints.up("md")]: {
-      paddingTop: theme.spacing(36)
-    }
-  }
 }));
 
 const AboutPage = () => {
@@ -79,12 +84,12 @@ const AboutPage = () => {
       <SmoothScrollbar>
         <Header />
 
-        <Box pt={20} className={classes.padding}>
+        <Box className={classes.root}>
           <Container>
             <Grid item md={7}>
               <motion.div variants={varfadeInRight}>
                 <Box mb={4}>
-                  <Typography variant="h1">
+                  <Typography variant="h2" component="h1">
                     <Display />
                   </Typography>
                 </Box>

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
-import { toast } from "react-toastify";
+import { useSnackbar } from "notistack";
 import { API, urlCV } from "../../../config";
 import { validationCVForm } from "../../utilities";
-import { MsgSuccess, MsgError } from "../../commons";
+import { SnackMessage } from "../../@material-ui-custom";
 import { CurriculumForm } from ".";
 
-const CurriculumHandle = props => {
+const CurriculumHandle = (props) => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const [email] = useState("");
   const [s_code] = useState("Hello");
   const [c_code] = useState("");
@@ -17,14 +19,22 @@ const CurriculumHandle = props => {
   };
 
   // getCV
-  const getCV = async email => {
+  const getCV = async (email) => {
     const data = { email };
     await API.post(`emails/save`, data)
-      .then(res => {
-        toast(<MsgSuccess txtMsg="Success!" />);
+      .then((res) => {
+        enqueueSnackbar("Send request success!", {
+          content: (key, message) => (
+            <SnackMessage id={key} message={message} variant="success" />
+          ),
+        });
       })
-      .catch(err => {
-        toast(<MsgError txtMsg="Failed!" />);
+      .catch((err) => {
+        enqueueSnackbar("Send request error!", {
+          content: (key, message) => (
+            <SnackMessage id={key} message={message} variant="error" />
+          ),
+        });
       });
   };
 
@@ -44,11 +54,11 @@ const CurriculumHandle = props => {
       initialValues={{
         email,
         s_code,
-        c_code
+        c_code,
       }}
       validationSchema={validationCVForm}
       onSubmit={handleSubmit}
-      render={props => <CurriculumForm {...props} />}
+      render={(props) => <CurriculumForm {...props} />}
     />
   );
 };

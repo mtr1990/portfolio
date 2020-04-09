@@ -1,104 +1,124 @@
-// Light Common
-const color_primary = "hsl(18, 100%, 50%)";
-const color_secondary = "hsl(349, 75%, 51%)";
-const color_info = "hsl(208, 80%, 52%)";
-const color_success = "hsl(131, 50%, 50%)";
-const color_warning = "hsl(42, 96%, 50%)";
-const color_error = "hsl(0, 94%, 65%)";
-const color_white = "#FFF";
-// const color_black = "#000";
-// Light Theme
-const color_light_bg = "hsl(192, 16%, 94%)";
-const color_light_contrast_lower = "hsl(204, 14%, 85%)";
-const color_light_contrast_low = "hsl(208, 13%, 77%)";
-const color_light_contrast_medium = "hsl(210, 13%, 72%)";
-const color_light_contrast_high = "hsl(211, 12%, 56%)";
-const color_light_contrast_higher = "hsl(210, 28%, 29%)";
-// Dark Theme
-const color_dark_bg = "hsl(220, 11%, 11%)";
-const color_dark_contrast_lower = "hsl(220, 9%, 14%)";
-const color_dark_contrast_low = "hsl(216, 4%, 23%)";
-const color_dark_contrast_medium = "hsl(216, 3%, 29%)";
-const color_dark_contrast_high = "hsl(210, 2%, 50%)";
-const color_dark_contrast_higher = "hsl(0, 0%, 100%)";
+// Commons
+const primary = "hsl(18, 100%, 50%)";
+const secondary = "hsl(349, 75%, 51%)";
+const info = "hsl(208, 80%, 52%)";
+const success = "hsl(131, 50%, 50%)";
+const warning = "hsl(42, 96%, 50%)";
+const error = "hsl(0, 94%, 65%)";
+const white = "#FFF";
+// const black = "#000";
+
+const grey = [
+  "rgb(248, 249, 250)", // [0]f8f9fa
+  "rgb(241, 243, 245)", // [1]f1f3f5
+  "rgb(233, 236, 239)", // [2]e9ecef
+  "rgb(222, 226, 230)", // [3]dee2e6
+  "rgb(206, 212, 218)", // [4]ced4da
+  "rgb(173, 181, 189)", // [5]adb5bd
+  "rgb(134, 142, 150)", // [6]868e96
+  "rgb(73, 80, 87)", // [7]495057
+  "rgb(52, 58, 64)", // [8]343a40
+  "rgb(33, 37, 41)", // [9]212529
+  "rgb(30, 33, 37)", // [10]1e2125
+  "rgb(26, 30, 33)", // [11]1a1e21
+];
+
+// Light
+const light_bg = white;
+const light_contrast_lower = grey[3];
+const light_contrast_low = grey[4];
+const light_contrast_medium = grey[6];
+const light_contrast_high = grey[7];
+const light_contrast_higher = grey[9];
+
+// Dark
+const dark_bg = grey[11];
+const dark_contrast_lower = grey[9];
+const dark_contrast_low = grey[7];
+const dark_contrast_medium = grey[6];
+const dark_contrast_high = grey[5];
+const dark_contrast_higher = grey[3];
 
 export const muiPaletteLight = {
-	primary: { main: color_primary },
-	secondary: { main: color_secondary },
-	info: { main: color_info },
-	success: { main: color_success },
-	warning: { main: color_warning },
-	error: { main: color_error },
+  primary: { main: primary },
+  secondary: { main: secondary },
+  info: { main: info },
+  success: { main: success },
+  warning: { main: warning },
+  error: { main: error },
 
-	contrast: {
-		lower: color_light_contrast_lower,
-		low: color_light_contrast_low,
-		medium: color_light_contrast_medium,
-		high: color_light_contrast_high,
-		higher: color_light_contrast_higher
-	},
+  contrast: {
+    lower: light_contrast_lower,
+    low: light_contrast_low,
+    medium: light_contrast_medium,
+    high: light_contrast_high,
+    higher: light_contrast_higher,
+  },
 
-	text: {
-		primary: color_light_contrast_higher,
-		secondary: color_light_contrast_high,
-		disabled: color_light_contrast_medium,
-		hint: color_light_contrast_medium,
-		icon: color_light_contrast_medium
-	},
+  text: {
+    primary: light_contrast_high,
+    secondary: light_contrast_medium,
+    disabled: light_contrast_low,
+    hint: success,
+    icon: success,
+  },
 
-	divider: color_light_contrast_lower,
+  divider: light_contrast_lower,
 
-	background: {
-		block: color_white,
-		paper: color_light_contrast_lower,
-		default: color_light_bg
-	},
+  background: {
+    card: white,
+    paper: white,
+    default: light_bg,
+  },
 
-	action: {
-		active: color_light_contrast_high,
-		hover: color_light_contrast_medium,
-		selected: color_light_contrast_low,
-		disabled: color_light_contrast_medium,
-		disabledBackground: color_light_contrast_lower
-	}
+  action: {
+    active: light_contrast_medium,
+    hover: light_contrast_lower,
+    selected: light_contrast_lower,
+    disabled: light_contrast_low,
+    disabledBackground: success,
+    focus: success,
+  },
 };
 
 export const muiPaletteDark = {
-	primary: { main: color_primary },
-	secondary: { main: color_secondary },
-	info: { main: color_info },
-	success: { main: color_success },
-	warning: { main: color_warning },
-	error: { main: color_error },
+  primary: { main: primary },
+  secondary: { main: secondary },
+  info: { main: info },
+  success: { main: success },
+  warning: { main: warning },
+  error: { main: error },
 
-	contrast: {
-		lower: color_dark_contrast_lower,
-		low: color_dark_contrast_low,
-		medium: color_dark_contrast_medium,
-		high: color_dark_contrast_high,
-		higher: color_dark_contrast_higher
-	},
+  contrast: {
+    lower: dark_contrast_lower,
+    low: dark_contrast_low,
+    medium: dark_contrast_medium,
+    high: dark_contrast_high,
+    higher: dark_contrast_higher,
+  },
 
-	text: {
-		primary: color_dark_contrast_higher,
-		secondary: color_dark_contrast_high,
-		disabled: color_dark_contrast_medium,
-		hint: color_dark_contrast_medium,
-		icon: color_dark_contrast_medium
-	},
-	divider: color_dark_contrast_low,
+  text: {
+    primary: white,
+    secondary: dark_contrast_medium,
+    disabled: dark_contrast_low,
+    hint: dark_contrast_medium,
+    icon: dark_contrast_medium,
+  },
 
-	background: {
-		block: color_dark_contrast_lower,
-		paper: color_dark_contrast_lower,
-		default: color_dark_bg
-	},
+  divider: dark_contrast_low,
 
-	action: {
-		active: color_dark_contrast_high,
-		hover: color_dark_contrast_medium,
-		selected: color_dark_contrast_low,
-		disabled: color_dark_contrast_medium,
-		disabledBackground: color_dark_contrast_lower
-	}
+  background: {
+    card: dark_contrast_lower,
+    paper: dark_contrast_lower,
+    default: dark_bg,
+  },
+
+  action: {
+    active: dark_contrast_medium,
+    hover: dark_contrast_low,
+    selected: dark_contrast_lower,
+    disabled: dark_contrast_low,
+    disabledBackground: dark_contrast_low,
+    focus: success,
+  },
 };

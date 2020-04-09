@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { toast } from "react-toastify";
+import { useSnackbar } from "notistack";
 import { Container, Grid, Box, Typography } from "@material-ui/core";
 import { API } from "../../config";
 import { varfadeInRight, varWrapExit, SmoothScrollbar } from "../utilities";
@@ -10,17 +10,15 @@ import {
   BtnDarkMode,
   BgBody,
   LoadingPage,
-  MsgError,
 } from "../commons";
+import { SnackMessage } from "../@material-ui-custom";
 import { ProjectList } from "./project";
 
 const HomePage = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getProjects();
-  }, []);
 
   // useEffect(() => {
   //   const timer = setTimeout(() => {
@@ -37,27 +35,26 @@ const HomePage = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        toast(<MsgError txtMsg="Get Projects Failed!" />);
+        enqueueSnackbar("Get projects error!", {
+          content: (key, message) => (
+            <SnackMessage id={key} message={message} variant="error" />
+          ),
+        });
       });
   };
 
-  const Display = () => {
-    return (
-      <>
-        The creative designer with a passion for simple and functional design.
-      </>
-    );
-  };
+  useEffect(() => {
+    getProjects();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
       <motion.div initial="initial" animate="enter" exit="exit">
-        <BgBody />
-
-        <BtnDarkMode />
-
         {isLoading ? <LoadingPage /> : null}
 
+        <BgBody />
+        <BtnDarkMode />
+        <BtnAvatar />
         <SmoothScrollbar>
           <Header />
 
@@ -65,8 +62,26 @@ const HomePage = () => {
             <Grid item md={8} lg={7}>
               <motion.div variants={varfadeInRight}>
                 <Box height="100vh" display="flex" alignItems="center">
-                  <Typography variant="h1" component="h1">
-                    <Display />
+                  <Typography variant="h2" component="h1">
+                    The creative designer with a passion for
+                    <Typography
+                      variant="h2"
+                      component="span"
+                      color="textSecondary"
+                    >
+                      {" "}
+                      simple{" "}
+                    </Typography>
+                    and
+                    <Typography
+                      variant="h2"
+                      component="span"
+                      color="textSecondary"
+                    >
+                      {" "}
+                      functional{" "}
+                    </Typography>
+                    design.
                   </Typography>
                 </Box>
               </motion.div>
@@ -81,8 +96,6 @@ const HomePage = () => {
             </Grid>
           </Container>
         </SmoothScrollbar>
-
-        <BtnAvatar />
       </motion.div>
     </>
   );

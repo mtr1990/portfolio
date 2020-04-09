@@ -36,12 +36,16 @@ const ThemeWrap = (props) => {
     breakpoints: muiBreakpoints,
     shadows: value ? muiShadowsLight : muiShadowsDark,
     shape: muiBorderRadius,
+
     overrides: {
       MuiTypography: {
         h1: {
           [breakpoints.down("xs")]: {
             fontSize: pxToRem(56),
           },
+        },
+        paragraph: {
+          marginBottom: spacing.spacing(1), // 8px
         },
         gutterBottom: {
           marginBottom: spacing.spacing(2), // 16px
@@ -57,6 +61,8 @@ const ThemeWrap = (props) => {
   }
 
   const muiTheme = createMuiTheme(ThemeConfig);
+
+  // console.log("common:", JSON.stringify(muiTheme.palette.common, null, 2));
 
   return (
     <ThemeProvider theme={muiTheme}>

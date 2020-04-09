@@ -4,7 +4,7 @@ import {
   AboutPage,
   ProjectDetailsPage,
   NoMatchPage,
-  TestPage
+  TestPage,
 } from "../js/client";
 
 // Guideline
@@ -13,61 +13,63 @@ import {
   GlTypography,
   GlButtons,
   GlForms,
-  GlToast,
-  GlShadows
+  GlSnackbars,
+  GlShadows,
 } from "../js/guideline";
+
+import { path_ABOUT, path_PROJECT, path_GUIDELINE } from "./paths.config";
 
 const routes = [
   // Client
   {
     path: "/",
     exact: true,
-    component: HomePage
+    component: HomePage,
   },
   {
-    path: "/about",
-    component: AboutPage
+    path: path_ABOUT,
+    component: AboutPage,
   },
   {
-    path: "/projects/:name",
-    component: ProjectDetailsPage
+    path: path_PROJECT.id,
+    component: ProjectDetailsPage,
   },
   {
     path: "/test",
-    component: TestPage
+    component: TestPage,
   },
 
   // Guideline
   {
-    path: "/guideline",
+    path: path_GUIDELINE.root,
     exact: true,
-    component: GlColorPalettes
+    component: GlColorPalettes,
   },
   {
-    path: "/guideline/typography",
-    component: GlTypography
+    path: path_GUIDELINE.typography,
+    component: GlTypography,
   },
   {
-    path: "/guideline/buttons",
-    component: GlButtons
+    path: path_GUIDELINE.buttons,
+    component: GlButtons,
   },
   {
-    path: "/guideline/forms",
-    component: GlForms
+    path: path_GUIDELINE.forms,
+    component: GlForms,
   },
   {
-    path: "/guideline/toast",
-    component: GlToast
+    path: path_GUIDELINE.toast,
+    component: GlSnackbars,
   },
   {
-    path: "/guideline/shadows",
-    component: GlShadows
+    path: path_GUIDELINE.shadows,
+    component: GlShadows,
   },
 
   // NoMatch
   {
-    component: NoMatchPage
-  }
+    component: NoMatchPage,
+  },
 ];
 
 export default routes;

@@ -43,8 +43,8 @@ const BtnDarkMode = ({ iShow }) => {
         <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
           <Checkbox
             color="default"
-            icon={<ReactSVG src={iMoon} />}
-            checkedIcon={<ReactSVG src={iSun} />}
+            icon={<ReactSVG src={iSun} />}
+            checkedIcon={<ReactSVG src={iMoon} />}
             className={classes.checkbox}
             checked={darkMode.value}
             onChange={darkMode.toggle}
