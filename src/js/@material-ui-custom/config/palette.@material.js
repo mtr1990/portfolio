@@ -105,7 +105,7 @@ export const muiPaletteDark = {
     icon: dark_contrast_medium,
   },
 
-  divider: dark_contrast_low,
+  divider: grey[8],
 
   background: {
     card: dark_contrast_lower,

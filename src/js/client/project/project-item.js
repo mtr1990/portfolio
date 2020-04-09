@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Grid, Box, makeStyles, Typography } from "@material-ui/core";
 import { path_PROJECT } from "../../../config";
-import { varItem, varImg, varZoomInOut, varTransition } from "../../utilities";
+import {
+  varItem,
+  varImg,
+  varZoomInOut,
+  varTransition,
+  UrlFormat,
+} from "../../utilities";
 import { Spinners } from "../../commons";
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProjectItem = ({ item }) => {
   const classes = useStyles();
-  const itemName = item.name.toLowerCase().replace(/\s+/g, "-");
+  const itemName = UrlFormat(item.name);
 
   return (
     <Grid item xs={6}>

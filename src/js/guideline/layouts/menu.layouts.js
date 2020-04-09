@@ -124,7 +124,7 @@ const GlMenuList = ({ location: { pathname } }) => {
           <ListItemIcon>
             <TabUnselected />
           </ListItemIcon>
-          <ListItemText>Toast</ListItemText>
+          <ListItemText>Snackbar</ListItemText>
         </ListItem>
 
         {/********** Shadows ***********/}

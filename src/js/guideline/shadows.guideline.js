@@ -48,11 +48,7 @@ const GlShadows = () => {
   const classes = useStyles();
   return (
     <motion.div initial="initial" animate="enter" exit="exit">
-      <GlLayout>
-        <Typography variant="h2" color="textSecondary" gutterBottom>
-          Shadows
-        </Typography>
-
+      <GlLayout heading="Shadows">
         <GlBlock display="flex" flexWrap="wrap">
           <Box className={`${classes.box} ${classes.z_1}`}>
             <Typography variant="subtitle2" color="textSecondary">

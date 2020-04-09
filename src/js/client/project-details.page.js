@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Box } from "@material-ui/core";
 import { API } from "../../config";
-import { SmoothScrollbar, varfadeIn } from "../utilities";
+import { SmoothScrollbar, varfadeIn, UrlFormat } from "../utilities";
 import { Header, Hero, BtnDarkMode } from "../commons";
 import { ProjectDetailsContent, ProjectDetailsControls } from "./project";
 import { NoMatchPage } from ".";
-import { SnackMessage } from "../@material-ui-custom";
+import { SnackStatus } from "../@material-ui-custom";
 
 const ProjectDetailsPage = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -22,10 +22,9 @@ const ProjectDetailsPage = () => {
         setProjects(res.data);
       })
       .catch((err) => {
-        enqueueSnackbar("Get project error!", {
-          content: (key, message) => (
-            <SnackMessage id={key} message={message} variant="error" />
-          ),
+        SnackStatus(enqueueSnackbar, {
+          message: "Cannot connect to the server!",
+          variant: "error",
         });
       });
   };
@@ -43,11 +42,9 @@ const ProjectDetailsPage = () => {
     return null;
   }
 
-  const currentItem = projects.find(
-    (item) => item.name.toLowerCase().replace(/\s+/g, "-") === ItemId
-  );
+  const currentItem = projects.find((item) => UrlFormat(item.name) === ItemId);
   const currentIndex = projects.findIndex(
-    (item) => item.name.toLowerCase().replace(/\s+/g, "-") === ItemId
+    (item) => UrlFormat(item.name) === ItemId
   );
   const prevItem = projects[currentIndex - 1];
   const nextItem = projects[currentIndex + 1];

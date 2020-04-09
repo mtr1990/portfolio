@@ -5,12 +5,11 @@ import { GlLayout, GlBlock } from ".";
 
 const useStyles = makeStyles((theme) => ({
   color: {
-    width: theme.spacing(6),
-    height: theme.spacing(6),
-    marginRight: theme.spacing(1),
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+    marginRight: theme.spacing(2),
     display: "inline-block",
     borderRadius: theme.shape.borderRadius,
-    boxShadow: "inset 0px 0px 4px 0px rgba(0,0,0,0.48)",
     "&:last-child": {
       marginRight: 0,
     },
@@ -53,11 +52,7 @@ const GlColorPalettes = () => {
   const classes = useStyles();
   return (
     <motion.div initial="initial" animate="enter" exit="exit">
-      <GlLayout>
-        <Typography variant="h2" color="textSecondary" gutterBottom>
-          Color Palettes
-        </Typography>
-
+      <GlLayout heading="Color Palettes">
         <GlBlock>
           <Grid container>
             {/********** Primary ***********/}

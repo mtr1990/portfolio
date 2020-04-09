@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { useSnackbar } from "notistack";
 import { API, urlCV } from "../../../config";
 import { validationCVForm } from "../../utilities";
-import { SnackMessage } from "../../@material-ui-custom";
+import { SnackStatus } from "../../@material-ui-custom";
 import { CurriculumForm } from ".";
 
 const CurriculumHandle = (props) => {
@@ -23,17 +23,15 @@ const CurriculumHandle = (props) => {
     const data = { email };
     await API.post(`emails/save`, data)
       .then((res) => {
-        enqueueSnackbar("Send request success!", {
-          content: (key, message) => (
-            <SnackMessage id={key} message={message} variant="success" />
-          ),
+        SnackStatus(enqueueSnackbar, {
+          message: "Send request success!",
+          variant: "success",
         });
       })
       .catch((err) => {
-        enqueueSnackbar("Send request error!", {
-          content: (key, message) => (
-            <SnackMessage id={key} message={message} variant="error" />
-          ),
+        SnackStatus(enqueueSnackbar, {
+          message: "Cannot connect to the server!",
+          variant: "error",
         });
       });
   };

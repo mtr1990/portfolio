@@ -79,11 +79,8 @@ const GlButtons = () => {
   const classes = useStyles();
   return (
     <motion.div initial="initial" animate="enter" exit="exit">
-      <GlLayout>
+      <GlLayout heading="Buttons">
         <Box className={classes.root}>
-          <Typography variant="h2" color="textSecondary" gutterBottom>
-            Buttons
-          </Typography>
           {/********** Contained Buttons ***********/}
           <GlBlock>
             <Typography variant="subtitle2" color="textSecondary" gutterBottom>

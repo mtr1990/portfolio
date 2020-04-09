@@ -11,12 +11,11 @@ import {
   BgBody,
   LoadingPage,
 } from "../commons";
-import { SnackMessage } from "../@material-ui-custom";
+import { SnackStatus } from "../@material-ui-custom";
 import { ProjectList } from "./project";
 
 const HomePage = () => {
   const { enqueueSnackbar } = useSnackbar();
-
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,10 +34,9 @@ const HomePage = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        enqueueSnackbar("Get projects error!", {
-          content: (key, message) => (
-            <SnackMessage id={key} message={message} variant="error" />
-          ),
+        SnackStatus(enqueueSnackbar, {
+          message: "Cannot connect to the server!",
+          variant: "error",
         });
       });
   };

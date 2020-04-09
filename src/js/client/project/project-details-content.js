@@ -33,7 +33,7 @@ const ProjectDetailsContent = ({ currentItem }) => {
         <Grid item md={7}>
           <ScrollMagic>
             <Box pt={20}>
-              <Typography variant="h1" gutterBottom>
+              <Typography variant="h2" component="h1" gutterBottom>
                 {currentItem.name}
               </Typography>
 

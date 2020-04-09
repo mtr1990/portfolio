@@ -1,40 +1,80 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
+import { Button, makeStyles, Box } from "@material-ui/core";
 import { motion } from "framer-motion";
-import { SnackMessage } from "../@material-ui-custom";
+import { useSnackbar } from "notistack";
+import { SnackStatus, SnackAction } from "../@material-ui-custom";
 import { GlLayout } from ".";
+import {
+  BtnInfo,
+  BtnSuccess,
+  BtnWarning,
+  BtnError,
+} from "../@material-ui-custom";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& >*": {
+      marginRight: theme.spacing(4),
+    },
+  },
+}));
 
 const GlSnackbars = () => {
+  const classes = useStyles();
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleClickInfo = () => {
+    SnackStatus(enqueueSnackbar, {
+      message: "Status info!",
+      variant: "info",
+    });
+  };
+
+  const handleClickSuccess = () => {
+    SnackStatus(enqueueSnackbar, {
+      message: "Status success!",
+      variant: "success",
+    });
+  };
+
+  const handleClickWarning = () => {
+    SnackStatus(enqueueSnackbar, {
+      message: "Status warning!",
+      variant: "warning",
+    });
+  };
+
+  const handleClickError = () => {
+    SnackStatus(enqueueSnackbar, {
+      message: "Status error!",
+      variant: "error",
+    });
+  };
+
+  //
+  const WindowAlert = () => {
+    alert("Hello! I am an alert box!!");
+  };
+
+  const handleClickAction = () => {
+    SnackAction(enqueueSnackbar, {
+      message: "Do you want click this action ?",
+      funC: WindowAlert,
+      btnAction: "Action",
+    });
+  };
+
   return (
     <motion.div initial="initial" animate="enter" exit="exit">
-      <GlLayout>
-        <Typography variant="h2" color="textSecondary" gutterBottom>
-          Toast
-        </Typography>
-
-        <SnackMessage
-          id={1}
-          message="This is an info alert — check it out!"
-          variant="info"
-        />
-        <br />
-        <SnackMessage
-          id={2}
-          message="This is an success alert — check it out!"
-          variant="success"
-        />
-        <br />
-        <SnackMessage
-          id={3}
-          message="This is an warning alert — check it out!"
-          variant="warning"
-        />
-        <br />
-        <SnackMessage
-          id={4}
-          message="This is an error alert — check it out!"
-          variant="error"
-        />
+      <GlLayout heading="Snackbar">
+        <Box className={classes.root}>
+          <BtnInfo onClick={handleClickInfo}>Info</BtnInfo>
+          <BtnSuccess onClick={handleClickSuccess}>Success</BtnSuccess>
+          <BtnWarning onClick={handleClickWarning}>Warning</BtnWarning>
+          <BtnError onClick={handleClickError}>Error</BtnError>
+          <Button onClick={handleClickAction}>Action</Button>
+        </Box>
       </GlLayout>
     </motion.div>
   );

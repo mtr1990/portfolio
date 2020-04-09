@@ -84,4 +84,4 @@ export {
 /**
  * Snackbar
  */
-export { SnackMessage, SnackContainer } from "./snackbars";
+export { SnackContainer, SnackStatus, SnackAction } from "./snackbars";

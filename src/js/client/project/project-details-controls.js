@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Box, IconButton, makeStyles } from "@material-ui/core";
 import { Close, ArrowForward, ArrowBack } from "@material-ui/icons";
-import { varIcon } from "../../utilities";
+import { varIcon, UrlFormat } from "../../utilities";
 import { path_PROJECT } from "../../../config";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,14 +28,8 @@ const useStyles = makeStyles((theme) => ({
 
 const ProjectDetailsControls = ({ prevItem, nextItem }) => {
   const classes = useStyles();
-
-  const prevItemName = prevItem
-    ? prevItem.name.toLowerCase().replace(/\s+/g, "-")
-    : null;
-
-  const nextItemName = nextItem
-    ? nextItem.name.toLowerCase().replace(/\s+/g, "-")
-    : null;
+  const prevItemName = prevItem ? UrlFormat(prevItem.name) : null;
+  const nextItemName = nextItem ? UrlFormat(nextItem.name) : null;
 
   return (
     <>
