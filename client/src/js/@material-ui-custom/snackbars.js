@@ -46,6 +46,7 @@ export const SnackStatus = (enqueueSnackbar, { ...args }) => {
 export const SnackAction = (enqueueSnackbar, { ...args }) => {
   return enqueueSnackbar(args.message, {
     autoHideDuration: null,
+    preventDuplicate: true,
     anchorOrigin: {
       vertical: "bottom",
       horizontal: "center",

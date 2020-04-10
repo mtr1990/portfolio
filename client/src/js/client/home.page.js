@@ -68,6 +68,7 @@ const HomePage = () => {
         <BtnAvatar />
 
         {/********** HeroH ***********/}
+        <h1>dsds ds ds ds ds </h1>
         <HeroHome />
 
         <SmoothScrollbar>

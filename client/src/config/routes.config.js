@@ -1,4 +1,4 @@
-// Client
+// Import: Client
 import {
   HomePage,
   AboutPage,
@@ -7,7 +7,7 @@ import {
   TestPage,
 } from "../js/client";
 
-// Guideline
+// Import: Guideline
 import {
   GlColorPalettes,
   GlTypography,
@@ -17,7 +17,28 @@ import {
   GlShadows,
 } from "../js/guideline";
 
-import { path_ABOUT, path_PROJECT, path_GUIDELINE } from "./paths.config";
+// Import: Dashboard
+import {
+  Dashboard,
+  CreateProject,
+  EditProject,
+  LoginPage,
+  EmailPage,
+  CategoryPage,
+  CreateCategory,
+  EditCategory,
+} from "../js/dashboard";
+
+// Import: Path
+import {
+  path_ABOUT,
+  path_PROJECT,
+  path_GUIDELINE,
+  path_DASHBOARD,
+  path_EMAILS,
+  path_CATEGORIES,
+  path_LOGIN,
+} from "./paths.config";
 
 const routes = [
   // Client
@@ -64,6 +85,42 @@ const routes = [
   {
     path: path_GUIDELINE.shadows,
     component: GlShadows,
+  },
+
+  // Dashboard
+  {
+    path: path_LOGIN.root, // Login
+    component: LoginPage,
+  },
+  {
+    path: path_DASHBOARD.root, // Projects
+    exact: true,
+    component: Dashboard,
+  },
+  {
+    path: path_DASHBOARD.create,
+    component: CreateProject,
+  },
+  {
+    path: path_DASHBOARD.edit,
+    component: EditProject,
+  },
+  {
+    path: path_EMAILS.root, // Emails
+    component: EmailPage,
+  },
+  {
+    path: path_CATEGORIES.root, // Categories
+    exact: true,
+    component: CategoryPage,
+  },
+  {
+    path: path_CATEGORIES.create,
+    component: CreateCategory,
+  },
+  {
+    path: path_CATEGORIES.edit,
+    component: EditCategory,
   },
 
   // NoMatch

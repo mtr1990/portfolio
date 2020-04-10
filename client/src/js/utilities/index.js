@@ -6,7 +6,12 @@ export { default as UrlFormat } from "./url-format";
 /**
  * Validation
  */
-export { validationCVForm } from "./validation.utilities";
+export {
+  validationCVForm,
+  validationLogin,
+  validationProjectForm,
+  validationCategoryForm,
+} from "./validation.utilities";
 
 /**
  * Motion Variants
