@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography, IconButton, makeStyles } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { path_CATEGORIES } from "../../config";
+import { path_DASHBOARD } from "../config";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +41,7 @@ const CategoryItem = ({ item, deleteCategory }) => {
       <Box ml={1}>
         <IconButton
           component={Link}
-          to={`${path_CATEGORIES.root}/edit/${item._id}`}
+          to={`${path_DASHBOARD.categories.link_edit}/${item._id}`}
           aria-label="edit project"
         >
           <Edit />

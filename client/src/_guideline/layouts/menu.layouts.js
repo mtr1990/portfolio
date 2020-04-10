@@ -18,7 +18,7 @@ import {
   TabUnselected,
 } from "@material-ui/icons";
 
-import { path_GUIDELINE } from "../../../config";
+import { path_GUIDELINE } from "../../config";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Box } from "@material-ui/core";
-import { API } from "../../config";
+import { API } from "../config";
 import { SmoothScrollbar, varfadeIn, UrlFormat } from "../utilities";
 import { Header, HeroProjectDetails, BtnDarkMode } from "../commons";
 import { ProjectDetailsContent, ProjectDetailsControls } from "./project";

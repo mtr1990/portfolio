@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Header, BtnDarkMode, BgBody } from "../commons";
-import { img404 } from "../../assets";
+import { img404 } from "../assets";
 import { varbounce, varbounceIn, SmoothScrollbar } from "../utilities";
 import { Box, Typography, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";

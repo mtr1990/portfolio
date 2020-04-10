@@ -3,28 +3,29 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Box, makeStyles } from "@material-ui/core";
 import { varfadeInUp, varIcon } from "../utilities";
-import { iAvatar } from "../../assets";
+import { iAvatar } from "../assets";
+import { path_CLIENT } from "../config";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   position: {
     [theme.breakpoints.up("md")]: {
       bottom: "48px",
-      right: "48px"
-    }
+      right: "48px",
+    },
   },
   state: {
     filter: "grayscale(100%)",
     transition: "all ease 0.24s",
     "&:hover": {
-      filter: "none"
-    }
-  }
+      filter: "none",
+    },
+  },
 }));
 
 const BtnAvatar = () => {
   const classes = useStyles();
   return (
-    <Link to="/about">
+    <Link to={path_CLIENT.about}>
       <Box
         position="fixed"
         bottom={24}

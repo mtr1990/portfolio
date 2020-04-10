@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
 import { validationLogin } from "../utilities";
-import { history, path_DASHBOARD } from "../../config";
+import { history, path_DASHBOARD } from "../config";
 import { LoginForm } from ".";
 
 const LoginHandle = () => {

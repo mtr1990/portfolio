@@ -2,8 +2,8 @@ import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { Router, Switch, Route } from "react-router-dom";
 import { routes, history } from "./config";
-import { Nprogress } from "./js/utilities";
-import { ThemeWrap, SnackContainer } from "./js/@material-ui-custom";
+import { Nprogress } from "./utilities";
+import { ThemeWrap, SnackContainer } from "./@material-ui-custom";
 
 const App = () => (
   <ThemeWrap>

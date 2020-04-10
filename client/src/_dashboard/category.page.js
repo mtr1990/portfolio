@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Link } from "react-router-dom";
-import { Header } from "../commons";
-import { CategoryList } from ".";
 import { Container, Box, Typography, Button, Fab } from "@material-ui/core";
 import { ArrowBack, Add } from "@material-ui/icons";
-import { path_CATEGORIES, path_DASHBOARD } from "../../config";
+import { API, path_DASHBOARD } from "../config";
 import { SnackStatus } from "../@material-ui-custom";
+import { Header } from "../commons";
+import { CategoryList } from ".";
 
 const CategoryPage = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -16,8 +15,7 @@ const CategoryPage = () => {
 
   // Get Email
   const getCategories = async () => {
-    await axios
-      .get("/api/categories")
+    await API.get("categories")
       .then((res) => {
         setCategories(res.data);
       })
@@ -31,8 +29,7 @@ const CategoryPage = () => {
 
   // Delete Email
   const deleteCategory = async (id) => {
-    await axios
-      .delete(`/api/categories/${id}`)
+    await API.delete(`categories/${id}`)
       .then((res) => {
         getCategories();
 
@@ -93,7 +90,7 @@ const CategoryPage = () => {
         <Fab
           color="primary"
           component={Link}
-          to={path_CATEGORIES.create}
+          to={path_DASHBOARD.categories.create}
           aria-label="add"
         >
           <Add />

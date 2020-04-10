@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
 import { useSnackbar } from "notistack";
-import { API, urlCV } from "../../../config";
+import { API, urlCV } from "../../config";
 import { validationCVForm } from "../../utilities";
 import { SnackStatus } from "../../@material-ui-custom";
 import { CurriculumForm } from ".";

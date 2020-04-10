@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import ReactSVG from "react-svg";
 import { Checkbox, Box, makeStyles } from "@material-ui/core";
 import { varfadeIn, varIcon } from "../utilities";
-import { iMoon, iSun } from "../../assets";
+import { iMoon, iSun } from "../assets";
 
 const useStyles = makeStyles((theme) => ({
   root: {

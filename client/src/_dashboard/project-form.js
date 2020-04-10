@@ -26,7 +26,7 @@ import {
   Airplay,
   Category,
 } from "@material-ui/icons";
-import { path_DASHBOARD } from "../../config";
+import { path_DASHBOARD } from "../config";
 
 const ProjectForm = ({
   values,

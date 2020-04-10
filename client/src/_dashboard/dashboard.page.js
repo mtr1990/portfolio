@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Box, Button, Container, Typography, Fab } from "@material-ui/core";
 import { Add, ArrowForward, Drafts } from "@material-ui/icons";
-import { path_DASHBOARD, path_EMAILS, path_CATEGORIES } from "../../config";
+import { API, path_DASHBOARD } from "../config";
 import { Header } from "../commons";
 import { FabInfo, SnackStatus } from "../@material-ui-custom";
 import { ProjectList } from ".";
@@ -27,8 +26,7 @@ const Dashboard = () => {
 
   // Get Projects
   const getProject = async () => {
-    await axios
-      .get("/api/projects")
+    await API.get("projects")
       .then((res) => {
         if (reverse === true) {
           setProjects(res.data.reverse());
@@ -46,8 +44,7 @@ const Dashboard = () => {
 
   // Delete Project
   const deleteProject = async (id) => {
-    await axios
-      .delete(`/api/projects/${id}`)
+    await API.delete(`projects/${id}`)
       .then((res) => {
         getProject();
 
@@ -106,7 +103,7 @@ const Dashboard = () => {
           </Box>
 
           <Button
-            to={path_CATEGORIES.root}
+            to={path_DASHBOARD.categories.root}
             size="small"
             color="primary"
             component={Link}
@@ -131,7 +128,7 @@ const Dashboard = () => {
       <Box position="fixed" bottom={56 * 2.4} right={56} zIndex="mobileStepper">
         <FabInfo
           component={Link}
-          to={path_EMAILS.root}
+          to={path_DASHBOARD.emails}
           aria-label="view emails"
         >
           <Drafts />
@@ -142,7 +139,7 @@ const Dashboard = () => {
         <Fab
           color="primary"
           component={Link}
-          to={path_DASHBOARD.create}
+          to={path_DASHBOARD.projects.create}
           aria-label="add"
         >
           <Add />

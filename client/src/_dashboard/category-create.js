@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { motion } from "framer-motion";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react";
 import { Formik } from "formik";
+import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Box, Typography, makeStyles } from "@material-ui/core";
-import { history, path_CATEGORIES } from "../../config";
+import { API, history, path_DASHBOARD } from "../config";
 import { validationCategoryForm } from "../utilities";
 import { Header } from "../commons";
 import { CategoryForm } from ".";
@@ -28,59 +26,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditCategory = () => {
-  const { enqueueSnackbar } = useSnackbar();
+const CreateCategory = () => {
   const classes = useStyles();
-  let { id } = useParams(); // Hook
-  // let { id } = props.match.params;
+  const { enqueueSnackbar } = useSnackbar();
+  const [name] = useState("");
 
-  const [name, setName] = useState("");
-
-  // Get Category By Id
-  useEffect(() => {
-    const getCategoryById = async () => {
-      await axios
-        .get(`/api/categories/${id}`)
-        .then((res) => {
-          setName(res.data.name);
-        })
-        .catch((err) => {
-          SnackStatus(enqueueSnackbar, {
-            message: "Cannot connect to the server!",
-            variant: "error",
-          });
-        });
-    };
-
-    getCategoryById();
-  }, [id, enqueueSnackbar]);
-
-  // Edit Category
-  const editCategory = async (name) => {
+  // Create Project
+  const createCategory = async (name) => {
     const data = {
       name,
     };
-    await axios
-      .put(`/api/categories/update/${id}`, data)
+    await API.post(`categories/save`, data)
       .then((res) => {
         SnackStatus(enqueueSnackbar, {
-          message: "Updated success!",
+          message: "Created success!",
           variant: "success",
         });
-        history.push(path_CATEGORIES.root);
+        history.push(path_DASHBOARD.categories.root);
       })
       .catch((err) => {
         SnackStatus(enqueueSnackbar, {
-          message: "Updated error!",
+          message: "Created error!",
           variant: "error",
         });
       });
   };
 
-  // Submit Edit
+  // Submit Create
   const handleSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
-      editCategory(values.name);
+      createCategory(values.name);
       setSubmitting(false);
     }, 800);
   };
@@ -96,11 +71,10 @@ const EditCategory = () => {
 
       <Box className={classes.main}>
         <Typography variant="h4" component="h4">
-          Edit Category
+          Create Category
         </Typography>
 
         <Formik
-          enableReinitialize
           initialValues={{
             name,
           }}
@@ -108,7 +82,7 @@ const EditCategory = () => {
           onSubmit={handleSubmit}
           render={(props) => (
             <>
-              <CategoryForm {...props} txtSubmit="Save" />
+              <CategoryForm {...props} txtSubmit="Create" />
             </>
           )}
         />
@@ -117,4 +91,4 @@ const EditCategory = () => {
   );
 };
 
-export default EditCategory;
+export default CreateCategory;

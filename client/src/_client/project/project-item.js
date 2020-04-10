@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Grid, Box, makeStyles, Typography } from "@material-ui/core";
-import { path_PROJECT } from "../../../config";
+import { path_CLIENT } from "../../config";
 import {
   varItem,
   varImg,
@@ -64,7 +64,7 @@ const ProjectItem = ({ item }) => {
     <Grid item xs={6}>
       <motion.div variants={varZoomInOut}>
         <Box
-          to={path_PROJECT.root + itemName}
+          to={path_CLIENT.projects.root + itemName}
           color="inherit"
           component={Link}
           style={{ textDecoration: "none" }}

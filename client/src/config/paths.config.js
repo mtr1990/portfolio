@@ -1,20 +1,20 @@
 /**
  * Client
  */
-const root_ABOUT = "/about";
-const root_PROJECT = "/projects";
-const root_GUIDELINE = "/guideline";
 
-export const path_ABOUT = root_ABOUT;
+export const path_CLIENT = {
+  about: `/about`,
 
-export const path_PROJECT = {
-  root: `${root_PROJECT}/`,
-  id: `${root_PROJECT}/:name`,
+  projects: {
+    root: `/projects/`,
+    byId: `/projects/:name`,
+  },
 };
 
 /**
  * Guideline
  */
+let root_GUIDELINE = "/guideline";
 export const path_GUIDELINE = {
   root: root_GUIDELINE,
   typography: `${root_GUIDELINE}/typography`,
@@ -27,24 +27,22 @@ export const path_GUIDELINE = {
 /**
  * Dashboard
  */
-const root_LOGIN = "/login";
-const root_DASHBOARD = "/FMfcgxwGBwSfwRHVVzvtQQNZJSmdmBz";
-const root_EMAILS = "/FMfcgxwGBwSfwRHVVzvtQQNZJSmdmBz/emails";
-const root_CATEGORIES = "/FMfcgxwGBwSfwRHVVzvtQQNZJSmdmBz/categories";
-
-export const path_LOGIN = {
-  root: root_LOGIN,
-};
+let root_DASHBOARD = "/D_A_S_H_B_O_A_R_D_FMfcgxwGBwSfwRHVVzvtQQNZJSmdmBz";
 export const path_DASHBOARD = {
+  login: `/login`,
   root: root_DASHBOARD,
-  create: `${root_DASHBOARD}/create`,
-  edit: `${root_DASHBOARD}/edit/:id`,
-};
-export const path_EMAILS = {
-  root: root_EMAILS,
-};
-export const path_CATEGORIES = {
-  root: root_CATEGORIES,
-  create: `${root_CATEGORIES}/create`,
-  edit: `${root_CATEGORIES}/edit/:id`,
+  emails: `${root_DASHBOARD}/emails`,
+
+  projects: {
+    create: `${root_DASHBOARD}/project/create`,
+    edit: `${root_DASHBOARD}/project/edit/:id`,
+    link_edit: `${root_DASHBOARD}/project/edit`,
+  },
+
+  categories: {
+    root: `${root_DASHBOARD}/categories`,
+    create: `${root_DASHBOARD}/categories/create`,
+    edit: `${root_DASHBOARD}/categories/edit/:id`,
+    link_edit: `${root_DASHBOARD}/categories/edit`,
+  },
 };

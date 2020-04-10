@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { Formik } from "formik";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useParams } from "react-router-dom";
+import { Formik } from "formik";
 import { useSnackbar } from "notistack";
 import { Box, Typography, makeStyles } from "@material-ui/core";
-import { history, path_CATEGORIES } from "../../config";
+import { API, history, path_DASHBOARD } from "../config";
 import { validationCategoryForm } from "../utilities";
 import { Header } from "../commons";
 import { CategoryForm } from ".";
@@ -27,38 +27,57 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreateCategory = () => {
-  const classes = useStyles();
+const EditCategory = () => {
   const { enqueueSnackbar } = useSnackbar();
+  const classes = useStyles();
+  let { id } = useParams(); // Hook
+  // let { id } = props.match.params;
 
-  const [name] = useState("");
+  const [name, setName] = useState("");
 
-  // Create Project
-  const createCategory = async (name) => {
+  // Get Category By Id
+  useEffect(() => {
+    const getCategoryById = async () => {
+      await API.get(`categories/${id}`)
+        .then((res) => {
+          setName(res.data.name);
+        })
+        .catch((err) => {
+          SnackStatus(enqueueSnackbar, {
+            message: "Cannot connect to the server!",
+            variant: "error",
+          });
+        });
+    };
+
+    getCategoryById();
+  }, [id, enqueueSnackbar]);
+
+  // Edit Category
+  const editCategory = async (name) => {
     const data = {
       name,
     };
-    await axios
-      .post(`/api/categories/save`, data)
+    await API.put(`categories/update/${id}`, data)
       .then((res) => {
         SnackStatus(enqueueSnackbar, {
-          message: "Created success!",
+          message: "Updated success!",
           variant: "success",
         });
-        history.push(path_CATEGORIES.root);
+        history.push(path_DASHBOARD.categories.root);
       })
       .catch((err) => {
         SnackStatus(enqueueSnackbar, {
-          message: "Created error!",
+          message: "Updated error!",
           variant: "error",
         });
       });
   };
 
-  // Submit Create
+  // Submit Edit
   const handleSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
-      createCategory(values.name);
+      editCategory(values.name);
       setSubmitting(false);
     }, 800);
   };
@@ -74,10 +93,11 @@ const CreateCategory = () => {
 
       <Box className={classes.main}>
         <Typography variant="h4" component="h4">
-          Create Category
+          Edit Category
         </Typography>
 
         <Formik
+          enableReinitialize
           initialValues={{
             name,
           }}
@@ -85,7 +105,7 @@ const CreateCategory = () => {
           onSubmit={handleSubmit}
           render={(props) => (
             <>
-              <CategoryForm {...props} txtSubmit="Create" />
+              <CategoryForm {...props} txtSubmit="Save" />
             </>
           )}
         />
@@ -94,4 +114,4 @@ const CreateCategory = () => {
   );
 };
 
-export default CreateCategory;
+export default EditCategory;

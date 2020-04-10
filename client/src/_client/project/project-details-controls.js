@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Box, IconButton, makeStyles } from "@material-ui/core";
 import { Close, ArrowForward, ArrowBack } from "@material-ui/icons";
 import { varIcon, UrlFormat } from "../../utilities";
-import { path_PROJECT } from "../../../config";
+import { path_CLIENT } from "../../config";
 
 const useStyles = makeStyles((theme) => ({
   close: {
@@ -53,7 +53,7 @@ const ProjectDetailsControls = ({ prevItem, nextItem }) => {
         <Box display={prevItem ? "" : "none"}>
           <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
             <IconButton
-              to={path_PROJECT.root + prevItemName}
+              to={path_CLIENT.projects.root + prevItemName}
               color="primary"
               component={Link}
             >
@@ -65,7 +65,7 @@ const ProjectDetailsControls = ({ prevItem, nextItem }) => {
         <Box ml={2} display={nextItem ? "" : "none"}>
           <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
             <IconButton
-              to={path_PROJECT.root + nextItemName}
+              to={path_CLIENT.projects.root + nextItemName}
               color="primary"
               component={Link}
             >

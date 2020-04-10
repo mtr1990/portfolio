@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { Container, Box, Typography, Button } from "@material-ui/core";
 import { ArrowBack } from "@material-ui/icons";
-import { path_DASHBOARD } from "../../config";
+import { API, path_DASHBOARD } from "../config";
 import { Header } from "../commons";
 import { SnackStatus } from "../@material-ui-custom";
 import { EmailList } from ".";
@@ -16,8 +15,7 @@ const EmailPage = () => {
 
   // Get Email
   const getEmails = async () => {
-    await axios
-      .get("/api/emails")
+    await API.get("emails")
       .then((res) => {
         setEmails(res.data);
       })
@@ -31,8 +29,7 @@ const EmailPage = () => {
 
   // Delete Email
   const deleteEmail = async (id) => {
-    await axios
-      .delete(`/api/emails/${id}`)
+    await API.delete(`emails/${id}`)
       .then((res) => {
         getEmails();
         SnackStatus(enqueueSnackbar, {

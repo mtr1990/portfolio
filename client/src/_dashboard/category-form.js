@@ -12,7 +12,7 @@ import {
   InputLabel,
 } from "@material-ui/core";
 import { Edit } from "@material-ui/icons";
-import { path_CATEGORIES } from "../../config";
+import { path_DASHBOARD } from "../config";
 
 const CategoryForm = ({
   values,
@@ -49,7 +49,7 @@ const CategoryForm = ({
     {/********** Footer ***********/}
     <Box mt={3} textAlign="right" display="flex" justifyContent="flex-end">
       <Box mr={1}>
-        <Button color="primary" component={Link} to={path_CATEGORIES.root}>
+        <Button color="primary" component={Link} to={path_DASHBOARD.categories.root}>
           Cancel
         </Button>
       </Box>

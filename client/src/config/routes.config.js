@@ -5,7 +5,7 @@ import {
   ProjectDetailsPage,
   NoMatchPage,
   TestPage,
-} from "../js/client";
+} from "../_client";
 
 // Import: Guideline
 import {
@@ -15,7 +15,7 @@ import {
   GlForms,
   GlSnackbars,
   GlShadows,
-} from "../js/guideline";
+} from "../_guideline";
 
 // Import: Dashboard
 import {
@@ -27,18 +27,10 @@ import {
   CategoryPage,
   CreateCategory,
   EditCategory,
-} from "../js/dashboard";
+} from "../_dashboard";
 
 // Import: Path
-import {
-  path_ABOUT,
-  path_PROJECT,
-  path_GUIDELINE,
-  path_DASHBOARD,
-  path_EMAILS,
-  path_CATEGORIES,
-  path_LOGIN,
-} from "./paths.config";
+import { path_CLIENT, path_GUIDELINE, path_DASHBOARD } from "./paths.config";
 
 const routes = [
   // Client
@@ -48,11 +40,11 @@ const routes = [
     component: HomePage,
   },
   {
-    path: path_ABOUT,
+    path: path_CLIENT.about,
     component: AboutPage,
   },
   {
-    path: path_PROJECT.id,
+    path: path_CLIENT.projects.byId,
     component: ProjectDetailsPage,
   },
   {
@@ -89,7 +81,7 @@ const routes = [
 
   // Dashboard
   {
-    path: path_LOGIN.root, // Login
+    path: path_DASHBOARD.login, // Login
     component: LoginPage,
   },
   {
@@ -98,28 +90,28 @@ const routes = [
     component: Dashboard,
   },
   {
-    path: path_DASHBOARD.create,
+    path: path_DASHBOARD.projects.create,
     component: CreateProject,
   },
   {
-    path: path_DASHBOARD.edit,
+    path: path_DASHBOARD.projects.edit,
     component: EditProject,
   },
   {
-    path: path_EMAILS.root, // Emails
+    path: path_DASHBOARD.emails, // Emails
     component: EmailPage,
   },
   {
-    path: path_CATEGORIES.root, // Categories
+    path: path_DASHBOARD.categories.root, // Categories
     exact: true,
     component: CategoryPage,
   },
   {
-    path: path_CATEGORIES.create,
+    path: path_DASHBOARD.categories.create,
     component: CreateCategory,
   },
   {
-    path: path_CATEGORIES.edit,
+    path: path_DASHBOARD.categories.edit,
     component: EditCategory,
   },
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { Box, Typography, IconButton, makeStyles } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
-import { path_DASHBOARD } from "../../config";
+import { path_DASHBOARD } from "../config";
 import { SnackAction } from "../@material-ui-custom";
 
 const useStyles = makeStyles((theme) => ({
@@ -92,7 +92,7 @@ const ProjectItem = ({ item, index, deleteProject }) => {
 
           <IconButton
             component={Link}
-            to={`${path_DASHBOARD.root}/edit/${item._id}`}
+            to={`${path_DASHBOARD.projects.link_edit}/${item._id}`}
             aria-label="edit project"
           >
             <Edit />

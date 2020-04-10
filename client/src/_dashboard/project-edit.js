@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { motion } from "framer-motion";
+import { useParams } from "react-router-dom";
 import { Formik } from "formik";
 import { useSnackbar } from "notistack";
 import { Box, Typography, makeStyles } from "@material-ui/core";
-import { history, path_DASHBOARD } from "../../config";
+import { API, history, path_DASHBOARD } from "../config";
 import { validationProjectForm } from "../utilities";
 import { Header } from "../commons";
 import { ProjectForm } from ".";
@@ -21,29 +21,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreateProject = () => {
+const EditProject = () => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
 
-  const [name] = useState("");
-  const [description] = useState("");
-  const [thumbnail] = useState("");
-  const [hero] = useState("");
+  let { id } = useParams(); // Hook
+  // let { id } = props.match.params;
+
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
+  const [hero, setHero] = useState("");
   const [category, setCategory] = useState("");
-  const [imglist] = useState([""]);
-  const [videolist] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [imglist, setImglist] = useState([]);
+  const [videolist, setVideolist] = useState([]);
 
   // Get Categories
   useEffect(() => {
     const getCategories = async () => {
-      await axios
-        .get("/api/categories")
+      await API.get("categories")
         .then((res) => {
           // setCategories(res.data);
           if (res.data.length > 0) {
             setCategories(res.data.map((item) => item.name));
-            setCategory(res.data[0].name);
           }
         })
         .catch((err) => {
@@ -57,8 +58,32 @@ const CreateProject = () => {
     getCategories();
   }, [enqueueSnackbar]);
 
-  // Create Project
-  const createProject = async (
+  // Get Project By Id
+  useEffect(() => {
+    const getProjectById = async () => {
+      await API.get(`projects/${id}`)
+        .then((res) => {
+          setName(res.data.name);
+          setDescription(res.data.description);
+          setThumbnail(res.data.thumbnail);
+          setHero(res.data.hero);
+          setCategory(res.data.category);
+          setImglist(res.data.imglist);
+          setVideolist(res.data.videolist);
+        })
+        .catch((err) => {
+          SnackStatus(enqueueSnackbar, {
+            message: "Cannot connect to the server!",
+            variant: "error",
+          });
+        });
+    };
+
+    getProjectById();
+  }, [id, enqueueSnackbar]);
+
+  // Edit Project
+  const editProject = async (
     name,
     description,
     thumbnail,
@@ -76,27 +101,27 @@ const CreateProject = () => {
       imglist,
       videolist,
     };
-    await axios
-      .post(`/api/projects/save`, data)
+    await API.put(`projects/update/${id}`, data)
       .then((res) => {
         SnackStatus(enqueueSnackbar, {
-          message: "Created success!",
+          message: "Updated success!",
           variant: "success",
         });
+
         history.push(path_DASHBOARD.root);
       })
       .catch((err) => {
         SnackStatus(enqueueSnackbar, {
-          message: "Created error!",
+          message: "Updated error!",
           variant: "error",
         });
       });
   };
 
-  // Submit Create
+  // Submit Edit
   const handleSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
-      createProject(
+      editProject(
         values.name,
         values.description,
         values.thumbnail,
@@ -115,7 +140,7 @@ const CreateProject = () => {
 
       <Box className={classes.root}>
         <Typography variant="h4" component="h4">
-          Create Project
+          Edit Project
         </Typography>
 
         <Formik
@@ -134,7 +159,7 @@ const CreateProject = () => {
           onSubmit={handleSubmit}
           render={(props) => (
             <>
-              <ProjectForm {...props} txtSubmit="Create" />
+              <ProjectForm {...props} txtSubmit="Save" />
             </>
           )}
         />
@@ -143,4 +168,4 @@ const CreateProject = () => {
   );
 };
 
-export default CreateProject;
+export default EditProject;
