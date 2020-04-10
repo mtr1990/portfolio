@@ -8,9 +8,9 @@ import {
   Link,
   makeStyles,
 } from "@material-ui/core";
-import { varWrapBoth, varfadeInRight, SmoothScrollbar } from "../utilities";
+import { varWrapBoth, varfadeInRight } from "../utilities";
 import { Header, BtnDarkMode, BgBody } from "../commons";
-import { CurriculumView } from "./curriculum";
+import { CurriculumView } from ".";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,100 +72,98 @@ const AboutPage = () => {
 
       <BtnDarkMode />
 
-      <SmoothScrollbar>
-        <Header />
+      <Header />
 
-        <Box className={classes.root}>
-          <Container>
-            <Grid item md={7}>
-              <motion.div variants={varfadeInRight}>
-                <Box mb={4}>
-                  <Typography variant="h2" component="h1">
-                    Hi there,
-                    <br />
-                    nice to meet you!
-                  </Typography>
-                </Box>
-              </motion.div>
-
-              <motion.div variants={varfadeInRight}>
-                <Typography variant="body1" gutterBottom>
-                  I'm a Full Stack Designer based in HCMC. For over five years
-                  I've been specializing in UI and UX design.
+      <Box className={classes.root}>
+        <Container>
+          <Grid item md={7}>
+            <motion.div variants={varfadeInRight}>
+              <Box mb={4}>
+                <Typography variant="h2" component="h1">
+                  Hi there,
+                  <br />
+                  nice to meet you!
                 </Typography>
-              </motion.div>
-
-              <motion.div variants={varfadeInRight}>
-                <Typography variant="body1" gutterBottom>
-                  As a designer, I would like to balance between functionality
-                  and aesthetics, and at the same time explore the connections
-                  between users and products. To do that, I always wanted to
-                  learn new tools and techniques to improve my design process.
-                </Typography>
-              </motion.div>
-
-              <motion.div variants={varfadeInRight}>
-                <Typography variant="body1" color="textSecondary">
-                  To know more about me, you can download&nbsp;
-                  <Link onClick={openModal}>my CV</Link>
-                </Typography>
-              </motion.div>
-
-              <Box className={classes.contacts}>
-                <motion.div variants={varfadeInRight}>
-                  <Typography variant="body2" color="textSecondary">
-                    Contact
-                  </Typography>
-                </motion.div>
-
-                <motion.div variants={varfadeInRight}>
-                  <Link
-                    href="tel:+84 093 69 222 79"
-                    variant="body2"
-                    color="textSecondary"
-                  >
-                    +84 093 69 222 79
-                  </Link>
-                </motion.div>
-
-                <motion.div variants={varfadeInRight}>
-                  <Link
-                    href="mailto:hello.mtr1990@gmail.com"
-                    variant="body2"
-                    color="textSecondary"
-                  >
-                    hello.mtr1990@gmail.com
-                  </Link>
-                </motion.div>
-
-                <motion.div variants={varfadeInRight}>
-                  <Link
-                    href="https://www.linkedin.com/in/mtr1990/"
-                    variant="body2"
-                    color="textSecondary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Linkedin
-                  </Link>
-                </motion.div>
-
-                <motion.div variants={varfadeInRight}>
-                  <Link
-                    href="skype:lufydl1990?chat"
-                    variant="body2"
-                    color="textSecondary"
-                  >
-                    Skype
-                  </Link>
-                </motion.div>
               </Box>
+            </motion.div>
 
-              <Box height={160} display={{ xs: "block", sm: "none" }} />
-            </Grid>
-          </Container>
-        </Box>
-      </SmoothScrollbar>
+            <motion.div variants={varfadeInRight}>
+              <Typography variant="body1" gutterBottom>
+                I'm a Full Stack Designer based in HCMC. For over five years
+                I've been specializing in UI and UX design.
+              </Typography>
+            </motion.div>
+
+            <motion.div variants={varfadeInRight}>
+              <Typography variant="body1" gutterBottom>
+                As a designer, I would like to balance between functionality and
+                aesthetics, and at the same time explore the connections between
+                users and products. To do that, I always wanted to learn new
+                tools and techniques to improve my design process.
+              </Typography>
+            </motion.div>
+
+            <motion.div variants={varfadeInRight}>
+              <Typography variant="body1" color="textSecondary">
+                To know more about me, you can download&nbsp;
+                <Link onClick={openModal}>my CV</Link>
+              </Typography>
+            </motion.div>
+
+            <Box className={classes.contacts}>
+              <motion.div variants={varfadeInRight}>
+                <Typography variant="body2" color="textSecondary">
+                  Contact
+                </Typography>
+              </motion.div>
+
+              <motion.div variants={varfadeInRight}>
+                <Link
+                  href="tel:+84 093 69 222 79"
+                  variant="body2"
+                  color="textSecondary"
+                >
+                  +84 093 69 222 79
+                </Link>
+              </motion.div>
+
+              <motion.div variants={varfadeInRight}>
+                <Link
+                  href="mailto:hello.mtr1990@gmail.com"
+                  variant="body2"
+                  color="textSecondary"
+                >
+                  hello.mtr1990@gmail.com
+                </Link>
+              </motion.div>
+
+              <motion.div variants={varfadeInRight}>
+                <Link
+                  href="https://www.linkedin.com/in/mtr1990/"
+                  variant="body2"
+                  color="textSecondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Linkedin
+                </Link>
+              </motion.div>
+
+              <motion.div variants={varfadeInRight}>
+                <Link
+                  href="skype:lufydl1990?chat"
+                  variant="body2"
+                  color="textSecondary"
+                >
+                  Skype
+                </Link>
+              </motion.div>
+            </Box>
+
+            <Box height={160} display={{ xs: "block", sm: "none" }} />
+          </Grid>
+        </Container>
+      </Box>
 
       <CurriculumView onShow={open} onHide={closeModal} />
     </motion.div>

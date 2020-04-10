@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Form } from "formik";
-import { varfadeInUp } from "../../utilities";
+import { varfadeInUp } from "../utilities";
 import { Box, Button, TextField, CircularProgress } from "@material-ui/core";
 
 const CurriculumForm = ({
@@ -9,7 +9,7 @@ const CurriculumForm = ({
   isSubmitting,
   handleChange,
   touched,
-  errors
+  errors,
 }) => {
   return (
     <Form autoComplete="off" noValidate>

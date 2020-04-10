@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Container, Grid, Box, makeStyles } from "@material-ui/core";
 import { API } from "../config";
-import { varWrapExit, SmoothScrollbar } from "../utilities";
+import { varWrapExit, ScrollMagicFadeOut } from "../utilities";
 import {
   Header,
   BtnAvatar,
@@ -13,7 +13,7 @@ import {
   HeroHome,
 } from "../commons";
 import { SnackStatus } from "../@material-ui-custom";
-import { ProjectList } from "./project";
+import { ProjectList } from ".";
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -63,29 +63,28 @@ const HomePage = () => {
       <motion.div initial="initial" animate="enter" exit="exit">
         {isLoading ? <LoadingPage /> : null}
 
+        <Header />
         <BgBody />
         <BtnDarkMode />
         <BtnAvatar />
 
         {/********** HeroH ***********/}
-        <HeroHome />
+        <ScrollMagicFadeOut>
+          <HeroHome />
+        </ScrollMagicFadeOut>
+        <Box height="100vh" />
 
-        <SmoothScrollbar>
-          <Header />
-          <Box height="100vh" />
-
-          <Box className={classes.main}>
-            <Container>
-              <Grid item md={8} lg={7}>
-                <motion.div variants={varWrapExit}>
-                  <Grid container spacing={4}>
-                    <ProjectList stateProject={projects} />
-                  </Grid>
-                </motion.div>
-              </Grid>
-            </Container>
-          </Box>
-        </SmoothScrollbar>
+        <Box className={classes.main}>
+          <Container>
+            <Grid item md={8} lg={7}>
+              <motion.div variants={varWrapExit}>
+                <Grid container spacing={4}>
+                  <ProjectList stateProject={projects} />
+                </Grid>
+              </motion.div>
+            </Grid>
+          </Container>
+        </Box>
       </motion.div>
     </>
   );

@@ -2,15 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Grid, Box, makeStyles, Typography } from "@material-ui/core";
-import { path_CLIENT } from "../../config";
+import { path_CLIENT } from "../config";
 import {
   varItem,
   varImg,
   varZoomInOut,
   varTransition,
   UrlFormat,
-} from "../../utilities";
-import { Spinners } from "../../commons";
+  ScrollMagicFadeIn,
+} from "../utilities";
+import { Spinners } from "../commons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,41 +64,43 @@ const ProjectItem = ({ item }) => {
 
   return (
     <Grid item xs={6}>
-      <motion.div variants={varZoomInOut}>
-        <Box
-          to={path_CLIENT.projects.root + itemName}
-          color="inherit"
-          component={Link}
-          style={{ textDecoration: "none" }}
-        >
-          <Box className={classes.root}>
-            <motion.div
-              whileTap="tap"
-              whileHover="hover"
-              variants={varItem}
-              transition={varTransition}
-            >
-              <Box className={classes.thumbnail}>
-                <motion.img
-                  src={item.thumbnail}
-                  alt="thumbnail"
-                  variants={varImg}
-                  transition={varTransition}
-                  className={classes.img}
-                />
-                <Spinners zIndex={1} />
-              </Box>
-            </motion.div>
+      <ScrollMagicFadeIn>
+        <motion.div variants={varZoomInOut}>
+          <Box
+            to={path_CLIENT.projects.root + itemName}
+            color="inherit"
+            component={Link}
+            style={{ textDecoration: "none" }}
+          >
+            <Box className={classes.root}>
+              <motion.div
+                whileTap="tap"
+                whileHover="hover"
+                variants={varItem}
+                transition={varTransition}
+              >
+                <Box className={classes.thumbnail}>
+                  <motion.img
+                    src={item.thumbnail}
+                    alt="thumbnail"
+                    variants={varImg}
+                    transition={varTransition}
+                    className={classes.img}
+                  />
+                  <Spinners zIndex={1} />
+                </Box>
+              </motion.div>
 
-            <Box className={classes.caption}>
-              <Typography variant="caption" color="textSecondary">
-                {item.category}
-              </Typography>
-              <Typography variant="subtitle1">{item.name}</Typography>
+              <Box className={classes.caption}>
+                <Typography variant="caption" color="textSecondary">
+                  {item.category}
+                </Typography>
+                <Typography variant="subtitle1">{item.name}</Typography>
+              </Box>
             </Box>
           </Box>
-        </Box>
-      </motion.div>
+        </motion.div>
+      </ScrollMagicFadeIn>
     </Grid>
   );
 };

@@ -4,11 +4,10 @@ import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Box } from "@material-ui/core";
 import { API } from "../config";
-import { SmoothScrollbar, varfadeIn, UrlFormat } from "../utilities";
+import { varfadeIn, UrlFormat } from "../utilities";
 import { Header, HeroProjectDetails, BtnDarkMode } from "../commons";
-import { ProjectDetailsContent, ProjectDetailsControls } from "./project";
-import { NoMatchPage } from ".";
 import { SnackStatus } from "../@material-ui-custom";
+import { ProjectDetailsContent, ProjectDetailsControls, NoMatchPage } from ".";
 
 const ProjectDetailsPage = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -63,12 +62,10 @@ const ProjectDetailsPage = () => {
           <HeroProjectDetails item={currentItem} />
         </motion.div>
 
-        <SmoothScrollbar>
-          <Header />
-          <Box height="100vh" />
-          {/********** Content ***********/}
-          <ProjectDetailsContent currentItem={currentItem} />
-        </SmoothScrollbar>
+        <Header />
+        <Box height="100vh" />
+        {/********** Content ***********/}
+        <ProjectDetailsContent currentItem={currentItem} />
 
         {/********** Controls ***********/}
         <motion.div variants={varfadeIn}>

@@ -1,10 +1,11 @@
 import React from "react";
 import useDarkMode from "use-dark-mode";
 import { motion } from "framer-motion";
-import ReactSVG from "react-svg";
-import { Checkbox, Box, makeStyles } from "@material-ui/core";
+// import ReactSVG from "react-svg";
+import { Checkbox, Box, makeStyles, fade } from "@material-ui/core";
+import { HighlightRounded } from "@material-ui/icons";
 import { varfadeIn, varIcon } from "../utilities";
-import { iMoon, iSun } from "../assets";
+// import { iMoon, iSun } from "../assets";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(6),
     height: theme.spacing(6),
     overflow: "hidden",
-    backgroundColor: theme.palette.contrast.lower,
+    backgroundColor: fade(theme.palette.contrast.lower, 0.24),
     "& svg": {
       width: "100%",
     },
@@ -43,8 +44,10 @@ const BtnDarkMode = ({ iShow }) => {
         <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
           <Checkbox
             color="default"
-            icon={<ReactSVG src={iSun} />}
-            checkedIcon={<ReactSVG src={iMoon} />}
+            // icon={<ReactSVG src={iSun} />}
+            // checkedIcon={<ReactSVG src={iMoon} />}
+            icon={<HighlightRounded />}
+            checkedIcon={<HighlightRounded color="primary" />}
             className={classes.checkbox}
             checked={darkMode.value}
             onChange={darkMode.toggle}

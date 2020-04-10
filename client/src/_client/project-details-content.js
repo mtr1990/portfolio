@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollMagicFadeIn } from "../../utilities";
+import { ScrollMagicFadeIn } from "../utilities";
 import {
   Grid,
   Box,
@@ -7,7 +7,7 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import { Spinners } from "../../commons";
+import { Spinners } from "../commons";
 
 const useStyles = makeStyles((theme) => ({
   root: {

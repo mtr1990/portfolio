@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Box, IconButton, makeStyles } from "@material-ui/core";
 import { Close, ArrowForward, ArrowBack } from "@material-ui/icons";
-import { varIcon, UrlFormat } from "../../utilities";
-import { path_CLIENT } from "../../config";
+import { varIcon, UrlFormat } from "../utilities";
+import { path_CLIENT } from "../config";
 
 const useStyles = makeStyles((theme) => ({
   close: {

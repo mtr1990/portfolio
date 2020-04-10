@@ -1,6 +1,9 @@
 export { default as Nprogress } from "./nprogress.utilities";
-export { ScrollMagicFadeIn } from "./scroll-magic.utilities";
-export { default as SmoothScrollbar } from "./scroll-smooth.utilities";
+export {
+  ScrollMagicFadeIn,
+  ScrollMagicFadeOut,
+} from "./scroll-magic.utilities";
+// export { default as SmoothScrollbar } from "./scroll-smooth.utilities";
 export { default as UrlFormat } from "./url-format";
 export { default as DisplayFormikState } from "./helper.utilities";
 

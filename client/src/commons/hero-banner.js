@@ -15,7 +15,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
   },
-  project: {},
+  project: {
+    zIndex: -1,
+  },
   commons: {
     position: "fixed",
     top: 0,
