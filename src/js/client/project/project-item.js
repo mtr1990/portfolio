@@ -14,10 +14,11 @@ import { Spinners } from "../../commons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: `${theme.spacing(0.5)}px  ${theme.spacing(0.5)}px  0`,
+    // padding: `${theme.spacing(0.5)}px  ${theme.spacing(0.5)}px  0`,
+    overflow: "hidden",
     boxShadow: theme.shadows[25].card,
     borderRadius: theme.shape.borderRadiusLg,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.card,
     "&:hover": {
       boxShadow: theme.shadows[25].cardHover,
     },
@@ -27,9 +28,10 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     paddingTop: "125%",
     borderRadius: theme.shape.borderRadiusLg,
+    border: `${theme.palette.background.card} solid 6px`,
     "&::before": {
       content: '" "',
-      display: "block",
+      display: "none",
       position: "absolute",
       top: 0,
       width: "100%",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Container,
@@ -52,22 +52,13 @@ const useStyles = makeStyles((theme) => ({
 
 const AboutPage = () => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
+  const [open, setOpen] = useState(false);
+
+  const openModal = () => {
     setOpen(true);
   };
-  const handleClose = () => {
+  const closeModal = () => {
     setOpen(false);
-  };
-
-  const Display = () => {
-    return (
-      <>
-        Hi there,
-        <br />
-        nice to meet you!
-      </>
-    );
   };
 
   return (
@@ -90,7 +81,9 @@ const AboutPage = () => {
               <motion.div variants={varfadeInRight}>
                 <Box mb={4}>
                   <Typography variant="h2" component="h1">
-                    <Display />
+                    Hi there,
+                    <br />
+                    nice to meet you!
                   </Typography>
                 </Box>
               </motion.div>
@@ -114,7 +107,7 @@ const AboutPage = () => {
               <motion.div variants={varfadeInRight}>
                 <Typography variant="body1" color="textSecondary">
                   To know more about me, you can download&nbsp;
-                  <Link onClick={handleClickOpen}>my CV</Link>
+                  <Link onClick={openModal}>my CV</Link>
                 </Typography>
               </motion.div>
 
@@ -174,7 +167,7 @@ const AboutPage = () => {
         </Box>
       </SmoothScrollbar>
 
-      <CurriculumView onShow={open} onHide={handleClose} />
+      <CurriculumView onShow={open} onHide={closeModal} />
     </motion.div>
   );
 };

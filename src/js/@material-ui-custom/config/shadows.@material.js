@@ -42,6 +42,7 @@ export const muiShadowsLight = [
     card: `8px 12px 16px 0 rgba(${color_light}, 0.12)`,
     cardHover: `8px 24px 32px 0 rgba(${color_light}, 0.32)`,
     image: `48px 48px 80px 0 rgba(${color_light}, 0.48)`,
+    dialog: `48px 48px 80px 0 rgba(${color_dark}, 0.24)`,
   },
 ];
 
@@ -77,5 +78,6 @@ export const muiShadowsDark = [
     card: `0 32px 48px -24px rgba(${color_dark}, 0.48)`,
     cardHover: `0 32px 48px -24px rgba(${color_dark}, 1)`,
     image: `24px 64px 128px -24px rgba(${color_dark}, 1)`,
+    dialog: `48px 48px 80px 0 rgba(${color_dark}, 0.24)`,
   },
 ];

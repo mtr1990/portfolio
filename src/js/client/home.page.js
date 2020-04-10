@@ -1,20 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
-import { Container, Grid, Box, Typography } from "@material-ui/core";
+import { Container, Grid, Box, makeStyles } from "@material-ui/core";
 import { API } from "../../config";
-import { varfadeInRight, varWrapExit, SmoothScrollbar } from "../utilities";
+import { varWrapExit, SmoothScrollbar } from "../utilities";
 import {
   Header,
   BtnAvatar,
   BtnDarkMode,
   BgBody,
   LoadingPage,
+  HeroHome,
 } from "../commons";
 import { SnackStatus } from "../@material-ui-custom";
 import { ProjectList } from "./project";
 
+const useStyles = makeStyles((theme) => ({
+  main: {
+    marginTop: theme.spacing(2),
+    paddingBottom: theme.spacing(20),
+    backgroundColor:
+      theme.palette.type === "light"
+        ? theme.palette.background.default
+        : theme.palette.background.default,
+  },
+}));
+
 const HomePage = () => {
+  const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -53,46 +66,25 @@ const HomePage = () => {
         <BgBody />
         <BtnDarkMode />
         <BtnAvatar />
+
+        {/********** HeroH ***********/}
+        <HeroHome />
+
         <SmoothScrollbar>
           <Header />
+          <Box height="100vh" />
 
-          <Container>
-            <Grid item md={8} lg={7}>
-              <motion.div variants={varfadeInRight}>
-                <Box height="100vh" display="flex" alignItems="center">
-                  <Typography variant="h2" component="h1">
-                    The creative designer with a passion for
-                    <Typography
-                      variant="h2"
-                      component="span"
-                      color="textSecondary"
-                    >
-                      {" "}
-                      simple{" "}
-                    </Typography>
-                    and
-                    <Typography
-                      variant="h2"
-                      component="span"
-                      color="textSecondary"
-                    >
-                      {" "}
-                      functional{" "}
-                    </Typography>
-                    design.
-                  </Typography>
-                </Box>
-              </motion.div>
-
-              <motion.div variants={varWrapExit}>
-                <Box mb={20}>
+          <Box className={classes.main}>
+            <Container>
+              <Grid item md={8} lg={7}>
+                <motion.div variants={varWrapExit}>
                   <Grid container spacing={4}>
                     <ProjectList stateProject={projects} />
                   </Grid>
-                </Box>
-              </motion.div>
-            </Grid>
-          </Container>
+                </motion.div>
+              </Grid>
+            </Container>
+          </Box>
         </SmoothScrollbar>
       </motion.div>
     </>

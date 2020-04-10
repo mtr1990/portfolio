@@ -32,7 +32,7 @@ const light_contrast_high = grey[7];
 const light_contrast_higher = grey[9];
 
 // Dark
-const dark_bg = grey[11];
+const dark_bg = grey[10];
 const dark_contrast_lower = grey[9];
 const dark_contrast_low = grey[7];
 const dark_contrast_medium = grey[6];

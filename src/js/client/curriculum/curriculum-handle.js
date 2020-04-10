@@ -13,12 +13,7 @@ const CurriculumHandle = (props) => {
   const [s_code] = useState("Hello");
   const [c_code] = useState("");
 
-  // Open Window
-  const openWindow = () => {
-    window.open(urlCV, "_blank", "noopener noreferrer");
-  };
-
-  // getCV
+  // Get CV
   const getCV = async (email) => {
     const data = { email };
     await API.post(`emails/save`, data)
@@ -40,7 +35,7 @@ const CurriculumHandle = (props) => {
   const handleSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
       props.closeModal();
-      openWindow();
+      window.open(urlCV, "_blank", "noopener noreferrer");
       getCV(values.email);
       setSubmitting(false);
     }, 800); // Important setTimeOut < 1000  RESOLVE popup blocked

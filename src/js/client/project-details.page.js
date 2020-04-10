@@ -5,7 +5,7 @@ import { useSnackbar } from "notistack";
 import { Box } from "@material-ui/core";
 import { API } from "../../config";
 import { SmoothScrollbar, varfadeIn, UrlFormat } from "../utilities";
-import { Header, Hero, BtnDarkMode } from "../commons";
+import { Header, HeroProjectDetails, BtnDarkMode } from "../commons";
 import { ProjectDetailsContent, ProjectDetailsControls } from "./project";
 import { NoMatchPage } from ".";
 import { SnackStatus } from "../@material-ui-custom";
@@ -60,7 +60,7 @@ const ProjectDetailsPage = () => {
 
         {/********** Hero ***********/}
         <motion.div variants={varfadeIn}>
-          <Hero item={currentItem} />
+          <HeroProjectDetails item={currentItem} />
         </motion.div>
 
         <SmoothScrollbar>

@@ -2,6 +2,15 @@ import { withStyles } from "@material-ui/core";
 
 export const GlobalCss = withStyles((theme) => ({
   "@global": {
+    // Commmons
+    a: {
+      textDecoration: "none",
+      cursor: "pointer",
+      "&:hover": {},
+      "&:visited": {},
+      "&:active": {},
+    },
+
     "svg,img,video": {
       display: "block !important",
       "&:focus": {
