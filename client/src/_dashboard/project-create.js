@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.background.card,
     padding: theme.spacing(3),
     borderRadius: theme.shape.borderRadiusMd,
-    boxShadow: theme.shadows[25].card,
+    boxShadow: theme.shadows[25].card.root,
   },
 }));
 

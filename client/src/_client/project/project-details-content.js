@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollMagic } from "../../utilities";
+import { ScrollMagicFadeIn } from "../../utilities";
 import {
   Grid,
   Box,
@@ -31,7 +31,7 @@ const ProjectDetailsContent = ({ currentItem }) => {
     <Box className={classes.root}>
       <Container>
         <Grid item md={7}>
-          <ScrollMagic>
+          <ScrollMagicFadeIn>
             <Box pt={20}>
               <Typography variant="h2" component="h1" gutterBottom>
                 {currentItem.name}
@@ -39,20 +39,20 @@ const ProjectDetailsContent = ({ currentItem }) => {
 
               <Typography variant="body1">{currentItem.description}</Typography>
             </Box>
-          </ScrollMagic>
+          </ScrollMagicFadeIn>
         </Grid>
 
-        <ScrollMagic>
+        <ScrollMagicFadeIn>
           {currentItem.imglist.map((image, index) => (
             <Box key={index} position="relative" className={classes.list}>
               <img src={image} alt="item" />
               <Spinners />
             </Box>
           ))}
-        </ScrollMagic>
+        </ScrollMagicFadeIn>
 
         {currentItem.videolist.map((video, index) => (
-          <ScrollMagic key={index}>
+          <ScrollMagicFadeIn key={index}>
             <Box className={classes.list}>
               <video
                 controls
@@ -65,7 +65,7 @@ const ProjectDetailsContent = ({ currentItem }) => {
                 {video.url}
               </video>
             </Box>
-          </ScrollMagic>
+          </ScrollMagicFadeIn>
         ))}
       </Container>
     </Box>

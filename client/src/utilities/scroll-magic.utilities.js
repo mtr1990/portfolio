@@ -2,21 +2,21 @@ import React from "react";
 import { Controller, Scene } from "react-scrollmagic";
 import { Tween } from "react-gsap";
 
-const ScrollMagic = props => (
+export const ScrollMagicFadeIn = (props) => (
   <Controller>
     <Scene
       triggerHook={"onEnter"}
       offset={80}
       duration={480}
-      reverse={false}
+      reverse={true}
       // indicators={true}
     >
       <Tween
         staggerFrom={{
-          opacity: 0
+          opacity: 0,
         }}
         staggerTo={{
-          opacity: 1
+          opacity: 1,
         }}
         stagger={0.24}
       >
@@ -25,5 +25,3 @@ const ScrollMagic = props => (
     </Scene>
   </Controller>
 );
-
-export default ScrollMagic;

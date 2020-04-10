@@ -16,11 +16,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     // padding: `${theme.spacing(0.5)}px  ${theme.spacing(0.5)}px  0`,
     overflow: "hidden",
-    boxShadow: theme.shadows[25].card,
+    boxShadow: theme.shadows[25].card.root,
     borderRadius: theme.shape.borderRadiusLg,
     backgroundColor: theme.palette.background.card,
+    transition: "all 0.24s ease-in-out",
     "&:hover": {
-      boxShadow: theme.shadows[25].cardHover,
+      boxShadow: theme.shadows[25].card.hover,
     },
   },
   thumbnail: {
@@ -51,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   caption: {
     padding: `${theme.spacing(3)}px ${theme.spacing(2)}px`,
     "&:hover": {
-      boxShadow: theme.shadows[25].card,
+      boxShadow: theme.shadows[25].card.root,
     },
   },
 }));

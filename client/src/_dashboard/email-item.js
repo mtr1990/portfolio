@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     backgroundColor: theme.palette.background.card,
-    boxShadow: theme.shadows[25].card,
+    boxShadow: theme.shadows[25].card.root,
     borderRadius: theme.shape.borderRadiusSm,
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1),

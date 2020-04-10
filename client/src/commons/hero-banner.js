@@ -52,7 +52,7 @@ export const HeroHome = () => {
               design.
             </Typography>
           </motion.div>
-        </Grid>{" "}
+        </Grid>
       </Container>
     </motion.div>
   );

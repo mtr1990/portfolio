@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadiusMd,
     backgroundColor: theme.palette.background.card,
-    boxShadow: theme.shadows[25].card,
+    boxShadow: theme.shadows[25].card.root,
     "&:last-child": {
       marginBottom: 0,
     },

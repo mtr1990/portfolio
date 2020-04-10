@@ -27,7 +27,7 @@ const LoginPage = () => {
           <Box mt={-20}>
             <Grid container justify="center">
               <Grid item xs={12} sm={8} md={4}>
-                <Typography variant="h1" color="inherit" gutterBottom>
+                <Typography variant="h2" gutterBottom>
                   Login
                 </Typography>
 
