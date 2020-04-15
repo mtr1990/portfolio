@@ -1,10 +1,11 @@
-// Import npm packages
+// IMPORT NPM PACKAGES
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyparser = require("body-parser");
 const session = require("express-session");
 const cors = require("cors"); // Access-Control-Allow-Origin
+
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -17,7 +18,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:2247",
-      "hhttps://mtr-portfolio.herokuapp.com",
+      "https://mtr-portfolio.herokuapp.com",
     ],
     methods: ["GET", "HEAD", "POST", "DELETE", "PUT", "PATCH", "OPTIONS"],
     credentials: true, //allow setting of cookies
@@ -48,7 +49,6 @@ mongoose.connection.on("connected", () => {
 });
 
 // HTTP REQUEST
-
 const projectsRoutes = require("./routes/projects");
 const emailsRoutes = require("./routes/emails");
 const categoriesRoutes = require("./routes/categories");
