@@ -1,59 +1,59 @@
 {
-    "name": "portfolio",
-    "version": "0.1.0",
-    "description": "portfolio-client",
-    "private": true,
-    "homepage": "https://mtr1990.github.io",
-    "dependencies": {
-        "@loadable/component": "^5.10.3",
-        "@material-ui/core": "^4.9.9",
-        "@material-ui/icons": "^4.9.1",
-        "@material-ui/lab": "^4.0.0-alpha.48",
-        "axios": "^0.18.0",
-        "formik": "^1.5.8",
-        "framer-motion": "^1.6.7",
-        "moment": "^2.24.0",
-        "node-sass": "^4.12.0",
-        "notistack": "^0.9.9",
-        "nprogress": "^0.2.0",
-        "prop-types": "^15.7.2",
-        "react": "^16.8.6",
-        "react-dom": "^16.8.6",
-        "react-gsap": "^1.2.0",
-        "react-moment": "^0.9.7",
-        "react-router-dom": "^5.1.2",
-        "react-scripts": "^3.4.1",
-        "react-scrollmagic": "^2.2.0",
-        "react-svg": "^10.0.22",
-        "smooth-scrollbar": "^8.5.0",
-        "use-dark-mode": "^2.3.1",
-        "yup": "^0.27.0"
-    },
-    "scripts": {
-        "start": "PORT=2247 react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
-        "eject": "react-scripts eject",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d build"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "gh-pages": "^2.0.1"
-    },
-    "proxy": "http://localhost:5000"
+  "name": "portfolio",
+  "version": "0.1.0",
+  "description": "portfolio-client",
+  "private": true,
+  "homepage": "https://mtr1990.github.io/portfolio",
+  "dependencies": {
+    "@loadable/component": "^5.10.3",
+    "@material-ui/core": "^4.9.9",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.48",
+    "axios": "^0.18.0",
+    "formik": "^1.5.8",
+    "framer-motion": "^1.6.7",
+    "moment": "^2.24.0",
+    "node-sass": "^4.12.0",
+    "notistack": "^0.9.9",
+    "nprogress": "^0.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-gsap": "^1.2.0",
+    "react-moment": "^0.9.7",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.1",
+    "react-scrollmagic": "^2.2.0",
+    "react-svg": "^10.0.22",
+    "smooth-scrollbar": "^8.5.0",
+    "use-dark-mode": "^2.3.1",
+    "yup": "^0.27.0"
+  },
+  "scripts": {
+    "start": "PORT=2247 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  },
+  "proxy": "http://localhost:5000"
 }
