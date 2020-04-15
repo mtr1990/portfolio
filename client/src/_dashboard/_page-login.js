@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Formik } from "formik";
 import { API, path_DASHBOARD } from "../config";
@@ -31,6 +32,7 @@ const LoginPage = (props) => {
   const [email] = useState("");
   const [password] = useState("");
   const [isError, setIsError] = useState(null);
+  let history = useHistory();
 
   const requestLogin = async (email, password) => {
     const data = {
@@ -41,7 +43,8 @@ const LoginPage = (props) => {
       if (res.data.error) {
         return setIsError(res.data.message);
       }
-      window.location = path_DASHBOARD.root;
+      history.push(path_DASHBOARD.root);
+    //   window.location = path_DASHBOARD.root;
     });
   };
 
