@@ -12,21 +12,21 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// const corsConfig = {
-//   origin: true,
-//   credentials: true,
-// };
-// app.use(cors(corsConfig));
-// app.options("*", cors(corsConfig));
+const corsConfig = {
+  origin: true,
+  credentials: true,
+};
+app.use(cors(corsConfig));
+app.options("*", cors(corsConfig));
 
-app.use(
-  cors({
-    origin: ["http://localhost:2247", "https://mtr1990.github.io/portfolio"],
-    methods: ["GET", "HEAD", "POST", "DELETE", "PUT", "PATCH", "OPTIONS"],
-    credentials: true, //allow setting of cookies
-  })
-);
-app.options("*", cors());
+// app.use(
+//   cors({
+//     origin: ["http://localhost:2247", "https://mtr1990.github.io/portfolio"],
+//     methods: ["GET", "HEAD", "POST", "DELETE", "PUT", "PATCH", "OPTIONS"],
+//     credentials: true, //allow setting of cookies
+//   })
+// );
+// app.options("*", cors());
 
 app.use(morgan("tiny"));
 
