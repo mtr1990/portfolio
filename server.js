@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //CONNECT DATABASE
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mtr_backend", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/portfolio-backend", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
