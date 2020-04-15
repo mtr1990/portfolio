@@ -14,16 +14,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 app.use(cors()); // Access-Control-Allow-Origin
 app.use(morgan("tiny"));
-app.use(
-  cors({
-    origin: [
-      "http://localhost:2247",
-      "https://mtr-portfolio.herokuapp.com",
-    ],
-    methods: ["GET", "HEAD", "POST", "DELETE", "PUT", "PATCH", "OPTIONS"],
-    credentials: true, //allow setting of cookies
-  })
-);
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.use(
   session({
     secret: "supersecretstring12345!",
