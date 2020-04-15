@@ -2,18 +2,19 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const session = require("express-session");
 const cors = require("cors"); // Access-Control-Allow-Origin
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// app.use(express.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+
 app.use(cors()); // Access-Control-Allow-Origin
 app.use(morgan("tiny"));
 
