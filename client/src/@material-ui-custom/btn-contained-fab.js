@@ -2,9 +2,9 @@ import React from "react";
 import { Button, Fab, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  // basic
+  // BASIC
   basic: {
-    color: theme.palette.contrast.higher,
+    color: `${theme.palette.contrast.higher} !important`,
     backgroundColor: theme.palette.contrast.low,
     "&:hover": {
       backgroundColor: theme.palette.contrast.low,
@@ -14,13 +14,15 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     "&:disabled": {
-      color: theme.palette.contrast.higher,
+      color: `${theme.palette.contrast.higher} !important`,
       backgroundColor: theme.palette.contrast.low,
     },
   },
 
-  // info
+  // INFO
   info: {
+    color: theme.palette.getContrastText(theme.palette.info.main),
+    // color: theme.palette.info.contrastText,
     backgroundColor: theme.palette.info.main,
     "&:hover": {
       backgroundColor: theme.palette.info.dark,
@@ -30,13 +32,14 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     "&:disabled": {
-      color: theme.palette.common.white,
+      color: theme.palette.info.contrastText,
       backgroundColor: theme.palette.info.main,
     },
   },
 
-  // success
+  // SUCCESS
   success: {
+    color: theme.palette.getContrastText(theme.palette.success.main),
     backgroundColor: theme.palette.success.main,
     "&:hover": {
       backgroundColor: theme.palette.success.dark,
@@ -46,13 +49,14 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     "&:disabled": {
-      color: theme.palette.common.white,
+      color: theme.palette.success.contrastText,
       backgroundColor: theme.palette.success.main,
     },
   },
 
-  // warning
+  // WARNING
   warning: {
+    color: theme.palette.getContrastText(theme.palette.warning.main),
     backgroundColor: theme.palette.warning.main,
     "&:hover": {
       backgroundColor: theme.palette.warning.dark,
@@ -62,13 +66,14 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     "&:disabled": {
-      color: theme.palette.common.white,
+      color: theme.palette.warning.contrastText,
       backgroundColor: theme.palette.warning.main,
     },
   },
 
-  // error
+  // ERROR
   error: {
+    color: theme.palette.getContrastText(theme.palette.error.main),
     backgroundColor: theme.palette.error.main,
     "&:hover": {
       backgroundColor: theme.palette.error.dark,
@@ -78,135 +83,65 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     "&:disabled": {
-      color: theme.palette.common.white,
+      color: theme.palette.error.contrastText,
       backgroundColor: theme.palette.error.main,
     },
   },
-
-  // common
-  common: {
-    color: theme.palette.common.white,
-  },
 }));
 
-export const BtnContainedBasic = (props) => {
+// BTN CONTAINED
+export const MoreBtnContained = (props) => {
   const classes = useStyles();
+
+  let status;
+  switch (props.status) {
+    case "info":
+      status = classes.info;
+      break;
+    case "success":
+      status = classes.success;
+      break;
+    case "warning":
+      status = classes.warning;
+      break;
+    case "error":
+      status = classes.error;
+      break;
+    default:
+      status = classes.basic;
+  }
+
   return (
-    <Button classes={{ root: classes.basic }} variant="contained" {...props}>
+    <Button className={status} variant="contained" {...props}>
       {props.children}
     </Button>
   );
 };
 
-export const BtnContainedInfo = (props) => {
+// FAB
+export const MoreFab = (props) => {
   const classes = useStyles();
-  return (
-    <Button
-      className={classes.common}
-      classes={{ root: classes.info }}
-      variant="contained"
-      {...props}
-    >
-      {props.children}
-    </Button>
-  );
-};
 
-export const BtnContainedSuccess = (props) => {
-  const classes = useStyles();
-  return (
-    <Button
-      className={classes.common}
-      classes={{ root: classes.success }}
-      variant="contained"
-      {...props}
-    >
-      {props.children}
-    </Button>
-  );
-};
+  let status;
+  switch (props.status) {
+    case "info":
+      status = classes.info;
+      break;
+    case "success":
+      status = classes.success;
+      break;
+    case "warning":
+      status = classes.warning;
+      break;
+    case "error":
+      status = classes.error;
+      break;
+    default:
+      status = classes.basic;
+  }
 
-export const BtnContainedWarning = (props) => {
-  const classes = useStyles();
   return (
-    <Button
-      className={classes.common}
-      classes={{ root: classes.warning }}
-      variant="contained"
-      {...props}
-    >
-      {props.children}
-    </Button>
-  );
-};
-
-export const BtnContainedError = (props) => {
-  const classes = useStyles();
-  return (
-    <Button
-      className={classes.common}
-      classes={{ root: classes.error }}
-      variant="contained"
-      {...props}
-    >
-      {props.children}
-    </Button>
-  );
-};
-
-// Fab
-export const FabBasic = (props) => {
-  const classes = useStyles();
-  return (
-    <Fab classes={{ root: classes.basic }} {...props}>
-      {props.children}
-    </Fab>
-  );
-};
-
-export const FabInfo = (props) => {
-  const classes = useStyles();
-  return (
-    <Fab className={classes.common} classes={{ root: classes.info }} {...props}>
-      {props.children}
-    </Fab>
-  );
-};
-
-export const FabSuccess = (props) => {
-  const classes = useStyles();
-  return (
-    <Fab
-      className={classes.common}
-      classes={{ root: classes.success }}
-      {...props}
-    >
-      {props.children}
-    </Fab>
-  );
-};
-
-export const FabWarning = (props) => {
-  const classes = useStyles();
-  return (
-    <Fab
-      className={classes.common}
-      classes={{ root: classes.warning }}
-      {...props}
-    >
-      {props.children}
-    </Fab>
-  );
-};
-
-export const FabError = (props) => {
-  const classes = useStyles();
-  return (
-    <Fab
-      className={classes.common}
-      classes={{ root: classes.error }}
-      {...props}
-    >
+    <Fab className={status} {...props}>
       {props.children}
     </Fab>
   );

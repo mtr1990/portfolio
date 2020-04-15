@@ -3,10 +3,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const path = require("path");
-var cors = require("cors"); // Access-Control-Allow-Origin
-
+const bodyparser = require("body-parser");
+const session = require("express-session");
+const cors = require("cors"); // Access-Control-Allow-Origin
 const app = express();
-const PORT = process.env.PORT || 8080; // Step 1
+const PORT = process.env.PORT || 8080;
 
 // Connect
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/mtr_backend", {
@@ -21,22 +22,31 @@ mongoose.connection.on("connected", () => {
 // Data parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyparser.json());
 app.use(cors()); // Access-Control-Allow-Origin
-
-// Step 3
+app.use(
+  session({
+    secret: "supersecretstring12345!",
+    saveUninitialized: true,
+    resave: true,
+    cookie: { maxAge: 60000 * 30 },
+  })
+);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
 // HTTP request logger
+app.use(morgan("tiny"));
 const projectsRoutes = require("./routes/projects");
 const emailsRoutes = require("./routes/emails");
 const categoriesRoutes = require("./routes/categories");
+const usersRoutes = require("./routes/users");
 
-app.use(morgan("tiny"));
 app.use("/api/projects", projectsRoutes);
 app.use("/api/emails", emailsRoutes);
 app.use("/api/categories", categoriesRoutes);
+app.use("/api/users", usersRoutes);
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`));

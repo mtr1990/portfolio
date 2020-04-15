@@ -11,11 +11,11 @@ const useStyles = makeStyles((theme) => ({
   conmons: { boxShadow: theme.shadows[10] },
 }));
 
-// Snack: Container
+// CONTAINER
 export const SnackContainer = (props) => {
   return (
     <SnackbarProvider
-      autoHideDuration={6000}
+      autoHideDuration={5000}
       maxSnack={1}
       preventDuplicate
       anchorOrigin={{
@@ -28,7 +28,7 @@ export const SnackContainer = (props) => {
   );
 };
 
-// Snack: Status
+// STATUS
 export const SnackStatus = (enqueueSnackbar, { ...args }) => {
   return enqueueSnackbar(args.message, {
     content: (key, message) => (
@@ -42,7 +42,7 @@ export const SnackStatus = (enqueueSnackbar, { ...args }) => {
   });
 };
 
-// Snack: Action
+// ACTION
 export const SnackAction = (enqueueSnackbar, { ...args }) => {
   return enqueueSnackbar(args.message, {
     autoHideDuration: null,
@@ -62,7 +62,7 @@ export const SnackAction = (enqueueSnackbar, { ...args }) => {
   });
 };
 
-// Snack: Content
+// CONTENT
 const SnackContentStatus = React.forwardRef((props, ref) => {
   const { closeSnackbar } = useSnackbar();
   const classes = useStyles();

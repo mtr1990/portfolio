@@ -13,12 +13,7 @@ import {
   Favorite,
   FavoriteBorder,
 } from "@material-ui/icons";
-import {
-  CheckboxInfo,
-  CheckboxSuccess,
-  CheckboxWarning,
-  CheckboxError,
-} from "../@material-ui-custom";
+import { MoreCheckbox } from "../@material-ui-custom";
 
 const GlCheckbox = () => (
   <GlBlock>
@@ -86,19 +81,27 @@ const GlCheckbox = () => (
 
         <FormGroup>
           <FormControlLabel
-            control={<CheckboxInfo defaultChecked value="checkedG" disabled />}
+            control={
+              <MoreCheckbox status="info" defaultChecked value="checkedG" />
+            }
             label="Info"
           />
           <FormControlLabel
-            control={<CheckboxSuccess defaultChecked value="checkedG" />}
+            control={
+              <MoreCheckbox status="success" defaultChecked value="checkedG" />
+            }
             label="Success"
           />
           <FormControlLabel
-            control={<CheckboxWarning defaultChecked value="checkedG" />}
+            control={
+              <MoreCheckbox status="warning" defaultChecked value="checkedG" />
+            }
             label="Warning"
           />
           <FormControlLabel
-            control={<CheckboxError defaultChecked value="checkedG" />}
+            control={
+              <MoreCheckbox status="error" defaultChecked value="checkedG" />
+            }
             label="Error"
           />
         </FormGroup>

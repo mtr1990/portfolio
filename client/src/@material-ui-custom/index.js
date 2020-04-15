@@ -6,80 +6,19 @@ export { ThemeWrap } from "./config";
 /**
  * Typography
  */
-export {
-  TypographyInfo,
-  TypographySuccess,
-  TypographyWarning,
-} from "./typography";
+export { MoreTypography } from "./typography";
 
 /**
  * Buttons
  */
-export {
-  // Fab
-  FabBasic,
-  FabInfo,
-  FabSuccess,
-  FabWarning,
-  FabError,
-  // BtnContained
-  BtnContainedBasic,
-  BtnContainedInfo,
-  BtnContainedSuccess,
-  BtnContainedWarning,
-  BtnContainedError,
-} from "./btn-contained-fab";
-
-export {
-  BtnOutlinedBasic,
-  BtnOutlinedInfo,
-  BtnOutlinedSuccess,
-  BtnOutlinedWarning,
-  BtnOutlinedError,
-} from "./btn-outlined";
-
-export {
-  BtnBasic,
-  BtnInfo,
-  BtnSuccess,
-  BtnWarning,
-  BtnError,
-  // IconButton
-  IconButtonInfo,
-  IconButtonSuccess,
-  IconButtonWarning,
-  IconButtonError,
-} from "./btn-text-iconbutton";
+export { MoreFab, MoreBtnContained } from "./btn-contained-fab";
+export { MoreBtnOutlined } from "./btn-outlined";
+export { MoreBtnText, MoreIconButton } from "./btn-text-icon";
 
 /**
- * Checkbox
+ * Checkbox - Radio - Switch
  */
-export {
-  CheckboxInfo,
-  CheckboxSuccess,
-  CheckboxWarning,
-  CheckboxError,
-} from "./checkbox";
-
-/**
- * Radio
- */
-export {
-  RadioInfo,
-  RadioSuccess,
-  RadioWarning,
-  RadioError,
-} from "./radio-button";
-
-/**
- * Radio
- */
-export {
-  SwitchInfo,
-  SwitchSuccess,
-  SwitchWarning,
-  SwitchError,
-} from "./switch-button";
+export { MoreCheckbox, MoreRadio, MoreSwitch } from "./checkbox-radio-switch";
 
 /**
  * Snackbar

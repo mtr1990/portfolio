@@ -1,20 +1,20 @@
 /**
  * Guideline
  */
-export { default as GlLayout } from "./layouts/layout.layouts";
-export { default as GlMenuList } from "./layouts/menu.layouts";
-export { default as GlAppBar } from "./layouts/appbar.layouts";
-export { default as GlBlock } from "./layouts/block.layouts";
+export { default as GlLayout } from "./_layouts-layout";
+export { default as GlMenuList } from "./_layouts-menu";
+export { default as GlAppBar } from "./_layouts-appbar";
+export { default as GlBlock } from "./_layouts-block";
 
-export { default as GlColorPalettes } from "./palettes.guideline";
-export { default as GlTypography } from "./typography.guideline";
-export { default as GlButtons } from "./buttons.guideline";
+export { default as GlColorPalettes } from "./_guideline-palettes";
+export { default as GlTypography } from "./_guideline-typography";
+export { default as GlButtons } from "./_guideline-buttons";
 
-export { default as GlForms } from "./forms.guideline";
+export { default as GlForms } from "./_guideline-forms";
 export { default as GlField } from "./forms-field.guideline";
 export { default as GlCheckbox } from "./forms-checkbox.guideline";
 export { default as GlRadioButton } from "./forms-radio-button.guideline";
 export { default as GlSwitch } from "./forms-switch.guideline";
 
-export { default as GlSnackbars } from "./snackbars.guideline";
-export { default as GlShadows } from "./shadows.guideline";
+export { default as GlSnackbars } from "./_guideline-snackbars";
+export { default as GlShadows } from "./_guideline-shadows";

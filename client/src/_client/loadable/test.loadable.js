@@ -1,7 +1,7 @@
 import React from "react";
 import loadable from '@loadable/component'
 
-const Test = loadable(() => import("../test.page"), {
+const Test = loadable(() => import("../_page-test"), {
 	fallback: null
 });
 

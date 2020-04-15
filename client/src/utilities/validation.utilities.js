@@ -17,9 +17,8 @@ export const validationCVForm = Yup.object().shape({
  * Login
  */
 export const validationLogin = Yup.object().shape({
-  c_password: Yup.string()
-    .oneOf([Yup.ref("s_password"), null], "The password does not match")
-    .required("Enter password is required"),
+  email: Yup.string().required("Email is required"),
+  password: Yup.string().required("Password is required"),
 });
 
 /**
@@ -37,4 +36,9 @@ export const validationProjectForm = Yup.object().shape({
  */
 export const validationCategoryForm = Yup.object().shape({
   name: Yup.string().required("Name is required"),
+});
+
+export const validationUserForm = Yup.object().shape({
+  email: Yup.string().required("Email is required"),
+  password: Yup.string().required("Password is required"),
 });

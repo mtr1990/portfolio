@@ -2,9 +2,9 @@ import React from "react";
 import { fade, Button, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  // basic
+  // BASIC
   basic: {
-    color: theme.palette.contrast.higher,
+    color: theme.palette.contrast.high,
     border: `1px solid ${fade(theme.palette.contrast.high, 0.5)}`,
     "&:hover": {
       border: `1px solid ${theme.palette.contrast.high}`,
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  // info
+  // INFO
   info: {
     color: theme.palette.info.main,
     border: `1px solid ${fade(theme.palette.info.main, 0.5)}`,
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  // success
+  // SUCCESS
   success: {
     color: theme.palette.success.main,
     border: `1px solid ${fade(theme.palette.success.main, 0.5)}`,
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  // warning
+  // WARNING
   warning: {
     color: theme.palette.warning.main,
     border: `1px solid ${fade(theme.palette.warning.main, 0.5)}`,
@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  // error
+  // ERROR
   error: {
     color: theme.palette.error.main,
     border: `1px solid ${fade(theme.palette.error.main, 0.5)}`,
@@ -108,46 +108,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const BtnOutlinedBasic = (props) => {
+export const MoreBtnOutlined = (props) => {
   const classes = useStyles();
-  return (
-    <Button classes={{ root: classes.basic }} variant="outlined" {...props}>
-      {props.children}
-    </Button>
-  );
-};
 
-export const BtnOutlinedInfo = (props) => {
-  const classes = useStyles();
-  return (
-    <Button classes={{ root: classes.info }} variant="outlined" {...props}>
-      {props.children}
-    </Button>
-  );
-};
+  let status;
+  switch (props.status) {
+    case "info":
+      status = classes.info;
+      break;
+    case "success":
+      status = classes.success;
+      break;
+    case "warning":
+      status = classes.warning;
+      break;
+    case "error":
+      status = classes.error;
+      break;
+    default:
+      status = classes.basic;
+  }
 
-export const BtnOutlinedSuccess = (props) => {
-  const classes = useStyles();
   return (
-    <Button classes={{ root: classes.success }} variant="outlined" {...props}>
-      {props.children}
-    </Button>
-  );
-};
-
-export const BtnOutlinedWarning = (props) => {
-  const classes = useStyles();
-  return (
-    <Button classes={{ root: classes.warning }} variant="outlined" {...props}>
-      {props.children}
-    </Button>
-  );
-};
-
-export const BtnOutlinedError = (props) => {
-  const classes = useStyles();
-  return (
-    <Button classes={{ root: classes.error }} variant="outlined" {...props}>
+    <Button className={status} variant="outlined" {...props}>
       {props.children}
     </Button>
   );

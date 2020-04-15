@@ -27,10 +27,10 @@ export const path_GUIDELINE = {
 /**
  * Dashboard
  */
-let root_DASHBOARD = "/D_A_S_H_B_O_A_R_D_FMfcgxwGBwSfwRHVVzvtQQNZJSmdmBz";
+let root_DASHBOARD = "/D_A_S_H_B_O_A_R_D";
 export const path_DASHBOARD = {
-  login: `/login`,
   root: root_DASHBOARD,
+  login: `/login`,
   emails: `${root_DASHBOARD}/emails`,
 
   projects: {
@@ -44,5 +44,10 @@ export const path_DASHBOARD = {
     create: `${root_DASHBOARD}/categories/create`,
     edit: `${root_DASHBOARD}/categories/edit/:id`,
     link_edit: `${root_DASHBOARD}/categories/edit`,
+  },
+
+  users: {
+    root: `${root_DASHBOARD}/users`,
+    create: `${root_DASHBOARD}/users/create`,
   },
 };

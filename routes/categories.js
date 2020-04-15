@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Category = require("../models/category.model");
 
-// Get List
+// GET CATEGORIS
 router.get("/", (req, res) => {
   Category.find({})
     .then((data) => {
@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// Create Item
+// CREATE CATEGORY
 router.post("/save", (req, res) => {
   const data = req.body;
   const newCategory = new Category(data);
@@ -29,14 +29,14 @@ router.post("/save", (req, res) => {
   });
 });
 
-// Delete Item
+// DELETE CATEGORY
 router.delete("/:id", (req, res) => {
   Category.findByIdAndDelete(req.params.id)
     .then(() => res.json("Category deleted."))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-//  Get Item Id
+//  GET CATEGORY BY ID
 router.get("/:id", (req, res) => {
   Category.findById(req.params.id)
     .then((data) => {
@@ -45,7 +45,7 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-// Update Item
+// UPDATE CATEGORY
 router.put("/update/:id", (req, res) => {
   Category.findById(req.params.id)
     .then((item) => {

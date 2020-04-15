@@ -3,7 +3,7 @@ export {
   ScrollMagicFadeIn,
   ScrollMagicFadeOut,
 } from "./scroll-magic.utilities";
-// export { default as SmoothScrollbar } from "./scroll-smooth.utilities";
+export { default as SmoothScrollbar } from "./scroll-smooth.utilities";
 export { default as UrlFormat } from "./url-format";
 export { default as DisplayFormikState } from "./helper.utilities";
 
@@ -15,6 +15,7 @@ export {
   validationLogin,
   validationProjectForm,
   validationCategoryForm,
+  validationUserForm,
 } from "./validation.utilities";
 
 /**
@@ -37,4 +38,6 @@ export {
   varbounce,
   varbounceIn,
   varZoomInOut,
+  varScaleX,
+  varScaleY,
 } from "./variants.utilities";

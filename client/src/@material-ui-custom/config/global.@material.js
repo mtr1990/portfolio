@@ -21,7 +21,9 @@ export const GlobalCss = withStyles((theme) => ({
       width: "100%",
     },
 
-    // MuiButton
+    /**
+     * Buttons
+     */
     ".MuiButtonBase-root": {
       "&:disabled": {
         opacity: "0.48",
@@ -40,7 +42,7 @@ export const GlobalCss = withStyles((theme) => ({
       padding: "15px 20px",
     },
 
-    // MuiButton: Contained & MuiFab
+    // Contained & MuiFab
     ".MuiButton-containedPrimary,.MuiFab-primary": {
       "&:disabled": {
         color: theme.palette.common.white,
@@ -54,7 +56,7 @@ export const GlobalCss = withStyles((theme) => ({
       },
     },
 
-    // MuiButton: Outlined
+    // Outlined
     ".MuiButton-outlinedPrimary": {
       "&:disabled": {
         color: theme.palette.primary.main,
@@ -68,7 +70,7 @@ export const GlobalCss = withStyles((theme) => ({
       },
     },
 
-    // MuiButton: Text + MuiIconButton
+    // Text + MuiIconButton
     ".MuiButton-textPrimary,.MuiIconButton-colorPrimary": {
       "&:disabled": {
         color: theme.palette.primary.main,
@@ -80,7 +82,9 @@ export const GlobalCss = withStyles((theme) => ({
       },
     },
 
-    // MuiSwitch
+    /**
+     * Selection controls 
+     */
     ".MuiSwitch-track": {
       backgroundColor: theme.palette.contrast.high,
     },
@@ -102,6 +106,13 @@ export const GlobalCss = withStyles((theme) => ({
       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
         borderColor: theme.palette.primary.main,
       },
+    },
+
+    // Text Field: OutlinedInput
+    ".MuiFormHelperText-root": {
+      marginTop: "8px",
+      display: "flex",
+      justifyContent: "space-between",
     },
   },
 }))(() => null);

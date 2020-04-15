@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     //     : `url(${bgBodyDark})`,
     // backgroundSize: "cover",
     // backgroundPosition: "center center",
-    // transition: "all 160ms ease-in-out",
+    // transition: `all  ${theme.transitions.duration.shorter}ms ${theme.transitions.easing.easeIn}`,
   },
 }));
 

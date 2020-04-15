@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Project = require("../models/project.model");
 
-// Get List
+// GET PROJECTS
 router.get("/", (req, res) => {
   Project.find({})
     .then((data) => {
@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// Create Item
+// CREATE PROJECT
 router.post("/save", (req, res) => {
   const data = req.body;
   const newProject = new Project(data);
@@ -29,14 +29,14 @@ router.post("/save", (req, res) => {
   });
 });
 
-// Delete Item
+// DELETE PROJECT
 router.delete("/:id", (req, res) => {
   Project.findByIdAndDelete(req.params.id)
     .then(() => res.json("Project deleted."))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-//  Get Item Id
+// GET PROJECT BY ID
 router.get("/:id", (req, res) => {
   Project.findById(req.params.id)
     .then((data) => {
@@ -45,7 +45,7 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-// Update Item
+// UPDATE PROJECT
 router.put("/update/:id", (req, res) => {
   Project.findById(req.params.id)
     .then((item) => {

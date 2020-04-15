@@ -295,3 +295,55 @@ export const varZoomInOut = {
     },
   },
 };
+
+/**
+ * ScaleX
+ */
+export const varScaleX = {
+  initial: {
+    scaleX: 0,
+    opacity: 0,
+  },
+  enter: {
+    scaleX: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ...transitionEnter,
+    },
+  },
+  exit: {
+    scaleX: 0,
+    opacity: 0,
+    transition: {
+      duration: 1.5,
+      ...transitionExit,
+    },
+  },
+};
+
+/**
+ * ScaleY
+ */
+export const varScaleY = {
+  initial: {
+    scaleY: 0,
+    opacity: 0,
+  },
+  enter: {
+    scaleY: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ...transitionEnter,
+    },
+  },
+  exit: {
+    scaleY: 0,
+    opacity: 0,
+    transition: {
+      duration: 1.5,
+      ...transitionExit,
+    },
+  },
+};

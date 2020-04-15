@@ -1,8 +1,8 @@
 import React from "react";
-import loadable from '@loadable/component'
+import loadable from "@loadable/component";
 
-const Home = loadable(() => import("../home.page"), {
-	fallback: null
+const Home = loadable(() => import("../_page_home"), {
+  fallback: null,
 });
 
 const HomePage = () => <Home />;

@@ -27,6 +27,8 @@ import {
   CategoryPage,
   CreateCategory,
   EditCategory,
+  UserPage,
+  CreateUser,
 } from "../_dashboard";
 
 // Import: Path
@@ -113,6 +115,15 @@ const routes = [
   {
     path: path_DASHBOARD.categories.edit,
     component: EditCategory,
+  },
+  {
+    path: path_DASHBOARD.users.root, // Users
+    exact: true,
+    component: UserPage,
+  },
+  {
+    path: path_DASHBOARD.users.create,
+    component: CreateUser,
   },
 
   // NoMatch

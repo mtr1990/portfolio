@@ -11,7 +11,7 @@ import { Spinners } from "../commons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    paddingBottom: theme.spacing(20),
+    paddingBottom: theme.spacing(32),
     backgroundColor: theme.palette.background.default,
   },
   list: {
@@ -31,7 +31,7 @@ const ProjectDetailsContent = ({ currentItem }) => {
     <Box className={classes.root}>
       <Container>
         <Grid item md={7}>
-          <ScrollMagicFadeIn>
+          <ScrollMagicFadeIn triggerHook={0.8} offset={160} duration={560}>
             <Box pt={20}>
               <Typography variant="h2" component="h1" gutterBottom>
                 {currentItem.name}
@@ -42,17 +42,27 @@ const ProjectDetailsContent = ({ currentItem }) => {
           </ScrollMagicFadeIn>
         </Grid>
 
-        <ScrollMagicFadeIn>
-          {currentItem.imglist.map((image, index) => (
-            <Box key={index} position="relative" className={classes.list}>
-              <img src={image} alt="item" />
+        {currentItem.imglist.map((image, index) => (
+          <ScrollMagicFadeIn
+            key={index}
+            triggerHook={1}
+            offset={160}
+            duration={640}
+          >
+            <Box position="relative" className={classes.list}>
+              <img src={image} alt={`img ${index + 1}`} />
               <Spinners />
             </Box>
-          ))}
-        </ScrollMagicFadeIn>
+          </ScrollMagicFadeIn>
+        ))}
 
         {currentItem.videolist.map((video, index) => (
-          <ScrollMagicFadeIn key={index}>
+          <ScrollMagicFadeIn
+            key={index}
+            triggerHook={1}
+            offset={160}
+            duration={640}
+          >
             <Box className={classes.list}>
               <video
                 controls

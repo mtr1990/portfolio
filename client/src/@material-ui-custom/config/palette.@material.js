@@ -1,10 +1,10 @@
-// Commons
+// COMMONS
 const primary = "hsl(18, 100%, 50%)";
-const secondary = "hsl(349, 75%, 51%)";
-const info = "hsl(208, 80%, 52%)";
-const success = "hsl(131, 50%, 50%)";
-const warning = "hsl(42, 96%, 50%)";
-const error = "hsl(0, 94%, 65%)";
+const secondary = "rgb(0, 0, 238)";
+const info = "rgb(7, 152, 236)";
+const success = "rgb(47, 208, 105)";
+const warning = "rgb(254, 196, 1)";
+const error = "rgb(252, 108, 124)";
 const white = "#FFF";
 // const black = "#000";
 
@@ -23,7 +23,7 @@ const grey = [
   "rgb(26, 30, 33)", // [11]1a1e21
 ];
 
-// Light
+// LIGHT
 const light_bg = white;
 const light_contrast_lower = grey[3];
 const light_contrast_low = grey[4];
@@ -31,7 +31,7 @@ const light_contrast_medium = grey[6];
 const light_contrast_high = grey[7];
 const light_contrast_higher = grey[9];
 
-// Dark
+// DARK
 const dark_bg = grey[10];
 const dark_contrast_lower = grey[9];
 const dark_contrast_low = grey[7];

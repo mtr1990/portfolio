@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[25].card.root,
     borderRadius: theme.shape.borderRadiusLg,
     backgroundColor: theme.palette.background.card,
-    transition: "all 0.24s ease-in-out",
+    transition: `all  ${theme.transitions.duration.shorter}ms ${theme.transitions.easing.easeIn}`,
     "&:hover": {
       boxShadow: theme.shadows[25].card.hover,
     },
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   thumbnail: {
     position: "relative",
     overflow: "hidden",
-    paddingTop: "125%",
+    paddingTop: "136%",
     borderRadius: theme.shape.borderRadiusLg,
     border: `${theme.palette.background.card} solid 6px`,
     "&::before": {
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 2,
   },
   caption: {
-    padding: `${theme.spacing(3)}px ${theme.spacing(2)}px`,
+    padding: `${theme.spacing(4)}px ${theme.spacing(3)}px`,
     "&:hover": {
       boxShadow: theme.shadows[25].card.root,
     },
@@ -64,7 +64,7 @@ const ProjectItem = ({ item }) => {
 
   return (
     <Grid item xs={6}>
-      <ScrollMagicFadeIn>
+      <ScrollMagicFadeIn triggerHook={0.64} offset={80} duration={560}>
         <motion.div variants={varZoomInOut}>
           <Box
             to={path_CLIENT.projects.root + itemName}

@@ -1,44 +1,33 @@
 import React from "react";
 import { Typography, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
-	// info
-	info: {
-		color: theme.palette.info.main
-	},
-	// success
-	success: {
-		color: theme.palette.success.main
-	},
-	// warning
-	warning: {
-		color: theme.palette.warning.main
-	}
+const useStyles = makeStyles((theme) => ({
+  info: { color: theme.palette.info.main },
+  success: { color: theme.palette.success.main },
+  warning: { color: theme.palette.warning.main },
 }));
 
-export const TypographyInfo = props => {
-	const classes = useStyles();
-	return (
-		<Typography className={classes.info} {...props}>
-			{props.children}
-		</Typography>
-	);
-};
+export const MoreTypography = (props) => {
+  const classes = useStyles();
 
-export const TypographySuccess = props => {
-	const classes = useStyles();
-	return (
-		<Typography className={classes.success} {...props}>
-			{props.children}
-		</Typography>
-	);
-};
+  let color;
+  switch (props.color) {
+    case "info":
+      color = classes.info;
+      break;
+    case "success":
+      color = classes.success;
+      break;
+    case "warning":
+      color = classes.warning;
+      break;
+    default:
+      color = null;
+  }
 
-export const TypographyWarning = props => {
-	const classes = useStyles();
-	return (
-		<Typography className={classes.warning} {...props}>
-			{props.children}
-		</Typography>
-	);
+  return (
+    <Typography className={color} {...props}>
+      {props.children}
+    </Typography>
+  );
 };

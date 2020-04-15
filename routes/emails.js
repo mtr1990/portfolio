@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Email = require("../models/email.model");
 
-// Get List
+// GET EMAILS
 router.get("/", (req, res) => {
   Email.find({})
     .then((data) => {
@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// Create Item
+// CREATE EMAIL
 router.post("/save", (req, res) => {
   const data = req.body;
   const newEmail = new Email(data);
@@ -29,7 +29,7 @@ router.post("/save", (req, res) => {
   });
 });
 
-// Delete Item
+// DELETE EMAIL
 router.delete("/:id", (req, res) => {
   Email.findByIdAndDelete(req.params.id)
     .then(() => res.json("Email deleted."))
