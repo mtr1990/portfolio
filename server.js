@@ -9,8 +9,8 @@ const cors = require("cors"); // Access-Control-Allow-Origin
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use(bodyparser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
