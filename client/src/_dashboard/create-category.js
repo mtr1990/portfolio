@@ -27,9 +27,7 @@ const CreateCategory = () => {
 
   // Create Project
   const createCategory = async (name) => {
-    const data = {
-      name,
-    };
+    const data = { name };
     await API.post(`categories/save`, data)
       .then((res) => {
         SnackStatus(enqueueSnackbar, {

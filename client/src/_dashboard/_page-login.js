@@ -47,10 +47,10 @@ const LoginPage = (props) => {
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
+    requestLogin(values.email, values.password);
     setTimeout(() => {
-      requestLogin(values.email, values.password);
       setSubmitting(false);
-    }, 800);
+    }, 1200);
   };
 
   return (
