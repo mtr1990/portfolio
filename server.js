@@ -8,12 +8,25 @@ const cors = require("cors"); // Access-Control-Allow-Origin
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-
 // DATA PARSING
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(cors()); // Access-Control-Allow-Origin
+// const corsConfig = {
+//   origin: true,
+//   credentials: true,
+// };
+// app.use(cors(corsConfig));
+// app.options("*", cors(corsConfig));
+
+app.use(
+  cors({
+    origin: ["http://localhost:2247", "https://mtr1990.github.io/portfolio"],
+    methods: ["GET", "HEAD", "POST", "DELETE", "PUT", "PATCH", "OPTIONS"],
+    credentials: true, //allow setting of cookies
+  })
+);
+
 app.use(morgan("tiny"));
 
 app.use(

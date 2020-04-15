@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Formik } from "formik";
-import { API, path_DASHBOARD } from "../config";
+import { history, API, path_DASHBOARD } from "../config";
 import { validationLogin } from "../utilities";
 import {
   Container,
@@ -13,6 +12,8 @@ import {
 } from "@material-ui/core";
 import { HeaderClient } from "../commons";
 import { LoginForm } from ".";
+import axios from "axios";
+axios.defaults.withCredentials = true;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,20 +33,21 @@ const LoginPage = (props) => {
   const [email] = useState("");
   const [password] = useState("");
   const [isError, setIsError] = useState(null);
-  let history = useHistory();
 
   const requestLogin = async (email, password) => {
     const data = {
       email,
       password,
     };
-    await API.post(`users/login`, data).then((res) => {
-      if (res.data.error) {
-        return setIsError(res.data.message);
-      }
-      history.push(path_DASHBOARD.root);
-    //   window.location = path_DASHBOARD.root;
-    });
+    await axios
+      .post(`https://mtr-portfolio.herokuapp.com/api/users/login`, data)
+      .then((res) => {
+        // await API.post(`users/login`, data).then((res) => {
+        if (res.data.error) {
+          return setIsError(res.data.message);
+        }
+        history.push(path_DASHBOARD.root);
+      });
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
