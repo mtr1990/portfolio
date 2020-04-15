@@ -8,6 +8,8 @@ const cors = require("cors"); // Access-Control-Allow-Origin
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+
+// DATA PARSING
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
