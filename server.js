@@ -17,14 +17,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors()); // Access-Control-Allow-Origin
 app.use(morgan("tiny"));
 
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 app.use(
   session({
@@ -40,11 +40,14 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //CONNECT DATABASE
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/portfolio-backend", {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/portfolio-backend",
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  }
+);
 
 mongoose.connection.on("connected", () => {
   console.log("Mongoose is connected!!!!");
