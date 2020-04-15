@@ -20,8 +20,6 @@ const LoginForm = ({
   errors,
   isError,
 }) => {
-  console.log(isError);
-
   return (
     <Form autoComplete="off" noValidate>
       {/********** EMAIL ***********/}

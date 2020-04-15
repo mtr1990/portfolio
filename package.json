@@ -1,7 +1,7 @@
 {
-  "name": "portfolio-backend",
+  "name": "portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "portfolio-backend",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,7 +22,6 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "express-validator": "^6.4.0",
-    "mongoose": "^5.7.9",
-    "morgan": "^1.9.1"
+    "mongoose": "^5.7.9"
   }
 }

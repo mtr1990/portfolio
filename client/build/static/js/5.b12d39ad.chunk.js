@@ -1,2 +1,0 @@
-(this["webpackJsonpportfolio-client"]=this["webpackJsonpportfolio-client"]||[]).push([[5],{650:function(e,t,n){"use strict";n.r(t);var a=n(0),l=n.n(a),r=n(641);t.default=function(){return l.a.createElement(l.a.Fragment,null,l.a.createElement(r.a,null,l.a.createElement("h1",null,"Test Page"),l.a.createElement(r.a,{height:3e3})))}}}]);
-//# sourceMappingURL=5.b12d39ad.chunk.js.map

@@ -1,6 +1,7 @@
 {
-    "name": "portfolio-client",
+    "name": "portfolio",
     "version": "0.1.0",
+    "description": "portfolio-client",
     "private": true,
     "homepage": "https://mtr1990.github.io/portfolio/",
     "dependencies": {
@@ -25,7 +26,6 @@
         "react-scrollmagic": "^2.2.0",
         "react-svg": "^10.0.22",
         "smooth-scrollbar": "^8.5.0",
-        "styled-components": "^4.4.0",
         "use-dark-mode": "^2.3.1",
         "yup": "^0.27.0"
     },
