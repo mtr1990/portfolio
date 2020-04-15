@@ -1,9 +1,12 @@
 import axios from "axios";
 
-export default axios.create({
+const API = axios.create({
   // DEV
 //   baseURL: `/api/`,
   // PRODUCTION
   baseURL: `https://mtr-portfolio.herokuapp.com/api/`,
-  // baseURL: `http://5cee0e3b1c2baf00142cb9e6.mockapi.io/api/`,
 });
+
+API.defaults.withCredentials = true;
+
+export default API;

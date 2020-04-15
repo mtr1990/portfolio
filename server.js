@@ -26,6 +26,7 @@ app.use(
     credentials: true, //allow setting of cookies
   })
 );
+app.options("*", cors());
 
 app.use(morgan("tiny"));
 
@@ -37,6 +38,8 @@ app.use(
     cookie: { maxAge: 60000 * 30 },
   })
 );
+
+app.use(express.static(__dirname + "/public"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

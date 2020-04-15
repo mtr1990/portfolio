@@ -41,7 +41,7 @@ export const HeroHome = () => {
         <Grid item md={7}>
           <motion.div variants={varfadeInRight}>
             <Typography variant="h2" component="h1">
-              The creative designer with a passion for
+              22 The creative designer with a passion for
               <Typography variant="h2" component="span" color="textSecondary">
                 {" "}
                 simple{" "}

@@ -12,8 +12,6 @@ import {
 } from "@material-ui/core";
 import { HeaderClient } from "../commons";
 import { LoginForm } from ".";
-import axios from "axios";
-axios.defaults.withCredentials = true;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,15 +37,13 @@ const LoginPage = (props) => {
       email,
       password,
     };
-    await axios
-      .post(`https://mtr-portfolio.herokuapp.com/api/users/login`, data)
-      .then((res) => {
-        // await API.post(`users/login`, data).then((res) => {
-        if (res.data.error) {
-          return setIsError(res.data.message);
-        }
-        history.push(path_DASHBOARD.root);
-      });
+    await API.post(`users/login`, data).then((res) => {
+      if (res.data.error) {
+        return setIsError(res.data.message);
+      }
+      history.push(path_DASHBOARD.root);
+      history.go(0);
+    });
   };
 
   const handleSubmit = (values, { setSubmitting }) => {
