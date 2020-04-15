@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(bodyparser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyparser.urlencoded({ extended: true }));
 app.use(cors()); // Access-Control-Allow-Origin
 app.use(morgan("tiny"));
 
