@@ -58,7 +58,7 @@ const UserPage = () => {
 
         <Box mb={20}>
           <Container>
-            {/********** Panel ***********/}
+            {/********** PANEL ***********/}
             <Box mb={8}>
               <Button
                 to={path_DASHBOARD.root}
@@ -78,7 +78,7 @@ const UserPage = () => {
               </Typography>
             </Box>
 
-            {/********** Email List ***********/}
+            {/********** EMAIL LIST ***********/}
             <UserList stateUsers={users} deleteUser={deleteUser} />
             <Box height={160}></Box>
           </Container>
