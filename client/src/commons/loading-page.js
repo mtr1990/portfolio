@@ -3,27 +3,33 @@ import { motion } from "framer-motion";
 import { Box, Typography, makeStyles, fade } from "@material-ui/core";
 import { Logo } from "../commons";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-    width: "100%",
-    height: "100%",
-    zIndex: 999,
-    color: "white",
-    backgroundColor:
-      theme.palette.type === "light"
-        ? fade(theme.palette.contrast.higher, 0.96)
-        : fade(theme.palette.contrast.lower, 0.96),
-  },
-}));
+const LoadingPage = ({ isLoading }) => {
+  const useStyles = makeStyles((theme) => ({
+    "@global": {
+      body: {
+        overflowX: isLoading && "hidden",
+        overflowY: isLoading && "hidden",
+      },
+    },
+    root: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+      width: "100%",
+      height: "100%",
+      zIndex: 9999,
+      color: "white",
+      backgroundColor:
+        theme.palette.type === "light"
+          ? fade(theme.palette.contrast.higher, 0.8)
+          : fade(theme.palette.contrast.lower, 0.8),
+    },
+  }));
 
-const LoadingPage = () => {
   const classes = useStyles();
   return (
     <motion.div initial="initial" animate="enter" exit="exit">

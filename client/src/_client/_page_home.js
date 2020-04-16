@@ -35,7 +35,7 @@ const HomePage = () => {
   // useEffect(() => {
   //   const timer = setTimeout(() => {
   //     getProjects();
-  //   }, 1000);
+  //   }, 10000);
   //   return () => clearTimeout(timer);
   // }, []);
 
@@ -60,8 +60,13 @@ const HomePage = () => {
 
   return (
     <>
-      <motion.div initial="initial" animate="enter" exit="exit">
-        {isLoading ? <LoadingPage /> : null}
+      <motion.div
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        className={classes.root}
+      >
+        {isLoading ? <LoadingPage isLoading={isLoading} /> : null}
 
         <HeaderClient />
         <BgBody />

@@ -2,7 +2,7 @@ import { withStyles } from "@material-ui/core";
 
 export const GlobalCss = withStyles((theme) => ({
   "@global": {
-    // Commmons
+    // COMMMONS
     a: {
       textDecoration: "none",
       cursor: "pointer",
@@ -42,7 +42,7 @@ export const GlobalCss = withStyles((theme) => ({
       padding: "15px 20px",
     },
 
-    // Contained & MuiFab
+    // CONTAINED & MUIFAB
     ".MuiButton-containedPrimary,.MuiFab-primary": {
       "&:disabled": {
         color: theme.palette.common.white,
@@ -56,7 +56,7 @@ export const GlobalCss = withStyles((theme) => ({
       },
     },
 
-    // Outlined
+    // OUTLINED
     ".MuiButton-outlinedPrimary": {
       "&:disabled": {
         color: theme.palette.primary.main,
@@ -70,7 +70,7 @@ export const GlobalCss = withStyles((theme) => ({
       },
     },
 
-    // Text + MuiIconButton
+    // TEXT + MUIICONBUTTON
     ".MuiButton-textPrimary,.MuiIconButton-colorPrimary": {
       "&:disabled": {
         color: theme.palette.primary.main,
@@ -83,7 +83,7 @@ export const GlobalCss = withStyles((theme) => ({
     },
 
     /**
-     * Selection controls 
+     * Selection controls
      */
     ".MuiSwitch-track": {
       backgroundColor: theme.palette.contrast.high,
@@ -95,7 +95,7 @@ export const GlobalCss = withStyles((theme) => ({
       color: `${theme.palette.contrast.low} !important`,
     },
 
-    // Text Field: OutlinedInput
+    // TEXT FIELD: OUTLINEDINPUT
     ".MuiOutlinedInput-root": {
       "& .MuiOutlinedInput-notchedOutline": {
         borderColor: theme.palette.contrast.low,
@@ -108,7 +108,7 @@ export const GlobalCss = withStyles((theme) => ({
       },
     },
 
-    // Text Field: OutlinedInput
+    // TEXT FIELD: OUTLINEDINPUT
     ".MuiFormHelperText-root": {
       marginTop: "8px",
       display: "flex",
