@@ -29,7 +29,7 @@ const UserCreate = () => {
   const [success, setSuccess] = useState(false);
   const [isError, setIsError] = useState(null);
 
-  // Create Project
+  // CREATE USER
   const createUser = async (email, password) => {
     const data = {
       email,
@@ -61,7 +61,7 @@ const UserCreate = () => {
   console.log("userdata:", userdata);
   console.log("success:", success);
 
-  // Submit Create
+  // SUBMIT
   const handleSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
       createUser(values.email, values.password);
