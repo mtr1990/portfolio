@@ -1,2 +1,8 @@
 # No modules
 node_modules
+
+# Heroku
+Procfile
+
+# Server
+.env
