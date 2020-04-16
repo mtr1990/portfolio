@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Box, Typography, makeStyles, fade } from "@material-ui/core";
+import { Box, Typography, makeStyles, useTheme, fade } from "@material-ui/core";
 import { Logo } from "../commons";
 
 const LoadingPage = ({ isLoading }) => {
@@ -31,6 +31,8 @@ const LoadingPage = ({ isLoading }) => {
   }));
 
   const classes = useStyles();
+  const theme = useTheme();
+
   return (
     <motion.div initial="initial" animate="enter" exit="exit">
       <Box className={classes.root}>
@@ -44,7 +46,9 @@ const LoadingPage = ({ isLoading }) => {
             repeatDelay: 1,
           }}
         >
-          <Logo style={{ width: "72px", height: "72px" }} />
+          <Logo
+            style={{ width: theme.spacing(8), height: theme.spacing(8) }}
+          />
         </motion.div>
 
         <Box mt={4}>

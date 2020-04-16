@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Link } from "react-router-dom";
-import { Container, Box, Typography, Button, Fab } from "@material-ui/core";
-import { ArrowBack, PersonAdd } from "@material-ui/icons";
+import { Container, Box, Fab } from "@material-ui/core";
+import { PersonAdd } from "@material-ui/icons";
 import { API, path_DASHBOARD } from "../configs";
 import { SnackStatus } from "../styles/@material-ui-custom";
-import { HeaderDashboard, CheckLogin } from "../commons";
+import { HeaderDashboard, CheckLogin, PanelDashBoard } from "../commons";
 import { UserList } from ".";
 
 const UserPage = () => {
@@ -57,22 +57,11 @@ const UserPage = () => {
           <Container>
             {/********** PANEL ***********/}
             <Box mb={8}>
-              <Button
-                to={path_DASHBOARD.root}
-                size="small"
-                color="primary"
-                component={Link}
-                startIcon={<ArrowBack />}
-              >
-                Back
-              </Button>
-
-              <Typography variant="h3" component="h1" paragraph>
-                Users
-              </Typography>
-              <Typography variant="body1" component="p" color="textSecondary">
-                {users.length} user
-              </Typography>
+              <PanelDashBoard
+                txtHeading="Users"
+                txtSubHeading="User"
+                numbLength={users.length}
+              />
             </Box>
 
             {/********** EMAIL LIST ***********/}

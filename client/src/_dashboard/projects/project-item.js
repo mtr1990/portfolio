@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Box, Typography, IconButton, makeStyles } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
 import { path_DASHBOARD } from "../../configs";
+import { varfadeInUp } from "../../utilities";
 import { SnackAction } from "../../styles/@material-ui-custom";
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +52,7 @@ const ProjectItem = ({ item, index, deleteProject }) => {
   };
 
   return (
-    <Box className={classes.root}>
+    <motion.div variants={varfadeInUp} className={classes.root}>
       {/********** BADGE ***********/}
       <Box className={classes.badge}>
         <Typography variant="subtitle2"> {index + 1}</Typography>
@@ -99,7 +101,7 @@ const ProjectItem = ({ item, index, deleteProject }) => {
           </IconButton>
         </Box>
       </Box>
-    </Box>
+    </motion.div>
   );
 };
 

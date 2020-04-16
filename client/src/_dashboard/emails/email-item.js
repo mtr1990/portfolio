@@ -1,6 +1,8 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Box, Typography, IconButton, makeStyles } from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
+import { varfadeInUp } from "../../utilities";
 import Moment from "react-moment";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,9 +25,8 @@ const useStyles = makeStyles((theme) => ({
 
 const EmailItem = ({ item, deleteEmail }) => {
   const classes = useStyles();
-
   return (
-    <Box className={classes.root}>
+    <motion.div variants={varfadeInUp} className={classes.root}>
       <Box flexGrow={1}>
         <Typography variant="caption" color="textSecondary">
           <Moment fromNow>{item.date}</Moment>
@@ -40,7 +41,7 @@ const EmailItem = ({ item, deleteEmail }) => {
       >
         <Delete />
       </IconButton>
-    </Box>
+    </motion.div>
   );
 };
 

@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
-import { Box, Container, Typography, Fab } from "@material-ui/core";
+import { Box, Container, Fab } from "@material-ui/core";
 import { NoteAdd } from "@material-ui/icons";
 import { API, path_DASHBOARD } from "../configs";
-import { HeaderDashboard, CheckLogin } from "../commons";
+import { HeaderDashboard, CheckLogin, PanelDashBoard } from "../commons";
 import { SnackStatus } from "../styles/@material-ui-custom";
 import { ProjectList } from ".";
 
 const DashboardPage = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [projects, setProjects] = useState([]);
-  const [filter, setFilter] = useState("");
+
   const [reverse, setReverse] = useState(
     localStorage.getItem("isReverse") === null ||
       localStorage.getItem("isReverse") === "false"
@@ -59,11 +59,6 @@ const DashboardPage = () => {
       });
   };
 
-  // FILTER PROJECT
-  const filterProject = (e) => {
-    setFilter(e.target.value.substr(0, 20));
-  };
-
   // REVERSE PROJECT
   const reverseProject = () => {
     if (reverse === false) {
@@ -84,20 +79,17 @@ const DashboardPage = () => {
 
         <Box mb={20}>
           <Container>
-            {/********** Panel ***********/}
-            <Typography variant="h3" component="h1" paragraph>
-              Projects
-            </Typography>
-            <Typography variant="body1" component="p" color="textSecondary">
-              {projects.length} Project
-            </Typography>
+            {/********** PANEL ***********/}
+            <PanelDashBoard
+              txtHeading="Projects"
+              txtSubHeading="project"
+              numbLength={projects.length}
+            />
 
-            {/********** Project List ***********/}
+            {/********** PROJECT LIST ***********/}
             <ProjectList
               stateProject={projects}
               deleteProject={deleteProject}
-              stateFilter={filter}
-              filterProject={filterProject}
               stateReverse={reverse}
               reverseProject={reverseProject}
             />

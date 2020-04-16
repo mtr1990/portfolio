@@ -1,8 +1,10 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Box, Typography, IconButton, makeStyles } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { path_DASHBOARD } from "../../configs";
+import { varfadeInUp } from "../../utilities";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +28,7 @@ const CategoryItem = ({ item, deleteCategory }) => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root}>
+    <motion.div variants={varfadeInUp} className={classes.root}>
       <Box flexGrow={1}>
         <Typography variant="subtitle1">{item.name}</Typography>
       </Box>
@@ -47,7 +49,7 @@ const CategoryItem = ({ item, deleteCategory }) => {
           <Edit />
         </IconButton>
       </Box>
-    </Box>
+    </motion.div>
   );
 };
 

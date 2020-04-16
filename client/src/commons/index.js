@@ -16,3 +16,5 @@ export { default as BtnAvatar } from "./btn-avatar";
 export { default as BtnDarkMode } from "./btn-dark-mode";
 export { default as BtnLogout } from "./btn-logout";
 export { default as CheckLogin } from "./check-login";
+
+export { default as PanelDashBoard } from "./panel-dashboard";

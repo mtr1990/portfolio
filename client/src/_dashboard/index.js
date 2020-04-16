@@ -8,7 +8,6 @@ export { default as ProjectEdit } from "./projects/project-edit";
 export { default as ProjectForm } from "./projects/project-form";
 export { default as ProjectItem } from "./projects/project-item";
 export { default as ProjectList } from "./projects/project-list";
-export { default as ProjectControls } from "./projects/project-controls";
 
 export { default as LoginPage } from "./_page-login";
 export { default as UserFormLogin } from "./users/user-form-login";

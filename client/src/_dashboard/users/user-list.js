@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { varWrapBoth } from "../../utilities";
 import { UserItem } from "..";
 
 const UserList = ({ stateUsers, deleteUser }) => {
@@ -10,9 +12,13 @@ const UserList = ({ stateUsers, deleteUser }) => {
     return 0;
   });
 
-  return sortList.map((item, index) => (
-    <UserItem key={index} item={item} deleteUser={deleteUser} />
-  ));
+  return (
+    <motion.div variants={varWrapBoth}>
+      {sortList.map((item, index) => (
+        <UserItem key={index} item={item} deleteUser={deleteUser} />
+      ))}
+    </motion.div>
+  );
 };
 
 export default UserList;

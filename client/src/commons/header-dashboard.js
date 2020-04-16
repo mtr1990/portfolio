@@ -57,14 +57,13 @@ const useStyles = makeStyles((theme) => ({
 const HeaderDashboard = () => {
   const classes = useStyles();
   const { pathname } = useLocation();
-
   const [projects, setProjects] = useState([]);
   const [users, setUsers] = useState([]);
   const [categories, setCategories] = useState([]);
   const [emails, setEmails] = useState([]);
   const isCancelled = useRef(false);
-  // GET DATA
 
+  // GET DATA
   useEffect(() => {
     const getData = async () => {
       let URL1 = `projects`;
@@ -75,14 +74,18 @@ const HeaderDashboard = () => {
       const promise2 = API.get(URL2);
       const promise3 = API.get(URL3);
       const promise4 = API.get(URL4);
-      Promise.all([promise1, promise2, promise3, promise4]).then((res) => {
-        if (!isCancelled.current) {
-          setProjects(res[0].data);
-          setUsers(res[1].data);
-          setCategories(res[2].data);
-          setEmails(res[3].data);
-        }
-      });
+      Promise.all([promise1, promise2, promise3, promise4])
+        .then((res) => {
+          if (!isCancelled.current) {
+            setProjects(res[0].data);
+            setUsers(res[1].data);
+            setCategories(res[2].data);
+            setEmails(res[3].data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     };
     getData();
     return () => {

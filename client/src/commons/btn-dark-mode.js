@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BtnDarkMode = ({ iShow }) => {
+const BtnDarkMode = (props) => {
   const classes = useStyles();
   const darkMode = useDarkMode(false, {
     classNameDark: "light-theme",
@@ -31,7 +31,7 @@ const BtnDarkMode = ({ iShow }) => {
   });
 
   return (
-    <Box style={{ display: iShow }} className={classes.root}>
+    <Box display={props.display} className={classes.root}>
       <motion.div variants={varfadeIn}>
         <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
           <Checkbox

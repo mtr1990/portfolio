@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Link } from "react-router-dom";
-import { Container, Box, Typography, Button, Fab } from "@material-ui/core";
-import { ArrowBack, Add } from "@material-ui/icons";
+import { Container, Box, Fab } from "@material-ui/core";
+import { Add } from "@material-ui/icons";
 import { API, path_DASHBOARD } from "../configs";
 import { SnackStatus } from "../styles/@material-ui-custom";
-import { HeaderDashboard, CheckLogin } from "../commons";
+import { HeaderDashboard, CheckLogin, PanelDashBoard } from "../commons";
 import { CategoryList } from ".";
 
 const CategoryPage = () => {
@@ -57,24 +57,11 @@ const CategoryPage = () => {
           <Container>
             {/********** Panel ***********/}
             <Box mb={8}>
-              <Button
-                to={path_DASHBOARD.root}
-                size="small"
-                color="primary"
-                component={Link}
-                startIcon={<ArrowBack />}
-              >
-                Back
-              </Button>
-
-              <Box>
-                <Typography variant="h3" component="h1" paragraph>
-                  Categories
-                </Typography>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {categories.length} category
-                </Typography>
-              </Box>
+              <PanelDashBoard
+                txtHeading="Categories"
+                txtSubHeading="category"
+                numbLength={categories.length}
+              />
             </Box>
 
             {/********** Email List ***********/}

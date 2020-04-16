@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import { Container, Box, Typography, Button } from "@material-ui/core";
-import { ArrowBack } from "@material-ui/icons";
-import { API, path_DASHBOARD } from "../configs";
-import { HeaderDashboard, CheckLogin } from "../commons";
+import { Container, Box } from "@material-ui/core";
+import { API } from "../configs";
+import { HeaderDashboard, CheckLogin, PanelDashBoard } from "../commons";
 import { SnackStatus } from "../styles/@material-ui-custom";
 import { EmailList } from ".";
 
@@ -55,27 +53,16 @@ const EmailPage = () => {
 
         <Box mb={20}>
           <Container>
-            {/********** Panel ***********/}
+            {/********** PANEL ***********/}
             <Box mb={8}>
-              <Button
-                to={path_DASHBOARD.root}
-                size="small"
-                color="primary"
-                component={Link}
-                startIcon={<ArrowBack />}
-              >
-                Back
-              </Button>
-
-              <Typography variant="h3" component="h1" paragraph>
-                Emails
-              </Typography>
-              <Typography variant="body1" component="p" color="textSecondary">
-                {emails.length} Email
-              </Typography>
+              <PanelDashBoard
+                txtHeading="Emails"
+                txtSubHeading="Email"
+                numbLength={emails.length}
+              />
             </Box>
 
-            {/********** Email List ***********/}
+            {/********** EMAIL LIST ***********/}
             <EmailList stateEmail={emails} deleteEmail={deleteEmail} />
           </Container>
         </Box>

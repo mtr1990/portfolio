@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import {
   Box,
   Typography,
@@ -7,6 +8,7 @@ import {
   Link,
 } from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
+import { varfadeInUp } from "../../utilities";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,21 +37,21 @@ const UserItem = ({ item, deleteUser }) => {
   };
 
   return (
-    <Box className={classes.root}>
+    <motion.div variants={varfadeInUp} className={classes.root}>
       <Box flexGrow={1}>
-        <Typography variant="subtitle1">
+        <Typography variant="subtitle2">
           <Typography
-            variant="subtitle1"
+            variant="subtitle2"
             color="textSecondary"
             component="span"
           >
-            Name:{" "}
+            Username:{" "}
           </Typography>
           {item.email}
         </Typography>
-        <Typography variant="subtitle1">
+        <Typography variant="subtitle2">
           <Typography
-            variant="subtitle1"
+            variant="subtitle2"
             color="textSecondary"
             component="span"
           >
@@ -74,7 +76,7 @@ const UserItem = ({ item, deleteUser }) => {
       <IconButton onClick={() => deleteUser(item._id)} aria-label="delete user">
         <Delete />
       </IconButton>
-    </Box>
+    </motion.div>
   );
 };
 
