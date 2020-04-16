@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Container, Box, Typography, Button, Fab } from "@material-ui/core";
 import { ArrowBack, PersonAdd } from "@material-ui/icons";
 import { API, path_DASHBOARD } from "../configs";
-import { SnackStatus } from "../@material-ui-custom";
+import { SnackStatus } from "../styles/@material-ui-custom";
 import { HeaderDashboard, CheckLogin } from "../commons";
 import { UserList } from ".";
 

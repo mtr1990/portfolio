@@ -6,7 +6,7 @@ import { Box } from "@material-ui/core";
 import { API } from "../configs";
 import { varfadeIn, UrlFormat } from "../utilities";
 import { HeaderClient, HeroProjectDetails, BtnDarkMode } from "../commons";
-import { SnackStatus } from "../@material-ui-custom";
+import { SnackStatus } from "../styles/@material-ui-custom";
 import { ProjectDetailsContent, ProjectDetailsControls, NoMatchPage } from ".";
 
 const ProjectDetailsPage = () => {

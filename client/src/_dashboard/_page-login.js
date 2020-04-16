@@ -32,6 +32,7 @@ const LoginPage = (props) => {
   const [password] = useState("");
   const [isError, setIsError] = useState(null);
 
+  // REQUEST LOGIN
   const requestLogin = async (email, password) => {
     const data = {
       email,
@@ -46,11 +47,12 @@ const LoginPage = (props) => {
     });
   };
 
+  // SUBMIT
   const handleSubmit = (values, { setSubmitting }) => {
     requestLogin(values.email, values.password);
     setTimeout(() => {
       setSubmitting(false);
-    }, 1200);
+    }, 2400);
   };
 
   return (

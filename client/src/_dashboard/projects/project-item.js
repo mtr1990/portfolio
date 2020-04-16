@@ -4,7 +4,7 @@ import { useSnackbar } from "notistack";
 import { Box, Typography, IconButton, makeStyles } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
 import { path_DASHBOARD } from "../../configs";
-import { SnackAction } from "../../@material-ui-custom";
+import { SnackAction } from "../../styles/@material-ui-custom";
 
 const useStyles = makeStyles((theme) => ({
   root: {

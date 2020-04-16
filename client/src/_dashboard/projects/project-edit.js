@@ -8,7 +8,7 @@ import { API, history, path_DASHBOARD } from "../../configs";
 import { validationProjectForm } from "../../utilities";
 import { HeaderDashboard, CheckLogin } from "../../commons";
 import { ProjectForm } from "..";
-import { SnackStatus } from "../../@material-ui-custom";
+import { SnackStatus } from "../../styles/@material-ui-custom";
 
 const useStyles = makeStyles((theme) => ({
   root: {

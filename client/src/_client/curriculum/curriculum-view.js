@@ -18,7 +18,7 @@ import {
   varScaleX,
   validationCVForm,
 } from "../../utilities";
-import { SnackStatus } from "../../@material-ui-custom";
+import { SnackStatus } from "../../styles/@material-ui-custom";
 import { CurriculumForm } from "..";
 
 const useStyles = makeStyles((theme) => ({

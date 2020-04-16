@@ -12,7 +12,7 @@ import {
   LoadingPage,
   HeroHome,
 } from "../commons";
-import { SnackStatus } from "../@material-ui-custom";
+import { SnackStatus } from "../styles/@material-ui-custom";
 import { ProjectList } from ".";
 
 const useStyles = makeStyles((theme) => ({

@@ -36,10 +36,10 @@ router.post("/login", (req, res) => {
       if (!user.comparePassword(req.body.password, user.password)) {
         return res.send({ error: true, message: "Wrong password!" });
       }
+
       req.session.user = user;
       req.session.isLoggedIn = true;
       return res.send({ message: "You are signed in" });
-      res.send(user);
     })
     .catch(function (error) {
       console.log(error);

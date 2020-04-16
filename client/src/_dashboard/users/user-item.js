@@ -1,5 +1,11 @@
-import React from "react";
-import { Box, Typography, IconButton, makeStyles } from "@material-ui/core";
+import React, { useState } from "react";
+import {
+  Box,
+  Typography,
+  IconButton,
+  makeStyles,
+  Link,
+} from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
 const UserItem = ({ item, deleteUser }) => {
   const classes = useStyles();
+  const [hidden, setHidden] = useState(true);
+
+  const showPassword = () => {
+    setHidden(!hidden);
+  };
 
   return (
     <Box className={classes.root}>
@@ -44,8 +55,20 @@ const UserItem = ({ item, deleteUser }) => {
           >
             Password:{" "}
           </Typography>
-          {item.password}
+
+          <span
+            style={{
+              color: hidden && "transparent",
+              textShadow: hidden && " 0 0 5px rgba(0,0,0,0.5)",
+            }}
+          >
+            {item.password}
+          </span>
         </Typography>
+
+        <Link underline="none" onClick={showPassword}>
+          <Typography variant="caption">{hidden ? "Show" : "Hide"}</Typography>{" "}
+        </Link>
       </Box>
 
       <IconButton onClick={() => deleteUser(item._id)} aria-label="delete user">

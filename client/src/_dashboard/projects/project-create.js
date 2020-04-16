@@ -5,7 +5,7 @@ import { useSnackbar } from "notistack";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { API, history, path_DASHBOARD } from "../../configs";
 import { validationProjectForm } from "../../utilities";
-import { SnackStatus } from "../../@material-ui-custom";
+import { SnackStatus } from "../../styles/@material-ui-custom";
 import { HeaderDashboard, CheckLogin } from "../../commons";
 import { ProjectForm } from "..";
 

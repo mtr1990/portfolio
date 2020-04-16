@@ -6,7 +6,7 @@ import { Container, Box, Typography, Button } from "@material-ui/core";
 import { ArrowBack } from "@material-ui/icons";
 import { API, path_DASHBOARD } from "../configs";
 import { HeaderDashboard, CheckLogin } from "../commons";
-import { SnackStatus } from "../@material-ui-custom";
+import { SnackStatus } from "../styles/@material-ui-custom";
 import { EmailList } from ".";
 
 const EmailPage = () => {

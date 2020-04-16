@@ -7,7 +7,7 @@ import {
   FormControlLabel,
   Switch,
 } from "@material-ui/core";
-import { MoreSwitch } from "../../@material-ui-custom";
+import { MoreSwitch } from "../../styles/@material-ui-custom";
 
 const GlSwitch = () => (
   <GlBlock>
