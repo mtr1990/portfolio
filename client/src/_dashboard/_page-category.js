@@ -14,25 +14,27 @@ const CategoryPage = () => {
   const [categories, setCategories] = useState([]);
 
   // GET CATEGORIES
-  const getCategories = async () => {
-    await API.get("categories")
-      .then((res) => {
-        setCategories(res.data);
-      })
-      .catch((err) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Cannot connect to the server!",
-          variant: "error",
+  useEffect(() => {
+    const getCategories = async () => {
+      await API.get("categories")
+        .then((res) => {
+          setCategories(res.data);
+        })
+        .catch((err) => {
+          SnackStatus(enqueueSnackbar, {
+            message: "Cannot connect to the server!",
+            variant: "error",
+          });
         });
-      });
-  };
+    };
+    getCategories();
+  }, [enqueueSnackbar]);
 
   // DELETE CATEGORY
   const deleteCategory = async (id) => {
     await API.delete(`categories/${id}`)
       .then((res) => {
-        getCategories();
-
+        setCategories(categories.filter((item) => item._id !== id));
         SnackStatus(enqueueSnackbar, {
           message: "Deleted success!",
           variant: "success",
@@ -44,12 +46,7 @@ const CategoryPage = () => {
           variant: "error",
         });
       });
-    setCategories(categories.filter((item) => item._id !== id));
   };
-
-  useEffect(() => {
-    getCategories();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <CheckLogin>

@@ -20,33 +20,32 @@ const DashboardPage = () => {
       : true
   );
 
-  useEffect(() => {
-    getProjects();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
   // GET PROJECTS
-  const getProjects = async () => {
-    await API.get("projects")
-      .then((res) => {
-        if (reverse === true) {
-          setProjects(res.data.reverse());
-        } else {
-          setProjects(res.data);
-        }
-      })
-      .catch(() => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Cannot connect to the server!",
-          variant: "error",
+  useEffect(() => {
+    const getProjects = async () => {
+      await API.get("projects")
+        .then((res) => {
+          if (reverse === true) {
+            setProjects(res.data.reverse());
+          } else {
+            setProjects(res.data);
+          }
+        })
+        .catch(() => {
+          SnackStatus(enqueueSnackbar, {
+            message: "Cannot connect to the server!",
+            variant: "error",
+          });
         });
-      });
-  };
+    };
+    getProjects();
+  }, [enqueueSnackbar, reverse]);
 
   // DELETE PROJECT
   const deleteProject = async (id) => {
     await API.delete(`projects/${id}`)
       .then((res) => {
-        getProjects();
+        setProjects(projects.filter((item) => item._id !== id));
         SnackStatus(enqueueSnackbar, {
           message: "Deleted success!",
           variant: "success",
@@ -58,7 +57,6 @@ const DashboardPage = () => {
           variant: "error",
         });
       });
-    setProjects(projects.filter((item) => item._id !== id));
   };
 
   // FILTER PROJECT

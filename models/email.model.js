@@ -5,8 +5,8 @@ const EmailSchema = new Schema({
   email: String,
   date: {
     type: Date,
-    default: Date.now()
-  }
+    default: Date.now(),
+  },
 });
 
 module.exports = Email = mongoose.model("Email", EmailSchema);

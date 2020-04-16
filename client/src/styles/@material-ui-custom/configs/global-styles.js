@@ -96,17 +96,17 @@ export const GlobalCss = withStyles((theme) => ({
     },
 
     // TEXT FIELD: OUTLINEDINPUT
-    ".MuiOutlinedInput-root": {
-      "& .MuiOutlinedInput-notchedOutline": {
-        borderColor: theme.palette.contrast.low,
-      },
-      "&:hover .MuiOutlinedInput-notchedOutline": {
-        borderColor: theme.palette.contrast.medium,
-      },
-      "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-        borderColor: theme.palette.primary.main,
-      },
-    },
+    // ".MuiOutlinedInput-root": {
+    //   "& .MuiOutlinedInput-notchedOutline": {
+    //     borderColor: theme.palette.contrast.low,
+    //   },
+    //   "&:hover .MuiOutlinedInput-notchedOutline": {
+    //     borderColor: theme.palette.contrast.medium,
+    //   },
+    //   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+    //     borderColor: theme.palette.primary.main,
+    //   },
+    // },
 
     // TEXT FIELD: OUTLINEDINPUT
     ".MuiFormHelperText-root": {

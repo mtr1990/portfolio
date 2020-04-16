@@ -33,7 +33,7 @@ const ProjectCreate = () => {
   const [videolist] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  // Get Categories
+  // GET CATEGORIES
   useEffect(() => {
     const getCategories = async () => {
       await API.get("categories")
@@ -55,7 +55,7 @@ const ProjectCreate = () => {
     getCategories();
   }, [enqueueSnackbar]);
 
-  // Create Project
+  // CREATE PROJECT
   const createProject = async (
     name,
     description,
@@ -90,20 +90,20 @@ const ProjectCreate = () => {
       });
   };
 
-  // Submit Create
+  // SUBMIT
   const handleSubmit = (values, { setSubmitting }) => {
+    createProject(
+      values.name,
+      values.description,
+      values.thumbnail,
+      values.hero,
+      values.category,
+      values.imglist,
+      values.videolist
+    );
     setTimeout(() => {
-      createProject(
-        values.name,
-        values.description,
-        values.thumbnail,
-        values.hero,
-        values.category,
-        values.imglist,
-        values.videolist
-      );
       setSubmitting(false);
-    }, 800);
+    }, 1600);
   };
 
   return (

@@ -52,7 +52,7 @@ const LoginPage = (props) => {
     requestLogin(values.email, values.password);
     setTimeout(() => {
       setSubmitting(false);
-    }, 2400);
+    }, 1600);
   };
 
   return (

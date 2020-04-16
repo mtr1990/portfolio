@@ -96,7 +96,7 @@ const CurriculumView = forwardRef((props, ref) => {
     setTimeout(() => {
       window.open(urlCV, "_blank", "noopener noreferrer");
       setSubmitting(false);
-    }, 800); // Important setTimeOut < 1000  RESOLVE popup blocked
+    }, 1000); // Important setTimeOut < 1000  RESOLVE popup blocked
   };
 
   const PaperWrap = (props) => {

@@ -24,11 +24,10 @@ const useStyles = makeStyles((theme) => ({
 const CategoryEdit = () => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
+  const [name, setName] = useState("");
   let { id } = useParams(); // Hook
 
-  const [name, setName] = useState("");
-
-  // Get Category By Id
+  // GET CATEGORY BY ID
   useEffect(() => {
     const getCategoryById = async () => {
       await API.get(`categories/${id}`)
@@ -42,11 +41,10 @@ const CategoryEdit = () => {
           });
         });
     };
-
     getCategoryById();
   }, [id, enqueueSnackbar]);
 
-  // Edit Category
+  // EDIT CATEGORY
   const editCategory = async (name) => {
     const data = {
       name,
@@ -67,12 +65,12 @@ const CategoryEdit = () => {
       });
   };
 
-  // Submit Edit
+  // SUBMIT
   const handleSubmit = (values, { setSubmitting }) => {
+    editCategory(values.name);
     setTimeout(() => {
-      editCategory(values.name);
       setSubmitting(false);
-    }, 800);
+    }, 1600);
   };
 
   return (

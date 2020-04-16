@@ -4,12 +4,12 @@ import { Grid, Box, Typography, makeStyles } from "@material-ui/core";
 import { GlLayout, GlBlock } from ".";
 
 const useStyles = makeStyles((theme) => ({
-  color: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
+  item: {
+    width: theme.spacing(4.5),
+    height: theme.spacing(8),
     marginRight: theme.spacing(2),
     display: "inline-block",
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: theme.shape.borderRadiusMd,
     "&:last-child": {
       marginRight: 0,
     },
@@ -55,7 +55,7 @@ const GlColorPalettes = () => {
       <GlLayout heading="Color Palettes">
         <GlBlock>
           <Grid container>
-            {/********** Primary ***********/}
+            {/********** PRIMARY ***********/}
             <Grid item xs={12} sm={6} lg={4}>
               <Typography
                 variant="subtitle2"
@@ -67,24 +67,24 @@ const GlColorPalettes = () => {
               <Box className={classes.space}>
                 <Box className={classes.space}>
                   <Box
-                    className={classes.color}
+                    className={classes.item}
                     classes={{
                       root: classes.primary_light,
                     }}
                   />
                   <Box
-                    className={classes.color}
+                    className={classes.item}
                     classes={{ root: classes.primary_main }}
                   />
                   <Box
-                    className={classes.color}
+                    className={classes.item}
                     classes={{ root: classes.primary_dark }}
                   />
                 </Box>
               </Box>
             </Grid>
 
-            {/********** Accent ***********/}
+            {/********** ACCENT ***********/}
             <Grid item xs={12} sm={6} lg={4}>
               <Typography
                 variant="subtitle2"
@@ -95,21 +95,21 @@ const GlColorPalettes = () => {
               </Typography>
               <Box className={classes.space}>
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.secondary_light }}
                 />
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.secondary_main }}
                 />
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.secondary_dark }}
                 />
               </Box>
             </Grid>
 
-            {/********** Info ***********/}
+            {/********** INFO ***********/}
             <Grid item xs={12} sm={6} lg={4}>
               <Typography
                 variant="subtitle2"
@@ -120,21 +120,21 @@ const GlColorPalettes = () => {
               </Typography>
               <Box className={classes.space}>
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.info_light }}
                 />
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.info_main }}
                 />
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.info_dark }}
                 />
               </Box>
             </Grid>
 
-            {/********** Success ***********/}
+            {/********** SUCCESS ***********/}
             <Grid item xs={12} sm={6} lg={4}>
               <Typography
                 variant="subtitle2"
@@ -146,21 +146,21 @@ const GlColorPalettes = () => {
 
               <Box className={classes.space}>
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.success_light }}
                 />
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.success_main }}
                 />
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.success_dark }}
                 />
               </Box>
             </Grid>
 
-            {/********** Warning ***********/}
+            {/********** WARNING ***********/}
             <Grid item xs={12} sm={6} lg={4}>
               <Typography
                 variant="subtitle2"
@@ -171,21 +171,21 @@ const GlColorPalettes = () => {
               </Typography>
               <Box className={classes.space}>
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.warning_light }}
                 />
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.warning_main }}
                 />
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.warning_dark }}
                 />
               </Box>
             </Grid>
 
-            {/********** Error ***********/}
+            {/********** ERROR ***********/}
             <Grid item xs={12} sm={6} lg={4}>
               <Typography
                 variant="subtitle2"
@@ -196,21 +196,21 @@ const GlColorPalettes = () => {
               </Typography>
               <Box className={classes.space}>
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.error_light }}
                 />
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.error_main }}
                 />
                 <Box
-                  className={classes.color}
+                  className={classes.item}
                   classes={{ root: classes.error_dark }}
                 />
               </Box>
             </Grid>
 
-            {/********** Contrast ***********/}
+            {/********** CONTRAST ***********/}
             <Grid item xs={12} sm={6} lg={4}>
               <Typography
                 variant="subtitle2"
@@ -220,15 +220,11 @@ const GlColorPalettes = () => {
                 Contrast
               </Typography>
               <Box className={classes.space}>
-                <Box className={`${classes.color} ${classes.contrast_lower}`} />
-                <Box className={`${classes.color} ${classes.contrast_low}`} />
-                <Box
-                  className={`${classes.color} ${classes.contrast_medium}`}
-                />
-                <Box className={`${classes.color} ${classes.contrast_high}`} />
-                <Box
-                  className={`${classes.color} ${classes.contrast_higher}`}
-                />
+                <Box className={`${classes.item} ${classes.contrast_lower}`} />
+                <Box className={`${classes.item} ${classes.contrast_low}`} />
+                <Box className={`${classes.item} ${classes.contrast_medium}`} />
+                <Box className={`${classes.item} ${classes.contrast_high}`} />
+                <Box className={`${classes.item} ${classes.contrast_higher}`} />
               </Box>
             </Grid>
           </Grid>

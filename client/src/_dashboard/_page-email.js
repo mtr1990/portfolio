@@ -14,24 +14,27 @@ const EmailPage = () => {
   const [emails, setEmails] = useState([]);
 
   // GET EMAIL
-  const getEmails = async () => {
-    await API.get("emails")
-      .then((res) => {
-        setEmails(res.data);
-      })
-      .catch((err) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Cannot connect to the server!",
-          variant: "error",
+  useEffect(() => {
+    const getEmails = async () => {
+      await API.get("emails")
+        .then((res) => {
+          setEmails(res.data);
+        })
+        .catch((err) => {
+          SnackStatus(enqueueSnackbar, {
+            message: "Cannot connect to the server!",
+            variant: "error",
+          });
         });
-      });
-  };
+    };
+    getEmails();
+  }, [enqueueSnackbar]);
 
   // DELETE EMAIL
   const deleteEmail = async (id) => {
     await API.delete(`emails/${id}`)
       .then((res) => {
-        getEmails();
+        setEmails(emails.filter((item) => item._id !== id));
         SnackStatus(enqueueSnackbar, {
           message: "Deleted success!",
           variant: "success",
@@ -43,12 +46,7 @@ const EmailPage = () => {
           variant: "error",
         });
       });
-    setEmails(emails.filter((item) => item._id !== id));
   };
-
-  useEffect(() => {
-    getEmails();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <CheckLogin>

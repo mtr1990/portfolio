@@ -25,7 +25,7 @@ const CategoryCreate = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [name] = useState("");
 
-  // Create Project
+  // CREATE CATEGORY
   const createCategory = async (name) => {
     const data = { name };
     await API.post(`categories/save`, data)
@@ -44,12 +44,12 @@ const CategoryCreate = () => {
       });
   };
 
-  // Submit Create
+  // SUBMIT
   const handleSubmit = (values, { setSubmitting }) => {
+    createCategory(values.name);
     setTimeout(() => {
-      createCategory(values.name);
       setSubmitting(false);
-    }, 800);
+    }, 1600);
   };
 
   return (

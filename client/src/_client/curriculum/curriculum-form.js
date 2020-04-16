@@ -13,7 +13,7 @@ const CurriculumForm = ({
 }) => {
   return (
     <Form autoComplete="off" noValidate>
-      {/********** Code ***********/}
+      {/********** CODE ***********/}
       <motion.div variants={varfadeInUp}>
         <Box mb={2}>
           <TextField
@@ -28,7 +28,7 @@ const CurriculumForm = ({
         </Box>
       </motion.div>
 
-      {/********** Email ***********/}
+      {/********** EMAIL ***********/}
       <motion.div variants={varfadeInUp}>
         <Box mb={2}>
           <TextField
@@ -44,7 +44,7 @@ const CurriculumForm = ({
         </Box>
       </motion.div>
 
-      {/********** Submit ***********/}
+      {/********** FOOTER ***********/}
       <motion.div variants={varfadeInUp}>
         <Button
           fullWidth

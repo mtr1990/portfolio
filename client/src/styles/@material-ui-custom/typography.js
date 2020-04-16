@@ -10,23 +10,23 @@ const useStyles = makeStyles((theme) => ({
 export const MoreTypography = (props) => {
   const classes = useStyles();
 
-  let color;
-  switch (props.color) {
+  let status;
+  switch (props.status) {
     case "info":
-      color = classes.info;
+      status = classes.info;
       break;
     case "success":
-      color = classes.success;
+      status = classes.success;
       break;
     case "warning":
-      color = classes.warning;
+      status = classes.warning;
       break;
     default:
-      color = null;
+      status = null;
   }
 
   return (
-    <Typography className={color} {...props}>
+    <Typography className={status} {...props}>
       {props.children}
     </Typography>
   );

@@ -66,7 +66,7 @@ const UserCreate = () => {
     setTimeout(() => {
       createUser(values.email, values.password);
       setSubmitting(false);
-    }, 2400);
+    }, 1600);
   };
 
   return (

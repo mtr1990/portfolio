@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Container,
@@ -62,61 +62,32 @@ const HeaderDashboard = () => {
   const [users, setUsers] = useState([]);
   const [categories, setCategories] = useState([]);
   const [emails, setEmails] = useState([]);
+  const isCancelled = useRef(false);
+  // GET DATA
 
-  // GET PROJECTS
   useEffect(() => {
-    const getProject = async () => {
-      await API.get("projects")
-        .then((res) => {
-          setProjects(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    const getData = async () => {
+      let URL1 = `projects`;
+      let URL2 = `users`;
+      let URL3 = `categories`;
+      let URL4 = `emails`;
+      const promise1 = API.get(URL1);
+      const promise2 = API.get(URL2);
+      const promise3 = API.get(URL3);
+      const promise4 = API.get(URL4);
+      Promise.all([promise1, promise2, promise3, promise4]).then((res) => {
+        if (!isCancelled.current) {
+          setProjects(res[0].data);
+          setUsers(res[1].data);
+          setCategories(res[2].data);
+          setEmails(res[3].data);
+        }
+      });
     };
-    getProject();
-  }, []);
-
-  // GET USERS
-  useEffect(() => {
-    const getUsers = async () => {
-      await API.get("users")
-        .then((res) => {
-          setUsers(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    getData();
+    return () => {
+      isCancelled.current = true;
     };
-    getUsers();
-  }, []);
-
-  // GET CATEGORIES
-  useEffect(() => {
-    const getEmails = async () => {
-      await API.get("categories")
-        .then((res) => {
-          setCategories(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getEmails();
-  }, []);
-
-  // GET EMAILS
-  useEffect(() => {
-    const getEmails = async () => {
-      await API.get("emails")
-        .then((res) => {
-          setEmails(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getEmails();
   }, []);
 
   return (

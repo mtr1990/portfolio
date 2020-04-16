@@ -39,59 +39,56 @@ const HomePage = () => {
   //   return () => clearTimeout(timer);
   // }, []);
 
-  // Get Projects
-  const getProjects = async () => {
-    await API.get("projects")
-      .then((res) => {
-        setProjects(res.data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Cannot connect to the server!",
-          variant: "error",
-        });
-      });
-  };
-
+  // GET PROJECTS
   useEffect(() => {
+    const getProjects = async () => {
+      await API.get("projects")
+        .then((res) => {
+          setProjects(res.data);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          SnackStatus(enqueueSnackbar, {
+            message: "Cannot connect to the server!",
+            variant: "error",
+          });
+        });
+    };
     getProjects();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [enqueueSnackbar]);
 
   return (
-    <>
-      <motion.div
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        className={classes.root}
-      >
-        {isLoading ? <LoadingPage isLoading={isLoading} /> : null}
+    <motion.div
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      className={classes.root}
+    >
+      {isLoading ? <LoadingPage isLoading={isLoading} /> : null}
 
-        <HeaderClient />
-        <BgBody />
-        <BtnDarkMode />
-        <BtnAvatar />
+      <HeaderClient />
+      <BgBody />
+      <BtnDarkMode />
+      <BtnAvatar />
 
-        {/********** Hero ***********/}
-        <ScrollMagicFadeOut>
-          <HeroHome />
-        </ScrollMagicFadeOut>
-        <Box height="100vh" />
+      {/********** Hero ***********/}
+      <ScrollMagicFadeOut>
+        <HeroHome />
+      </ScrollMagicFadeOut>
+      <Box height="100vh" />
 
-        <Box className={classes.main}>
-          <Container>
-            <Grid item md={8} lg={7}>
-              <motion.div variants={varWrapExit}>
-                <Grid container spacing={4}>
-                  <ProjectList stateProject={projects} />
-                </Grid>
-              </motion.div>
-            </Grid>
-          </Container>
-        </Box>
-      </motion.div>
-    </>
+      <Box className={classes.main}>
+        <Container>
+          <Grid item md={8} lg={7}>
+            <motion.div variants={varWrapExit}>
+              <Grid container spacing={4}>
+                <ProjectList stateProject={projects} />
+              </Grid>
+            </motion.div>
+          </Grid>
+        </Container>
+      </Box>
+    </motion.div>
   );
 };
 

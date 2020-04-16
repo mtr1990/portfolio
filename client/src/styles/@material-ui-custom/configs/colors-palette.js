@@ -1,12 +1,20 @@
 // COMMONS
-const primary = "hsl(18, 100%, 50%)";
-const secondary = "rgb(0, 0, 238)";
-const info = "rgb(7, 152, 236)";
-const success = "rgb(47, 208, 105)";
-const warning = "rgb(254, 196, 1)";
-const error = "rgb(252, 108, 124)";
-const white = "#FFF";
+// const primary = "hsl(18, 100%, 50%)";
+// const secondary = "rgb(0, 0, 238)";
+// const info = "rgb(7, 152, 236)";
+// const success = "rgb(47, 208, 105)";
+// const warning = "rgb(254, 196, 1)";
+// const error = "rgb(252, 108, 124)";
+// const white = "#FFF";
 // const black = "#000";
+
+const primary = "rgb(255, 77, 0)";
+const secondary = "rgb(101, 84, 192)";
+const info = "rgb(0, 184, 217)";
+const success = "rgb(54, 179, 126)";
+const warning = "rgb(255, 171, 0)";
+const error = "rgb(255, 86, 48)";
+const white = "#FFF";
 
 const grey = [
   "rgb(248, 249, 250)", // [0]f8f9fa

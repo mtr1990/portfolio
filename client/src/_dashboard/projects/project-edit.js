@@ -116,20 +116,20 @@ const ProjectEdit = () => {
       });
   };
 
-  // SUBMIT EDIT
+  // SUBMIT
   const handleSubmit = (values, { setSubmitting }) => {
+    editProject(
+      values.name,
+      values.description,
+      values.thumbnail,
+      values.hero,
+      values.category,
+      values.imglist,
+      values.videolist
+    );
     setTimeout(() => {
-      editProject(
-        values.name,
-        values.description,
-        values.thumbnail,
-        values.hero,
-        values.category,
-        values.imglist,
-        values.videolist
-      );
       setSubmitting(false);
-    }, 800);
+    }, 1600);
   };
 
   return (

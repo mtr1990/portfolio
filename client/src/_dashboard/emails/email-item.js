@@ -28,10 +28,9 @@ const EmailItem = ({ item, deleteEmail }) => {
     <Box className={classes.root}>
       <Box flexGrow={1}>
         <Typography variant="caption" color="textSecondary">
-          <Moment fromNow parse="YYYY-MM-DD HH:mm:ss">
-            {item.date}
-          </Moment>
+          <Moment fromNow>{item.date}</Moment>
         </Typography>
+
         <Typography variant="subtitle1">{item.email}</Typography>
       </Box>
 

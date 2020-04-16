@@ -16,7 +16,7 @@ export const SnackContainer = (props) => {
   return (
     <SnackbarProvider
       autoHideDuration={5000}
-      maxSnack={1}
+      maxSnack={3}
       preventDuplicate
       anchorOrigin={{
         vertical: "top",
@@ -31,6 +31,7 @@ export const SnackContainer = (props) => {
 // STATUS
 export const SnackStatus = (enqueueSnackbar, { ...args }) => {
   return enqueueSnackbar(args.message, {
+    preventDuplicate: false,
     content: (key, message) => (
       <SnackContentStatus
         id={key}
@@ -71,7 +72,7 @@ const SnackContentStatus = React.forwardRef((props, ref) => {
     <Alert
       ref={ref}
       severity={props.variant}
-      onClose={props.close !== false ? () => closeSnackbar() : null}
+      onClose={props.close !== false ? () => closeSnackbar(props.id) : null}
       variant="filled"
       className={classes.conmons}
     >
@@ -113,7 +114,11 @@ const SnackContentAction = React.forwardRef((props, ref) => {
           </Button>
         </Box>
 
-        <Button color="primary" size="small" onClick={() => closeSnackbar()}>
+        <Button
+          color="primary"
+          size="small"
+          onClick={() => closeSnackbar(props.id)}
+        >
           Cancel
         </Button>
       </Box>

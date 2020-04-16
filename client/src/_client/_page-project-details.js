@@ -11,26 +11,24 @@ import { ProjectDetailsContent, ProjectDetailsControls, NoMatchPage } from ".";
 
 const ProjectDetailsPage = () => {
   const { enqueueSnackbar } = useSnackbar();
-
   const [projects, setProjects] = useState(null);
 
-  // Get Project By Id
-  const getProjectById = async () => {
-    await API.get("projects")
-      .then((res) => {
-        setProjects(res.data);
-      })
-      .catch((err) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Cannot connect to the server!",
-          variant: "error",
-        });
-      });
-  };
-
+  // GET PROJECT BY ID
   useEffect(() => {
+    const getProjectById = async () => {
+      await API.get("projects")
+        .then((res) => {
+          setProjects(res.data);
+        })
+        .catch((err) => {
+          SnackStatus(enqueueSnackbar, {
+            message: "Cannot connect to the server!",
+            variant: "error",
+          });
+        });
+    };
     getProjectById();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [enqueueSnackbar]);
 
   // let ItemId = parseInt(props.match.params.id, 10);
   // let ItemId = props.match.params.id;

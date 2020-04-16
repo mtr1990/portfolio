@@ -6,7 +6,7 @@ export { default as GlMenuList } from "./components/layout-menu";
 export { default as GlAppBar } from "./components/layout-appbar";
 export { default as GlBlock } from "./components/layout-block";
 
-export { default as GlColorPalettes } from "./_guideline-palettes";
+export { default as GlColorPalettes } from "./_guideline-colors-palette";
 export { default as GlTypography } from "./_guideline-typography";
 export { default as GlButtons } from "./_guideline-buttons";
 

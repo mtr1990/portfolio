@@ -14,25 +14,27 @@ const UserPage = () => {
   const [users, setUsers] = useState([]);
 
   // GET USERS
-  const getUsers = async () => {
-    await API.get("users")
-      .then((res) => {
-        setUsers(res.data);
-      })
-      .catch((err) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Cannot connect to the server!",
-          variant: "error",
+  useEffect(() => {
+    const getUsers = async () => {
+      await API.get("users")
+        .then((res) => {
+          setUsers(res.data);
+        })
+        .catch((err) => {
+          SnackStatus(enqueueSnackbar, {
+            message: "Cannot connect to the server!",
+            variant: "error",
+          });
         });
-      });
-  };
+    };
+    getUsers();
+  }, [enqueueSnackbar]);
 
   // DELETE USER
   const deleteUser = async (id) => {
     await API.delete(`users/${id}`)
       .then((res) => {
-        getUsers();
-
+        setUsers(users.filter((item) => item._id !== id));
         SnackStatus(enqueueSnackbar, {
           message: "Deleted success!",
           variant: "success",
@@ -44,12 +46,7 @@ const UserPage = () => {
           variant: "error",
         });
       });
-    setUsers(users.filter((item) => item._id !== id));
   };
-
-  useEffect(() => {
-    getUsers();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <CheckLogin>
