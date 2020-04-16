@@ -1,31 +1,31 @@
 /**
  * Components
  */
-export { default as Dashboard } from "./_page-dashboard";
+export { default as DashboardPage } from "./_page-dashboard";
 
-export { default as CreateProject } from "./create-project";
-export { default as EditProject } from "./edit-project";
-export { default as ProjectForm } from "./form-project";
-export { default as ProjectItem } from "./item-project";
-export { default as ProjectList } from "./list-project";
-export { default as ProjectControls } from "./controls-project";
+export { default as ProjectCreate } from "./projects/project-create";
+export { default as ProjectEdit } from "./projects/project-edit";
+export { default as ProjectForm } from "./projects/project-form";
+export { default as ProjectItem } from "./projects/project-item";
+export { default as ProjectList } from "./projects/project-list";
+export { default as ProjectControls } from "./projects/project-controls";
 
 export { default as LoginPage } from "./_page-login";
-export { default as LoginForm } from "./form-login";
+export { default as UserFormLogin } from "./users/user-form-login";
 
 export { default as EmailPage } from "./_page-email";
-export { default as EmailList } from "./list-email";
-export { default as EmailItem } from "./item-email";
+export { default as EmailList } from "./emails/email-list";
+export { default as EmailItem } from "./emails/email-item";
 
 export { default as CategoryPage } from "./_page-category";
-export { default as CreateCategory } from "./create-category";
-export { default as EditCategory } from "./edit-category";
-export { default as CategoryForm } from "./form-category";
-export { default as CategoryItem } from "./item-category";
-export { default as CategoryList } from "./list-category";
+export { default as CategoryCreate } from "./categories/category-create";
+export { default as CategoryEdit } from "./categories/category-edit";
+export { default as CategoryForm } from "./categories/category-form";
+export { default as CategoryItem } from "./categories/category-item";
+export { default as CategoryList } from "./categories/category-list";
 
-export { default as CreateUser } from "./create-user";
+export { default as UserCreate } from "./users/user-create";
 export { default as UserPage } from "./_page-user";
-export { default as UserForm } from "./form-user-register";
-export { default as UserList } from "./list-user";
-export { default as UserItem } from "./item-user";
+export { default as UserFormRegister } from "./users/user-form-register";
+export { default as UserList } from "./users/user-list";
+export { default as UserItem } from "./users/user-item";

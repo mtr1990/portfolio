@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API } from "../config";
+import { API } from "../configs";
 import { LoginPage } from "../_dashboard";
 
 const CheckLogin = (props) => {

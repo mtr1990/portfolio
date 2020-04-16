@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { makeStyles } from "@material-ui/core";
 import { varfadeInUp, varIcon } from "../utilities";
-import { path_CLIENT } from "../config";
+import { path_CLIENT } from "../configs";
 import { iAvatar } from "../assets";
 
 const useStyles = makeStyles((theme) => ({

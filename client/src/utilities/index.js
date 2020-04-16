@@ -1,11 +1,11 @@
-export { default as Nprogress } from "./nprogress.utilities";
+export { default as Nprogress } from "./nprogress";
 export {
   ScrollMagicFadeIn,
   ScrollMagicFadeOut,
-} from "./scroll-magic.utilities";
-export { default as SmoothScrollbar } from "./scroll-smooth.utilities";
+} from "./scroll-magic";
+export { default as SmoothScrollbar } from "./scroll-smooth";
 export { default as UrlFormat } from "./url-format";
-export { default as DisplayFormikState } from "./helper.utilities";
+export { default as DisplayFormikState } from "./helper-formik";
 
 /**
  * Validation
@@ -16,7 +16,7 @@ export {
   validationProjectForm,
   validationCategoryForm,
   validationUserForm,
-} from "./validation.utilities";
+} from "./validation";
 
 /**
  * Motion Variants
@@ -40,4 +40,4 @@ export {
   varZoomInOut,
   varScaleX,
   varScaleY,
-} from "./variants.utilities";
+} from "./variants";

@@ -1,7 +1,7 @@
 /**
  * Config
  */
-export { ThemeWrap } from "./config";
+export { ThemeWrap } from "./configs";
 
 /**
  * Typography

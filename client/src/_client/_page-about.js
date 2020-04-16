@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
       alignItems: "center",
     },
   },
-
   contacts: {
     padding: theme.spacing(2),
     marginTop: theme.spacing(3),

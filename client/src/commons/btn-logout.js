@@ -1,6 +1,6 @@
 import React from "react";
 import { useSnackbar } from "notistack";
-import { API, history, path_DASHBOARD } from "../config";
+import { API, history, path_DASHBOARD } from "../configs";
 import { SnackStatus, MoreBtnText } from "../@material-ui-custom";
 import { ExitToApp } from "@material-ui/icons";
 

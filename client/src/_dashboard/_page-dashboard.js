@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Box, Container, Typography, Fab } from "@material-ui/core";
 import { NoteAdd } from "@material-ui/icons";
-import { API, path_DASHBOARD } from "../config";
+import { API, path_DASHBOARD } from "../configs";
 import { HeaderDashboard, CheckLogin } from "../commons";
 import { SnackStatus } from "../@material-ui-custom";
 import { ProjectList } from ".";
 
-const Dashboard = () => {
+const DashboardPage = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [projects, setProjects] = useState([]);
   const [filter, setFilter] = useState("");
@@ -121,4 +121,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

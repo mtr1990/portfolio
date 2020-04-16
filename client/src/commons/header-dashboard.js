@@ -16,7 +16,7 @@ import {
   SupervisorAccount,
   Drafts,
 } from "@material-ui/icons";
-import { API, path_DASHBOARD } from "../config";
+import { API, path_DASHBOARD } from "../configs";
 import { Logo, BtnLogout } from ".";
 
 const useStyles = makeStyles((theme) => ({

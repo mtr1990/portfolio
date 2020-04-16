@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Formik } from "formik";
-import { history, API, path_DASHBOARD } from "../config";
+import { history, API, path_DASHBOARD } from "../configs";
 import { validationLogin } from "../utilities";
 import {
   Container,
@@ -11,7 +11,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { HeaderClient } from "../commons";
-import { LoginForm } from ".";
+import { UserFormLogin } from ".";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,7 +77,7 @@ const LoginPage = (props) => {
                   onSubmit={handleSubmit}
                   render={(props) => (
                     <>
-                      <LoginForm {...props} isError={isError} />
+                      <UserFormLogin {...props} isError={isError} />
                     </>
                   )}
                 />

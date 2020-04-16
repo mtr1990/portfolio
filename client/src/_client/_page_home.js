@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
 import { Container, Grid, Box, makeStyles } from "@material-ui/core";
-import { API } from "../config";
+import { API } from "../configs";
 import { varWrapExit, ScrollMagicFadeOut } from "../utilities";
 import {
   HeaderClient,
