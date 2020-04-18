@@ -13,21 +13,20 @@ import {
   muiBorderRadius,
 } from ".";
 
+function pxToRem(value) {
+  return `${value / 16}rem`;
+}
+
 const ThemeWrap = (props) => {
-  const breakpoints = createBreakpoints({});
-
-  function pxToRem(value) {
-    return `${value / 16}rem`;
-  }
-
-  const spacing = createMuiTheme({
-    spacing: 8,
-  });
-
   const { value } = useDarkMode(false, {
     classNameDark: "light-theme",
     classNameLight: "dark-theme",
-    storageKey: "lightMode",
+    storageKey: "isLightMode",
+  });
+
+  const breakpoints = createBreakpoints({});
+  const spacing = createMuiTheme({
+    spacing: 8,
   });
 
   const ThemeConfig = {
@@ -62,7 +61,7 @@ const ThemeWrap = (props) => {
 
   const muiTheme = createMuiTheme(ThemeConfig);
 
-  //   console.log("common:", JSON.stringify(muiTheme.palette, null, 2));
+  // console.log("common:", JSON.stringify(muiTheme.palette, null, 2));
 
   return (
     <ThemeProvider theme={muiTheme}>

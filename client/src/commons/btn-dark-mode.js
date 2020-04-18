@@ -27,11 +27,11 @@ const BtnDarkMode = (props) => {
   const darkMode = useDarkMode(false, {
     classNameDark: "light-theme",
     classNameLight: "dark-theme",
-    storageKey: "lightMode",
+    storageKey: "isLightMode",
   });
 
   return (
-    <Box display={props.display} className={classes.root}>
+    <Box className={classes.root}>
       <motion.div
         initial="initial"
         animate="enter"
