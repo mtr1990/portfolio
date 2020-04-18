@@ -41,7 +41,7 @@ app.use(
     secret: "trinh dep trai hahaha!",
     saveUninitialized: true,
     resave: true,
-    cookie: { maxAge: 60000 * 100, secure: true },
+    // cookie: { maxAge: 60000 * 100 },
   })
 );
 
