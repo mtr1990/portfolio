@@ -7,12 +7,11 @@ import { varWrapExit, ScrollMagicFadeOut } from "../utilities";
 import {
   HeaderClient,
   BtnAvatar,
-  BtnDarkMode,
   BgBody,
   LoadingPage,
   HeroHome,
 } from "../commons";
-import { SnackStatus } from "../styles/@material-ui-custom";
+import { SnackStatus } from "../@material-ui-custom";
 import { ProjectList } from ".";
 
 const useStyles = makeStyles((theme) => ({
@@ -66,9 +65,9 @@ const HomePage = () => {
     >
       {isLoading ? <LoadingPage isLoading={isLoading} /> : null}
 
+      {/********** COMMONS ***********/}
       <HeaderClient />
       <BgBody />
-      <BtnDarkMode />
       <BtnAvatar />
 
       {/********** Hero ***********/}

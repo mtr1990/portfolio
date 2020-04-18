@@ -11,26 +11,26 @@ import {
 import { GlMenuList, GlAppBar } from "..";
 import { BtnDarkMode } from "../../commons";
 
-const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
   drawer: {
     [theme.breakpoints.up("md")]: {
-      width: drawerWidth,
+      width: theme.spacing(30),
       flexShrink: 0,
     },
   },
   drawerPaper: {
     backgroundColor: theme.palette.background.default,
-    width: drawerWidth,
+    borderRight: "none",
+    width: theme.spacing(30),
+    boxShadow: theme.shadows[25].drawer,
   },
   appBar: {
     [theme.breakpoints.up("md")]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
+      width: `calc(100% - ${theme.spacing(30)}px)`,
+      marginLeft: theme.spacing(30),
       display: "none",
     },
   },
@@ -65,59 +65,62 @@ function GlLayout(props) {
   const drawer = <GlMenuList />;
 
   return (
-    <div className={classes.root}>
-      {/********** Layout AppBar ***********/}
-      <GlAppBar
-        appBar={classes.appBar}
-        menuButton={classes.menuButton}
-        handleDrawerToggle={handleDrawerToggle}
-      />
+    <>
+      <Box className={classes.root}>
+        {/********** LAYOUT APPBAR ***********/}
+        <GlAppBar
+          appBar={classes.appBar}
+          menuButton={classes.menuButton}
+          handleDrawerToggle={handleDrawerToggle}
+        />
 
-      {/********** Layout Nav ***********/}
-      <nav className={classes.drawer} aria-label="mailbox folders">
-        <Hidden mdUp implementation="css">
-          <Drawer
-            container={container}
-            variant="temporary"
-            anchor={theme.direction === "rtl" ? "right" : "left"}
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            ModalProps={{
-              keepMounted: true,
-            }}
-          >
-            {drawer}
-          </Drawer>
-        </Hidden>
+        {/********** LAYOUT NAV ***********/}
+        <nav className={classes.drawer} aria-label="mailbox folders">
+          <Hidden mdUp implementation="css">
+            <Drawer
+              container={container}
+              variant="temporary"
+              anchor={theme.direction === "rtl" ? "right" : "left"}
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+              ModalProps={{
+                keepMounted: true,
+              }}
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
 
-        <Hidden smDown implementation="css">
-          <Drawer
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            variant="permanent"
-            open
-          >
-            {drawer}
-          </Drawer>
-        </Hidden>
-      </nav>
+          <Hidden smDown implementation="css">
+            <Drawer
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+              variant="permanent"
+              open
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
+        </nav>
 
-      <BtnDarkMode />
-
-      {/********** Layout Content ***********/}
-      <Box className={classes.content}>
-        <Box mb={8}>
-          <Typography variant="h3" color="textSecondary">
-            {props.heading}
-          </Typography>
+        {/********** LAYOUT CONTENT ***********/}
+        <Box className={classes.content}>
+          <Box mb={8}>
+            <Typography variant="h3" color="textSecondary">
+              {props.heading}
+            </Typography>
+          </Box>
+          {props.children}
         </Box>
-        {props.children}
       </Box>
-    </div>
+
+      {/********** BTN DARKMODE ***********/}
+      <BtnDarkMode />
+    </>
   );
 }
 

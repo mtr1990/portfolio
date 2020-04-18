@@ -2,9 +2,9 @@ import React from "react";
 import { makeStyles, Box } from "@material-ui/core";
 import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
-import { SnackStatus, SnackAction } from "../styles/@material-ui-custom";
+import { SnackStatus, SnackAction } from "../@material-ui-custom";
 import { GlLayout } from ".";
-import { MoreBtnText } from "../styles/@material-ui-custom";
+import { MoreBtnText } from "../@material-ui-custom";
 
 const useStyles = makeStyles((theme) => ({
   root: {

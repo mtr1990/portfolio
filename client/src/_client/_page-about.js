@@ -9,7 +9,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { varWrapBoth, varfadeInRight } from "../utilities";
-import { HeaderClient, BtnDarkMode, BgBody } from "../commons";
+import { HeaderClient, BgBody } from "../commons";
 import { CurriculumView } from ".";
 
 const useStyles = makeStyles((theme) => ({
@@ -60,10 +60,8 @@ const AboutPage = () => {
       exit="exit"
       variants={varWrapBoth}
     >
+      {/********** COMMONS ***********/}
       <BgBody />
-
-      <BtnDarkMode />
-
       <HeaderClient />
 
       <Box className={classes.root}>

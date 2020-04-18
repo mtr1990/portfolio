@@ -13,7 +13,7 @@ import {
   Favorite,
   FavoriteBorder,
 } from "@material-ui/icons";
-import { MoreCheckbox } from "../../styles/@material-ui-custom";
+import { MoreCheckbox } from "../../@material-ui-custom";
 
 const GlCheckbox = () => (
   <GlBlock>

@@ -5,7 +5,7 @@ import { useSnackbar } from "notistack";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { API, history, path_DASHBOARD } from "../../configs";
 import { validationProjectForm, DisplayFormikState } from "../../utilities";
-import { SnackStatus } from "../../styles/@material-ui-custom";
+import { SnackStatus } from "../../@material-ui-custom";
 import { HeaderDashboard, CheckLogin } from "../../commons";
 import { ProjectForm } from "..";
 
@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 const ProjectCreate = () => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
-
   const [name] = useState("");
   const [description] = useState("");
   const [thumbnail] = useState("");

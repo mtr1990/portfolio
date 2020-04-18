@@ -6,7 +6,7 @@ import { Box, Container, Fab } from "@material-ui/core";
 import { NoteAdd } from "@material-ui/icons";
 import { API, path_DASHBOARD } from "../configs";
 import { HeaderDashboard, CheckLogin, PanelDashBoard } from "../commons";
-import { SnackStatus } from "../styles/@material-ui-custom";
+import { SnackStatus } from "../@material-ui-custom";
 import { ProjectList } from ".";
 
 const DashboardPage = () => {
@@ -60,13 +60,17 @@ const DashboardPage = () => {
   };
 
   // REVERSE PROJECT
+  if (reverse === false || reverse === null) {
+    localStorage.setItem("isReverse", "false");
+  } else {
+    localStorage.setItem("isReverse", "true");
+  }
+
   const reverseProject = () => {
     if (reverse === false) {
-      localStorage.setItem("isReverse", "true");
       setReverse(true);
       setProjects(projects.reverse());
     } else {
-      localStorage.setItem("isReverse", "false");
       setReverse(false);
       setProjects(projects.reverse());
     }
@@ -75,6 +79,7 @@ const DashboardPage = () => {
   return (
     <CheckLogin>
       <motion.div initial="initial" animate="enter" exit="exit">
+        {/********** COMMONS ***********/}
         <HeaderDashboard />
 
         <Box mb={20}>

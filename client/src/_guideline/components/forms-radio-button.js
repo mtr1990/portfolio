@@ -10,7 +10,7 @@ import {
   Radio,
   FormHelperText,
 } from "@material-ui/core";
-import { MoreRadio } from "../../styles/@material-ui-custom";
+import { MoreRadio } from "../../@material-ui-custom";
 
 const GlRadioButton = () => {
   return (

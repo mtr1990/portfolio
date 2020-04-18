@@ -33,7 +33,7 @@ import {
   MoreBtnContained,
   MoreBtnOutlined,
   MoreBtnText,
-} from "../styles/@material-ui-custom";
+} from "../@material-ui-custom";
 
 const useStyles = makeStyles((theme) => ({
   root: {

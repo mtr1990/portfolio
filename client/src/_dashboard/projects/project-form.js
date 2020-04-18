@@ -25,7 +25,7 @@ import {
   Category,
 } from "@material-ui/icons";
 import { path_DASHBOARD } from "../../configs";
-import { MoreAutocomplete } from "../../styles/@material-ui-custom";
+import { MoreAutocomplete } from "../../@material-ui-custom";
 
 const ProjectForm = ({
   values,
@@ -147,9 +147,10 @@ const ProjectForm = ({
           openOnFocus
           autoHighlight
           closeIcon={<Delete fontSize="small" />}
-          getOptionLabel={(option) => option.name}
-          component={MoreAutocomplete}
           options={values.categories}
+          getOptionLabel={(option) => option.name}
+          getOptionSelected={(option, value) => value.id === option.id}
+          component={MoreAutocomplete}
           textFieldProps={{
             variant: "outlined",
             label: "Category",

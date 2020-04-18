@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Container, Box, Fab } from "@material-ui/core";
 import { PersonAdd } from "@material-ui/icons";
 import { API, path_DASHBOARD } from "../configs";
-import { SnackStatus } from "../styles/@material-ui-custom";
+import { SnackStatus } from "../@material-ui-custom";
 import { HeaderDashboard, CheckLogin, PanelDashBoard } from "../commons";
 import { UserList } from ".";
 
@@ -51,6 +51,7 @@ const UserPage = () => {
   return (
     <CheckLogin>
       <motion.div initial="initial" animate="enter" exit="exit">
+        {/********** COMMONS ***********/}
         <HeaderDashboard />
 
         <Box mb={20}>

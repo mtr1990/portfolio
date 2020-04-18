@@ -6,7 +6,7 @@ import { useSnackbar } from "notistack";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { API, history, path_DASHBOARD } from "../../configs";
 import { validationProjectForm, DisplayFormikState } from "../../utilities";
-import { SnackStatus } from "../../styles/@material-ui-custom";
+import { SnackStatus } from "../../@material-ui-custom";
 import { HeaderDashboard, CheckLogin } from "../../commons";
 import { ProjectForm } from "..";
 
@@ -101,12 +101,11 @@ const ProjectEdit = () => {
     };
     await API.put(`projects/update/${id}`, data)
       .then((res) => {
+        history.push(path_DASHBOARD.root);
         SnackStatus(enqueueSnackbar, {
           message: "Updated success!",
           variant: "success",
         });
-
-        history.push(path_DASHBOARD.root);
       })
       .catch((err) => {
         SnackStatus(enqueueSnackbar, {

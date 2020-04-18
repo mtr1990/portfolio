@@ -6,7 +6,7 @@ import { Typography, makeStyles, Box } from "@material-ui/core";
 import { API, history, path_DASHBOARD } from "../../configs";
 import { validationUserForm } from "../../utilities";
 import { HeaderDashboard, CheckLogin } from "../../commons";
-import { SnackStatus } from "../../styles/@material-ui-custom";
+import { SnackStatus } from "../../@material-ui-custom";
 import { UserFormRegister } from "..";
 
 const useStyles = makeStyles((theme) => ({

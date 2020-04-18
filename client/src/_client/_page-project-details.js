@@ -5,8 +5,8 @@ import { useSnackbar } from "notistack";
 import { Box } from "@material-ui/core";
 import { API } from "../configs";
 import { varfadeIn, UrlFormat } from "../utilities";
-import { HeaderClient, HeroProjectDetails, BtnDarkMode } from "../commons";
-import { SnackStatus } from "../styles/@material-ui-custom";
+import { HeaderClient, HeroProjectDetails } from "../commons";
+import { SnackStatus } from "../@material-ui-custom";
 import { ProjectDetailsContent, ProjectDetailsControls, NoMatchPage } from ".";
 
 const ProjectDetailsPage = () => {
@@ -53,17 +53,17 @@ const ProjectDetailsPage = () => {
   if (currentItem) {
     return (
       <motion.div initial="initial" animate="enter" exit="exit">
-        <BtnDarkMode />
+        {/********** COMMONS ***********/}
         <HeaderClient />
 
-        {/********** Hero ***********/}
+        {/********** HERO ***********/}
         <HeroProjectDetails item={currentItem} />
         <Box height="100vh" />
 
-        {/********** Content ***********/}
+        {/********** CONTENT ***********/}
         <ProjectDetailsContent currentItem={currentItem} />
 
-        {/********** Controls ***********/}
+        {/********** CONTROLS ***********/}
         <motion.div variants={varfadeIn}>
           <ProjectDetailsControls prevItem={prevItem} nextItem={nextItem} />
         </motion.div>

@@ -17,7 +17,7 @@ import {
   Drafts,
 } from "@material-ui/icons";
 import { API, path_DASHBOARD } from "../configs";
-import { Logo, BtnLogout } from ".";
+import { Logo, BtnLogout, BtnDarkMode } from ".";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,93 +94,100 @@ const HeaderDashboard = () => {
   }, []);
 
   return (
-    <Box className={classes.root}>
-      <Container>
-        <Box display="flex" alignItems="center">
-          <Box flexGrow={1}>
-            <Link to={path_DASHBOARD.root} style={{ display: "inline-block" }}>
-              <Logo />
-            </Link>
+    <>
+      <Box className={classes.root}>
+        <Container>
+          <Box display="flex" alignItems="center">
+            <Box flexGrow={1}>
+              <Link
+                to={path_DASHBOARD.root}
+                style={{ display: "inline-block" }}
+              >
+                <Logo />
+              </Link>
+            </Box>
+
+            <List className={classes.menu_list}>
+              {/********** PROJECTS ***********/}
+              <ListItem
+                classes={{
+                  root: classes.menu_item,
+                  selected: classes.menu_selected,
+                }}
+                component={Link}
+                to={path_DASHBOARD.root}
+                selected={path_DASHBOARD.root === pathname}
+              >
+                <ListItemIcon className={classes.menu_icon}>
+                  <PermMedia fontSize="small" />
+                </ListItemIcon>
+                <ListItemText className={classes.menu_text}>
+                  Projects({projects.length})
+                </ListItemText>
+              </ListItem>
+
+              {/********** USERS ***********/}
+              <ListItem
+                classes={{
+                  root: classes.menu_item,
+                  selected: classes.menu_selected,
+                }}
+                component={Link}
+                to={path_DASHBOARD.users.root}
+                selected={path_DASHBOARD.users.root === pathname}
+              >
+                <ListItemIcon className={classes.menu_icon}>
+                  <SupervisorAccount fontSize="small" />
+                </ListItemIcon>
+                <ListItemText className={classes.menu_text}>
+                  Users({users.length})
+                </ListItemText>
+              </ListItem>
+
+              {/********** CATEGORIES ***********/}
+              <ListItem
+                classes={{
+                  root: classes.menu_item,
+                  selected: classes.menu_selected,
+                }}
+                component={Link}
+                to={path_DASHBOARD.categories.root}
+                selected={path_DASHBOARD.categories.root === pathname}
+              >
+                <ListItemIcon className={classes.menu_icon}>
+                  <Category fontSize="small" />
+                </ListItemIcon>
+                <ListItemText className={classes.menu_text}>
+                  Categories({categories.length})
+                </ListItemText>
+              </ListItem>
+
+              {/********** EMAILS ***********/}
+              <ListItem
+                classes={{
+                  root: classes.menu_item,
+                  selected: classes.menu_selected,
+                }}
+                component={Link}
+                to={path_DASHBOARD.emails}
+                selected={path_DASHBOARD.emails === pathname}
+              >
+                <ListItemIcon className={classes.menu_icon}>
+                  <Drafts fontSize="small" />
+                </ListItemIcon>
+                <ListItemText className={classes.menu_text}>
+                  Emails({emails.length})
+                </ListItemText>
+              </ListItem>
+            </List>
+
+            <BtnLogout />
           </Box>
-
-          <List className={classes.menu_list}>
-            {/********** PROJECTS ***********/}
-            <ListItem
-              classes={{
-                root: classes.menu_item,
-                selected: classes.menu_selected,
-              }}
-              component={Link}
-              to={path_DASHBOARD.root}
-              selected={path_DASHBOARD.root === pathname}
-            >
-              <ListItemIcon className={classes.menu_icon}>
-                <PermMedia fontSize="small" />
-              </ListItemIcon>
-              <ListItemText className={classes.menu_text}>
-                Projects({projects.length})
-              </ListItemText>
-            </ListItem>
-
-            {/********** USERS ***********/}
-            <ListItem
-              classes={{
-                root: classes.menu_item,
-                selected: classes.menu_selected,
-              }}
-              component={Link}
-              to={path_DASHBOARD.users.root}
-              selected={path_DASHBOARD.users.root === pathname}
-            >
-              <ListItemIcon className={classes.menu_icon}>
-                <SupervisorAccount fontSize="small" />
-              </ListItemIcon>
-              <ListItemText className={classes.menu_text}>
-                Users({users.length})
-              </ListItemText>
-            </ListItem>
-
-            {/********** CATEGORIES ***********/}
-            <ListItem
-              classes={{
-                root: classes.menu_item,
-                selected: classes.menu_selected,
-              }}
-              component={Link}
-              to={path_DASHBOARD.categories.root}
-              selected={path_DASHBOARD.categories.root === pathname}
-            >
-              <ListItemIcon className={classes.menu_icon}>
-                <Category fontSize="small" />
-              </ListItemIcon>
-              <ListItemText className={classes.menu_text}>
-                Categories({categories.length})
-              </ListItemText>
-            </ListItem>
-
-            {/********** EMAILS ***********/}
-            <ListItem
-              classes={{
-                root: classes.menu_item,
-                selected: classes.menu_selected,
-              }}
-              component={Link}
-              to={path_DASHBOARD.emails}
-              selected={path_DASHBOARD.emails === pathname}
-            >
-              <ListItemIcon className={classes.menu_icon}>
-                <Drafts fontSize="small" />
-              </ListItemIcon>
-              <ListItemText className={classes.menu_text}>
-                Emails({emails.length})
-              </ListItemText>
-            </ListItem>
-          </List>
-
-          <BtnLogout />
-        </Box>
-      </Container>
-    </Box>
+        </Container>
+      </Box>
+      {/********** BTN DARKMODE ***********/}
+      <BtnDarkMode />
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Box, makeStyles } from "@material-ui/core";
-import { Logo } from ".";
+import { Logo, BtnDarkMode } from ".";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,13 +18,18 @@ const useStyles = makeStyles((theme) => ({
 const HeaderClient = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.root}>
-      <Container>
-        <Link to="/" style={{ display: "inline-block" }}>
-          <Logo />
-        </Link>
-      </Container>
-    </Box>
+    <>
+      <Box className={classes.root}>
+        <Container>
+          <Link to="/" style={{ display: "inline-block" }}>
+            <Logo />
+          </Link>
+        </Container>
+      </Box>
+
+      {/********** BTN DARKMODE ***********/}
+      <BtnDarkMode />
+    </>
   );
 };
 

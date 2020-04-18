@@ -32,7 +32,12 @@ const BtnDarkMode = (props) => {
 
   return (
     <Box display={props.display} className={classes.root}>
-      <motion.div variants={varfadeIn}>
+      <motion.div
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        variants={varfadeIn}
+      >
         <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
           <Checkbox
             color={darkMode.value ? "primary" : "default"}

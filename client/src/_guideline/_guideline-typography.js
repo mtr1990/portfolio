@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Grid, Typography } from "@material-ui/core";
 import { motion } from "framer-motion";
 import { GlLayout, GlBlock } from ".";
-import { MoreTypography } from "../styles/@material-ui-custom";
+import { MoreTypography } from "../@material-ui-custom";
 
 const GlTypography = () => {
   return (

@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Box, Typography, Button } from "@material-ui/core";
 import { varbounce, varbounceIn } from "../utilities";
-import { HeaderClient, BtnDarkMode, BgBody } from "../commons";
+import { HeaderClient, BgBody } from "../commons";
 import { img404 } from "../assets";
 
 const NoMatchPage = () => (
   <motion.div initial="initial" animate="enter" exit="exit">
+    {/********** COMMONS ***********/}
     <BgBody />
-    <BtnDarkMode />
     <HeaderClient />
-
     <Box
       display="flex"
       alignItems="center"

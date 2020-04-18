@@ -4,17 +4,18 @@ const DisplayFormikState = (props) => (
   <div>
     <pre
       style={{
-        margin: 0,
-        color: "yellow",
-        background: "#000000",
-        padding: "16px",
-        fontSize: "14px",
         position: "fixed",
         top: 0,
         left: 0,
         bottom: 0,
         zIndex: 9999999,
-        maxWidth: "320px",
+        margin: 0,
+        color: "yellow",
+        background: "#000000",
+        padding: "24px",
+        fontSize: "13px",
+        fontWeight: "500",
+        width: "320px",
         overflow: "auto",
       }}
     >

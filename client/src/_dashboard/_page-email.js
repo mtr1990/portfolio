@@ -4,7 +4,7 @@ import { useSnackbar } from "notistack";
 import { Container, Box } from "@material-ui/core";
 import { API } from "../configs";
 import { HeaderDashboard, CheckLogin, PanelDashBoard } from "../commons";
-import { SnackStatus } from "../styles/@material-ui-custom";
+import { SnackStatus } from "../@material-ui-custom";
 import { EmailList } from ".";
 
 const EmailPage = () => {
@@ -49,6 +49,7 @@ const EmailPage = () => {
   return (
     <CheckLogin>
       <motion.div initial="initial" animate="enter" exit="exit">
+        {/********** COMMONS ***********/}
         <HeaderDashboard />
 
         <Box mb={20}>

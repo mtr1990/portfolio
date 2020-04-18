@@ -27,8 +27,8 @@ const ProjectList = ({
     return item.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
   });
 
-  console.log("projects:", stateProject.length);
-  console.log("filtered:", filtered.length);
+  // console.log("projects:", stateProject.length);
+  // console.log("filtered:", filtered.length);
 
   if (!stateProject.length) return null;
   return (
