@@ -33,6 +33,6 @@ export const muiTypography = {
   },
 
   button: { fontSize: 14, fontWeight: 700, textTransform: "uppercase" },
-  caption: { fontWeight: 400 },
+  caption: { fontWeight: 400, fontSize: 13 },
   overline: { fontWeight: 400 },
 };

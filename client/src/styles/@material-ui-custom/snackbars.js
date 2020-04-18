@@ -89,7 +89,7 @@ const SnackContentAction = React.forwardRef((props, ref) => {
 
   const handleClick = () => {
     props.funC();
-    closeSnackbar();
+    closeSnackbar(props.id);
   };
 
   return (

@@ -11,7 +11,6 @@ const EmailList = ({ stateEmail, deleteEmail }) => {
       {stateEmail.map((item, index) => (
         <EmailItem key={index} item={item} deleteEmail={deleteEmail} />
       ))}
-      ;
     </motion.div>
   );
 };

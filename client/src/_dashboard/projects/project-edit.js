@@ -5,10 +5,10 @@ import { Formik } from "formik";
 import { useSnackbar } from "notistack";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { API, history, path_DASHBOARD } from "../../configs";
-import { validationProjectForm } from "../../utilities";
+import { validationProjectForm, DisplayFormikState } from "../../utilities";
+import { SnackStatus } from "../../styles/@material-ui-custom";
 import { HeaderDashboard, CheckLogin } from "../../commons";
 import { ProjectForm } from "..";
-import { SnackStatus } from "../../styles/@material-ui-custom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,19 +30,19 @@ const ProjectEdit = () => {
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [hero, setHero] = useState("");
-  const [category, setCategory] = useState("");
-  const [categories, setCategories] = useState([]);
   const [imglist, setImglist] = useState([]);
   const [videolist, setVideolist] = useState([]);
+  const [category, setCategory] = useState(null);
+  const [categories, setCategories] = useState([]);
 
   // GET CATEGORIES
   useEffect(() => {
     const getCategories = async () => {
       await API.get("categories")
         .then((res) => {
-          // setCategories(res.data);
           if (res.data.length > 0) {
-            setCategories(res.data.map((item) => item.name));
+            // setCategories(res.data.map((item) => item.name));
+            setCategories(res.data);
           }
         })
         .catch((err) => {
@@ -158,6 +158,7 @@ const ProjectEdit = () => {
             onSubmit={handleSubmit}
             render={(props) => (
               <>
+                <DisplayFormikState {...props} />
                 <ProjectForm {...props} txtSubmit="Save" />
               </>
             )}

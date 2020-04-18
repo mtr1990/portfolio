@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Formik } from "formik";
 import { useSnackbar } from "notistack";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { API, history, path_DASHBOARD } from "../../configs";
-import { validationProjectForm } from "../../utilities";
+import { validationProjectForm, DisplayFormikState } from "../../utilities";
 import { SnackStatus } from "../../styles/@material-ui-custom";
 import { HeaderDashboard, CheckLogin } from "../../commons";
 import { ProjectForm } from "..";
@@ -28,20 +28,24 @@ const ProjectCreate = () => {
   const [description] = useState("");
   const [thumbnail] = useState("");
   const [hero] = useState("");
-  const [category, setCategory] = useState("");
   const [imglist] = useState([""]);
   const [videolist] = useState([]);
+  const [category, setCategory] = useState(null);
   const [categories, setCategories] = useState([]);
+  const isCancelled = useRef(false);
 
   // GET CATEGORIES
   useEffect(() => {
     const getCategories = async () => {
       await API.get("categories")
         .then((res) => {
-          // setCategories(res.data);
-          if (res.data.length > 0) {
-            setCategories(res.data.map((item) => item.name));
-            setCategory(res.data[0].name);
+          if (!isCancelled.current) {
+            if (res.data.length > 0) {
+              // setCategories(res.data.map((item) => item.name));
+              // setCategory(res.data[0].name);
+              setCategories(res.data);
+              setCategory(res.data[0]);
+            }
           }
         })
         .catch((err) => {
@@ -51,9 +55,11 @@ const ProjectCreate = () => {
           });
         });
     };
-
     getCategories();
-  }, [enqueueSnackbar]);
+    return () => {
+      isCancelled.current = true;
+    };
+  }, [enqueueSnackbar, categories]);
 
   // CREATE PROJECT
   const createProject = async (
@@ -132,6 +138,7 @@ const ProjectCreate = () => {
             onSubmit={handleSubmit}
             render={(props) => (
               <>
+                <DisplayFormikState {...props} />
                 <ProjectForm {...props} txtSubmit="Create" />
               </>
             )}

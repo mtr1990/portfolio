@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FieldArray } from "formik";
+import { Form, FieldArray, Field } from "formik";
 import { Link } from "react-router-dom";
 import {
   Box,
@@ -14,8 +14,6 @@ import {
   Typography,
   IconButton,
   Divider,
-  Select,
-  MenuItem,
 } from "@material-ui/core";
 import {
   Delete,
@@ -27,6 +25,7 @@ import {
   Category,
 } from "@material-ui/icons";
 import { path_DASHBOARD } from "../../configs";
+import { MoreAutocomplete } from "../../styles/@material-ui-custom";
 
 const ProjectForm = ({
   values,
@@ -38,7 +37,7 @@ const ProjectForm = ({
 }) => {
   return (
     <Form autoComplete="off" noValidate>
-      {/********** Name ***********/}
+      {/********** NAME ***********/}
       <Box mt={3} mb={2}>
         <FormControl
           error={touched.name && errors.name ? true : false}
@@ -62,7 +61,7 @@ const ProjectForm = ({
         </FormControl>
       </Box>
 
-      {/********** Description ***********/}
+      {/********** DESCRIPTION ***********/}
       <Box mb={2}>
         <FormControl
           error={touched.description && errors.description ? true : false}
@@ -89,7 +88,7 @@ const ProjectForm = ({
         </FormControl>
       </Box>
 
-      {/********** Thumbnail ***********/}
+      {/********** THUMBNAIL ***********/}
       <Box mb={2}>
         <FormControl
           error={touched.thumbnail && errors.thumbnail ? true : false}
@@ -115,7 +114,7 @@ const ProjectForm = ({
         </FormControl>
       </Box>
 
-      {/********** Hero ***********/}
+      {/********** HERO ***********/}
       <Box mb={2}>
         <FormControl
           error={touched.hero && errors.hero ? true : false}
@@ -139,35 +138,50 @@ const ProjectForm = ({
         </FormControl>
       </Box>
 
-      {/********** Category ***********/}
-      <FormControl variant="outlined" fullWidth>
+      {/********** CATEGORY ***********/}
+      <Box mb={2}>
+        <Field
+          icon={<Category />}
+          name="category"
+          disableClearable
+          openOnFocus
+          autoHighlight
+          closeIcon={<Delete fontSize="small" />}
+          getOptionLabel={(option) => option.name}
+          component={MoreAutocomplete}
+          options={values.categories}
+          textFieldProps={{
+            variant: "outlined",
+            label: "Category",
+          }}
+          renderOption={(option) => (
+            <>
+              <span>{option.name}</span>
+            </>
+          )}
+        />
+      </Box>
+
+      {/* EXAMPLE USE SELECT */}
+      {/* <FormControl variant="outlined" fullWidth>
         <InputLabel id="category">Category</InputLabel>
-        <Select
+        <MoreSelect
           id="category"
           labelId="category"
           name="category"
-          // value={values.category ? values.category : ""}
-          value={values.category && values.category}
+          value={values.category}
           onChange={handleChange}
           label="Category"
+          options={values.categories}
           startAdornment={
             <InputAdornment position="start">
               <Category />
             </InputAdornment>
           }
-        >
-          {values.categories &&
-            values.categories.map((item, index) => {
-              return (
-                <MenuItem key={index} value={item} label={item}>
-                  {item}
-                </MenuItem>
-              );
-            })}
-        </Select>
-      </FormControl>
+        />
+      </FormControl> */}
 
-      {/********** Images ***********/}
+      {/********** IMAGES ***********/}
       <Box mb={2}>
         <Typography
           variant="subtitle1"
@@ -222,7 +236,7 @@ const ProjectForm = ({
         />
       </Box>
 
-      {/********** Videos ***********/}
+      {/********** VIDEOS ***********/}
       <Box mb={2}>
         <Typography
           variant="subtitle1"
@@ -296,7 +310,7 @@ const ProjectForm = ({
         />
       </Box>
 
-      {/********** Footer ***********/}
+      {/********** FOOTER ***********/}
       <Divider />
       <Box mt={3} textAlign="right" display="flex" justifyContent="flex-end">
         <Box mr={2}>

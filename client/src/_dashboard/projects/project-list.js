@@ -37,6 +37,7 @@ const ProjectList = ({
       <Box display="flex" my={8}>
         <Box flexGrow={1}>
           <TextField
+            autoComplete="off"
             fullWidth
             variant="outlined"
             type="search"

@@ -72,7 +72,7 @@ const ProjectItem = ({ item, index, deleteProject }) => {
             color="primary"
             paragraph
           >
-            {item.category}
+            {item.category.name}
           </Typography>
           <Typography variant="h6" component="h6" gutterBottom>
             {item.name}
