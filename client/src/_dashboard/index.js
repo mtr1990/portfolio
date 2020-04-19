@@ -9,6 +9,11 @@ export { default as ProjectForm } from "./projects/project-form";
 export { default as ProjectItem } from "./projects/project-item";
 export { default as ProjectList } from "./projects/project-list";
 
+export { default as ProjectControlsSearch } from "./projects/project-controls-search";
+export { default as ProjectControlsFilter } from "./projects/project-controls-filter";
+export { default as ProjectControlsSort } from "./projects/project-controls-sort";
+export { default as ProjectControlsView } from "./projects/project-controls-view";
+
 export { default as LoginPage } from "./_page-login";
 export { default as UserFormLogin } from "./users/user-form-login";
 

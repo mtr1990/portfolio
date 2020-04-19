@@ -80,6 +80,7 @@ export const muiPaletteLight = {
   },
 
   action: {
+    // hoverOpacity: 0.12,
     active: light_contrast_medium,
     hover: light_contrast_lower,
     selected: light_contrast_lower,
@@ -122,6 +123,7 @@ export const muiPaletteDark = {
   },
 
   action: {
+    // hoverOpacity: 0.12,
     active: dark_contrast_medium,
     hover: dark_contrast_low,
     selected: dark_contrast_lower,

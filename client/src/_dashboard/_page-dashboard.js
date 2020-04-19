@@ -12,10 +12,15 @@ import { ProjectList } from ".";
 const DashboardPage = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [projects, setProjects] = useState([]);
-
   const [reverse, setReverse] = useState(
     localStorage.getItem("isReverse") === null ||
       localStorage.getItem("isReverse") === "false"
+      ? false
+      : true
+  );
+  const [view, setView] = useState(
+    localStorage.getItem("isView") === null ||
+      localStorage.getItem("isView") === "false"
       ? false
       : true
   );
@@ -60,19 +65,26 @@ const DashboardPage = () => {
   };
 
   // REVERSE PROJECT
-  if (reverse === false || reverse === null) {
-    localStorage.setItem("isReverse", "false");
-  } else {
-    localStorage.setItem("isReverse", "true");
-  }
-
-  const reverseProject = () => {
-    if (reverse === false) {
+  const toogleSort = () => {
+    if (reverse === false || reverse === null) {
       setReverse(true);
       setProjects(projects.reverse());
+      localStorage.setItem("isReverse", "true");
     } else {
       setReverse(false);
       setProjects(projects.reverse());
+      localStorage.setItem("isReverse", "false");
+    }
+  };
+
+  // CHANGE VIEW PROJECT
+  const toogleView = () => {
+    if (view === false || view === null) {
+      setView(true);
+      localStorage.setItem("isView", "true");
+    } else {
+      setView(false);
+      localStorage.setItem("isView", "false");
     }
   };
 
@@ -82,7 +94,7 @@ const DashboardPage = () => {
         {/********** COMMONS ***********/}
         <HeaderDashboard />
 
-        <Box mb={20}>
+        <Box mb={24}>
           <Container>
             {/********** PANEL ***********/}
             <PanelDashBoard
@@ -93,10 +105,12 @@ const DashboardPage = () => {
 
             {/********** PROJECT LIST ***********/}
             <ProjectList
+              stateView={view}
+              stateSort={reverse}
               stateProject={projects}
+              toogleView={toogleView}
+              toogleSort={toogleSort}
               deleteProject={deleteProject}
-              stateReverse={reverse}
-              reverseProject={reverseProject}
             />
           </Container>
         </Box>

@@ -1,94 +1,130 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  TextField,
-  Box,
-  FormControlLabel,
-  Switch,
-  Typography,
-} from "@material-ui/core";
+import { Grid, Box } from "@material-ui/core";
 import { varWrapBoth } from "../../utilities";
-import { ProjectItem } from "..";
+import {
+  ProjectItem,
+  ProjectControlsSearch,
+  ProjectControlsFilter,
+  ProjectControlsSort,
+  ProjectControlsView,
+} from "..";
 
 const ProjectList = ({
   stateProject,
+  stateView,
+  stateSort,
+  toogleView,
+  toogleSort,
   deleteProject,
-  stateReverse,
-  reverseProject,
 }) => {
+  const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
 
-  // FILTER PROJECT
-  const filterProject = (e) => {
-    setFilter(e.target.value.substr(0, 20));
+  // SEARCH PROJECT
+  const handleChangeSearch = (e) => {
+    setSearch(e.target.value.substr(0, 20));
   };
-
-  const filtered = stateProject.filter((item) => {
-    return item.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
+  const resultsSearch = stateProject.filter((item) => {
+    return item.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
   });
 
-  // console.log("projects:", stateProject.length);
-  // console.log("filtered:", filtered.length);
+  // FILLTER PROJECT
+  const handleChangeFilter = (event) => {
+    setFilter(event.target.value);
+  };
+  const getUnique = (arr, comp) => {
+    const unique = arr
+      .map((e) => e[comp].name)
+      .map((e, i, final) => final.indexOf(e) === i && i)
+      .filter((e) => arr[e])
+      .map((e) => arr[e]);
+    return unique;
+  };
+  const resultsFilter = stateProject.filter((item) => {
+    return item.category.name === filter;
+  });
+  const optionFilter = getUnique(stateProject, "category");
 
+  const handleChangeReset = () => {
+    setFilter("");
+  };
+
+  // LIST
   if (!stateProject.length) return null;
+
+  const FilterList = (
+    <motion.div variants={varWrapBoth}>
+      <Grid container spacing={stateView ? 3 : null}>
+        {resultsFilter.map((item, index) => (
+          <ProjectItem
+            key={index}
+            item={item}
+            index={index}
+            deleteProject={deleteProject}
+            stateView={stateView}
+          />
+        ))}
+      </Grid>
+    </motion.div>
+  );
+
+  const SearchList = (
+    <motion.div variants={varWrapBoth}>
+      <Grid container spacing={stateView ? 3 : null}>
+        {resultsSearch.map((item, index) => (
+          <ProjectItem
+            key={index}
+            item={item}
+            index={index}
+            deleteProject={deleteProject}
+            stateView={stateView}
+          />
+        ))}
+      </Grid>
+    </motion.div>
+  );
+
   return (
     <>
-      {/********** CONTROLS ***********/}
-      <Box display="flex" my={8}>
-        <Box flexGrow={1}>
-          <TextField
-            autoComplete="off"
-            fullWidth
-            variant="outlined"
-            type="search"
-            name="search"
-            value={filter}
-            onChange={filterProject}
-            label="Search..."
-          />
+      <Box mt={4} mb={8}>
+        {/********** SEARCH ***********/}
+        <ProjectControlsSearch
+          stateProject={stateProject}
+          stateSearch={search}
+          resultsSearch={resultsSearch}
+          handleChangeSearch={handleChangeSearch}
+        />
 
-          <Box mt={2}>
-            {filtered.length < stateProject.length ? (
-              <Typography variant="subtitle2">
-                {filtered.length}{" "}
-                <Typography
-                  variant="subtitle2"
-                  color="textSecondary"
-                  component="span"
-                >
-                  results found
-                </Typography>
-              </Typography>
-            ) : null}
+        <Box
+          mt={2}
+          display="flex"
+          justifyContent="flex-end"
+          alignItems="center"
+        >
+          {/********** TOGGLE VIEW ***********/}
+          <ProjectControlsView stateView={stateView} toogleView={toogleView} />
+
+          {/********** TOGGLE SORT ***********/}
+          <Box mx={2}>
+            <ProjectControlsSort
+              stateSort={stateSort}
+              toogleSort={toogleSort}
+            />
           </Box>
-        </Box>
 
-        <Box ml={2}>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={stateReverse}
-                onChange={reverseProject}
-                name="checkedB"
-                color="primary"
-              />
-            }
-            label="Sort"
+          {/********** FILTER ***********/}
+          <ProjectControlsFilter
+            stateFilter={filter}
+            optionFilter={optionFilter}
+            handleChangeFilter={handleChangeFilter}
+            handleChangeReset={handleChangeReset}
           />
         </Box>
       </Box>
 
-      {/********** LIST ***********/}
-      <motion.div variants={varWrapBoth}>
-        {filtered.map((item, index) => (
-          <ProjectItem
-            item={item}
-            key={index}
-            index={index}
-            deleteProject={deleteProject}
-          />
-        ))}
-      </motion.div>
+      {/********** SHOW LIST ***********/}
+      {resultsFilter.length > 0 ? FilterList : SearchList}
     </>
   );
 };

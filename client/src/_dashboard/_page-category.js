@@ -54,7 +54,7 @@ const CategoryPage = () => {
         {/********** COMMONS ***********/}
         <HeaderDashboard />
 
-        <Box mb={20}>
+        <Box mb={24}>
           <Container>
             {/********** PANEL ***********/}
             <Box mb={8}>
