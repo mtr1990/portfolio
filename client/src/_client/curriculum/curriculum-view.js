@@ -54,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
 const CurriculumView = forwardRef((props, ref) => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
-
   const [open, setOpen] = useState(false);
   const [email] = useState("");
   const [s_code] = useState("Hello");
@@ -66,7 +65,7 @@ const CurriculumView = forwardRef((props, ref) => {
     },
 
     doAlert() {
-      alert("1213");
+      console.log("1213");
     },
   }));
 

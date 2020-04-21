@@ -15,11 +15,18 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 0,
     boxShadow: theme.shadows[8],
     borderRadius: theme.shape.borderRadius,
+    // backgroundColor: "red",
     backgroundColor: theme.palette.background.paper,
   },
   option: {
     paddingTop: theme.spacing(1.2),
     paddingBottom: theme.spacing(1.2),
+    '&.MuiAutocomplete-option[aria-selected="true"]': {
+      backgroundColor: "transparent",
+    },
+    '&.MuiAutocomplete-option[data-focus="true"]': {
+      backgroundColor: theme.palette.action.hover,
+    },
   },
 }));
 

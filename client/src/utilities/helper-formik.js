@@ -17,6 +17,7 @@ const DisplayFormikState = (props) => (
         fontWeight: "500",
         width: "320px",
         overflow: "auto",
+        display: "none",
       }}
     >
       <code>values:</code> {JSON.stringify(props.values, null, 2)}

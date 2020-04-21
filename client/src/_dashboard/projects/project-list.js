@@ -30,21 +30,19 @@ const ProjectList = ({
   });
 
   // FILLTER PROJECT
+  const resultsFilter = stateProject
+    .map((e) => e["category"].name)
+    .map((e, i, final) => final.indexOf(e) === i && i)
+    .filter((e) => stateProject[e])
+    .map((e) => stateProject[e]);
+
+  const optionFilter = stateProject.filter((item) => {
+    return item.category.name === filter;
+  });
+
   const handleChangeFilter = (event) => {
     setFilter(event.target.value);
   };
-  const getUnique = (arr, comp) => {
-    const unique = arr
-      .map((e) => e[comp].name)
-      .map((e, i, final) => final.indexOf(e) === i && i)
-      .filter((e) => arr[e])
-      .map((e) => arr[e]);
-    return unique;
-  };
-  const resultsFilter = stateProject.filter((item) => {
-    return item.category.name === filter;
-  });
-  const optionFilter = getUnique(stateProject, "category");
 
   const handleChangeReset = () => {
     setFilter("");
@@ -56,7 +54,7 @@ const ProjectList = ({
   const FilterList = (
     <motion.div variants={varWrapBoth}>
       <Grid container spacing={stateView ? 3 : null}>
-        {resultsFilter.map((item, index) => (
+        {optionFilter.map((item, index) => (
           <ProjectItem
             key={index}
             item={item}
@@ -84,6 +82,9 @@ const ProjectList = ({
       </Grid>
     </motion.div>
   );
+
+  console.log("FilterList", resultsFilter);
+  console.log("SearchList", resultsSearch.length);
 
   return (
     <>
@@ -116,7 +117,7 @@ const ProjectList = ({
           {/********** FILTER ***********/}
           <ProjectControlsFilter
             stateFilter={filter}
-            optionFilter={optionFilter}
+            resultsFilter={resultsFilter}
             handleChangeFilter={handleChangeFilter}
             handleChangeReset={handleChangeReset}
           />
@@ -124,7 +125,7 @@ const ProjectList = ({
       </Box>
 
       {/********** SHOW LIST ***********/}
-      {resultsFilter.length > 0 ? FilterList : SearchList}
+      {optionFilter.length > 0 ? FilterList : SearchList}
     </>
   );
 };

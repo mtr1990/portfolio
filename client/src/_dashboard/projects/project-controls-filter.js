@@ -10,7 +10,7 @@ import {
 
 const ProjectControlsFilter = ({
   stateFilter,
-  optionFilter,
+  resultsFilter,
   handleChangeFilter,
   handleChangeReset,
 }) => {
@@ -26,7 +26,7 @@ const ProjectControlsFilter = ({
           labelWidth={80}
           style={{ minWidth: "120px" }}
         >
-          {optionFilter.map((item, index) => (
+          {resultsFilter.map((item, index) => (
             <MenuItem key={index} value={item.category.name}>
               {item.category.name}
             </MenuItem>

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "city": "bangalore",
+    "statusChecked": false
+  },
+  {
+    "id": "2",
+    "city": "bangalore",
+    "statusChecked": false
+  },
+  {
+    "id": "3",
+    "city": "china",
+    "statusChecked": false
+  },
+  {
+    "id": "4",
+    "city": "china",
+    "statusChecked": false
+  },
+  {
+    "id": "5",
+    "city": "china",
+    "statusChecked": false
+  },
+  {
+    "id": "6",
+    "city": "VN",
+    "statusChecked": false
+  },
+  {
+    "id": "7",
+    "city": "VN",
+    "statusChecked": false
+  }
+]

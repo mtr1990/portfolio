@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AboutPage = () => {
   const classes = useStyles();
-  const childRefCurriculum = useRef();
+  const curriculumRef = useRef();
 
   return (
     <motion.div
@@ -96,11 +96,12 @@ const AboutPage = () => {
             <motion.div variants={varfadeInRight}>
               <Typography variant="body1" color="textSecondary">
                 To know more about me, you can download&nbsp;
-                <Link
-                  onClick={() => childRefCurriculum.current.callbackOpenModal()}
-                >
+                <Link onClick={() => curriculumRef.current.callbackOpenModal()}>
                   my CV
                 </Link>
+                {/* <Link onClick={() => curriculumRef.current.doAlert()}>
+                  doAlert
+                </Link> */}
               </Typography>
             </motion.div>
 
@@ -160,7 +161,7 @@ const AboutPage = () => {
       </Box>
 
       {/********** CurriculumView ***********/}
-      <CurriculumView ref={childRefCurriculum} />
+      <CurriculumView ref={curriculumRef} />
     </motion.div>
   );
 };
