@@ -8,8 +8,8 @@ const EmailList = ({ stateEmail, deleteEmail }) => {
 
   return (
     <motion.div variants={varWrapBoth}>
-      {stateEmail.map((item, index) => (
-        <EmailItem key={index} item={item} deleteEmail={deleteEmail} />
+      {stateEmail.map((item) => (
+        <EmailItem key={item._id} item={item} deleteEmail={deleteEmail} />
       ))}
     </motion.div>
   );

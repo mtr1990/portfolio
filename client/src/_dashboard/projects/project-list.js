@@ -5,9 +5,10 @@ import { varWrapBoth } from "../../utilities";
 import {
   ProjectItem,
   ProjectControlsSearch,
-  ProjectControlsFilter,
   ProjectControlsSort,
   ProjectControlsView,
+  ProjectFilterByCheckbox,
+  ProjectFilterBySelect,
 } from "..";
 
 const ProjectList = ({
@@ -17,74 +18,84 @@ const ProjectList = ({
   toogleView,
   toogleSort,
   deleteProject,
+  setProjects,
 }) => {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
+  const [isAllSelected, setisAllSelected] = useState(false);
 
   // SEARCH PROJECT
   const handleChangeSearch = (e) => {
-    setSearch(e.target.value.substr(0, 20));
+    setSearch(e.target.value);
   };
-  const resultsSearch = stateProject.filter((item) => {
-    return item.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+  const data_Search = stateProject.filter((item) => {
+    return item.name.toLowerCase().indexOf(search) !== -1;
   });
 
-  // FILLTER PROJECT
-  const resultsFilter = stateProject
-    .map((e) => e["category"].name)
+  // FILLTER OPTION
+  const filterOption = stateProject
+    .map((e) => e["category"])
     .map((e, i, final) => final.indexOf(e) === i && i)
     .filter((e) => stateProject[e])
     .map((e) => stateProject[e]);
 
-  const optionFilter = stateProject.filter((item) => {
-    return item.category.name === filter;
+  // CHECBOXES FILLTER PROJECT
+  const handleChangeChecked = (checkName, checkStatus) => {
+    let isAllChecked = checkName === "all" && checkStatus;
+    let isAllUnChecked = checkName === "all" && !checkStatus;
+    const isChecked = checkStatus;
+    const checkList = stateProject.map((item) => {
+      if (isAllChecked || item.category === checkName) {
+        return Object.assign({}, item, {
+          isChecked,
+        });
+      } else if (isAllUnChecked) {
+        return Object.assign({}, item, {
+          isChecked: false,
+        });
+      }
+      return item;
+    });
+    const isAllSelected =
+      checkList.findIndex((item) => item.isChecked === false) === -1 ||
+      isAllChecked;
+    setProjects(checkList);
+    setisAllSelected(isAllSelected);
+  };
+  const dataFilterChecked = stateProject.filter((item) => {
+    return item.isChecked;
   });
 
+  // SELECT FILLTER PROJECT
   const handleChangeFilter = (event) => {
     setFilter(event.target.value);
   };
-
   const handleChangeReset = () => {
     setFilter("");
   };
+  // const dataFilterSelected = stateProject.filter((item) => {
+  //   return item.category === filter;
+  // });
 
   // LIST
-  if (!stateProject.length) return null;
-
-  const FilterList = (
-    <motion.div variants={varWrapBoth}>
-      <Grid container spacing={stateView ? 3 : null}>
-        {optionFilter.map((item, index) => (
-          <ProjectItem
-            key={index}
-            item={item}
-            index={index}
-            deleteProject={deleteProject}
-            stateView={stateView}
-          />
-        ))}
-      </Grid>
-    </motion.div>
-  );
-
-  const SearchList = (
-    <motion.div variants={varWrapBoth}>
-      <Grid container spacing={stateView ? 3 : null}>
-        {resultsSearch.map((item, index) => (
-          <ProjectItem
-            key={index}
-            item={item}
-            index={index}
-            deleteProject={deleteProject}
-            stateView={stateView}
-          />
-        ))}
-      </Grid>
-    </motion.div>
-  );
-
-  console.log("FilterList", resultsFilter);
-  console.log("SearchList", resultsSearch.length);
+  function List(data) {
+    if (stateProject.length === 0) return null;
+    return (
+      <motion.div variants={varWrapBoth}>
+        <Grid container spacing={stateView ? 4 : null}>
+          {data.map((item, index) => (
+            <ProjectItem
+              key={item._id}
+              item={item}
+              index={index}
+              deleteProject={deleteProject}
+              stateView={stateView}
+            />
+          ))}
+        </Grid>
+      </motion.div>
+    );
+  }
 
   return (
     <>
@@ -93,7 +104,7 @@ const ProjectList = ({
         <ProjectControlsSearch
           stateProject={stateProject}
           stateSearch={search}
-          resultsSearch={resultsSearch}
+          data_Search={data_Search}
           handleChangeSearch={handleChangeSearch}
         />
 
@@ -114,18 +125,33 @@ const ProjectList = ({
             />
           </Box>
 
-          {/********** FILTER ***********/}
-          <ProjectControlsFilter
-            stateFilter={filter}
-            resultsFilter={resultsFilter}
-            handleChangeFilter={handleChangeFilter}
-            handleChangeReset={handleChangeReset}
-          />
+          {/********** FILTER BY CHECKBOX ***********/}
+          <Box>
+            <ProjectFilterByCheckbox
+              stateProject={stateProject}
+              filterOption={filterOption}
+              isAllSelected={isAllSelected}
+              handleChangeChecked={handleChangeChecked}
+              dataFilterChecked={dataFilterChecked}
+            />
+          </Box>
+
+          {/********** FILTER BY SELECT ***********/}
+          <Box display="none">
+            <ProjectFilterBySelect
+              stateFilter={filter}
+              filterOption={filterOption}
+              handleChangeFilter={handleChangeFilter}
+              handleChangeReset={handleChangeReset}
+            />
+          </Box>
         </Box>
       </Box>
-
       {/********** SHOW LIST ***********/}
-      {optionFilter.length > 0 ? FilterList : SearchList}
+      {/* {List(data_Search)} */}
+      {dataFilterChecked.length > 0
+        ? List(dataFilterChecked)
+        : List(data_Search)}
     </>
   );
 };

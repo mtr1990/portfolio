@@ -56,6 +56,7 @@ router.put("/update/:id", (req, res) => {
       item.category = req.body.category;
       item.imglist = req.body.imglist;
       item.videolist = req.body.videolist;
+      item.isChecked = req.body.isChecked;
       item
         .save()
         .then(() => res.json("item updated!"))

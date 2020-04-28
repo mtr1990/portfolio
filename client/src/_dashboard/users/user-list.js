@@ -14,8 +14,8 @@ const UserList = ({ stateUsers, deleteUser }) => {
 
   return (
     <motion.div variants={varWrapBoth}>
-      {sortList.map((item, index) => (
-        <UserItem key={index} item={item} deleteUser={deleteUser} />
+      {sortList.map((item) => (
+        <UserItem key={item._id} item={item} deleteUser={deleteUser} />
       ))}
     </motion.div>
   );

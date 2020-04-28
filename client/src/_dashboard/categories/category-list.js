@@ -8,8 +8,12 @@ const CategoryList = ({ stateCategories, deleteCategory }) => {
 
   return (
     <motion.div variants={varWrapBoth}>
-      {stateCategories.map((item, index) => (
-        <CategoryItem key={index} item={item} deleteCategory={deleteCategory} />
+      {stateCategories.map((item) => (
+        <CategoryItem
+          key={item._id}
+          item={item}
+          deleteCategory={deleteCategory}
+        />
       ))}
     </motion.div>
   );

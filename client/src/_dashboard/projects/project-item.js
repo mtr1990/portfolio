@@ -118,7 +118,7 @@ const ProjectItem = ({ item, index, deleteProject, stateView }) => {
             {/********** DESCRIPTION ***********/}
             <Box className="content">
               <Typography variant="caption" component="div" color="primary">
-                {item.category.name}
+                {item.category}
               </Typography>
 
               <Typography

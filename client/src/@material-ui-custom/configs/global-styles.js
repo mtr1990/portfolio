@@ -2,7 +2,9 @@ import { withStyles } from "@material-ui/core";
 
 export const GlobalCss = withStyles((theme) => ({
   "@global": {
-    // COMMMONS
+    /** ------------------------------------------
+     * COMMMONS
+     ------------------------------------------ **/
     a: {
       textDecoration: "none",
       cursor: "pointer",
@@ -10,7 +12,6 @@ export const GlobalCss = withStyles((theme) => ({
       "&:visited": {},
       "&:active": {},
     },
-
     "svg,img,video": {
       display: "block !important",
       "&:focus": {
@@ -21,9 +22,9 @@ export const GlobalCss = withStyles((theme) => ({
       width: "100%",
     },
 
-    /**
-     * Buttons
-     */
+    /** ------------------------------------------
+     * BUTTONS
+     ------------------------------------------ **/
     ".MuiButtonBase-root": {
       "&:disabled": {
         opacity: "0.48",
@@ -70,7 +71,7 @@ export const GlobalCss = withStyles((theme) => ({
       },
     },
 
-    // TEXT + MUIICONBUTTON
+    // TEXT + ICON BUTTON
     ".MuiButton-textPrimary,.MuiIconButton-colorPrimary": {
       "&:disabled": {
         color: theme.palette.primary.main,
@@ -82,9 +83,9 @@ export const GlobalCss = withStyles((theme) => ({
       },
     },
 
-    /**
-     * Selection controls
-     */
+    /** ------------------------------------------
+     * SELECTION CONTROLS
+     ------------------------------------------ **/
     ".MuiSwitch-track": {
       backgroundColor: theme.palette.contrast.high,
     },
@@ -95,6 +96,9 @@ export const GlobalCss = withStyles((theme) => ({
       color: `${theme.palette.contrast.low} !important`,
     },
 
+    /** ------------------------------------------
+     * FORM
+     ------------------------------------------ **/
     // TEXT FIELD: OUTLINEDINPUT
     // ".MuiOutlinedInput-root": {
     //   "& .MuiOutlinedInput-notchedOutline": {
@@ -113,6 +117,13 @@ export const GlobalCss = withStyles((theme) => ({
       marginTop: "8px",
       display: "flex",
       justifyContent: "space-between",
+    },
+
+    /** ------------------------------------------
+     * MENU
+     ------------------------------------------ **/
+    ".MuiMenu-paper": {
+      boxShadow: `${theme.shadows[25].menu}`,
     },
   },
 }))(() => null);

@@ -70,8 +70,8 @@ const MoreAutocomplete = ({ textFieldProps, ...props }) => {
       )}
       // HIGHLIGHTS
       renderOption={(option, { inputValue }) => {
-        const matches = match(option.name, inputValue);
-        const parts = parse(option.name, matches);
+        const matches = match(option, inputValue);
+        const parts = parse(option, matches);
         return (
           <>
             {parts.map((part, index) => (

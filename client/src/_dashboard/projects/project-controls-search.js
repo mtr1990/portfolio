@@ -4,7 +4,7 @@ import { TextField, Box, Typography } from "@material-ui/core";
 const ProjectControlsSearch = ({
   stateSearch,
   stateProject,
-  resultsSearch,
+  data_Search,
   handleChangeSearch,
 }) => {
   return (
@@ -21,9 +21,9 @@ const ProjectControlsSearch = ({
       />
 
       <Box mt={2}>
-        {resultsSearch.length < stateProject.length ? (
+        {data_Search.length < stateProject.length ? (
           <Typography variant="subtitle2">
-            {resultsSearch.length}{" "}
+            {data_Search.length}{" "}
             <Typography
               variant="subtitle2"
               color="textSecondary"

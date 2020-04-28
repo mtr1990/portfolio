@@ -13,17 +13,17 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import {
-  Add as AddIcon,
-  Edit as EditIcon,
-  Favorite as FavoriteIcon,
-  Navigation as NavigationIcon,
-  Delete as DeleteIcon,
-  ArrowDownward as ArrowDownwardIcon,
-  CloudUpload as CloudUploadIcon,
-  Save as SaveIcon,
-  Alarm as AlarmIcon,
-  AddShoppingCart as AddShoppingCartIcon,
-  KeyboardVoice as KeyboardVoiceIcon,
+  Add,
+  Edit,
+  Favorite,
+  Navigation,
+  Delete,
+  ArrowDownward,
+  CloudUpload,
+  Save,
+  Alarm,
+  AddShoppingCart,
+  KeyboardVoice,
   PhotoCamera,
 } from "@material-ui/icons";
 
@@ -63,6 +63,7 @@ const GlButtons = () => {
               Contained Buttons
             </Typography>
 
+            <Button variant="contained">Default</Button>
             <Button variant="contained" color="primary">
               Primary
             </Button>
@@ -239,32 +240,32 @@ const GlButtons = () => {
               Floating Action Buttons
             </Typography>
             <MoreFab aria-label="add">
-              <AddIcon />
+              <Add />
             </MoreFab>
             <Fab color="primary" aria-label="add">
-              <AddIcon />
+              <Add />
             </Fab>
             <Fab color="secondary" aria-label="edit">
-              <EditIcon />
+              <Edit />
             </Fab>
             <MoreFab status="info" aria-label="edit">
-              <EditIcon />
+              <Edit />
             </MoreFab>
             <MoreFab status="success" aria-label="edit">
-              <EditIcon />
+              <Edit />
             </MoreFab>
             <MoreFab status="warning" aria-label="edit">
-              <EditIcon />
+              <Edit />
             </MoreFab>
             <MoreFab status="error" aria-label="edit">
-              <EditIcon />
+              <Edit />
             </MoreFab>
             <MoreFab variant="extended">
-              <NavigationIcon />
+              <Navigation />
               Navigate
             </MoreFab>
             <Fab disabled aria-label="like" color="primary">
-              <FavoriteIcon />
+              <Favorite />
             </Fab>
           </GlBlock>
 
@@ -373,13 +374,13 @@ const GlButtons = () => {
               <Grid item xs={6}>
                 <div>
                   <Fab size="small" color="secondary" aria-label="add">
-                    <AddIcon />
+                    <Add />
                   </Fab>
                   <Fab size="medium" color="secondary" aria-label="add">
-                    <AddIcon />
+                    <Add />
                   </Fab>
                   <Fab color="secondary" aria-label="add">
-                    <AddIcon />
+                    <Add />
                   </Fab>
                 </div>
                 <div>
@@ -389,7 +390,7 @@ const GlButtons = () => {
                     color="primary"
                     aria-label="add"
                   >
-                    <NavigationIcon />
+                    <Navigation />
                     Extended
                   </Fab>
                   <Fab
@@ -398,26 +399,26 @@ const GlButtons = () => {
                     color="primary"
                     aria-label="add"
                   >
-                    <NavigationIcon />
+                    <Navigation />
                     Extended
                   </Fab>
                   <Fab variant="extended" color="primary" aria-label="add">
-                    <NavigationIcon />
+                    <Navigation />
                     Extended
                   </Fab>
                 </div>
                 <div>
                   <IconButton aria-label="delete" size="small">
-                    <ArrowDownwardIcon fontSize="inherit" />
+                    <ArrowDownward fontSize="inherit" />
                   </IconButton>
                   <IconButton aria-label="delete">
-                    <DeleteIcon fontSize="small" />
+                    <Delete fontSize="small" />
                   </IconButton>
                   <IconButton aria-label="delete">
-                    <DeleteIcon />
+                    <Delete />
                   </IconButton>
                   <IconButton aria-label="delete">
-                    <DeleteIcon fontSize="large" />
+                    <Delete fontSize="large" />
                   </IconButton>
                 </div>
               </Grid>
@@ -433,7 +434,7 @@ const GlButtons = () => {
             <Button
               variant="contained"
               color="secondary"
-              startIcon={<DeleteIcon />}
+              startIcon={<Delete />}
             >
               Delete
             </Button>
@@ -445,14 +446,14 @@ const GlButtons = () => {
             >
               Send
             </Button>
-            <MoreBtnContained startIcon={<CloudUploadIcon />}>
+            <MoreBtnContained startIcon={<CloudUpload />}>
               Upload
             </MoreBtnContained>
             <Button
               variant="contained"
               disabled
               color="secondary"
-              startIcon={<KeyboardVoiceIcon />}
+              startIcon={<KeyboardVoice />}
             >
               Talk
             </Button>
@@ -460,7 +461,7 @@ const GlButtons = () => {
               variant="contained"
               color="primary"
               size="small"
-              startIcon={<SaveIcon />}
+              startIcon={<Save />}
             >
               Save
             </Button>
@@ -468,7 +469,7 @@ const GlButtons = () => {
               variant="contained"
               color="primary"
               size="large"
-              startIcon={<SaveIcon />}
+              startIcon={<Save />}
             >
               Save
             </Button>
@@ -480,28 +481,28 @@ const GlButtons = () => {
               Icon Buttons
             </Typography>
             <IconButton aria-label="delete">
-              <DeleteIcon />
+              <Delete />
             </IconButton>
             <IconButton color="primary" aria-label="add an alarm">
-              <AlarmIcon />
+              <Alarm />
             </IconButton>
             <IconButton color="secondary" aria-label="add to shopping cart">
-              <AddShoppingCartIcon />
+              <AddShoppingCart />
             </IconButton>
             <IconButton disabled color="primary" aria-label="add an alarm">
-              <AlarmIcon />
+              <Alarm />
             </IconButton>
             <MoreIconButton status="info" aria-label="add to shopping cart">
-              <AddShoppingCartIcon />
+              <AddShoppingCart />
             </MoreIconButton>
             <MoreIconButton status="success" aria-label="add to shopping cart">
-              <AddShoppingCartIcon />
+              <AddShoppingCart />
             </MoreIconButton>
             <MoreIconButton status="warning" aria-label="add to shopping cart">
-              <AddShoppingCartIcon />
+              <AddShoppingCart />
             </MoreIconButton>
             <MoreIconButton status="error" aria-label="add to shopping cart">
-              <AddShoppingCartIcon />
+              <AddShoppingCart />
             </MoreIconButton>
           </GlBlock>
         </Box>

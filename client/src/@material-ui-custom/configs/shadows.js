@@ -40,12 +40,13 @@ export const muiShadowsLight = [
   {
     thumbnail: `inset 6px 0 12px 0px rgba(${color_light}, 0.12)`,
     card: {
-      root: `8px 16px 24px 0 rgba(${color_light}, 0.32)`,
+      root: `8px 16px 24px 0 rgba(${color_light}, 0.36)`,
       hover: `8px 24px 32px 0 rgba(${color_light}, 0.72)`,
     },
     image: `48px 48px 80px 0 rgba(${color_light}, 0.48)`,
     dialog: `48px 48px 80px 0 rgba(${color_dark}, 0.24)`,
     drawer: `16px 8px 24px 0 rgba(${color_light}, 0.32)`,
+    menu: `4px 12px 48px 0 rgba(${color_light}, 0.72)`,
   },
 ];
 
@@ -85,5 +86,6 @@ export const muiShadowsDark = [
       hover: `0 32px 48px -24px rgba(${color_dark}, 1)`,
     },
     drawer: `16px 8px 24px 0 rgba(${color_dark}, 0.16)`,
+    menu: `4px 12px 48px 0 rgba(${color_dark}, 0.32)`,
   },
 ];

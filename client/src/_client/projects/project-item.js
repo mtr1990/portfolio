@@ -93,7 +93,7 @@ const ProjectItem = ({ item }) => {
 
               <Box className={classes.caption}>
                 <Typography variant="caption" color="textSecondary">
-                  {item.category.name}
+                  {item.category}
                 </Typography>
                 <Typography variant="subtitle1">{item.name}</Typography>
               </Box>

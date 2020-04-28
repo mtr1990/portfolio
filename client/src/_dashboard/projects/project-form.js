@@ -148,8 +148,8 @@ const ProjectForm = ({
           autoHighlight
           closeIcon={<Delete fontSize="small" />}
           options={values.categories}
-          getOptionLabel={(option) => option.name}
-          getOptionSelected={(option, value) => value.id === option.id}
+          getOptionLabel={(option) => option}
+          // getOptionSelected={(option, value) => value._id === option._id}
           component={MoreAutocomplete}
           textFieldProps={{
             variant: "outlined",
@@ -157,7 +157,7 @@ const ProjectForm = ({
           }}
           renderOption={(option) => (
             <>
-              <span>{option.name}</span>
+              <span>{option}</span>
             </>
           )}
         />

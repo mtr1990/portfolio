@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
@@ -7,7 +8,7 @@ import { API, history, path_DASHBOARD } from "../../configs";
 import { validationCategoryForm } from "../../utilities";
 import { HeaderDashboard, CheckLogin } from "../../commons";
 import { CategoryForm } from "..";
-import { SnackStatus } from "../../@material-ui-custom";
+import { SnackStatus, MoreBreadcrumbs } from "../../@material-ui-custom";
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -55,7 +56,11 @@ const CategoryCreate = () => {
   return (
     <CheckLogin>
       <motion.div initial="initial" animate="enter" exit="exit">
+        {/********** COMMONS ***********/}
         <HeaderDashboard />
+        <MoreBreadcrumbs current="Create Category">
+          <Link to={path_DASHBOARD.categories.root}>Categories</Link>
+        </MoreBreadcrumbs>
 
         <Box className={classes.main}>
           <Typography variant="h4" component="h4">

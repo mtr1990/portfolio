@@ -8,9 +8,9 @@ import {
   Box,
 } from "@material-ui/core";
 
-const ProjectControlsFilter = ({
+const ProjectFilterBySelect = ({
   stateFilter,
-  resultsFilter,
+  filterOption,
   handleChangeFilter,
   handleChangeReset,
 }) => {
@@ -26,9 +26,9 @@ const ProjectControlsFilter = ({
           labelWidth={80}
           style={{ minWidth: "120px" }}
         >
-          {resultsFilter.map((item, index) => (
-            <MenuItem key={index} value={item.category.name}>
-              {item.category.name}
+          {filterOption.map((item, index) => (
+            <MenuItem key={index} value={item.category}>
+              {item.category}
             </MenuItem>
           ))}
         </Select>
@@ -45,4 +45,4 @@ const ProjectControlsFilter = ({
   );
 };
 
-export default ProjectControlsFilter;
+export default ProjectFilterBySelect;

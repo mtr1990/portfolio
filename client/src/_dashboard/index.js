@@ -10,7 +10,9 @@ export { default as ProjectItem } from "./projects/project-item";
 export { default as ProjectList } from "./projects/project-list";
 
 export { default as ProjectControlsSearch } from "./projects/project-controls-search";
-export { default as ProjectControlsFilter } from "./projects/project-controls-filter";
+export { default as ProjectFilterBySelect } from "./projects/project-controls-select";
+export { default as ProjectFilterByCheckbox } from "./projects/project-controls-checkbox";
+
 export { default as ProjectControlsSort } from "./projects/project-controls-sort";
 export { default as ProjectControlsView } from "./projects/project-controls-view";
 

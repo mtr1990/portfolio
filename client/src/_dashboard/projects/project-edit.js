@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import { Formik } from "formik";
@@ -6,7 +7,7 @@ import { useSnackbar } from "notistack";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { API, history, path_DASHBOARD } from "../../configs";
 import { validationProjectForm, DisplayFormikState } from "../../utilities";
-import { SnackStatus } from "../../@material-ui-custom";
+import { SnackStatus, MoreBreadcrumbs } from "../../@material-ui-custom";
 import { HeaderDashboard, CheckLogin } from "../../commons";
 import { ProjectForm } from "..";
 
@@ -34,6 +35,7 @@ const ProjectEdit = () => {
   const [videolist, setVideolist] = useState([]);
   const [category, setCategory] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [isChecked, setIsChecked] = useState(false);
 
   // GET CATEGORIES
   useEffect(() => {
@@ -41,8 +43,8 @@ const ProjectEdit = () => {
       await API.get("categories")
         .then((res) => {
           if (res.data.length > 0) {
-            // setCategories(res.data.map((item) => item.name));
-            setCategories(res.data);
+            setCategories(res.data.map((item) => item.name));
+            // setCategories(res.data);
           }
         })
         .catch((err) => {
@@ -68,6 +70,7 @@ const ProjectEdit = () => {
           setCategory(res.data.category);
           setImglist(res.data.imglist);
           setVideolist(res.data.videolist);
+          setIsChecked(res.data.isChecked);
         })
         .catch((err) => {
           SnackStatus(enqueueSnackbar, {
@@ -88,7 +91,8 @@ const ProjectEdit = () => {
     hero,
     category,
     imglist,
-    videolist
+    videolist,
+    isChecked
   ) => {
     const data = {
       name,
@@ -98,6 +102,7 @@ const ProjectEdit = () => {
       category,
       imglist,
       videolist,
+      isChecked,
     };
     await API.put(`projects/update/${id}`, data)
       .then((res) => {
@@ -124,7 +129,8 @@ const ProjectEdit = () => {
       values.hero,
       values.category,
       values.imglist,
-      values.videolist
+      values.videolist,
+      values.isChecked
     );
     setTimeout(() => {
       setSubmitting(false);
@@ -134,7 +140,11 @@ const ProjectEdit = () => {
   return (
     <CheckLogin>
       <motion.div initial="initial" animate="enter" exit="exit">
+        {/********** COMMONS ***********/}
         <HeaderDashboard />
+        <MoreBreadcrumbs current="Edit Project">
+          <Link to={path_DASHBOARD.root}>Projects</Link>
+        </MoreBreadcrumbs>
 
         <Box className={classes.root}>
           <Typography variant="h4" component="h4">
@@ -152,6 +162,7 @@ const ProjectEdit = () => {
               categories,
               imglist,
               videolist,
+              isChecked,
             }}
             validationSchema={validationProjectForm}
             onSubmit={handleSubmit}

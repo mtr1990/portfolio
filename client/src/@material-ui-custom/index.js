@@ -30,3 +30,8 @@ export { SnackContainer, SnackStatus, SnackAction } from "./snackbars";
  */
 export { default as MoreSelect } from "./form-select";
 export { default as MoreAutocomplete } from "./form-formik-autocomplete";
+
+/**
+ * Breadcrumbs
+ */
+export { default as MoreBreadcrumbs } from "./breadcrumbs";

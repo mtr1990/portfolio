@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Formik } from "formik";
 import { useSnackbar } from "notistack";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { API, history, path_DASHBOARD } from "../../configs";
 import { validationProjectForm, DisplayFormikState } from "../../utilities";
-import { SnackStatus } from "../../@material-ui-custom";
+import { SnackStatus, MoreBreadcrumbs } from "../../@material-ui-custom";
 import { HeaderDashboard, CheckLogin } from "../../commons";
 import { ProjectForm } from "..";
 
@@ -31,6 +32,7 @@ const ProjectCreate = () => {
   const [videolist] = useState([]);
   const [category, setCategory] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [isChecked] = useState(false);
   const isCancelled = useRef(false);
 
   // GET CATEGORIES
@@ -40,10 +42,10 @@ const ProjectCreate = () => {
         .then((res) => {
           if (!isCancelled.current) {
             if (res.data.length > 0) {
-              // setCategories(res.data.map((item) => item.name));
-              // setCategory(res.data[0].name);
-              setCategories(res.data);
-              setCategory(res.data[0]);
+              setCategories(res.data.map((item) => item.name));
+              setCategory(res.data[0].name);
+              // setCategories(res.data);
+              // setCategory(res.data[0]);
             }
           }
         })
@@ -68,7 +70,8 @@ const ProjectCreate = () => {
     hero,
     category,
     imglist,
-    videolist
+    videolist,
+    isChecked
   ) => {
     const data = {
       name,
@@ -78,6 +81,7 @@ const ProjectCreate = () => {
       category,
       imglist,
       videolist,
+      isChecked,
     };
     await API.post(`projects/save`, data)
       .then((res) => {
@@ -104,7 +108,8 @@ const ProjectCreate = () => {
       values.hero,
       values.category,
       values.imglist,
-      values.videolist
+      values.videolist,
+      values.isChecked
     );
     setTimeout(() => {
       setSubmitting(false);
@@ -114,13 +119,18 @@ const ProjectCreate = () => {
   return (
     <CheckLogin>
       <motion.div initial="initial" animate="enter" exit="exit">
+        {/********** COMMONS ***********/}
         <HeaderDashboard />
+        <MoreBreadcrumbs current="Create Project">
+          <Link to={path_DASHBOARD.root}>Projects</Link>
+        </MoreBreadcrumbs>
 
         <Box className={classes.root}>
           <Typography variant="h4" component="h4">
             Create Project
           </Typography>
 
+          {/********** FORM ***********/}
           <Formik
             enableReinitialize
             initialValues={{
@@ -132,6 +142,7 @@ const ProjectCreate = () => {
               categories,
               imglist,
               videolist,
+              isChecked,
             }}
             validationSchema={validationProjectForm}
             onSubmit={handleSubmit}

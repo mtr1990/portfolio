@@ -111,6 +111,7 @@ const DashboardPage = () => {
               toogleView={toogleView}
               toogleSort={toogleSort}
               deleteProject={deleteProject}
+              setProjects={setProjects}
             />
           </Container>
         </Box>
