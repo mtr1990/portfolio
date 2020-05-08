@@ -1,19 +1,20 @@
 import React from "react";
-import { GlBlock } from "..";
+
 import {
-  Typography,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
   Grid,
+  Checkbox,
+  FormGroup,
+  Typography,
+  FormControlLabel,
 } from "@material-ui/core";
 import {
-  CheckBoxOutlineBlank as CheckBoxOutlineBlankIcon,
-  CheckBox as CheckBoxIcon,
+  CheckBox,
   Favorite,
   FavoriteBorder,
+  CheckBoxOutlineBlank,
 } from "@material-ui/icons";
-import { MoreCheckbox } from "../../@material-ui-custom";
+import { MoreCheckbox } from "../../theme/@material-ui-custom";
+import { GlBlock } from ".";
 
 const GlCheckbox = () => (
   <GlBlock>
@@ -64,8 +65,8 @@ const GlCheckbox = () => (
           <FormControlLabel
             control={
               <Checkbox
-                icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                checkedIcon={<CheckBoxIcon fontSize="small" />}
+                icon={<CheckBoxOutlineBlank fontSize="small" />}
+                checkedIcon={<CheckBox fontSize="small" />}
                 value="checkedI"
               />
             }

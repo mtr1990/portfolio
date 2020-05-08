@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { API } from "../configs";
-import { LoginPage } from "../_dashboard";
+import { API } from "../../configs";
+import { LoginPage } from "..";
 
-const CheckLogin = (props) => {
+function LoginCheck(props) {
   const [isLoggedin, setIsLoggedin] = useState(true);
 
   useEffect(() => {
@@ -24,6 +24,6 @@ This function is only for administrators, if you have an account, please login t
   }
 
   return <> {props.children}</>;
-};
+}
 
-export default CheckLogin;
+export default LoginCheck;

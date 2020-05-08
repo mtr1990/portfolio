@@ -1,53 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { useSnackbar } from "notistack";
 import { Container, Box } from "@material-ui/core";
-import { API } from "../configs";
-import { HeaderDashboard, CheckLogin, PanelDashBoard } from "../commons";
-import { SnackStatus } from "../@material-ui-custom";
-import { EmailList } from ".";
+import { useDispatch, useSelector } from "react-redux";
+import { getEmails } from "../redux";
+import { HeaderDashboard, PanelDashBoard } from "../commons";
+import { EmailList } from "./emails";
+import { LoginCheck } from "./login";
 
-const EmailPage = () => {
-  const { enqueueSnackbar } = useSnackbar();
-  const [emails, setEmails] = useState([]);
+function EmailPage() {
+  const dispatch = useDispatch();
+  const emails = useSelector((state) => state.emails.emails);
 
-  // GET EMAIL
+  // GET EMAILS
   useEffect(() => {
-    const getEmails = async () => {
-      await API.get("emails")
-        .then((res) => {
-          setEmails(res.data);
-        })
-        .catch((err) => {
-          SnackStatus(enqueueSnackbar, {
-            message: "Cannot connect to the server!",
-            variant: "error",
-          });
-        });
-    };
-    getEmails();
-  }, [enqueueSnackbar]);
-
-  // DELETE EMAIL
-  const deleteEmail = async (id) => {
-    await API.delete(`emails/${id}`)
-      .then((res) => {
-        setEmails(emails.filter((item) => item._id !== id));
-        SnackStatus(enqueueSnackbar, {
-          message: "Deleted success!",
-          variant: "success",
-        });
-      })
-      .catch((err) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Deleted error!",
-          variant: "error",
-        });
-      });
-  };
+    dispatch(getEmails());
+  }, [dispatch]);
 
   return (
-    <CheckLogin>
+    <LoginCheck>
       <motion.div initial="initial" animate="enter" exit="exit">
         {/********** COMMONS ***********/}
         <HeaderDashboard />
@@ -64,12 +34,12 @@ const EmailPage = () => {
             </Box>
 
             {/********** EMAIL LIST ***********/}
-            <EmailList stateEmail={emails} deleteEmail={deleteEmail} />
+            <EmailList />
           </Container>
         </Box>
       </motion.div>
-    </CheckLogin>
+    </LoginCheck>
   );
-};
+}
 
 export default EmailPage;

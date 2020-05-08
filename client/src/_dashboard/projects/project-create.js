@@ -1,123 +1,75 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useFormik } from "formik";
 import { motion } from "framer-motion";
-import { Formik } from "formik";
+import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { path_DASHBOARD } from "../../configs";
+import { HeaderDashboard } from "../../commons";
+import { validationProjectForm, DebugForMik } from "../../utilities";
 import { Box, Typography, makeStyles } from "@material-ui/core";
-import { API, history, path_DASHBOARD } from "../../configs";
-import { validationProjectForm, DisplayFormikState } from "../../utilities";
-import { SnackStatus, MoreBreadcrumbs } from "../../@material-ui-custom";
-import { HeaderDashboard, CheckLogin } from "../../commons";
-import { ProjectForm } from "..";
+import { MoreBreadcrumbs } from "../../theme/@material-ui-custom";
+import { useDispatch, useSelector } from "react-redux";
+import { addProject, getCategories } from "../../redux";
+import { ProjectForm } from ".";
+import { LoginCheck } from "../login";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: "640px",
-    margin: `0 auto ${theme.spacing(10)}px`,
-    background: theme.palette.background.card,
-    padding: theme.spacing(3),
-    borderRadius: theme.shape.borderRadiusMd,
-    boxShadow: theme.shadows[25].card.root,
-  },
-}));
-
-const ProjectCreate = () => {
+function ProjectCreate() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
-  const [name] = useState("");
-  const [description] = useState("");
-  const [thumbnail] = useState("");
-  const [hero] = useState("");
-  const [imglist] = useState([""]);
-  const [videolist] = useState([]);
-  const [category, setCategory] = useState(null);
-  const [categories, setCategories] = useState([]);
-  const [isChecked] = useState(false);
-  const isCancelled = useRef(false);
+  const [initialState, setInitialState] = useState({
+    name: "",
+    description: "",
+    thumbnail: "",
+    hero: "",
+    imglist: [""],
+    videolist: [],
+    category: null,
+  });
+
+  const setCategory = useSelector(
+    (state) =>
+      state.categories.categories[0] && state.categories.categories[0].name
+  );
 
   // GET CATEGORIES
   useEffect(() => {
-    const getCategories = async () => {
-      await API.get("categories")
-        .then((res) => {
-          if (!isCancelled.current) {
-            if (res.data.length > 0) {
-              setCategories(res.data.map((item) => item.name));
-              setCategory(res.data[0].name);
-              // setCategories(res.data);
-              // setCategory(res.data[0]);
-            }
-          }
-        })
-        .catch((err) => {
-          SnackStatus(enqueueSnackbar, {
-            message: "Cannot connect to the server!",
-            variant: "error",
-          });
-        });
-    };
-    getCategories();
-    return () => {
-      isCancelled.current = true;
-    };
-  }, [enqueueSnackbar, categories]);
+    dispatch(getCategories());
+    if (setCategory !== undefined) {
+      setInitialState((prevState) => ({
+        ...prevState,
+        category: setCategory,
+      }));
+    }
+  }, [dispatch, setCategory]);
 
-  // CREATE PROJECT
-  const createProject = async (
-    name,
-    description,
-    thumbnail,
-    hero,
-    category,
-    imglist,
-    videolist,
-    isChecked
-  ) => {
-    const data = {
-      name,
-      description,
-      thumbnail,
-      hero,
-      category,
-      imglist,
-      videolist,
-      isChecked,
-    };
-    await API.post(`projects/save`, data)
-      .then((res) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Created success!",
-          variant: "success",
-        });
-        history.push(path_DASHBOARD.root);
-      })
-      .catch((err) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Created error!",
-          variant: "error",
-        });
-      });
-  };
+  // FORMIK
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: initialState,
+    validationSchema: validationProjectForm,
+    onSubmit: (values) => {
+      const newProject = {
+        name: values.name,
+        description: values.description,
+        thumbnail: values.thumbnail,
+        hero: values.hero,
+        category: values.category,
+        imglist: values.imglist,
+        videolist: values.videolist,
+      };
 
-  // SUBMIT
-  const handleSubmit = (values, { setSubmitting }) => {
-    createProject(
-      values.name,
-      values.description,
-      values.thumbnail,
-      values.hero,
-      values.category,
-      values.imglist,
-      values.videolist,
-      values.isChecked
-    );
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 1600);
-  };
+      dispatch(addProject(newProject, enqueueSnackbar));
+      setTimeout(() => {
+        formik.setSubmitting(false);
+      }, 1600);
+    },
+  });
 
   return (
-    <CheckLogin>
+    <LoginCheck>
+      <DebugForMik formik={formik} />
+
       <motion.div initial="initial" animate="enter" exit="exit">
         {/********** COMMONS ***********/}
         <HeaderDashboard />
@@ -131,32 +83,22 @@ const ProjectCreate = () => {
           </Typography>
 
           {/********** FORM ***********/}
-          <Formik
-            enableReinitialize
-            initialValues={{
-              name,
-              description,
-              thumbnail,
-              hero,
-              category,
-              categories,
-              imglist,
-              videolist,
-              isChecked,
-            }}
-            validationSchema={validationProjectForm}
-            onSubmit={handleSubmit}
-            render={(props) => (
-              <>
-                <DisplayFormikState {...props} />
-                <ProjectForm {...props} txtSubmit="Create" />
-              </>
-            )}
-          />
+          <ProjectForm formik={formik} txtSubmit="Create" />
         </Box>
       </motion.div>
-    </CheckLogin>
+    </LoginCheck>
   );
-};
+}
 
 export default ProjectCreate;
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: "640px",
+    margin: `0 auto ${theme.spacing(10)}px`,
+    background: theme.palette.background.card,
+    padding: theme.spacing(3),
+    borderRadius: theme.shape.borderRadiusMd,
+    boxShadow: theme.shadows[25].card.root,
+  },
+}));

@@ -1,17 +1,74 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Formik } from "formik";
-import { history, API, path_DASHBOARD } from "../configs";
-import { validationLogin } from "../utilities";
+import { useFormik } from "formik";
+import { useSnackbar } from "notistack";
+import { validationLogin, DebugForMik } from "../utilities";
 import {
-  Container,
-  Grid,
   Box,
+  Grid,
+  Container,
   Typography,
   makeStyles,
 } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { LoginUser } from "../redux";
 import { HeaderClient } from "../commons";
-import { UserFormLogin } from ".";
+import { LoginForm } from "./login";
+
+function LoginPage(props) {
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
+  const [initialState] = useState({
+    email: "",
+    password: "",
+  });
+
+  // FORMIK
+  const formik = useFormik({
+    initialValues: initialState,
+    validationSchema: validationLogin,
+    onSubmit: (values) => {
+      const newLogin = {
+        email: values.email,
+        password: values.password,
+      };
+      dispatch(LoginUser(newLogin, enqueueSnackbar));
+      setTimeout(() => {
+        formik.setSubmitting(false);
+      }, 1600);
+    },
+  });
+
+  return (
+    <motion.div initial="initial" animate="enter" exit="exit">
+      <DebugForMik formik={formik} />
+      <HeaderClient />
+
+      <Box className={classes.root}>
+        <Container>
+          <Box mt={-20}>
+            <Grid container justify="center">
+              <Grid item xs={12} sm={8} md={4}>
+                <Typography variant="h2" component="h1" gutterBottom>
+                  {props.heading ? props.heading : "Login"}
+                </Typography>
+                <Typography variant="body2" component="p" color="textSecondary">
+                  {props.description ? props.description : null}
+                </Typography>
+
+                {/********** FORM ***********/}
+                <LoginForm formik={formik} />
+              </Grid>
+            </Grid>
+          </Box>
+        </Container>
+      </Box>
+    </motion.div>
+  );
+}
+
+export default LoginPage;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,71 +82,3 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
 }));
-
-const LoginPage = (props) => {
-  const classes = useStyles();
-  const [email] = useState("");
-  const [password] = useState("");
-  const [isError, setIsError] = useState(null);
-
-  // REQUEST LOGIN
-  const requestLogin = async (email, password) => {
-    const data = {
-      email,
-      password,
-    };
-    await API.post(`users/login`, data).then((res) => {
-      if (res.data.error) {
-        return setIsError(res.data.message);
-      }
-      history.push(path_DASHBOARD.root);
-      history.go(0);
-    });
-  };
-
-  // SUBMIT
-  const handleSubmit = (values, { setSubmitting }) => {
-    requestLogin(values.email, values.password);
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 1600);
-  };
-
-  return (
-    <motion.div initial="initial" animate="enter" exit="exit">
-      <HeaderClient />
-      <Box className={classes.root}>
-        <Container>
-          <Box mt={-20}>
-            <Grid container justify="center">
-              <Grid item xs={12} sm={8} md={4}>
-                <Typography variant="h2" component="h1" gutterBottom>
-                  {props.heading ? props.heading : "Login"}
-                </Typography>
-                <Typography variant="body2" component="p" color="textSecondary">
-                  {props.description ? props.description : null}
-                </Typography>
-                {/********** Formik ***********/}
-                <Formik
-                  initialValues={{
-                    email,
-                    password,
-                  }}
-                  validationSchema={validationLogin}
-                  onSubmit={handleSubmit}
-                  render={(props) => (
-                    <>
-                      <UserFormLogin {...props} isError={isError} />
-                    </>
-                  )}
-                />
-              </Grid>
-            </Grid>
-          </Box>
-        </Container>
-      </Box>
-    </motion.div>
-  );
-};
-
-export default LoginPage;

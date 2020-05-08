@@ -1,55 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { useSnackbar } from "notistack";
 import { Link } from "react-router-dom";
+import { path_DASHBOARD } from "../configs";
 import { Container, Box, Fab } from "@material-ui/core";
 import { PersonAdd } from "@material-ui/icons";
-import { API, path_DASHBOARD } from "../configs";
-import { SnackStatus } from "../@material-ui-custom";
-import { HeaderDashboard, CheckLogin, PanelDashBoard } from "../commons";
-import { UserList } from ".";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../redux";
+import { HeaderDashboard, PanelDashBoard } from "../commons";
+import { UserList } from "./users";
+import { LoginCheck } from "./login";
 
-const UserPage = () => {
-  const { enqueueSnackbar } = useSnackbar();
-  const [users, setUsers] = useState([]);
+function UserPage() {
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.users.users);
 
   // GET USERS
   useEffect(() => {
-    const getUsers = async () => {
-      await API.get("users")
-        .then((res) => {
-          setUsers(res.data);
-        })
-        .catch((err) => {
-          SnackStatus(enqueueSnackbar, {
-            message: "Cannot connect to the server!",
-            variant: "error",
-          });
-        });
-    };
-    getUsers();
-  }, [enqueueSnackbar]);
-
-  // DELETE USER
-  const deleteUser = async (id) => {
-    await API.delete(`users/${id}`)
-      .then((res) => {
-        setUsers(users.filter((item) => item._id !== id));
-        SnackStatus(enqueueSnackbar, {
-          message: "Deleted success!",
-          variant: "success",
-        });
-      })
-      .catch((err) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Deleted error!",
-          variant: "error",
-        });
-      });
-  };
+    dispatch(getUsers());
+  }, [dispatch]);
 
   return (
-    <CheckLogin>
+    <LoginCheck>
       <motion.div initial="initial" animate="enter" exit="exit">
         {/********** COMMONS ***********/}
         <HeaderDashboard />
@@ -65,8 +36,8 @@ const UserPage = () => {
               />
             </Box>
 
-            {/********** EMAIL LIST ***********/}
-            <UserList stateUsers={users} deleteUser={deleteUser} />
+            {/********** USER LIST ***********/}
+            <UserList />
             <Box height={160}></Box>
           </Container>
         </Box>
@@ -82,8 +53,8 @@ const UserPage = () => {
           </Fab>
         </Box>
       </motion.div>
-    </CheckLogin>
+    </LoginCheck>
   );
-};
+}
 
 export default UserPage;

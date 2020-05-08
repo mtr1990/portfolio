@@ -1,24 +1,33 @@
 import React from "react";
 import { FormControlLabel, Checkbox, Typography } from "@material-ui/core";
 import { GridOn, GridOff } from "@material-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { toogleViewProject } from "../../redux";
 
-const ProjectControlsView = ({ stateView, toogleView }) => {
+function ProjectControlsView(props) {
+  const dispatch = useDispatch();
+  const checked = useSelector((state) => state.projects.toogleView);
+
+  const onToogle = () => {
+    return dispatch(toogleViewProject());
+  };
+
   return (
     <FormControlLabel
       control={
         <Checkbox
           size="small"
-          color={stateView ? "primary" : "default"}
+          color={checked ? "primary" : "default"}
           icon={<GridOff />}
           checkedIcon={<GridOn />}
-          checked={stateView}
-          onChange={toogleView}
+          checked={checked}
+          onChange={onToogle}
         />
       }
       label={
         <Typography
           variant="subtitle2"
-          color={stateView ? "primary" : "textSecondary"}
+          color={checked ? "primary" : "textSecondary"}
           component="span"
         >
           Grid
@@ -26,6 +35,6 @@ const ProjectControlsView = ({ stateView, toogleView }) => {
       }
     />
   );
-};
+}
 
 export default ProjectControlsView;

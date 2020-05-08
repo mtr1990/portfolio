@@ -1,60 +1,43 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Formik } from "formik";
-import { motion } from "framer-motion";
+import { useFormik } from "formik";
 import { useSnackbar } from "notistack";
-import { Box, Typography, makeStyles } from "@material-ui/core";
-import { API, history, path_DASHBOARD } from "../../configs";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { path_DASHBOARD } from "../../configs";
 import { validationCategoryForm } from "../../utilities";
-import { HeaderDashboard, CheckLogin } from "../../commons";
-import { CategoryForm } from "..";
-import { SnackStatus, MoreBreadcrumbs } from "../../@material-ui-custom";
-
-const useStyles = makeStyles((theme) => ({
-  main: {
-    width: "640px",
-    margin: "0 auto",
-    background: theme.palette.background.card,
-    padding: theme.spacing(3),
-    borderRadius: theme.shape.borderRadiusMd,
-    boxShadow: theme.shadows[25].card.root,
-  },
-}));
+import { useDispatch } from "react-redux";
+import { addCategory } from "../../redux";
+import { MoreBreadcrumbs } from "../../theme/@material-ui-custom";
+import { Box, Typography, makeStyles } from "@material-ui/core";
+import { HeaderDashboard } from "../../commons";
+import { CategoryForm } from ".";
+import { LoginCheck } from "../login";
 
 const CategoryCreate = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
-  const [name] = useState("");
+  const [initialState] = useState({
+    name: "",
+  });
 
-  // CREATE CATEGORY
-  const createCategory = async (name) => {
-    const data = { name };
-    await API.post(`categories/save`, data)
-      .then((res) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Created success!",
-          variant: "success",
-        });
-        history.push(path_DASHBOARD.categories.root);
-      })
-      .catch((err) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Created error!",
-          variant: "error",
-        });
-      });
-  };
-
-  // SUBMIT
-  const handleSubmit = (values, { setSubmitting }) => {
-    createCategory(values.name);
-    setTimeout(() => {
-      setSubmitting(false);
-    }, 1600);
-  };
+  // FORMIK
+  const formik = useFormik({
+    initialValues: initialState,
+    validationSchema: validationCategoryForm,
+    onSubmit: (values) => {
+      const newCategory = {
+        name: values.name,
+      };
+      dispatch(addCategory(newCategory, enqueueSnackbar));
+      setTimeout(() => {
+        formik.setSubmitting(false);
+      }, 1600);
+    },
+  });
 
   return (
-    <CheckLogin>
+    <LoginCheck>
       <motion.div initial="initial" animate="enter" exit="exit">
         {/********** COMMONS ***********/}
         <HeaderDashboard />
@@ -67,22 +50,22 @@ const CategoryCreate = () => {
             Create Category
           </Typography>
 
-          <Formik
-            initialValues={{
-              name,
-            }}
-            validationSchema={validationCategoryForm}
-            onSubmit={handleSubmit}
-            render={(props) => (
-              <>
-                <CategoryForm {...props} txtSubmit="Create" />
-              </>
-            )}
-          />
+          <CategoryForm formik={formik} txtSubmit="Create" />
         </Box>
       </motion.div>
-    </CheckLogin>
+    </LoginCheck>
   );
 };
 
 export default CategoryCreate;
+
+const useStyles = makeStyles((theme) => ({
+  main: {
+    width: "640px",
+    margin: "0 auto",
+    background: theme.palette.background.card,
+    padding: theme.spacing(3),
+    borderRadius: theme.shape.borderRadiusMd,
+    boxShadow: theme.shadows[25].card.root,
+  },
+}));

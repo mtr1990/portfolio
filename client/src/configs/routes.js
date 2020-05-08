@@ -1,38 +1,35 @@
-// Import: Client
-import {
-  HomePage,
-  AboutPage,
-  ProjectDetailsPage,
-  NoMatchPage,
-  TestPage,
-} from "../_client";
+// PATHS
+import { path_CLIENT, path_GUIDELINE, path_DASHBOARD } from "./paths";
 
-// Import: Guideline
+// CLIENT
+import { Page404 } from "../commons";
+
+// CLIENT
+import { HomePage, TestPage, AboutPage, ProjectDetailsPage } from "../_client";
+
+// GUIDELINE
 import {
-  GlColorPalettes,
-  GlTypography,
-  GlButtons,
   GlForms,
-  GlSnackbars,
+  GlButtons,
   GlShadows,
+  GlSnackbars,
+  GlTypography,
+  GlColorPalettes,
 } from "../_guideline";
 
-// Import: DashboardPage
+// DASHBOARD
 import {
-  DashboardPage,
-  ProjectCreate,
-  ProjectEdit,
+  UserPage,
   LoginPage,
   EmailPage,
-  CategoryPage,
-  CategoryCreate,
-  CategoryEdit,
-  UserPage,
   UserCreate,
+  ProjectEdit,
+  CategoryPage,
+  CategoryEdit,
+  DashboardPage,
+  ProjectCreate,
+  CategoryCreate,
 } from "../_dashboard";
-
-// Import: Path
-import { path_CLIENT, path_GUIDELINE, path_DASHBOARD } from "./paths";
 
 const routes = [
   // Client
@@ -128,7 +125,7 @@ const routes = [
 
   // NoMatch
   {
-    component: NoMatchPage,
+    component: Page404,
   },
 ];
 

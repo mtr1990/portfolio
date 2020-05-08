@@ -8,8 +8,8 @@ import {
   useTheme,
   Typography,
 } from "@material-ui/core";
-import { GlMenuList, GlAppBar } from "..";
 import { BtnDarkMode } from "../../commons";
+import { GlMenuList, GlAppBar } from ".";
 
 const useStyles = makeStyles((theme) => ({
   root: {

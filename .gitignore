@@ -6,3 +6,6 @@ Procfile
 
 # Server
 .env
+
+# Editor
+.editorconfig

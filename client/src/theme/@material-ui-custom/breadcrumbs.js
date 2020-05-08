@@ -8,7 +8,7 @@ import {
   Box,
 } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
-import { path_DASHBOARD } from "../configs";
+import { path_DASHBOARD } from "../../configs";
 
 const useStyles = makeStyles((theme) => ({
   root: {

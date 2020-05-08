@@ -4,10 +4,7 @@ const Schema = mongoose.Schema;
 const EmailSchema = new Schema(
   {
     email: String,
-    date: {
-      type: Date,
-      default: Date.now(),
-    },
+    date: Date,
   },
   { versionKey: false }
 );

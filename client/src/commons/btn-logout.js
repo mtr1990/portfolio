@@ -1,7 +1,7 @@
 import React from "react";
 import { useSnackbar } from "notistack";
 import { API, history, path_DASHBOARD } from "../configs";
-import { SnackStatus, MoreBtnText } from "../@material-ui-custom";
+import { SnackStatus, MoreBtnText } from "../theme/@material-ui-custom";
 import { ExitToApp } from "@material-ui/icons";
 
 const BtnLogout = () => {

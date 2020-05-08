@@ -1,16 +1,16 @@
 import React from "react";
-import { GlBlock } from "..";
 import {
   Grid,
-  Typography,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  RadioGroup,
   Radio,
+  FormLabel,
+  Typography,
+  RadioGroup,
+  FormControl,
   FormHelperText,
+  FormControlLabel,
 } from "@material-ui/core";
-import { MoreRadio } from "../../@material-ui-custom";
+import { MoreRadio } from "../../theme/@material-ui-custom";
+import { GlBlock } from ".";
 
 const GlRadioButton = () => {
   return (

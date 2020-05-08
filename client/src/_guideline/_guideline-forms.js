@@ -1,7 +1,12 @@
 import React from "react";
-import { GlField, GlCheckbox, GlRadioButton, GlSwitch } from ".";
+import {
+  GlField,
+  GlLayout,
+  GlSwitch,
+  GlCheckbox,
+  GlRadioButton,
+} from "./components";
 import { motion } from "framer-motion";
-import { GlLayout } from ".";
 
 const GlForms = () => (
   <motion.div initial="initial" animate="enter" exit="exit">

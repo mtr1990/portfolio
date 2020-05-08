@@ -1,39 +1,39 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { GlLayout, GlBlock } from ".";
+
 import {
-  Grid,
   Box,
-  Typography,
-  Button,
-  ButtonGroup,
-  IconButton,
-  Icon,
   Fab,
+  Grid,
+  Icon,
+  Button,
+  Typography,
+  IconButton,
   makeStyles,
+  ButtonGroup,
 } from "@material-ui/core";
 import {
   Add,
   Edit,
-  Favorite,
-  Navigation,
-  Delete,
-  ArrowDownward,
-  CloudUpload,
   Save,
   Alarm,
-  AddShoppingCart,
-  KeyboardVoice,
+  Delete,
+  Favorite,
+  Navigation,
+  CloudUpload,
   PhotoCamera,
+  ArrowDownward,
+  KeyboardVoice,
+  AddShoppingCart,
 } from "@material-ui/icons";
-
 import {
-  MoreIconButton,
   MoreFab,
-  MoreBtnContained,
-  MoreBtnOutlined,
   MoreBtnText,
-} from "../@material-ui-custom";
+  MoreIconButton,
+  MoreBtnOutlined,
+  MoreBtnContained,
+} from "../theme/@material-ui-custom";
+import { GlLayout, GlBlock } from "./components";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -246,19 +246,19 @@ const GlButtons = () => {
               <Add />
             </Fab>
             <Fab color="secondary" aria-label="edit">
-              <Edit />
+              <Edit fontSize="small" />
             </Fab>
             <MoreFab status="info" aria-label="edit">
-              <Edit />
+              <Edit fontSize="small" />
             </MoreFab>
             <MoreFab status="success" aria-label="edit">
-              <Edit />
+              <Edit fontSize="small" />
             </MoreFab>
             <MoreFab status="warning" aria-label="edit">
-              <Edit />
+              <Edit fontSize="small" />
             </MoreFab>
             <MoreFab status="error" aria-label="edit">
-              <Edit />
+              <Edit fontSize="small" />
             </MoreFab>
             <MoreFab variant="extended">
               <Navigation />
@@ -415,7 +415,7 @@ const GlButtons = () => {
                     <Delete fontSize="small" />
                   </IconButton>
                   <IconButton aria-label="delete">
-                    <Delete />
+                    <Delete fontSize="small" />
                   </IconButton>
                   <IconButton aria-label="delete">
                     <Delete fontSize="large" />
@@ -434,7 +434,7 @@ const GlButtons = () => {
             <Button
               variant="contained"
               color="secondary"
-              startIcon={<Delete />}
+              startIcon={<Delete fontSize="small" />}
             >
               Delete
             </Button>
@@ -481,7 +481,7 @@ const GlButtons = () => {
               Icon Buttons
             </Typography>
             <IconButton aria-label="delete">
-              <Delete />
+              <Delete fontSize="small" />
             </IconButton>
             <IconButton color="primary" aria-label="add an alarm">
               <Alarm />

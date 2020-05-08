@@ -13,6 +13,55 @@ import {
 } from "../../utilities";
 import { Spinners } from "../../commons";
 
+function ProjectItem(props) {
+  const classes = useStyles();
+  const { item } = props;
+  const itemName = UrlFormat(item.name);
+
+  return (
+    <Grid item xs={6}>
+      <ScrollMagicFadeIn triggerHook={0.64} offset={80} duration={560}>
+        <motion.div variants={varZoomInOut}>
+          <Box
+            to={path_CLIENT.projects.root + itemName}
+            color="inherit"
+            component={Link}
+            style={{ textDecoration: "none" }}
+          >
+            <Box className={classes.root}>
+              <motion.div
+                whileTap="tap"
+                whileHover="hover"
+                variants={varItem}
+                transition={varTransition}
+              >
+                <Box className={classes.thumbnail}>
+                  <motion.img
+                    src={item.thumbnail}
+                    alt="thumbnail"
+                    variants={varImg}
+                    transition={varTransition}
+                    className={classes.img}
+                  />
+                  <Spinners zIndex={1} />
+                </Box>
+              </motion.div>
+
+              <Box className={classes.caption}>
+                <Typography variant="caption" color="textSecondary">
+                  {item.category}
+                </Typography>
+                <Typography variant="subtitle1">{item.name}</Typography>
+              </Box>
+            </Box>
+          </Box>
+        </motion.div>
+      </ScrollMagicFadeIn>
+    </Grid>
+  );
+}
+export default ProjectItem;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     // padding: `${theme.spacing(0.5)}px  ${theme.spacing(0.5)}px  0`,
@@ -57,51 +106,3 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-const ProjectItem = ({ item }) => {
-  const classes = useStyles();
-  const itemName = UrlFormat(item.name);
-
-  return (
-    <Grid item xs={6}>
-      <ScrollMagicFadeIn triggerHook={0.64} offset={80} duration={560}>
-        <motion.div variants={varZoomInOut}>
-          <Box
-            to={path_CLIENT.projects.root + itemName}
-            color="inherit"
-            component={Link}
-            style={{ textDecoration: "none" }}
-          >
-            <Box className={classes.root}>
-              <motion.div
-                whileTap="tap"
-                whileHover="hover"
-                variants={varItem}
-                transition={varTransition}
-              >
-                <Box className={classes.thumbnail}>
-                  <motion.img
-                    src={item.thumbnail}
-                    alt="thumbnail"
-                    variants={varImg}
-                    transition={varTransition}
-                    className={classes.img}
-                  />
-                  <Spinners zIndex={1} />
-                </Box>
-              </motion.div>
-
-              <Box className={classes.caption}>
-                <Typography variant="caption" color="textSecondary">
-                  {item.category}
-                </Typography>
-                <Typography variant="subtitle1">{item.name}</Typography>
-              </Box>
-            </Box>
-          </Box>
-        </motion.div>
-      </ScrollMagicFadeIn>
-    </Grid>
-  );
-};
-export default ProjectItem;

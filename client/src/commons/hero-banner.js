@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const HeroHome = () => {
+export function HeroHome() {
   const classes = useStyles();
 
   return (
@@ -58,9 +58,9 @@ export const HeroHome = () => {
       </Container>
     </motion.div>
   );
-};
+}
 
-export const HeroProjectDetails = ({ item }) => {
+export function HeroProjectDetails(props) {
   const classes = useStyles();
 
   return (
@@ -72,10 +72,10 @@ export const HeroProjectDetails = ({ item }) => {
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundImage: `
-						 url(${item.hero})`,
+						 url(${props.item.hero})`,
         }}
       />
       <Spinners />
     </Box>
   );
-};
+}

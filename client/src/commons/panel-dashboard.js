@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Typography } from "@material-ui/core";
 import { varfadeIn } from "../utilities";
 
-const PanelDashBoard = (props) => {
+function PanelDashBoard(props) {
   return (
     <motion.div variants={varfadeIn}>
       <Typography variant="h3" component="h1" paragraph>
@@ -14,6 +14,6 @@ const PanelDashBoard = (props) => {
       </Typography>
     </motion.div>
   );
-};
+}
 
 export default PanelDashBoard;

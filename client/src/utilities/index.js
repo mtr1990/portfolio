@@ -1,8 +1,8 @@
 export { default as Nprogress } from "./nprogress";
 export { ScrollMagicFadeIn, ScrollMagicFadeOut } from "./scroll-magic";
 
-export { default as UrlFormat } from "./url-format";
-export { default as DisplayFormikState } from "./helper-formik";
+export { UrlFormat } from "./functions";
+export { DisplayFormikState, DebugForMik } from "./helper-formik";
 
 /**
  * Validation

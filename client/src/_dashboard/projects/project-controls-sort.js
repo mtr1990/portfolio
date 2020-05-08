@@ -1,24 +1,33 @@
 import React from "react";
 import { FormControlLabel, Checkbox, Typography } from "@material-ui/core";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { toogleSortProject } from "../../redux";
 
-const ProjectControlsSort = ({ stateSort, toogleSort }) => {
+function ProjectControlsSort(props) {
+  const dispatch = useDispatch();
+  const checked = useSelector((state) => state.projects.toogleSort);
+
+  const onToogle = () => {
+    return dispatch(toogleSortProject());
+  };
+
   return (
     <FormControlLabel
       control={
         <Checkbox
           size="small"
-          color={stateSort ? "primary" : "default"}
+          color={checked ? "primary" : "default"}
           icon={<ArrowDownward />}
           checkedIcon={<ArrowUpward />}
-          checked={stateSort}
-          onChange={toogleSort}
+          checked={checked}
+          onChange={onToogle}
         />
       }
       label={
         <Typography
           variant="subtitle2"
-          color={stateSort ? "primary" : "textSecondary"}
+          color={checked ? "primary" : "textSecondary"}
           component="span"
         >
           Sort
@@ -26,6 +35,6 @@ const ProjectControlsSort = ({ stateSort, toogleSort }) => {
       }
     />
   );
-};
+}
 
 export default ProjectControlsSort;

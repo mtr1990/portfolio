@@ -1,34 +1,14 @@
 import React from "react";
 import { Autocomplete } from "@material-ui/lab";
-import {
-  TextField,
-  InputAdornment,
-  makeStyles,
-  useTheme,
-} from "@material-ui/core";
-import { fieldToTextField } from "formik-material-ui";
 import parse from "autosuggest-highlight/parse";
 import match from "autosuggest-highlight/match";
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginBottom: 0,
-    boxShadow: theme.shadows[8],
-    borderRadius: theme.shape.borderRadius,
-    // backgroundColor: "red",
-    backgroundColor: theme.palette.background.paper,
-  },
-  option: {
-    paddingTop: theme.spacing(1.2),
-    paddingBottom: theme.spacing(1.2),
-    '&.MuiAutocomplete-option[aria-selected="true"]': {
-      backgroundColor: "transparent",
-    },
-    '&.MuiAutocomplete-option[data-focus="true"]': {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}));
+import { fieldToTextField } from "formik-material-ui";
+import {
+  useTheme,
+  TextField,
+  makeStyles,
+  InputAdornment,
+} from "@material-ui/core";
 
 const MoreAutocomplete = ({ textFieldProps, ...props }) => {
   const classes = useStyles();
@@ -96,3 +76,23 @@ const MoreAutocomplete = ({ textFieldProps, ...props }) => {
 };
 
 export default MoreAutocomplete;
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginBottom: 0,
+    boxShadow: theme.shadows[8],
+    borderRadius: theme.shape.borderRadius,
+    // backgroundColor: "red",
+    backgroundColor: theme.palette.background.paper,
+  },
+  option: {
+    paddingTop: theme.spacing(1.2),
+    paddingBottom: theme.spacing(1.2),
+    '&.MuiAutocomplete-option[aria-selected="true"]': {
+      backgroundColor: "transparent",
+    },
+    '&.MuiAutocomplete-option[data-focus="true"]': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}));

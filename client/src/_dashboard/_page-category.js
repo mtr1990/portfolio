@@ -1,55 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { useSnackbar } from "notistack";
 import { Link } from "react-router-dom";
+import { path_DASHBOARD } from "../configs";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategories } from "../redux";
 import { Container, Box, Fab } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
-import { API, path_DASHBOARD } from "../configs";
-import { SnackStatus } from "../@material-ui-custom";
-import { HeaderDashboard, CheckLogin, PanelDashBoard } from "../commons";
-import { CategoryList } from ".";
+import { HeaderDashboard, PanelDashBoard } from "../commons";
+import { CategoryList } from "./categories";
+import { LoginCheck } from "./login";
 
-const CategoryPage = () => {
-  const { enqueueSnackbar } = useSnackbar();
-  const [categories, setCategories] = useState([]);
+function CategoryPage() {
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.categories.categories);
 
   // GET CATEGORIES
   useEffect(() => {
-    const getCategories = async () => {
-      await API.get("categories")
-        .then((res) => {
-          setCategories(res.data);
-        })
-        .catch((err) => {
-          SnackStatus(enqueueSnackbar, {
-            message: "Cannot connect to the server!",
-            variant: "error",
-          });
-        });
-    };
-    getCategories();
-  }, [enqueueSnackbar]);
-
-  // DELETE CATEGORY
-  const deleteCategory = async (id) => {
-    await API.delete(`categories/${id}`)
-      .then((res) => {
-        setCategories(categories.filter((item) => item._id !== id));
-        SnackStatus(enqueueSnackbar, {
-          message: "Deleted success!",
-          variant: "success",
-        });
-      })
-      .catch((err) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Deleted error!",
-          variant: "error",
-        });
-      });
-  };
+    dispatch(getCategories());
+  }, [dispatch]);
 
   return (
-    <CheckLogin>
+    <LoginCheck>
       <motion.div initial="initial" animate="enter" exit="exit">
         {/********** COMMONS ***********/}
         <HeaderDashboard />
@@ -66,10 +37,7 @@ const CategoryPage = () => {
             </Box>
 
             {/********** EMAIL LIST ***********/}
-            <CategoryList
-              stateCategories={categories}
-              deleteCategory={deleteCategory}
-            />
+            <CategoryList />
             <Box height={160}></Box>
           </Container>
         </Box>
@@ -85,8 +53,8 @@ const CategoryPage = () => {
           </Fab>
         </Box>
       </motion.div>
-    </CheckLogin>
+    </LoginCheck>
   );
-};
+}
 
 export default CategoryPage;

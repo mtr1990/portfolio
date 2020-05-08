@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { varWrapBoth, varfadeInRight } from "../utilities";
 import { HeaderClient, BgBody } from "../commons";
-import { CurriculumView } from ".";
+import { CurriculumView } from "./curriculum";
 
 const useStyles = makeStyles((theme) => ({
   root: {

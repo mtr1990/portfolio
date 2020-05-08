@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import { Box, Typography, makeStyles, useTheme, fade } from "@material-ui/core";
 import { Logo } from "../commons";
 
-const LoadingPage = ({ isLoading }) => {
+function LoadingPage(props) {
   const useStyles = makeStyles((theme) => ({
     "@global": {
       body: {
-        overflowX: isLoading && "hidden",
-        overflowY: isLoading && "hidden",
+        overflowX: props.isLoading && "hidden",
+        overflowY: props.isLoading && "hidden",
       },
     },
     root: {
@@ -46,9 +46,7 @@ const LoadingPage = ({ isLoading }) => {
             repeatDelay: 1,
           }}
         >
-          <Logo
-            style={{ width: theme.spacing(8), height: theme.spacing(8) }}
-          />
+          <Logo style={{ width: theme.spacing(8), height: theme.spacing(8) }} />
         </motion.div>
 
         <Box mt={4}>
@@ -68,6 +66,6 @@ const LoadingPage = ({ isLoading }) => {
       </Box>
     </motion.div>
   );
-};
+}
 
 export default LoadingPage;

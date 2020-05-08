@@ -1,12 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { varWrapBoth } from "../../utilities";
-import { UserItem } from "..";
+import { useSelector } from "react-redux";
+import { UserItem } from ".";
 
-const UserList = ({ stateUsers, deleteUser }) => {
-  if (!stateUsers.length) return null;
+function UserList() {
+  const users = useSelector((state) => state.users.users);
 
-  const sortList = stateUsers.sort((a, b) => {
+  if (users.length === 0) return null;
+
+  const sortList = users.sort((a, b) => {
     if (a.email.toLowerCase() < b.email.toLowerCase()) return -1;
     if (a.email.toLowerCase() > b.email.toLowerCase()) return 1;
     return 0;
@@ -14,11 +17,11 @@ const UserList = ({ stateUsers, deleteUser }) => {
 
   return (
     <motion.div variants={varWrapBoth}>
-      {sortList.map((item) => (
-        <UserItem key={item._id} item={item} deleteUser={deleteUser} />
+      {sortList.map((item, index) => (
+        <UserItem key={index} item={item} />
       ))}
     </motion.div>
   );
-};
+}
 
 export default UserList;

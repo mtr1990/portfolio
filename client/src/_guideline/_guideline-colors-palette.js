@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Grid, Box, Typography, makeStyles } from "@material-ui/core";
-import { GlLayout, GlBlock } from ".";
+import { GlLayout, GlBlock } from "./components";
 
 const useStyles = makeStyles((theme) => ({
   item: {

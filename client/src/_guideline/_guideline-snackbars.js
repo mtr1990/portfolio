@@ -1,10 +1,10 @@
 import React from "react";
-import { makeStyles, Box } from "@material-ui/core";
 import { motion } from "framer-motion";
 import { useSnackbar } from "notistack";
-import { SnackStatus, SnackAction } from "../@material-ui-custom";
-import { GlLayout } from ".";
-import { MoreBtnText } from "../@material-ui-custom";
+import { makeStyles, Box } from "@material-ui/core";
+import { SnackStatus, SnackAction } from "../theme/@material-ui-custom";
+import { MoreBtnText } from "../theme/@material-ui-custom";
+import { GlLayout } from "./components";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,9 +14,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const GlSnackbars = () => {
+function GlSnackbars() {
   const classes = useStyles();
-
   const { enqueueSnackbar } = useSnackbar();
 
   const handleClickInfo = () => {
@@ -81,6 +80,6 @@ const GlSnackbars = () => {
       </GlLayout>
     </motion.div>
   );
-};
+}
 
 export default GlSnackbars;

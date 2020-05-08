@@ -8,7 +8,7 @@ const MoreSelect = (props) => {
         props.options.map((item, index) => {
           return (
             <MenuItem key={index} value={item} label={item}>
-              {item.name}
+              {item}
             </MenuItem>
           );
         })}

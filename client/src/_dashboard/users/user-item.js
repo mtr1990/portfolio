@@ -9,30 +9,22 @@ import {
 } from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
 import { varfadeInUp } from "../../utilities";
+import { useDispatch } from "react-redux";
+import { deleteUser } from "../../redux";
+import { useSnackbar } from "notistack";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    alignItems: "center",
-    backgroundColor: theme.palette.background.card,
-    boxShadow: theme.shadows[25].card.root,
-    borderRadius: theme.shape.borderRadiusSm,
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-    marginBottom: theme.spacing(2.5),
-    "&:last-child": {
-      marginBottom: 0,
-    },
-  },
-}));
-
-const UserItem = ({ item, deleteUser }) => {
+const UserItem = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
   const [hidden, setHidden] = useState(true);
+  const { item } = props;
 
-  const showPassword = () => {
+  const onDelete = () => {
+    dispatch(deleteUser(item._id, enqueueSnackbar));
+  };
+
+  const onHidePassword = () => {
     setHidden(!hidden);
   };
 
@@ -68,16 +60,34 @@ const UserItem = ({ item, deleteUser }) => {
           </span>
         </Typography>
 
-        <Link underline="none" onClick={showPassword}>
+        <Link underline="none" onClick={onHidePassword}>
           <Typography variant="caption">{hidden ? "Show" : "Hide"}</Typography>{" "}
         </Link>
       </Box>
 
-      <IconButton onClick={() => deleteUser(item._id)} aria-label="delete user">
-        <Delete />
+      <IconButton onClick={onDelete} aria-label="delete user">
+        <Delete fontSize="small" />
       </IconButton>
     </motion.div>
   );
 };
 
 export default UserItem;
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: theme.palette.background.card,
+    boxShadow: theme.shadows[25].card.root,
+    borderRadius: theme.shape.borderRadiusSm,
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    marginBottom: theme.spacing(2.5),
+    "&:last-child": {
+      marginBottom: 0,
+    },
+  },
+}));

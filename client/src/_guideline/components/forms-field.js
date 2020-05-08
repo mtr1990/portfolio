@@ -1,18 +1,18 @@
 import React from "react";
 import { Visibility } from "@material-ui/icons";
-import { GlBlock } from "..";
 import {
   Grid,
-  Typography,
-  TextField,
   MenuItem,
+  TextField,
+  Typography,
   IconButton,
-  OutlinedInput,
   InputLabel,
+  FormControl,
+  OutlinedInput,
   InputAdornment,
   FormHelperText,
-  FormControl,
 } from "@material-ui/core";
+import { GlBlock } from ".";
 
 const GlField = () => (
   <GlBlock>

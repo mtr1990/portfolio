@@ -1,18 +1,101 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { path_DASHBOARD } from "../../configs";
+import { varfadeInUp } from "../../utilities";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteProject } from "../../redux";
+import { Delete, Edit } from "@material-ui/icons";
+import { SnackAction } from "../../theme/@material-ui-custom";
 import {
   Box,
+  Grid,
   Typography,
   IconButton,
   makeStyles,
-  Grid,
 } from "@material-ui/core";
-import { Delete, Edit } from "@material-ui/icons";
-import { path_DASHBOARD } from "../../configs";
-import { varfadeInUp } from "../../utilities";
-import { SnackAction } from "../../@material-ui-custom";
+
+function ProjectItem(props) {
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
+  const toogleView = useSelector((state) => state.projects.toogleView);
+  const { item, index } = props;
+
+  const onDelete = () => {
+    SnackAction(enqueueSnackbar, {
+      message: `Are you sure you want to delete this project - ${item.name} ?`,
+      funC: () => dispatch(deleteProject(item._id, enqueueSnackbar)),
+      btnAction: "Delete",
+    });
+  };
+
+  return (
+    <Grid item xs={!toogleView ? 12 : 6} md={!toogleView ? 12 : 3}>
+      <motion.div variants={varfadeInUp}>
+        <Box
+          className={`${!toogleView ? classes.list_root : classes.gird_root} ${
+            classes.commons
+          }`}
+        >
+          {/********** BADGE ***********/}
+          <Box className="badge">
+            <Typography variant="subtitle2"> {index}</Typography>
+          </Box>
+
+          <Box className="container">
+            {/********** THUMBNAIL ***********/}
+            <Box className="thumbnail">
+              <img src={item.thumbnail} alt={`thumbnail ${item.name}`} />
+            </Box>
+
+            {/********** DESCRIPTION ***********/}
+            <Box className="content">
+              <Typography variant="caption" component="div" color="primary">
+                {item.category}
+              </Typography>
+
+              <Typography
+                variant={!toogleView ? "h6" : "subtitle1"}
+                component="h6"
+                gutterBottom={!toogleView && true}
+                noWrap={toogleView && true}
+              >
+                {item.name}
+              </Typography>
+
+              <Box display={toogleView ? "none" : ""}>
+                <Typography variant="body1" component="p" color="textSecondary">
+                  {item.description}
+                </Typography>
+              </Box>
+            </Box>
+
+            {/********** CONTROLS ***********/}
+            <Box className="controls">
+              <IconButton aria-label="delete project" onClick={onDelete}>
+                <Delete fontSize="small" />
+              </IconButton>
+
+              <Box ml={toogleView ? 1 : 0} mt={!toogleView ? 1 : 0}>
+                <IconButton
+                  component={Link}
+                  to={`${path_DASHBOARD.projects.link_edit}/${item._id}`}
+                  aria-label="edit project"
+                >
+                  <Edit fontSize="small" />
+                </IconButton>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </motion.div>
+    </Grid>
+  );
+}
+
+export default ProjectItem;
 
 const useStyles = makeStyles((theme) => ({
   // LIST
@@ -83,81 +166,3 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-const ProjectItem = ({ item, index, deleteProject, stateView }) => {
-  const classes = useStyles();
-  const { enqueueSnackbar } = useSnackbar();
-
-  const handleDelete = () => {
-    SnackAction(enqueueSnackbar, {
-      message: `Are you sure you want to delete this project - ${item.name} ?`,
-      funC: () => deleteProject(item._id),
-      btnAction: "Delete",
-    });
-  };
-
-  return (
-    <Grid item xs={!stateView ? 12 : 6} md={!stateView ? 12 : 3}>
-      <motion.div variants={varfadeInUp}>
-        <Box
-          className={`${!stateView ? classes.list_root : classes.gird_root} ${
-            classes.commons
-          }`}
-        >
-          {/********** BADGE ***********/}
-          <Box className="badge">
-            <Typography variant="subtitle2"> {index + 1}</Typography>
-          </Box>
-
-          <Box className="container">
-            {/********** THUMBNAIL ***********/}
-            <Box className="thumbnail">
-              <img src={item.thumbnail} alt={`thumbnail ${item.name}`} />
-            </Box>
-
-            {/********** DESCRIPTION ***********/}
-            <Box className="content">
-              <Typography variant="caption" component="div" color="primary">
-                {item.category}
-              </Typography>
-
-              <Typography
-                variant={!stateView ? "h6" : "subtitle1"}
-                component="h6"
-                gutterBottom={!stateView && true}
-                noWrap={stateView && true}
-              >
-                {item.name}
-              </Typography>
-
-              <Box display={stateView ? "none" : ""}>
-                <Typography variant="body1" component="p" color="textSecondary">
-                  {item.description}
-                </Typography>
-              </Box>
-            </Box>
-
-            {/********** CONTROLS ***********/}
-            <Box className="controls">
-              <IconButton aria-label="delete project" onClick={handleDelete}>
-                <Delete />
-              </IconButton>
-
-              <Box ml={stateView ? 1 : 0} mt={!stateView ? 1 : 0}>
-                <IconButton
-                  component={Link}
-                  to={`${path_DASHBOARD.projects.link_edit}/${item._id}`}
-                  aria-label="edit project"
-                >
-                  <Edit />
-                </IconButton>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-      </motion.div>
-    </Grid>
-  );
-};
-
-export default ProjectItem;

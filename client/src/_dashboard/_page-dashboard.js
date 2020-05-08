@@ -1,95 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useSnackbar } from "notistack";
+import { path_DASHBOARD } from "../configs";
+import { HeaderDashboard, PanelDashBoard } from "../commons";
 import { Box, Container, Fab } from "@material-ui/core";
 import { NoteAdd } from "@material-ui/icons";
-import { API, path_DASHBOARD } from "../configs";
-import { HeaderDashboard, CheckLogin, PanelDashBoard } from "../commons";
-import { SnackStatus } from "../@material-ui-custom";
-import { ProjectList } from ".";
+import { useDispatch, useSelector } from "react-redux";
+import { getProjects } from "../redux";
+import { ProjectList } from "./projects";
+import { LoginCheck } from "./login";
 
-const DashboardPage = () => {
-  const { enqueueSnackbar } = useSnackbar();
-  const [projects, setProjects] = useState([]);
-  const [reverse, setReverse] = useState(
-    localStorage.getItem("isReverse") === null ||
-      localStorage.getItem("isReverse") === "false"
-      ? false
-      : true
-  );
-  const [view, setView] = useState(
-    localStorage.getItem("isView") === null ||
-      localStorage.getItem("isView") === "false"
-      ? false
-      : true
-  );
+function DashboardPage() {
+  const dispatch = useDispatch();
+  const projects = useSelector((state) => state.projects.projects);
 
   // GET PROJECTS
   useEffect(() => {
-    const getProjects = async () => {
-      await API.get("projects")
-        .then((res) => {
-          if (reverse === true) {
-            setProjects(res.data.reverse());
-          } else {
-            setProjects(res.data);
-          }
-        })
-        .catch(() => {
-          SnackStatus(enqueueSnackbar, {
-            message: "Cannot connect to the server!",
-            variant: "error",
-          });
-        });
-    };
-    getProjects();
-  }, [enqueueSnackbar, reverse]);
-
-  // DELETE PROJECT
-  const deleteProject = async (id) => {
-    await API.delete(`projects/${id}`)
-      .then((res) => {
-        setProjects(projects.filter((item) => item._id !== id));
-        SnackStatus(enqueueSnackbar, {
-          message: "Deleted success!",
-          variant: "success",
-        });
-      })
-      .catch((err) => {
-        SnackStatus(enqueueSnackbar, {
-          message: "Deleted error!",
-          variant: "error",
-        });
-      });
-  };
-
-  // REVERSE PROJECT
-  const toogleSort = () => {
-    if (reverse === false || reverse === null) {
-      setReverse(true);
-      setProjects(projects.reverse());
-      localStorage.setItem("isReverse", "true");
-    } else {
-      setReverse(false);
-      setProjects(projects.reverse());
-      localStorage.setItem("isReverse", "false");
-    }
-  };
-
-  // CHANGE VIEW PROJECT
-  const toogleView = () => {
-    if (view === false || view === null) {
-      setView(true);
-      localStorage.setItem("isView", "true");
-    } else {
-      setView(false);
-      localStorage.setItem("isView", "false");
-    }
-  };
+    dispatch(getProjects());
+  }, [dispatch]);
 
   return (
-    <CheckLogin>
+    <LoginCheck>
       <motion.div initial="initial" animate="enter" exit="exit">
         {/********** COMMONS ***********/}
         <HeaderDashboard />
@@ -104,15 +35,7 @@ const DashboardPage = () => {
             />
 
             {/********** PROJECT LIST ***********/}
-            <ProjectList
-              stateView={view}
-              stateSort={reverse}
-              stateProject={projects}
-              toogleView={toogleView}
-              toogleSort={toogleSort}
-              deleteProject={deleteProject}
-              setProjects={setProjects}
-            />
+            <ProjectList />
           </Container>
         </Box>
 
@@ -127,8 +50,8 @@ const DashboardPage = () => {
           </Fab>
         </Box>
       </motion.div>
-    </CheckLogin>
+    </LoginCheck>
   );
-};
+}
 
 export default DashboardPage;

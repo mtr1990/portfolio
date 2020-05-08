@@ -1,9 +1,10 @@
 import React from "react";
 import { CircularProgress } from "@material-ui/core";
 
-const Spinners = ({ zIndex }) => {
+function Spinners(props) {
   return (
     <CircularProgress
+      {...props}
       size={32}
       thickness={3}
       style={{
@@ -13,10 +14,10 @@ const Spinners = ({ zIndex }) => {
         bottom: 0,
         left: 0,
         margin: "auto",
-        zIndex: zIndex === undefined ? -1 : 1,
+        zIndex: props.zIndex === undefined ? -1 : 1,
       }}
     />
   );
-};
+}
 
 export default Spinners;

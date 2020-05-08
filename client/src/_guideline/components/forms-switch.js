@@ -1,13 +1,13 @@
 import React from "react";
-import { GlBlock } from "..";
 import {
-  Typography,
   Grid,
-  FormGroup,
-  FormControlLabel,
   Switch,
+  FormGroup,
+  Typography,
+  FormControlLabel,
 } from "@material-ui/core";
-import { MoreSwitch } from "../../@material-ui-custom";
+import { MoreSwitch } from "../../theme/@material-ui-custom";
+import { GlBlock } from ".";
 
 const GlSwitch = () => (
   <GlBlock>

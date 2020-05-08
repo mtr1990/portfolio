@@ -1,18 +1,62 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { useSnackbar } from "notistack";
 import { Container, Grid, Box, makeStyles } from "@material-ui/core";
-import { API } from "../configs";
 import { varWrapExit, ScrollMagicFadeOut } from "../utilities";
 import {
-  HeaderClient,
-  BtnAvatar,
   BgBody,
-  LoadingPage,
   HeroHome,
+  BtnAvatar,
+  LoadingPage,
+  HeaderClient,
 } from "../commons";
-import { SnackStatus } from "../@material-ui-custom";
-import { ProjectList } from ".";
+import { ProjectList } from "./projects";
+import { useDispatch, useSelector } from "react-redux";
+import { getProjects } from "../redux";
+
+function HomePage() {
+  const dispatch = useDispatch();
+  const classes = useStyles();
+  const isLoading = useSelector((state) => state.projects.loading);
+
+  // GET PROJECTS
+  useEffect(() => {
+    dispatch(getProjects());
+  }, [dispatch]);
+
+  return (
+    <motion.div
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      className={classes.root}
+    >
+      {isLoading ? <LoadingPage isLoading={isLoading} /> : null}
+      {/********** COMMONS ***********/}
+      <HeaderClient />
+      <BgBody />
+      <BtnAvatar />
+
+      {/********** HERO ***********/}
+      <ScrollMagicFadeOut>
+        <HeroHome />
+      </ScrollMagicFadeOut>
+      <Box height="100vh" />
+      <Box className={classes.main}>
+        <Container>
+          <Grid item md={8} lg={7}>
+            <motion.div variants={varWrapExit}>
+              <Grid container spacing={4}>
+                <ProjectList />
+              </Grid>
+            </motion.div>
+          </Grid>
+        </Container>
+      </Box>
+    </motion.div>
+  );
+}
+
+export default HomePage;
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -24,71 +68,3 @@ const useStyles = makeStyles((theme) => ({
         : theme.palette.background.default,
   },
 }));
-
-const HomePage = () => {
-  const classes = useStyles();
-  const { enqueueSnackbar } = useSnackbar();
-  const [projects, setProjects] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     getProjects();
-  //   }, 10000);
-  //   return () => clearTimeout(timer);
-  // }, []);
-
-  // GET PROJECTS
-  useEffect(() => {
-    const getProjects = async () => {
-      await API.get("projects")
-        .then((res) => {
-          setProjects(res.data);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          SnackStatus(enqueueSnackbar, {
-            message: "Cannot connect to the server!",
-            variant: "error",
-          });
-        });
-    };
-    getProjects();
-  }, [enqueueSnackbar]);
-
-  return (
-    <motion.div
-      initial="initial"
-      animate="enter"
-      exit="exit"
-      className={classes.root}
-    >
-      {isLoading ? <LoadingPage isLoading={isLoading} /> : null}
-
-      {/********** COMMONS ***********/}
-      <HeaderClient />
-      <BgBody />
-      <BtnAvatar />
-
-      {/********** Hero ***********/}
-      <ScrollMagicFadeOut>
-        <HeroHome />
-      </ScrollMagicFadeOut>
-      <Box height="100vh" />
-
-      <Box className={classes.main}>
-        <Container>
-          <Grid item md={8} lg={7}>
-            <motion.div variants={varWrapExit}>
-              <Grid container spacing={4}>
-                <ProjectList stateProject={projects} />
-              </Grid>
-            </motion.div>
-          </Grid>
-        </Container>
-      </Box>
-    </motion.div>
-  );
-};
-
-export default HomePage;
