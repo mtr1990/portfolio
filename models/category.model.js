@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const CategorySchema = new Schema(
   {
     name: String,
+    imgCollection: Array,
   },
   { versionKey: false }
 );

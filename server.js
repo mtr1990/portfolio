@@ -3,7 +3,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const cors = require("cors");
-// const path = require("path");
 require("dotenv").config();
 
 const app = express();
@@ -16,6 +15,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   }
 );
 
@@ -26,6 +26,7 @@ mongoose.connection.on("connected", () => {
 // DATA PARSING
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use("/public", express.static("public"));
 
 // ACCESS CONTROL ALLOW ORIGIN
 const corsConfig = {
@@ -51,10 +52,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // HTTP REQUEST
-const projectsRoutes = require("./routes/projects");
-const emailsRoutes = require("./routes/emails");
-const categoriesRoutes = require("./routes/categories");
-const usersRoutes = require("./routes/users");
+const projectsRoutes = require("./routes/projects.route");
+const emailsRoutes = require("./routes/emails.route");
+const categoriesRoutes = require("./routes/categories.route");
+const usersRoutes = require("./routes/users.route");
 
 app.use("/api/projects", projectsRoutes);
 app.use("/api/emails", emailsRoutes);
