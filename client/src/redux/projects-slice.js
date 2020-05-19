@@ -153,6 +153,7 @@ export function getProjects() {
     dispatch(slice.actions.getProjectsRequest());
     try {
       const response = await API.get(`projects`);
+      console.log("API", API.get(`projects`));
       dispatch(slice.actions.getProjectsSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.getProjectsFailure(error));
