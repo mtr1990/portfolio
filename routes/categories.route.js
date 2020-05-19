@@ -11,7 +11,7 @@ function pushFile(array, reqFiles) {
       return reqFiles.push({
         originalname: item.originalname,
         name: item.filename,
-        source: "/portfolio/upload/" + item.filename,
+        source: "/upload/" + item.filename,
         size: item.size,
         type: item.mimetype,
         b64: tools.base64(item.mimetype, item.path),

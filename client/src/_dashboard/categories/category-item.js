@@ -15,14 +15,36 @@ const CategoryItem = (props) => {
   const { enqueueSnackbar } = useSnackbar();
   const { item } = props;
 
+  // const test = `https://mtr-portfolio.herokuapp.com/upload/${item.name}`;
+
+  // console.log(
+  //   "test",
+  //   item.imgCollection.map((item, index) => {
+  //     return `https://mtr-portfolio.herokuapp.com/upload/${item.name}`;
+  //     // return (
+  //     //   <img
+  //     //     key={index}
+  //     //     src={`https://mtr-portfolio.herokuapp.com/upload/${item.name}`}
+  //     //     alt=""
+  //     //   />
+  //     // );
+  //   })
+  // );
+
   return (
     <motion.div variants={varfadeInUp} className={classes.root}>
-      <Box width={64} height={64} bgcolor="primary.main">
+      {/* <Box width={64} height={64} bgcolor="primary.main">
         {item.imgCollection &&
           item.imgCollection.map((item, index) => {
-            return <img key={index} src={item.source} alt="" />;
+            return (
+              <img
+                key={index}
+                src={`https://mtr-portfolio.herokuapp.com/upload/${item.name}`}
+                alt=""
+              />
+            );
           })}
-      </Box>
+      </Box> */}
       <Box flexGrow={1}>
         <Typography variant="subtitle1">{item.name}</Typography>
       </Box>

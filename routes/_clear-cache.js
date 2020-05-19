@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const mongoUtil = require("./_connectDb");
-const keywordUrl = "/portfolio/upload";
+const keywordUrl = "/upload";
 const directoryUrl = "./client/public/upload";
 
 function removeFile(result) {
