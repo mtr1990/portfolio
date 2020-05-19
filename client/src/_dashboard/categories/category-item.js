@@ -20,7 +20,7 @@ const CategoryItem = (props) => {
       <Box width={64} height={64} bgcolor="primary.main">
         {item.imgCollection &&
           item.imgCollection.map((item, index) => {
-            return <img key={index} src={item.b64} alt="" />;
+            return <img key={index} src={item.source} alt="" />;
           })}
       </Box>
       <Box flexGrow={1}>
