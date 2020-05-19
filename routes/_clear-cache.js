@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const mongoUtil = require("./_connectDb");
 const keywordUrl = "/portfolio/upload";
-const directoryUrl = "./front-end/public/upload";
+const directoryUrl = "./client/public/upload";
 
 function removeFile(result) {
   fs.readdir(directoryUrl, (err, files) => {
