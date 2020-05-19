@@ -36,7 +36,7 @@ const CategoryEdit = () => {
         imgCollection:
           category.imgCollection !== undefined &&
           category.imgCollection.map((item) => {
-            return item;
+            return item.source;
           }),
       });
     }
