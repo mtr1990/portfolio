@@ -9,6 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 //CONNECT DATABASE
+
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/portfolio-backend",
   {
@@ -18,6 +19,13 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
+
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+});
 
 mongoose.connection.on("connected", () => {
   console.log("Mongoose is connected!!!!");
