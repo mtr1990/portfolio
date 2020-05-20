@@ -33,10 +33,11 @@ const CategoryEdit = () => {
     if (Object.keys(category).length > 0) {
       setInitialState({
         name: category.name,
+        // imgCollection: category.imgCollection,
         imgCollection:
           category.imgCollection !== undefined &&
           category.imgCollection.map((item) => {
-            return item;
+            return item.source;
           }),
       });
     }
@@ -51,12 +52,13 @@ const CategoryEdit = () => {
       const formData = new FormData();
       formData.set("_id", id);
       formData.set("name", values.name);
-      values.imgCollection.map((file, index) => {
+      values.imgCollection.map((file) => {
         // Check flie type
         if (file instanceof File) return formData.append("imgCollection", file);
         // flie is Blod
-        file = new File([file], file.name.substring(37), {
-          type: file.type,
+        // file = new File([file], file.name.substring(37), {
+        file = new File([file], '.png', {
+          type: "image/png",
           lastModified: Date.now(),
         });
         return formData.append("imgCollection", file);

@@ -16,6 +16,7 @@ function UploadFile(props) {
     <FilePond
       {...props}
       server={{
+        url: "http://localhost:5000/api/categories",
         process: (fieldName, file, metadata, load) => {
           setTimeout(() => {
             load(Date.now());

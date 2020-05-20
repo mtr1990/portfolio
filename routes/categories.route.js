@@ -1,61 +1,62 @@
 const express = require("express");
 const router = express.Router();
-const tools = require("./_tools");
-const upload = require("./_upload");
-const clearCache = require("./_clear-cache");
+const uploadMulter = require("./_multer");
 const Category = require("../models/category.model");
-
-function pushFile(array, reqFiles) {
-  array &&
-    array.map((item) => {
-      return reqFiles.push({
-        originalname: item.originalname,
-        name: item.filename,
-        source: "/upload/" + item.filename,
-        size: item.size,
-        type: item.mimetype,
-        b64: tools.base64(item.mimetype, item.path),
-        options: {
-          type: "local",
-        },
-      });
-    });
-}
+//
+const cloudinary = require("./_cloudinary");
+// const ControllerUpload = require("./_controller-Upload");
+//
 
 // CREATE CATEGORY
-router.post("/save", upload.array("imgCollection", 24), (req, res, next) => {
-  let reqFiles = [];
-  pushFile(req.files, reqFiles);
+router.post(
+  "/save",
+  uploadMulter.array("imgCollection", 24),
 
-  const newCategory = new Category({
-    name: req.body.name,
-    imgCollection: reqFiles,
-  });
+  async (req, res) => {
+    const urls = [];
 
-  newCategory
-    .save()
-    .then((result) => {
-      res.json({
-        message: "Category Added!",
-        newCategory: result,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
+    const uploader = async (item) => await cloudinary.uploadMultiple(item);
+    for (const file of req.files) {
+      urls.push(await uploader(file.path));
+    }
+
+    const newCategory = new Category({
+      name: req.body.name,
+      imgCollection: urls,
     });
-});
+
+    newCategory
+      .save()
+      .then((result) => {
+        res.json({
+          message: "Category Added!",
+          newCategory: result,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+);
 
 // UPDATE CATEGORY
 router.put(
   "/update/:id",
-  upload.array("imgCollection", 24),
-  (req, res, next) => {
-    let reqFiles = [];
-    pushFile(req.files, reqFiles);
+  uploadMulter.array("imgCollection", 24),
+  async (req, res) => {
+    const urls = [];
+
+    const uploader = async (path) => await cloudinary.uploads(path, "Images");
+    const files = req.files;
+    for (const file of files) {
+      const { path } = file;
+      const newPath = await uploader(path);
+      urls.push(newPath);
+    }
 
     var newUpdate = {
       name: req.body.name,
-      imgCollection: reqFiles,
+      imgCollection: urls,
     };
 
     Category.findByIdAndUpdate(
@@ -67,7 +68,6 @@ router.put(
           res.send(err);
         }
         res.json({ messaje: "Done" });
-        clearCache.cacheCategory();
       }
     );
   }

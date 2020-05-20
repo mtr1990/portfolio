@@ -13,20 +13,25 @@ const storage = multer.diskStorage({
   },
 });
 
-var upload = multer({
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === "application/octet-stream" ||
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/jpeg"
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+    return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
+  }
+};
+
+const upload = multer({
   storage: storage,
-  fileFilter: (req, file, cb) => {
-    if (
-      file.mimetype === "application/octet-stream" ||
-      file.mimetype === "image/png" ||
-      file.mimetype === "image/jpg" ||
-      file.mimetype === "image/jpeg"
-    ) {
-      cb(null, true);
-    } else {
-      cb(null, false);
-      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
-    }
+  fileFilter: fileFilter,
+  limits: {
+    fileSize: 1024 * 1024,
   },
 });
 

@@ -12,10 +12,10 @@ const PORT = process.env.PORT || 8080;
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/portfolio-backend",
   {
-    useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true,
+    useNewUrlParser: true,
     useFindAndModify: false,
+    useUnifiedTopology: true,
   }
 );
 
