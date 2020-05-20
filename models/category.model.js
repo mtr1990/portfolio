@@ -5,7 +5,6 @@ const CategorySchema = new Schema(
   {
     name: String,
     imgCollection: Array,
-    imageUrl: String,
   },
   { versionKey: false }
 );

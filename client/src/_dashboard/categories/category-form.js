@@ -14,21 +14,22 @@ import {
 } from "@material-ui/core";
 import { Edit } from "@material-ui/icons";
 import { UploadFile } from "../../commons";
+import { useSelector } from "react-redux";
 
 const CategoryForm = (props) => {
   const {
     values,
     errors,
     touched,
-    isSubmitting,
     handleChange,
     handleSubmit,
     setFieldValue,
   } = props.formik;
 
   const { txtSubmit } = props;
+  const isLoading = useSelector((state) => state.categories.loading);
 
-  console.log("imgCollection", values.imgCollection);
+  console.log("isLoading", isLoading);
 
   return (
     <FormikProvider value={props.formik}>
@@ -57,13 +58,15 @@ const CategoryForm = (props) => {
           </FormControl>
         </Box>
 
-        {/********** FILEPOND ***********/}
+        {/********** IMG COLLECTION ***********/}
         <UploadFile
-          checkValidity
+          label="imgCollection"
+          //
           allowReplace
-          imagePreviewHeight="100"
+          checkValidity
+          allowMultiple
+          imagePreviewHeight="120"
           files={values.imgCollection}
-          allowMultiple={true}
           onupdatefiles={(fileItems) =>
             setFieldValue(
               "imgCollection",
@@ -79,7 +82,7 @@ const CategoryForm = (props) => {
               color="primary"
               component={Link}
               to={path_DASHBOARD.categories.root}
-              disabled={isSubmitting}
+              disabled={isLoading}
             >
               Cancel
             </Button>
@@ -89,16 +92,16 @@ const CategoryForm = (props) => {
             color="primary"
             type="submit"
             variant="contained"
-            disabled={isSubmitting}
+            disabled={isLoading}
             startIcon={
-              isSubmitting ? (
+              isLoading ? (
                 <CircularProgress size={24} thickness={4} color="inherit" />
               ) : (
                 ""
               )
             }
           >
-            {isSubmitting ? "Please wait..." : txtSubmit}
+            {isLoading ? "Please wait..." : txtSubmit}
           </Button>
         </Box>
       </Form>

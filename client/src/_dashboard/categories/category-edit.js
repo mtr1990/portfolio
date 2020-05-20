@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { path_DASHBOARD } from "../../configs";
-import { validationCategoryForm, DebugForMik } from "../../utilities";
+import { validationCategoryForm } from "../../utilities";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { MoreBreadcrumbs } from "../../theme/@material-ui-custom";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,11 +33,10 @@ const CategoryEdit = () => {
     if (Object.keys(category).length > 0) {
       setInitialState({
         name: category.name,
-        // imgCollection: category.imgCollection,
         imgCollection:
           category.imgCollection !== undefined &&
           category.imgCollection.map((item) => {
-            return item.source;
+            return item.b64;
           }),
       });
     }
@@ -52,28 +51,28 @@ const CategoryEdit = () => {
       const formData = new FormData();
       formData.set("_id", id);
       formData.set("name", values.name);
+
       values.imgCollection.map((file) => {
         // Check flie type
         if (file instanceof File) return formData.append("imgCollection", file);
         // flie is Blod
+
         // file = new File([file], file.name.substring(37), {
-        file = new File([file], '.png', {
-          type: "image/png",
+        file = new File([file], file.name, {
+          type: file.type,
           lastModified: Date.now(),
         });
+
         return formData.append("imgCollection", file);
       });
 
       dispatch(updateCategory(formData, enqueueSnackbar));
-      setTimeout(() => {
-        formik.setSubmitting(false);
-      }, 1600);
     },
   });
 
   return (
     <LoginCheck>
-      <DebugForMik formik={formik} />
+      {/* <DebugForMik formik={formik} /> */}
 
       <motion.div initial="initial" animate="enter" exit="exit">
         {/********** COMMONS ***********/}

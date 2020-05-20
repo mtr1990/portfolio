@@ -4,7 +4,7 @@ import { useSnackbar } from "notistack";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { path_DASHBOARD } from "../../configs";
-import { validationCategoryForm, DebugForMik } from "../../utilities";
+import { validationCategoryForm } from "../../utilities";
 import { useDispatch } from "react-redux";
 import { addCategory } from "../../redux";
 import { MoreBreadcrumbs } from "../../theme/@material-ui-custom";
@@ -36,9 +36,6 @@ const CategoryCreate = () => {
       });
 
       dispatch(addCategory(formData, enqueueSnackbar));
-      setTimeout(() => {
-        formik.setSubmitting(false);
-      }, 1600);
     },
   });
 
@@ -56,7 +53,7 @@ const CategoryCreate = () => {
             Create Category
           </Typography>
 
-          <DebugForMik formik={formik} />
+          {/* <DebugForMik formik={formik} /> */}
           <CategoryForm formik={formik} txtSubmit="Create" />
         </Box>
       </motion.div>

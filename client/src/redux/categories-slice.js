@@ -47,17 +47,20 @@ const slice = createSlice({
     addCategoryRequest: (state) => {
       return {
         ...state,
+        loading: true,
       };
     },
     addCategorySuccess: (state, action) => {
       return {
         ...state,
+        loading: false,
         categories: [...state.categories, action.payload],
       };
     },
     addCategoryFailure: (state, action) => {
       return {
         ...state,
+        loading: false,
         error: action.payload,
       };
     },
@@ -66,17 +69,20 @@ const slice = createSlice({
     updateCategoryRequest: (state) => {
       return {
         ...state,
+        loading: true,
       };
     },
     updateCategorySuccess: (state, action) => {
       return {
         ...state,
+        loading: false,
         categories: [...state.categories, action.payload],
       };
     },
     updateCategoryFailure: (state, action) => {
       return {
         ...state,
+        loading: false,
         error: action.payload,
       };
     },
@@ -143,13 +149,13 @@ export function addCategory(newCategory, enqueueSnackbar) {
           "Content-Type": "application/x-www-form-urlencoded",
         },
       });
-      setTimeout(() => {
-        history.push(path_DASHBOARD.categories.root);
-        SnackStatus(enqueueSnackbar, {
-          message: "Add success!",
-          variant: "success",
-        });
-      }, 1000);
+
+      history.push(path_DASHBOARD.categories.root);
+      SnackStatus(enqueueSnackbar, {
+        message: "Add success!",
+        variant: "success",
+      });
+
       dispatch(slice.actions.addCategorySuccess(newCategory));
     } catch (error) {
       dispatch(slice.actions.addCategoryFailure(error));
@@ -166,13 +172,13 @@ export function updateCategory(category, enqueueSnackbar) {
     dispatch(slice.actions.updateCategoryRequest());
     try {
       await API.put(`categories/update/${category.get("_id")}`, category, {});
-      setTimeout(() => {
-        history.push(path_DASHBOARD.categories.root);
-        SnackStatus(enqueueSnackbar, {
-          message: "Update success!",
-          variant: "success",
-        });
-      }, 1000);
+
+      history.push(path_DASHBOARD.categories.root);
+      SnackStatus(enqueueSnackbar, {
+        message: "Update success!",
+        variant: "success",
+      });
+
       dispatch(slice.actions.updateCategorySuccess(category));
     } catch (error) {
       dispatch(slice.actions.updateCategoryFailure(error));

@@ -6,8 +6,8 @@ function base64_encode(file) {
 }
 
 module.exports = {
-  // convert image to base64
-  base64: (fileType, filePath) => {
+  // CONVERT IMAGE TO BASE64
+  imgToBase64: (fileType, filePath) => {
     return "data:" + fileType + ";base64," + base64_encode(filePath);
   },
 };

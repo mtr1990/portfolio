@@ -1,6 +1,8 @@
 const cloudinary = require("cloudinary").v2;
 const dotenv = require("dotenv");
 const tools = require("./_tools");
+const mongodb = require("./_mongodb");
+const keywordUrl = "upload_portfolio/";
 
 dotenv.config();
 
@@ -10,7 +12,8 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
-module.exports = {
+var self = (module.exports = {
+  // UPLOAD CLOUDINARY
   uploadMultiple: (file) => {
     return new Promise((resolve) => {
       cloudinary.uploader
@@ -20,12 +23,12 @@ module.exports = {
         .then((result) => {
           if (result) {
             resolve({
-              asset_id: result.asset_id,
+              public_id: result.public_id,
               originalname: result.original_filename.substring(37),
               url: result.url,
               size: result.bytes,
               type: result.resource_type + "/" + result.format,
-              b64: tools.base64(
+              b64: tools.imgToBase64(
                 result.resource_type + "/" + result.format,
                 file
               ),
@@ -39,4 +42,59 @@ module.exports = {
         });
     });
   },
-};
+
+  // DESTROY CLOUDINARY
+  destroyCloudinary: (removeArray) => {
+    cloudinary.api.delete_resources(removeArray, (error, result) => {
+      if (result) {
+        console.log("Destroy result:", result);
+      }
+      if (error) {
+        console.log("Destroy error:", error);
+      }
+    });
+  },
+
+  // GET CLOUDINARY
+  getCloudinary: (dataMongodb) => {
+    cloudinary.api.resources(
+      {
+        type: "upload",
+        prefix: "upload_portfolio/",
+      },
+      (error, result) => {
+        let dataCloudinary = result.resources;
+        dataCloudinary = dataCloudinary.map((item) => {
+          return item.public_id;
+        });
+
+        const removeArray = dataCloudinary
+          .filter((x) => !dataMongodb.includes(x))
+          .concat(dataMongodb.filter((x) => !dataCloudinary.includes(x)));
+
+        if (removeArray.length > 0) self.destroyCloudinary(removeArray);
+        // console.log("dataCloudinary:", dataCloudinary.length);
+        // console.log("dataMongodb", dataMongodb.length);
+        // console.log("removeArray", removeArray.length);
+      }
+    );
+  },
+
+  // CLEAR CACHE IMAGES CATEGORY
+  clearCacheCategory: () => {
+    mongodb.connectDb((err, db) => {
+      if (err) console.log(err);
+      var db = mongodb.getDb();
+      db.collection("categories")
+        .find({ "imgCollection.public_id": { $regex: keywordUrl } })
+        .toArray((err, result) => {
+          if (err) throw err;
+          result = result.map((item) => {
+            return item.imgCollection.map((item) => item.public_id);
+          });
+          result = [].concat(...result);
+          self.getCloudinary(result);
+        });
+    });
+  },
+});
