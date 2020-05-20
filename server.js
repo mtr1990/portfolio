@@ -9,17 +9,6 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 //CONNECT DATABASE
-
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/portfolio-backend",
-  {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  }
-);
-
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
