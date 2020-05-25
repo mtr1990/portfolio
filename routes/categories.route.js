@@ -1,23 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const multer = require("./_multer");
 const cloudinary = require("./_cloudinary");
 const Category = require("../models/category.model");
 
 // CREATE CATEGORY
-const cpUpload = multer.array("imgCollection", 24);
-const uploader = async (item) => await cloudinary.uploadMultiple(item);
-
-router.post("/save", cpUpload, async (req, res) => {
-  let fliesUpLoad = [];
-  const filesimgCollection = req.files;
-  for (const file of filesimgCollection) {
-    fliesUpLoad.push(await uploader(file.path));
-  }
-
+router.post("/save", async (req, res) => {
   const newCategory = new Category({
     name: req.body.name,
-    imgCollection: fliesUpLoad,
+    imgCollection: req.body.imgCollection,
   });
 
   newCategory
@@ -34,28 +24,29 @@ router.post("/save", cpUpload, async (req, res) => {
 });
 
 // UPDATE CATEGORY
-router.put("/update/:id", cpUpload, async (req, res) => {
-  let fliesUpLoad = [];
-  const filesimgCollection = req.files;
-  for (const file of filesimgCollection) {
-    fliesUpLoad.push(await uploader(file.path));
-  }
-
+router.put("/update/:id", (req, res) => {
   var newUpdate = {
     name: req.body.name,
-    imgCollection: fliesUpLoad,
+    imgCollection: req.body.imgCollection,
   };
 
-  Category.findByIdAndUpdate(
-    req.params.id,
-    newUpdate,
+  Category.findByIdAndUpdate(req.params.id, newUpdate, (err) => {
+    if (err) res.send(err);
+    res.json({ message: "Update Done" });
+    cloudinary.clearCacheCategory();
+  });
+});
 
-    (err) => {
-      if (err) res.send(err);
-      res.json({ message: "Update Done" });
-      cloudinary.clearCacheCategory();
-    }
-  );
+// GET CATEGORIS
+router.get("/", (req, res) => {
+  Category.find({})
+    .then((data) => {
+      console.log("Data: ", data);
+      res.json(data);
+    })
+    .catch((err) => {
+      console.log("error: ", err);
+    });
 });
 
 //  GET CATEGORY BY ID
@@ -73,18 +64,6 @@ router.delete("/:id", (req, res) => {
   Category.findByIdAndDelete(req.params.id)
     .then(() => res.json("Category deleted."))
     .catch((err) => res.status(400).json("Error: " + err));
-});
-
-// GET CATEGORIS
-router.get("/", (req, res) => {
-  Category.find({})
-    .then((data) => {
-      console.log("Data: ", data);
-      res.json(data);
-    })
-    .catch((err) => {
-      console.log("error: ", err);
-    });
 });
 
 module.exports = router;

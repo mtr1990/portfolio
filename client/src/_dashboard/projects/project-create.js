@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { path_DASHBOARD } from "../../configs";
 import { HeaderDashboard } from "../../commons";
-import { validationProjectForm, DebugForMik } from "../../utilities";
+import { validationProjectForm } from "../../utilities";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { MoreBreadcrumbs } from "../../theme/@material-ui-custom";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,11 +20,11 @@ function ProjectCreate() {
   const [initialState, setInitialState] = useState({
     name: "",
     description: "",
-    thumbnail: "",
-    hero: "",
-    imglist: [""],
-    videolist: [],
     category: "",
+    thumbnail: [],
+    hero: [],
+    imglist: [],
+    videolist: [],
   });
 
   const setCategory = useSelector(
@@ -47,26 +47,23 @@ function ProjectCreate() {
     initialValues: initialState,
     validationSchema: validationProjectForm,
     onSubmit: (values) => {
-      const newProject = {
+      const newCategory = {
         name: values.name,
         description: values.description,
+        category: values.category,
         thumbnail: values.thumbnail,
         hero: values.hero,
-        category: values.category,
         imglist: values.imglist,
         videolist: values.videolist,
       };
 
-      dispatch(addProject(newProject, enqueueSnackbar));
-      setTimeout(() => {
-        formik.setSubmitting(false);
-      }, 1600);
+      dispatch(addProject(newCategory, enqueueSnackbar));
     },
   });
 
   return (
     <LoginCheck>
-      <DebugForMik formik={formik} />
+      {/* <DebugForMik formik={formik} /> */}
 
       <motion.div initial="initial" animate="enter" exit="exit">
         {/********** COMMONS ***********/}

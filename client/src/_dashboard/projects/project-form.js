@@ -21,12 +21,11 @@ import {
 import {
   Add,
   Edit,
-  Image,
   Delete,
-  Airplay,
   Category,
   FormatAlignLeft,
 } from "@material-ui/icons";
+import { UploadFile } from "../../commons";
 
 function ProjectForm(props) {
   const { txtSubmit } = props;
@@ -34,14 +33,16 @@ function ProjectForm(props) {
     values,
     errors,
     touched,
-    isSubmitting,
     handleChange,
     handleSubmit,
+    setFieldValue,
   } = props.formik;
 
   const categories = useSelector((state) =>
     state.categories.categories.map((item) => item.name)
   );
+
+  const isLoading = useSelector((state) => state.projects.loading);
 
   return (
     <FormikProvider value={props.formik}>
@@ -97,59 +98,10 @@ function ProjectForm(props) {
           </FormControl>
         </Box>
 
-        {/********** THUMBNAIL ***********/}
-        <Box mb={2}>
-          <FormControl
-            error={touched.thumbnail && errors.thumbnail ? true : false}
-            fullWidth
-            variant="outlined"
-          >
-            <InputLabel htmlFor="thumbnail">Thumbnail</InputLabel>
-            <OutlinedInput
-              id="thumbnail"
-              name="thumbnail"
-              value={values.thumbnail}
-              onChange={handleChange}
-              startAdornment={
-                <InputAdornment position="start">
-                  <Image />
-                </InputAdornment>
-              }
-              labelWidth={84}
-            />
-            <FormHelperText>
-              {touched.thumbnail ? errors.thumbnail : ""}
-            </FormHelperText>
-          </FormControl>
-        </Box>
-
-        {/********** HERO ***********/}
-        <Box mb={2}>
-          <FormControl
-            error={touched.hero && errors.hero ? true : false}
-            fullWidth
-            variant="outlined"
-          >
-            <InputLabel htmlFor="hero">Hero</InputLabel>
-            <OutlinedInput
-              id="hero"
-              name="hero"
-              value={values.hero}
-              onChange={handleChange}
-              startAdornment={
-                <InputAdornment position="start">
-                  <Airplay />
-                </InputAdornment>
-              }
-              labelWidth={40}
-            />
-            <FormHelperText>{touched.hero ? errors.hero : ""}</FormHelperText>
-          </FormControl>
-        </Box>
-
         {/********** CATEGORY ***********/}
         <Box mb={2}>
           <Field
+            value={values.category}
             openOnFocus
             autoHighlight
             name="category"
@@ -165,84 +117,55 @@ function ProjectForm(props) {
               label: "Category",
             }}
           />
+        </Box>
 
-          {/* EXAMPLE USE SELECT */}
-          {/* <FormControl variant="outlined" fullWidth>
-        <InputLabel id="category">Category</InputLabel>
-        <MoreSelect
-          id="category"
-          labelId="category"
-          name="category"
-          value={values.category||''}
-          onChange={handleChange}
-          label="Category"
-          options={values.categories}
-          startAdornment={
-            <InputAdornment position="start">
-              <Category />
-            </InputAdornment>
-          }
-        />
-      </FormControl> */}
+        {/* EXAMPLE USE SELECT */}
+        {/* <FormControl variant="outlined" fullWidth>
+            <InputLabel id="category">Category</InputLabel>
+            <MoreSelect
+              id="category"
+              labelId="category"
+              name="category"
+              value={values.category || ""}
+              onChange={handleChange}
+              label="Category"
+              options={categories}
+              startAdornment={
+                <InputAdornment position="start">
+                  <Category />
+                </InputAdornment>
+              }
+            />
+          </FormControl> */}
+
+        {/********** THUMBNAIL ***********/}
+        <Box mb={2}>
+          <UploadFile
+            label="Thumbnail"
+            cloudfiles={values.thumbnail}
+            cloudfolder="upload_portfolio/projects"
+            setCloudFiles={(value) => setFieldValue("thumbnail", value)}
+          />
+        </Box>
+
+        {/********** HERO ***********/}
+        <Box mb={2}>
+          <UploadFile
+            label="Hero"
+            cloudfiles={values.hero}
+            cloudfolder="upload_portfolio/projects"
+            setCloudFiles={(value) => setFieldValue("hero", value)}
+          />
         </Box>
 
         {/********** IMAGES ***********/}
         <Box mb={2}>
-          <Typography
-            variant="subtitle1"
-            component="h6"
-            color="textSecondary"
-            gutterBottom
-          >
-            Images
-          </Typography>
-          <FieldArray
-            name="imglist"
-            render={(arrayHelpers) => (
-              <Box display="flex" alignItems="flex-start">
-                <Box mr={2} flexShrink={0}>
-                  <IconButton
-                    className="_primary"
-                    onClick={() => arrayHelpers.push("")}
-                    aria-label="add input"
-                  >
-                    <Add />
-                  </IconButton>
-                </Box>
-
-                <Box width="100%">
-                  {values.imglist &&
-                    values.imglist.map((img, index) => (
-                      <Box
-                        key={index}
-                        display="flex"
-                        alignItems="center"
-                        mb={1}
-                      >
-                        <TextField
-                          id={`img[${index}]`}
-                          fullWidth
-                          size="small"
-                          variant="outlined"
-                          label={`img ${index + 1}`}
-                          name={`imglist[${index}]`}
-                          value={img}
-                          onChange={handleChange}
-                        />
-
-                        <Box ml={2} flexShrink={0}>
-                          <IconButton
-                            onClick={() => arrayHelpers.remove(index)}
-                            aria-label="remove input"
-                          >
-                            <Delete fontSize="small" />
-                          </IconButton>
-                        </Box>
-                      </Box>
-                    ))}
-                </Box>
-              </Box>
-            )}
+          <UploadFile
+            multiple
+            label="Images"
+            cloudfiles={values.imglist}
+            cloudfolder="upload_portfolio/projects"
+            setCloudFiles={(value) => setFieldValue("imglist", value)}
           />
         </Box>
 
@@ -333,7 +256,7 @@ function ProjectForm(props) {
               color="primary"
               component={Link}
               to={path_DASHBOARD.root}
-              disabled={isSubmitting}
+              disabled={isLoading}
             >
               Cancel
             </Button>
@@ -343,16 +266,16 @@ function ProjectForm(props) {
             color="primary"
             type="submit"
             variant="contained"
-            disabled={isSubmitting}
+            disabled={isLoading}
             startIcon={
-              isSubmitting ? (
+              isLoading ? (
                 <CircularProgress size={24} thickness={4} color="inherit" />
               ) : (
                 ""
               )
             }
           >
-            {isSubmitting ? "Please wait..." : txtSubmit}
+            {isLoading ? "Please wait..." : txtSubmit}
           </Button>
         </Box>
       </Form>

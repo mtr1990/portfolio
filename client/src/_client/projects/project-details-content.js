@@ -9,24 +9,10 @@ import {
 } from "@material-ui/core";
 import { Spinners } from "../../commons";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    paddingBottom: theme.spacing(32),
-    backgroundColor: theme.palette.background.default,
-  },
-  list: {
-    marginTop: theme.spacing(10),
-    boxShadow: theme.shadows[25].image,
-    [theme.breakpoints.up("md")]: {
-      "& > *": {
-        marginTop: theme.spacing(20),
-      },
-    },
-  },
-}));
-
-const ProjectDetailsContent = ({ currentItem }) => {
+function ProjectDetailsContent(props) {
   const classes = useStyles();
+  const { currentItem } = props;
+
   return (
     <Box className={classes.root}>
       <Container>
@@ -50,7 +36,7 @@ const ProjectDetailsContent = ({ currentItem }) => {
             duration={640}
           >
             <Box position="relative" className={classes.list}>
-              <img src={image} alt={`img ${index + 1}`} />
+              <img src={image.url} alt={image.url} />
               <Spinners />
             </Box>
           </ScrollMagicFadeIn>
@@ -80,6 +66,22 @@ const ProjectDetailsContent = ({ currentItem }) => {
       </Container>
     </Box>
   );
-};
+}
 
 export default ProjectDetailsContent;
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    paddingBottom: theme.spacing(32),
+    backgroundColor: theme.palette.background.default,
+  },
+  list: {
+    marginTop: theme.spacing(10),
+    boxShadow: theme.shadows[25].image,
+    [theme.breakpoints.up("md")]: {
+      "& > *": {
+        marginTop: theme.spacing(20),
+      },
+    },
+  },
+}));

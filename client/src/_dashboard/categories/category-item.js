@@ -17,11 +17,10 @@ const CategoryItem = (props) => {
 
   return (
     <motion.div variants={varfadeInUp} className={classes.root}>
-      <Box width={64} height={64} bgcolor="primary.main">
-        {item.imgCollection &&
-          item.imgCollection.map((item, index) => {
-            return <img key={index} src={item.b64} alt={item.originalname} />;
-          })}
+      <Box className={classes.thumb}>
+        {item.imgCollection.map((item, index) => {
+          return <img key={index} src={item.url} alt={item.url} />;
+        })}
       </Box>
 
       <Box flexGrow={1}>
@@ -65,5 +64,12 @@ const useStyles = makeStyles((theme) => ({
     "&:last-child": {
       marginBottom: 0,
     },
+  },
+  thumb: {
+    overflow: "hidden",
+    width: theme.spacing(8),
+    height: theme.spacing(8),
+    marginRight: theme.spacing(2),
+    borderRadius: theme.shape.borderRadius,
   },
 }));

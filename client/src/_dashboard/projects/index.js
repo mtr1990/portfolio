@@ -8,8 +8,6 @@ export { default as ProjectForm } from "./project-form";
 export { default as ProjectItem } from "./project-item";
 export { default as ProjectList } from "./project-list";
 
-
-
 export { default as ProjectFilters } from "./project-controls-filters";
 export { default as ProjectFilterByCategory } from "./project-controls-filterby-category";
 export { default as ProjectFilterByName } from "./project-controls-filterby-name";

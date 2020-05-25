@@ -17,6 +17,7 @@ function ProjectItem(props) {
   const classes = useStyles();
   const { item } = props;
   const itemName = UrlFormat(item.name);
+  const itemThumb = item.thumbnail.map((item) => item.url);
 
   return (
     <Grid item xs={6}>
@@ -37,8 +38,8 @@ function ProjectItem(props) {
               >
                 <Box className={classes.thumbnail}>
                   <motion.img
-                    src={item.thumbnail}
-                    alt="thumbnail"
+                    src={itemThumb}
+                    alt={itemThumb}
                     variants={varImg}
                     transition={varTransition}
                     className={classes.img}
@@ -64,7 +65,6 @@ export default ProjectItem;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // padding: `${theme.spacing(0.5)}px  ${theme.spacing(0.5)}px  0`,
     overflow: "hidden",
     boxShadow: theme.shadows[25].card.root,
     borderRadius: theme.shape.borderRadiusLg,

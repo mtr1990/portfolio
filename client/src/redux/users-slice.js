@@ -39,17 +39,20 @@ const slice = createSlice({
     addUserRequest: (state) => {
       return {
         ...state,
+        loading: true,
       };
     },
     addUserSuccess: (state, action) => {
       return {
         ...state,
+        loading: false,
         users: [...state.users, action.payload],
       };
     },
     addUserFailure: (state, action) => {
       return {
         ...state,
+        loading: false,
         error: action.payload,
       };
     },
@@ -58,17 +61,20 @@ const slice = createSlice({
     LoginUserRequest: (state) => {
       return {
         ...state,
+        loading: true,
       };
     },
     LoginUserSuccess: (state, action) => {
       return {
         ...state,
+        loading: false,
         users: [...state.users, action.payload],
       };
     },
     LoginUserFailure: (state, action) => {
       return {
         ...state,
+        loading: false,
         error: action.payload,
       };
     },

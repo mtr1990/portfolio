@@ -15,18 +15,15 @@ import { getProjects } from "../redux";
 import { useWidth } from "../theme/@material-ui-custom";
 
 function HomePage() {
-  const width = useWidth();
-
-  const dispatch = useDispatch();
   const classes = useStyles();
+  const width = useWidth();
+  const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.projects.loading);
 
   // GET PROJECTS
   useEffect(() => {
     dispatch(getProjects());
   }, [dispatch]);
-
-  console.log("width", width);
 
   return (
     <motion.div

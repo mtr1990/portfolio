@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { useParams } from "react-router-dom";
 import { path_DASHBOARD } from "../../configs";
-import { validationProjectForm, DebugForMik } from "../../utilities";
+import { validationProjectForm } from "../../utilities";
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { MoreBreadcrumbs } from "../../theme/@material-ui-custom";
 import { getProject, updateProject } from "../../redux";
@@ -22,11 +22,11 @@ function ProjectEdit() {
   const [initialState, setInitialState] = useState({
     name: "",
     description: "",
-    thumbnail: "",
-    hero: "",
+    category: "",
+    thumbnail: [],
+    hero: [],
     imglist: [],
     videolist: [],
-    category: "",
   });
 
   const project = useSelector((state) => state.projects.project);
@@ -42,9 +42,9 @@ function ProjectEdit() {
       setInitialState({
         name: project.name,
         description: project.description,
+        category: project.category,
         thumbnail: project.thumbnail,
         hero: project.hero,
-        category: project.category,
         imglist: project.imglist,
         videolist: project.videolist,
       });
@@ -57,17 +57,18 @@ function ProjectEdit() {
     initialValues: initialState,
     validationSchema: validationProjectForm,
     onSubmit: (values) => {
-      const project = {
+      const upProject = {
         id,
         name: values.name,
         description: values.description,
+        category: values.category,
         thumbnail: values.thumbnail,
         hero: values.hero,
-        category: values.category,
         imglist: values.imglist,
         videolist: values.videolist,
       };
-      dispatch(updateProject(project, enqueueSnackbar));
+
+      dispatch(updateProject(upProject, enqueueSnackbar));
       setTimeout(() => {
         formik.setSubmitting(false);
       }, 1600);
@@ -76,7 +77,7 @@ function ProjectEdit() {
 
   return (
     <LoginCheck>
-      <DebugForMik formik={formik} />
+      {/* <DebugForMik formik={formik} /> */}
       <motion.div initial="initial" animate="enter" exit="exit">
         {/********** COMMONS ***********/}
         <HeaderDashboard />

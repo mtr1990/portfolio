@@ -1,10 +1,6 @@
 const cloudinary = require("cloudinary").v2;
-const dotenv = require("dotenv");
-const tools = require("./_tools");
 const mongodb = require("./_mongodb");
-const keywordUrl = "upload_portfolio/";
-
-dotenv.config();
+const rootUrl = "upload_portfolio/";
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -13,42 +9,9 @@ cloudinary.config({
 });
 
 var self = (module.exports = {
-  // UPLOAD CLOUDINARY
-  uploadMultiple: (file) => {
-    return new Promise((resolve) => {
-      cloudinary.uploader
-        .upload(file, {
-          folder: "upload_portfolio",
-        })
-        .then((result) => {
-          if (result) {
-            resolve({
-              public_id: result.public_id,
-              originalname: result.original_filename.substring(37),
-              url: result.url,
-              size: result.bytes,
-              type: result.resource_type + "/" + result.format,
-              b64: tools.imgToBase64(
-                result.resource_type + "/" + result.format,
-                file
-              ),
-              options: {
-                type: "local",
-              },
-            });
-            const fs = require("fs");
-            fs.unlinkSync(file);
-          }
-        });
-    });
-  },
-
   // DESTROY CLOUDINARY
   destroyCloudinary: (removeArray) => {
     cloudinary.api.delete_resources(removeArray, (error, result) => {
-      if (result) {
-        console.log("Destroy result:", result);
-      }
       if (error) {
         console.log("Destroy error:", error);
       }
@@ -56,13 +19,14 @@ var self = (module.exports = {
   },
 
   // GET CLOUDINARY
-  getCloudinary: (dataMongodb) => {
+  getCloudinary: (dataMongodb, subfolder) => {
     cloudinary.api.resources(
       {
         type: "upload",
-        prefix: "upload_portfolio/",
+        prefix: rootUrl + subfolder,
       },
       (error, result) => {
+        if (error) console.log("Get Cloudinary:", error);
         let dataCloudinary = result.resources;
         dataCloudinary = dataCloudinary.map((item) => {
           return item.public_id;
@@ -73,9 +37,9 @@ var self = (module.exports = {
           .concat(dataMongodb.filter((x) => !dataCloudinary.includes(x)));
 
         if (removeArray.length > 0) self.destroyCloudinary(removeArray);
-        // console.log("dataCloudinary:", dataCloudinary.length);
-        // console.log("dataMongodb", dataMongodb.length);
-        // console.log("removeArray", removeArray.length);
+        console.log("dataCloudinary:", dataCloudinary);
+        console.log("dataMongodb", dataMongodb);
+        console.log("removeArray", removeArray);
       }
     );
   },
@@ -86,14 +50,44 @@ var self = (module.exports = {
       if (err) console.log(err);
       var db = mongodb.getDb();
       db.collection("categories")
-        .find({ "imgCollection.public_id": { $regex: keywordUrl } })
+        .find({})
         .toArray((err, result) => {
           if (err) throw err;
           result = result.map((item) => {
             return item.imgCollection.map((item) => item.public_id);
           });
+
           result = [].concat(...result);
-          self.getCloudinary(result);
+          self.getCloudinary(result, "categories");
+        });
+    });
+  },
+
+  // CLEAR CACHE IMAGES CATEGORY
+  clearCacheProject: () => {
+    mongodb.connectDb((err, db) => {
+      if (err) console.log(err);
+      var db = mongodb.getDb();
+      db.collection("projects")
+        .find({})
+        .toArray((err, result) => {
+          if (err) throw err;
+          result = result.map((item) => {
+            return [
+              item.thumbnail.map((item) => item.public_id),
+              item.hero.map((item) => item.public_id),
+              item.imglist.map((item) => item.public_id),
+            ];
+          });
+          // result = result.map((item) => {
+          //   return item;
+          //   // return item.map((item) => item);
+          // });
+
+          result = [].concat(...result);
+          result = [].concat(...result);
+
+          self.getCloudinary(result, "projects");
         });
     });
   },

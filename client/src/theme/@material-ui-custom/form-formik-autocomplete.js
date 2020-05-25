@@ -18,12 +18,13 @@ const MoreAutocomplete = ({ textFieldProps, ...props }) => {
   } = props;
   const { error, helperText, ...field } = fieldToTextField(props);
   const { name } = field;
-  const icon = props.icon;
+  const { icon, value } = props;
 
   return (
     <Autocomplete
       {...props}
       {...field}
+      value={value || null}
       onChange={(_, value) => setFieldValue(name, value)}
       onBlur={() => setTouched({ [name]: true })}
       classes={{

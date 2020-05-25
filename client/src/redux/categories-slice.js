@@ -144,11 +144,7 @@ export function addCategory(newCategory, enqueueSnackbar) {
   return async (dispatch) => {
     dispatch(slice.actions.addCategoryRequest());
     try {
-      await API.post(`categories/save`, newCategory, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      await API.post(`categories/save`, newCategory);
 
       history.push(path_DASHBOARD.categories.root);
       SnackStatus(enqueueSnackbar, {
@@ -167,11 +163,11 @@ export function addCategory(newCategory, enqueueSnackbar) {
   };
 }
 
-export function updateCategory(category, enqueueSnackbar) {
+export function updateCategory(upCategory, enqueueSnackbar) {
   return async (dispatch) => {
     dispatch(slice.actions.updateCategoryRequest());
     try {
-      await API.put(`categories/update/${category.get("_id")}`, category, {});
+      await API.put(`categories/update/${upCategory.id}`, upCategory);
 
       history.push(path_DASHBOARD.categories.root);
       SnackStatus(enqueueSnackbar, {
@@ -179,7 +175,7 @@ export function updateCategory(category, enqueueSnackbar) {
         variant: "success",
       });
 
-      dispatch(slice.actions.updateCategorySuccess(category));
+      dispatch(slice.actions.updateCategorySuccess(upCategory));
     } catch (error) {
       dispatch(slice.actions.updateCategoryFailure(error));
       SnackStatus(enqueueSnackbar, {
@@ -195,11 +191,12 @@ export function deleteCategory(id, enqueueSnackbar) {
     dispatch(slice.actions.deleteCategoryRequest());
     try {
       await API.delete(`categories/${id}`);
-      dispatch(slice.actions.deleteCategorySuccess(id));
       SnackStatus(enqueueSnackbar, {
         message: "Deleted success!",
         variant: "success",
       });
+
+      dispatch(slice.actions.deleteCategorySuccess(id));
     } catch (error) {
       dispatch(slice.actions.deleteCategoryFailure(error));
       SnackStatus(enqueueSnackbar, {

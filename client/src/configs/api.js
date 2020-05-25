@@ -6,8 +6,6 @@ const config = process.env.NODE_ENV === "development" ? dev : prod;
 
 console.log("API END POINT", config);
 
-console.log("config", config);
-
 const API = axios.create({
   baseURL: config,
 });

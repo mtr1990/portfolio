@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, FormikProvider } from "formik";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { path_DASHBOARD } from "../../configs";
 import {
   Box,
@@ -14,7 +15,6 @@ import {
 } from "@material-ui/core";
 import { Edit } from "@material-ui/icons";
 import { UploadFile } from "../../commons";
-import { useSelector } from "react-redux";
 
 const CategoryForm = (props) => {
   const {
@@ -28,8 +28,6 @@ const CategoryForm = (props) => {
 
   const { txtSubmit } = props;
   const isLoading = useSelector((state) => state.categories.loading);
-
-  console.log("isLoading", isLoading);
 
   return (
     <FormikProvider value={props.formik}>
@@ -60,19 +58,11 @@ const CategoryForm = (props) => {
 
         {/********** IMG COLLECTION ***********/}
         <UploadFile
+          // multiple
           label="imgCollection"
-          //
-          allowReplace
-          checkValidity
-          allowMultiple
-          imagePreviewHeight="120"
-          files={values.imgCollection}
-          onupdatefiles={(fileItems) =>
-            setFieldValue(
-              "imgCollection",
-              fileItems.map((item) => item.file)
-            )
-          }
+          cloudfiles={values.imgCollection}
+          cloudfolder="upload_portfolio/categories"
+          setCloudFiles={(value) => setFieldValue("imgCollection", value)}
         />
 
         {/********** FOOTER ***********/}

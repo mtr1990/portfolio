@@ -94,8 +94,8 @@ function ProjectFilterCheckList(props) {
                 />
               </MenuItem>
 
-              {filterOption.map((item) => (
-                <MenuItem key={item._id} className={classes.menu_item}>
+              {filterOption.map((item, index) => (
+                <MenuItem key={index} className={classes.menu_item}>
                   <FormControlLabel
                     className={classes.menu_label}
                     control={

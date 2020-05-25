@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useFormik } from "formik";
 import { Box, Grid, Typography } from "@material-ui/core";
-import { varWrapBoth, DebugForMik } from "../../utilities";
+import { varWrapBoth } from "../../utilities";
 import { useDispatch, useSelector } from "react-redux";
 import { filterProject } from "../../redux";
 import {
@@ -60,7 +60,7 @@ const ProjectList = () => {
 
   return (
     <Box mt={4} mb={8}>
-      <DebugForMik formik={formik} />
+      {/* <DebugForMik formik={formik} /> */}
 
       {/********** FILTERS ***********/}
       <ProjectFilters formik={formik} />

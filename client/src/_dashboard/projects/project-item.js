@@ -47,7 +47,12 @@ function ProjectItem(props) {
           <Box className="container">
             {/********** THUMBNAIL ***********/}
             <Box className="thumbnail">
-              <img src={item.thumbnail} alt={`thumbnail ${item.name}`} />
+              {item.thumbnail &&
+                item.thumbnail.map((item) => {
+                  return (
+                    <img key={item.public_id} src={item.url} alt={item.url} />
+                  );
+                })}
             </Box>
 
             {/********** DESCRIPTION ***********/}

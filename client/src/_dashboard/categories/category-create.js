@@ -4,7 +4,7 @@ import { useSnackbar } from "notistack";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { path_DASHBOARD } from "../../configs";
-import { validationCategoryForm } from "../../utilities";
+import { validationCategoryForm, DebugForMik } from "../../utilities";
 import { useDispatch } from "react-redux";
 import { addCategory } from "../../redux";
 import { MoreBreadcrumbs } from "../../theme/@material-ui-custom";
@@ -28,14 +28,12 @@ const CategoryCreate = () => {
     validationSchema: validationCategoryForm,
 
     onSubmit: (values) => {
-      const formData = new FormData();
+      const newCategory = {
+        name: values.name,
+        imgCollection: values.imgCollection,
+      };
 
-      formData.set("name", values.name);
-      values.imgCollection.map((file) => {
-        return formData.append("imgCollection", file);
-      });
-
-      dispatch(addCategory(formData, enqueueSnackbar));
+      dispatch(addCategory(newCategory, enqueueSnackbar));
     },
   });
 
@@ -53,7 +51,7 @@ const CategoryCreate = () => {
             Create Category
           </Typography>
 
-          {/* <DebugForMik formik={formik} /> */}
+          <DebugForMik formik={formik} />
           <CategoryForm formik={formik} txtSubmit="Create" />
         </Box>
       </motion.div>

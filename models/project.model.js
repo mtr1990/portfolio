@@ -5,13 +5,12 @@ const ProjectSchema = new Schema(
   {
     name: String,
     description: String,
-    thumbnail: String,
-    hero: String,
+    thumbnail: Array,
+    hero: Array,
     // category: Object,
     category: String,
     imglist: Array,
     videolist: Array,
-    isChecked: Boolean,
   },
   { versionKey: false }
 );

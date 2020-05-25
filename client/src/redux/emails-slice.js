@@ -38,17 +38,20 @@ const slice = createSlice({
     addEmailRequest: (state) => {
       return {
         ...state,
+        loading: true,
       };
     },
     addEmailSuccess: (state, action) => {
       return {
         ...state,
+        loading: false,
         emails: [...state.emails, action.payload],
       };
     },
     addEmailFailure: (state, action) => {
       return {
         ...state,
+        loading: false,
         error: action.payload,
       };
     },

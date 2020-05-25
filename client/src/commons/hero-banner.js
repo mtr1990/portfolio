@@ -10,23 +10,6 @@ import {
 import { varfadeInRight } from "../utilities";
 import { Spinners } from ".";
 
-const useStyles = makeStyles((theme) => ({
-  home: {
-    display: "flex",
-    alignItems: "center",
-  },
-  project: {
-    zIndex: -1,
-  },
-  commons: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100vh",
-  },
-}));
-
 export function HeroHome() {
   const classes = useStyles();
 
@@ -62,6 +45,8 @@ export function HeroHome() {
 
 export function HeroProjectDetails(props) {
   const classes = useStyles();
+  const { item } = props;
+  const imgHero = item.hero.map((item) => item.url);
 
   return (
     <Box className={`${classes.project} ${classes.commons}`}>
@@ -72,10 +57,27 @@ export function HeroProjectDetails(props) {
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundImage: `
-						 url(${props.item.hero})`,
+						 url(${imgHero})`,
         }}
       />
       <Spinners />
     </Box>
   );
 }
+
+const useStyles = makeStyles((theme) => ({
+  home: {
+    display: "flex",
+    alignItems: "center",
+  },
+  project: {
+    zIndex: -1,
+  },
+  commons: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100vh",
+  },
+}));

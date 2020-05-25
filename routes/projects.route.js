@@ -1,6 +1,56 @@
 const express = require("express");
 const router = express.Router();
+const cloudinary = require("./_cloudinary");
 const Project = require("../models/project.model");
+
+// CREATE PROJECT
+router.post("/save", (req, res) => {
+  const newProject = new Project({
+    name: req.body.name,
+    description: req.body.description,
+    thumbnail: req.body.thumbnail,
+    hero: req.body.hero,
+    category: req.body.category,
+    imglist: req.body.imglist,
+    videolist: req.body.videolist,
+  });
+
+  newProject
+    .save()
+    .then((result) => {
+      res.json({
+        message: "Project Added!",
+        newCategory: result,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+// UPDATE PROJECT
+router.put("/update/:id", (req, res) => {
+  var newUpdate = {
+    name: req.body.name,
+    description: req.body.description,
+    thumbnail: req.body.thumbnail,
+    hero: req.body.hero,
+    category: req.body.category,
+    imglist: req.body.imglist,
+    videolist: req.body.videolist,
+  };
+
+  Project.findByIdAndUpdate(
+    req.params.id,
+    newUpdate,
+
+    (err) => {
+      if (err) res.send(err);
+      res.json({ message: "Update Done" });
+      cloudinary.clearCacheProject();
+    }
+  );
+});
 
 // GET PROJECTS
 router.get("/", (req, res) => {
@@ -14,28 +64,6 @@ router.get("/", (req, res) => {
     });
 });
 
-// CREATE PROJECT
-router.post("/save", (req, res) => {
-  const data = req.body;
-  const newProject = new Project(data);
-  newProject.save((error) => {
-    if (error) {
-      res.status(500).json({ msg: "Sorry, internal server errors" });
-      return;
-    }
-    return res.json({
-      msg: "Your data has been saved!!!!!!",
-    });
-  });
-});
-
-// DELETE PROJECT
-router.delete("/:id", (req, res) => {
-  Project.findByIdAndDelete(req.params.id)
-    .then(() => res.json("Project deleted."))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
-
 // GET PROJECT BY ID
 router.get("/:id", (req, res) => {
   Project.findById(req.params.id)
@@ -45,23 +73,11 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-// UPDATE PROJECT
-router.put("/update/:id", (req, res) => {
-  Project.findById(req.params.id)
-    .then((item) => {
-      item.name = req.body.name;
-      item.description = req.body.description;
-      item.thumbnail = req.body.thumbnail;
-      item.hero = req.body.hero;
-      item.category = req.body.category;
-      item.imglist = req.body.imglist;
-      item.videolist = req.body.videolist;
-      item.isChecked = req.body.isChecked;
-      item
-        .save()
-        .then(() => res.json("item updated!"))
-        .catch((err) => res.status(400).json("Error: " + err));
-    })
+// DELETE PROJECT
+router.delete("/:id", (req, res) => {
+  cloudinary.clearCacheProject();
+  Project.findByIdAndDelete(req.params.id)
+    .then(() => res.json("Project deleted."))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
