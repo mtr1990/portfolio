@@ -14,16 +14,10 @@ import { Person, Lock } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 
 const LoginForm = (props) => {
-  const {
-    values,
-    errors,
-    touched,
-    isSubmitting,
-    handleChange,
-    handleSubmit,
-  } = props.formik;
+  const { values, errors, touched, handleChange, handleSubmit } = props.formik;
 
   const isError = useSelector((state) => state.users.error);
+  const isLoading = useSelector((state) => state.users.loading);
 
   return (
     <FormikProvider value={props.formik}>
@@ -100,16 +94,16 @@ const LoginForm = (props) => {
           type="submit"
           variant="contained"
           size="large"
-          disabled={isSubmitting}
+          disabled={isLoading}
           startIcon={
-            isSubmitting ? (
+            isLoading ? (
               <CircularProgress size={24} thickness={4} color="inherit" />
             ) : (
               ""
             )
           }
         >
-          {isSubmitting ? "Please wait..." : "Login"}
+          {isLoading ? "Please wait..." : "Login"}
         </Button>
       </Form>
     </FormikProvider>

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { path_CLIENT } from "../configs";
 import { varWrapBoth, varfadeInRight } from "../utilities";
 import {
   Box,
@@ -11,7 +12,6 @@ import {
 } from "@material-ui/core";
 import { HeaderClient, BgBody } from "../commons";
 import { CurriculumView } from "./curriculum";
-import { path_CLIENT } from "../configs";
 
 function AboutPage() {
   const classes = useStyles();

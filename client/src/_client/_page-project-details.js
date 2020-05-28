@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Box } from "@material-ui/core";
-import { varfadeIn, UrlFormat } from "../utilities";
+import {
+  varfadeIn,
+  UrlFormat,
+  varWrapBoth,
+  ScrollMagicFadeOut,
+} from "../utilities";
 import { HeaderClient, HeroProjectDetails, Page404 } from "../commons";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjects } from "../redux";
@@ -33,12 +38,20 @@ const ProjectDetailsPage = () => {
 
   if (currentItem) {
     return (
-      <motion.div initial="initial" animate="enter" exit="exit">
+      <motion.div
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        variants={varWrapBoth}
+      >
         {/********** COMMONS ***********/}
         <HeaderClient />
 
         {/********** HERO ***********/}
-        <HeroProjectDetails item={currentItem} />
+        <ScrollMagicFadeOut>
+          <HeroProjectDetails currentItem={currentItem} />
+        </ScrollMagicFadeOut>
+
         <Box height="100vh" />
 
         {/********** CONTENT ***********/}
@@ -46,7 +59,11 @@ const ProjectDetailsPage = () => {
 
         {/********** CONTROLS ***********/}
         <motion.div variants={varfadeIn}>
-          <ProjectDetailsControls prevItem={prevItem} nextItem={nextItem} />
+          <ProjectDetailsControls
+            prevItem={prevItem}
+            nextItem={nextItem}
+            currentIndex={currentIndex}
+          />
         </motion.div>
       </motion.div>
     );

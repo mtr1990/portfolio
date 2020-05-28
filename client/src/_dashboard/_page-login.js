@@ -34,9 +34,6 @@ function LoginPage(props) {
         password: values.password,
       };
       dispatch(LoginUser(newLogin, enqueueSnackbar));
-      setTimeout(() => {
-        formik.setSubmitting(false);
-      }, 1600);
     },
   });
 

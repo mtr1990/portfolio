@@ -1,14 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Grid, Box, makeStyles } from "@material-ui/core";
+import { Grid, Box, makeStyles, IconButton } from "@material-ui/core";
 import { varWrapBoth, varfadeIn, varIcon } from "../utilities";
 import { BtnLightMode, BtnDownload } from "../commons";
-import { CurriculumLeft, CurriculumMain } from "./curriculum";
-import { IconButton } from "@material-ui/core";
 import { path_CLIENT } from "../configs";
 import { KeyboardBackspace } from "@material-ui/icons";
 import { MoreTooltip } from "../theme/@material-ui-custom";
+import { CurriculumLeft, CurriculumMain } from "./curriculum";
 
 function CurriculumPage() {
   const classes = useStyles();
@@ -24,15 +23,17 @@ function CurriculumPage() {
       <BtnDownload />
 
       <Box className={classes.btn_back}>
-        <Link to={path_CLIENT.about.root}>
-          <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
-            <MoreTooltip title="Back" placement="top" arrow>
-              <IconButton aria-label="back">
-                <KeyboardBackspace />
-              </IconButton>
-            </MoreTooltip>
-          </motion.div>
-        </Link>
+        <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
+          <MoreTooltip title="Back" placement="top" arrow>
+            <IconButton
+              aria-label="back"
+              to={path_CLIENT.about.root}
+              component={Link}
+            >
+              <KeyboardBackspace />
+            </IconButton>
+          </MoreTooltip>
+        </motion.div>
       </Box>
 
       <Grid container className={classes.wrap}>

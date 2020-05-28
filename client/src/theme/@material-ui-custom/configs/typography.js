@@ -1,7 +1,6 @@
 const font_primary = "Fira Sans, Helvetica, Arial, sans-serif";
-// const font_secondary = "Merriweather, Helvetica, Arial, sans-serif";
 
-const body_line_height = 1.5;
+const body_line_height = 1.6875;
 const heading_line_height = "normal";
 
 export const muiTypography = {

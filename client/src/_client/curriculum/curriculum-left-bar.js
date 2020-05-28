@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, makeStyles, Typography, Link } from "@material-ui/core";
 import { motion } from "framer-motion";
-import { AcUnit } from "@material-ui/icons";
+import { Share, FormatQuote, AssignmentInd } from "@material-ui/icons";
 import { ReactSVG } from "react-svg";
 import { varfadeInUp, varIcon, varfadeIn } from "../../utilities";
 import { infomation, socials } from ".";
@@ -64,7 +64,7 @@ function CurriculumLeft() {
       {/********** INTRODUCE ***********/}
       <Box className={classes.block}>
         <motion.div variants={varfadeInUp} className={classes.block_icon}>
-          <AcUnit />
+          <FormatQuote color="action" fontSize="small" />
         </motion.div>
         <Box>
           <motion.div variants={varfadeInUp}>
@@ -89,7 +89,7 @@ function CurriculumLeft() {
       {/********** INFORMATION ***********/}
       <Box className={classes.block}>
         <motion.div variants={varfadeInUp} className={classes.block_icon}>
-          <AcUnit />
+          <AssignmentInd color="action" fontSize="small" />
         </motion.div>
         <Box>{informationList}</Box>
       </Box>
@@ -97,7 +97,7 @@ function CurriculumLeft() {
       {/********** SOCIALS ***********/}
       <Box className={classes.block}>
         <motion.div variants={varfadeInUp} className={classes.block_icon}>
-          <AcUnit />
+          <Share color="action" fontSize="small" />
         </motion.div>
         <Box display="flex">{socialList}</Box>
       </Box>

@@ -17,13 +17,16 @@ function BtnDownload() {
         variants={varfadeIn}
       >
         <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
-          <Link href="https://www.dropbox.com/s/7medt713qxxbel0/CV_MAI_TRINH.pdf?dl=1">
-            <MoreTooltip title="Download CV" arrow>
-              <MoreIconButton aria-label="download" status="success">
-                <GetApp />
-              </MoreIconButton>
-            </MoreTooltip>
-          </Link>
+          <MoreTooltip title="Download CV" arrow>
+            <MoreIconButton
+              aria-label="download"
+              status="success"
+              component={Link}
+              href="https://www.dropbox.com/s/7medt713qxxbel0/CV_MAI_TRINH.pdf?dl=1"
+            >
+              <GetApp />
+            </MoreIconButton>
+          </MoreTooltip>
         </motion.div>
       </motion.div>
     </Box>

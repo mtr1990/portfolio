@@ -1,12 +1,6 @@
 import React from "react";
 import { ScrollMagicFadeIn } from "../../utilities";
-import {
-  Grid,
-  Box,
-  Container,
-  Typography,
-  makeStyles,
-} from "@material-ui/core";
+import { Box, Container, makeStyles } from "@material-ui/core";
 import { Spinners } from "../../commons";
 
 function ProjectDetailsContent(props) {
@@ -16,18 +10,6 @@ function ProjectDetailsContent(props) {
   return (
     <Box className={classes.root}>
       <Container>
-        <Grid item md={7}>
-          <ScrollMagicFadeIn triggerHook={0.8} offset={160} duration={560}>
-            <Box pt={20}>
-              <Typography variant="h2" component="h1" gutterBottom>
-                {currentItem.name}
-              </Typography>
-
-              <Typography variant="body1">{currentItem.description}</Typography>
-            </Box>
-          </ScrollMagicFadeIn>
-        </Grid>
-
         {currentItem.imglist.map((image, index) => (
           <ScrollMagicFadeIn
             key={index}

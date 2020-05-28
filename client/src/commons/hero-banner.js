@@ -2,12 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   Box,
-  makeStyles,
-  Typography,
   Grid,
   Container,
+  makeStyles,
+  Typography,
 } from "@material-ui/core";
-import { varfadeInRight } from "../utilities";
+import { varfadeInRight, varWrapBoth } from "../utilities";
 import { Spinners } from ".";
 
 export function HeroHome() {
@@ -45,11 +45,19 @@ export function HeroHome() {
 
 export function HeroProjectDetails(props) {
   const classes = useStyles();
-  const { item } = props;
-  const imgHero = item.hero.map((item) => item.url);
+  const { currentItem } = props;
+  const itemHero = currentItem.hero.map((item) => item.url);
+  const itemName = currentItem.name;
+  const itemDescription = currentItem.description;
 
   return (
-    <Box className={`${classes.project} ${classes.commons}`}>
+    <motion.div
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      variants={varWrapBoth}
+      className={`${classes.project} ${classes.commons}`}
+    >
       <Box
         style={{
           width: "100%",
@@ -57,27 +65,69 @@ export function HeroProjectDetails(props) {
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundImage: `
-						 url(${imgHero})`,
+						 url(${itemHero})`,
         }}
       />
+
+      <Box className={classes.project_content}>
+        <Container>
+          <Grid item md={7}>
+            <motion.div variants={varfadeInRight}>
+              <Box
+                mb={2}
+                fontWeight={500}
+                color="common.white"
+                fontSize="h2.fontSize"
+              >
+                {itemName}
+              </Box>
+            </motion.div>
+            <motion.div variants={varfadeInRight}>
+              <Box fontSize="body1.fontSize" color="common.white">
+                {itemDescription}
+              </Box>
+            </motion.div>
+          </Grid>
+        </Container>
+      </Box>
+
       <Spinners />
-    </Box>
+    </motion.div>
   );
 }
 
 const useStyles = makeStyles((theme) => ({
-  home: {
-    display: "flex",
-    alignItems: "center",
-  },
-  project: {
-    zIndex: -1,
-  },
   commons: {
-    position: "fixed",
     top: 0,
     left: 0,
     width: "100%",
     height: "100vh",
+    position: "fixed",
+  },
+  // HOME
+  home: {
+    display: "flex",
+    alignItems: "center",
+  },
+
+  // PROJECT
+  project: {
+    zIndex: -1,
+    "&:before": {
+      zIndex: 1,
+      bottom: 0,
+      content: "''",
+      width: "100%",
+      height: "100vh",
+      position: "absolute",
+      backgroundImage:
+        "linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)",
+    },
+  },
+  project_content: {
+    zIndex: 1,
+    width: "100%",
+    position: "absolute",
+    bottom: theme.spacing(24),
   },
 }));
