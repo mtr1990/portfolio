@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 10 10">
+  <defs>
+    <rect id="design-3-b" width="10" height="10" x="0" y="0" rx="2"/>
+    <filter id="design-3-a" width="160%" height="160%" x="-30%" y="-30%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius=".25" result="shadowSpreadOuter1"/>
+      <feOffset dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.219607843   0 0 0 0 0.282352941   0 0 0 0 0.301960784  0 0 0 0.08 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g opacity="0">
+      <use fill="#000" filter="url(#design-3-a)" xlink:href="#design-3-b"/>
+      <use fill="#FFF" stroke="#38484D" stroke-opacity=".04" stroke-width=".5" xlink:href="#design-3-b"/>
+    </g>
+    <path fill="#D194FC" fill-rule="nonzero" d="M6.89592773,1.56484375 C7.83251953,1.56484375 8.81545898,2.18505859 8.81545898,3.45625 C8.81545898,3.5172168 8.80371094,3.73518555 8.79436523,3.77265625 L8.79436523,3.77265625 L5.94670898,3.77265625 C5.96077148,3.91799805 6.1162207,4.69375 6.92405273,4.69375 C7.44676758,4.69375 7.73496094,4.34461914 7.79592773,4.19453125 L7.79592773,4.19453125 L8.60452148,4.41953125 C8.46849609,4.70078125 8.00830078,5.3828125 6.88889648,5.3828125 C5.7121582,5.3828125 4.94827148,4.51049805 4.94827148,3.49140625 C4.94827148,2.5769043 5.58398438,1.56484375 6.89592773,1.56484375 Z M2.92324219,0.3203125 L4.82167969,5.3125 L3.82324219,5.3125 L3.35917969,4.06796875 L1.61542969,4.06796875 L1.15839844,5.3125 L0.159960938,5.3125 L2.06542969,0.3203125 L2.92324219,0.3203125 Z M2.49433594,1.42421875 L1.77714844,3.3859375 L3.18339844,3.3859375 L2.49433594,1.42421875 Z M6.88186523,2.246875 C6.38598633,2.246875 5.97583008,2.62084961 5.93264648,3.1609375 L5.93264648,3.1609375 L7.84514648,3.1609375 C7.78857422,2.57324219 7.36376953,2.246875 6.88186523,2.246875 Z" transform="translate(.5 2.5)"/>
+  </g>
+</svg>
