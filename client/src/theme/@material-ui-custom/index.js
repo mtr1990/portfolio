@@ -40,6 +40,11 @@ export { default as MoreAutocomplete } from "./form-formik-autocomplete";
 export { default as MoreBreadcrumbs } from "./breadcrumbs";
 
 /**
+ * Tooltip
+ */
+export { default as MoreTooltip } from "./tooltip";
+
+/**
  * Utilities
  */
 export { default as useWidth } from "./utilities-use-width";

@@ -74,8 +74,9 @@ export const muiPaletteLight = {
   divider: light_contrast_lower,
 
   background: {
+    area: grey[0],
     card: white,
-    bound:  grey[1],
+    bound: grey[1],
     paper: white,
     default: light_bg,
   },
@@ -118,8 +119,9 @@ export const muiPaletteDark = {
   divider: grey[8],
 
   background: {
+    area: dark_contrast_lower,
     card: dark_contrast_lower,
-    bound:  grey[8],
+    bound: grey[8],
     paper: dark_contrast_lower,
     default: dark_bg,
   },

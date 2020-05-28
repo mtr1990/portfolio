@@ -112,20 +112,20 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     [theme.breakpoints.up("sm")]: {
-      alignItems: "flex-start",
-      justifyContent: "flex-end",
       marginTop: "12%",
       marginRight: "12%",
+      alignItems: "flex-start",
+      justifyContent: "flex-end",
     },
   },
   main: {
-    position: "relative",
     overflow: "hidden",
-    width: `calc(100% - 32px)`,
+    position: "relative",
     padding: theme.spacing(3),
+    width: `calc(100% - 32px)`,
     boxShadow: theme.shadows[25].dialog,
-    backgroundColor: theme.palette.background.card,
     borderRadius: theme.shape.borderRadiusLg,
+    backgroundColor: theme.palette.background.card,
     [theme.breakpoints.up("sm")]: {
       width: "480px",
     },

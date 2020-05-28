@@ -26,9 +26,8 @@ export const validationLogin = Yup.object().shape({
 export const validationProjectForm = Yup.object().shape({
   name: Yup.string().required("Name is required"),
   description: Yup.string().required("Description is required"),
-  // thumbnail: Yup.string().required("Thumbnail is required"),
-  // hero: Yup.string().required("Hero is required"),
-  // category: Yup.string().required("Category is required").nullable(),
+  thumbnail: Yup.string().required("Thumbnail is required"),
+  hero: Yup.string().required("Hero is required"),
 });
 
 /**
@@ -36,6 +35,7 @@ export const validationProjectForm = Yup.object().shape({
  */
 export const validationCategoryForm = Yup.object().shape({
   name: Yup.string().required("Name is required"),
+  imgCollection: Yup.string().required("imgCollection is required"),
 });
 
 /**

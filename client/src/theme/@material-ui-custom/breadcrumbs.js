@@ -1,14 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
+  Box,
+  Container,
   Typography,
   makeStyles,
   Breadcrumbs,
-  Container,
-  Box,
 } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
 import { path_DASHBOARD } from "../../configs";
+
+function MoreBreadcrumbs(props) {
+  const classes = useStyles();
+
+  return (
+    <Box className={classes.root}>
+      <Container>
+        <Breadcrumbs separator="-" aria-label="breadcrumb">
+          <Link color="inherit" to={path_DASHBOARD.root}>
+            <Home className={classes.icon} />
+            Home
+          </Link>
+          {props.children}
+          <Typography color="textSecondary"> {props.current}</Typography>
+        </Breadcrumbs>
+      </Container>
+    </Box>
+  );
+}
+
+export default MoreBreadcrumbs;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,24 +55,3 @@ const useStyles = makeStyles((theme) => ({
     height: 20,
   },
 }));
-
-const MoreBreadcrumbs = (props) => {
-  const classes = useStyles();
-
-  return (
-    <Box className={classes.root}>
-      <Container>
-        <Breadcrumbs separator="-" aria-label="breadcrumb">
-          <Link color="inherit" to={path_DASHBOARD.root}>
-            <Home className={classes.icon} />
-            Home
-          </Link>
-          {props.children}
-          <Typography color="textSecondary"> {props.current}</Typography>
-        </Breadcrumbs>
-      </Container>
-    </Box>
-  );
-};
-
-export default MoreBreadcrumbs;

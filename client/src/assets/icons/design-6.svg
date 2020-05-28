@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 10 10">
+  <defs>
+    <rect id="design-6-b" width="10" height="10" x="0" y="0" rx="2"/>
+    <filter id="design-6-a" width="160%" height="160%" x="-30%" y="-30%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius=".25" result="shadowSpreadOuter1"/>
+      <feOffset dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.219607843   0 0 0 0 0.282352941   0 0 0 0 0.301960784  0 0 0 0.08 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g opacity="0">
+      <use fill="#000" filter="url(#design-6-a)" xlink:href="#design-6-b"/>
+      <use fill="#FFF" stroke="#38484D" stroke-opacity=".04" stroke-width=".5" xlink:href="#design-6-b"/>
+    </g>
+    <g transform="translate(2.125 2.429)">
+      <polygon fill="#FDB300" points="1.26 .169 2.887 0 4.514 .169 5.774 1.834 2.887 5.143 0 1.834"/>
+      <path fill="#EA6C00" fill-rule="nonzero" d="M1.16937723,1.83386482 L2.88701116,5.14287478 L4.35207426e-14,1.83386482 M4.60468595,1.83386482 L2.88705202,5.14287478 L5.77406318,1.83386482"/>
+      <polyline fill="#FDAD00" points="1.169 1.834 4.605 1.834 2.887 5.143"/>
+      <path fill="#FDD231" fill-rule="nonzero" d="M2.88701116,8.0380147e-14 L1.25977902,0.169295681 L1.16937723,1.83384718 M2.8870384,8.0380147e-14 L4.51427054,0.169295681 L4.60467233,1.83384718"/>
+      <path fill="#FDAD00" fill-rule="nonzero" d="M5.77406318,1.83384718 L4.51428417,0.169295681 L4.60468595,1.83384718 M4.35207426e-14,1.83384718 L1.25977902,0.169295681 L1.16937723,1.83384718"/>
+      <polyline fill="#FEEEB7" points="2.887 0 1.169 1.834 4.605 1.834"/>
+    </g>
+  </g>
+</svg>

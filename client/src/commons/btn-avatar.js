@@ -6,6 +6,21 @@ import { varfadeInUp, varIcon } from "../utilities";
 import { path_CLIENT } from "../configs";
 import { iAvatar } from "../assets";
 
+function BtnAvatar() {
+  const classes = useStyles();
+  return (
+    <Link to={path_CLIENT.about.root}>
+      <motion.div variants={varfadeInUp} className={classes.root}>
+        <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
+          <img className={classes.button} src={iAvatar} alt="Go to about me" />
+        </motion.div>
+      </motion.div>
+    </Link>
+  );
+}
+
+export default BtnAvatar;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "fixed",
@@ -27,18 +42,3 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-const BtnAvatar = () => {
-  const classes = useStyles();
-  return (
-    <Link to={path_CLIENT.about}>
-      <motion.div variants={varfadeInUp} className={classes.root}>
-        <motion.div whileTap="tap" whileHover="hover" variants={varIcon}>
-          <img className={classes.button} src={iAvatar} alt="Go to about me" />
-        </motion.div>
-      </motion.div>
-    </Link>
-  );
-};
-
-export default BtnAvatar;

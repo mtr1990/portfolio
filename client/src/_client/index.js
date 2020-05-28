@@ -1,4 +1,4 @@
 /**
  * Client
  */
-export { HomePage, AboutPage, ProjectDetailsPage, TestPage } from "./loadable";
+export { HomePage, AboutPage, ProjectDetailsPage, CurriculumPage } from "./loadable";

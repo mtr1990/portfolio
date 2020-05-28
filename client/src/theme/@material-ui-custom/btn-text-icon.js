@@ -121,10 +121,8 @@ export const MoreBtnText = (props) => {
 };
 
 // ICON BUTTON
-export const MoreIconButton = (props) => {
-  return (
-    <IconButton className={CheckStatus(props)} {...props}>
-      {props.children}
-    </IconButton>
-  );
-};
+export const MoreIconButton = React.forwardRef((props, ref) => (
+  <IconButton {...props} ref={ref} className={CheckStatus(props)}>
+    {props.children}
+  </IconButton>
+));

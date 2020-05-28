@@ -21,6 +21,7 @@ import {
 import {
   Add,
   Edit,
+  Image,
   Delete,
   Category,
   FormatAlignLeft,
@@ -139,35 +140,34 @@ function ProjectForm(props) {
           </FormControl> */}
 
         {/********** THUMBNAIL ***********/}
-        <Box mb={2}>
-          <UploadFile
-            label="Thumbnail"
-            cloudfiles={values.thumbnail}
-            cloudfolder="upload_portfolio/projects"
-            setCloudFiles={(value) => setFieldValue("thumbnail", value)}
-          />
-        </Box>
+        <UploadFile
+          labelText="Thumbnail"
+          labelIcon={<Image fontSize="small" />}
+          cloudfiles={values.thumbnail}
+          cloudfolder="upload_portfolio/projects"
+          setCloudFiles={(value) => setFieldValue("thumbnail", value)}
+          required={touched.thumbnail ? errors.thumbnail : ""}
+        />
 
         {/********** HERO ***********/}
-        <Box mb={2}>
-          <UploadFile
-            label="Hero"
-            cloudfiles={values.hero}
-            cloudfolder="upload_portfolio/projects"
-            setCloudFiles={(value) => setFieldValue("hero", value)}
-          />
-        </Box>
+        <UploadFile
+          labelText="Hero"
+          labelIcon={<Image fontSize="small" />}
+          cloudfiles={values.hero}
+          cloudfolder="upload_portfolio/projects"
+          setCloudFiles={(value) => setFieldValue("hero", value)}
+          required={touched.hero ? errors.hero : ""}
+        />
 
         {/********** IMAGES ***********/}
-        <Box mb={2}>
-          <UploadFile
-            multiple
-            label="Images"
-            cloudfiles={values.imglist}
-            cloudfolder="upload_portfolio/projects"
-            setCloudFiles={(value) => setFieldValue("imglist", value)}
-          />
-        </Box>
+        <UploadFile
+          multiple
+          labelText="Images"
+          labelIcon={<Image fontSize="small" />}
+          cloudfiles={values.imglist}
+          cloudfolder="upload_portfolio/projects"
+          setCloudFiles={(value) => setFieldValue("imglist", value)}
+        />
 
         {/********** VIDEOS ***********/}
         <Box mb={2}>

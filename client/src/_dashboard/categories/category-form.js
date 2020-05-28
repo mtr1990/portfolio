@@ -13,7 +13,7 @@ import {
   FormHelperText,
   CircularProgress,
 } from "@material-ui/core";
-import { Edit } from "@material-ui/icons";
+import { Edit, Image } from "@material-ui/icons";
 import { UploadFile } from "../../commons";
 
 const CategoryForm = (props) => {
@@ -58,10 +58,12 @@ const CategoryForm = (props) => {
 
         {/********** IMG COLLECTION ***********/}
         <UploadFile
-          // multiple
-          label="imgCollection"
+          multiple
+          labelText="imgCollection"
+          labelIcon={<Image fontSize="small" />}
           cloudfiles={values.imgCollection}
           cloudfolder="upload_portfolio/categories"
+          required={touched.imgCollection ? errors.imgCollection : ""}
           setCloudFiles={(value) => setFieldValue("imgCollection", value)}
         />
 

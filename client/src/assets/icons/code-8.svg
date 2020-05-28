@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="10" viewBox="0 0 10 10">
+  <defs>
+    <rect id="code-8-b" width="10" height="10" x="0" y="0" rx="2"/>
+    <filter id="code-8-a" width="160%" height="160%" x="-30%" y="-30%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius=".25" result="shadowSpreadOuter1"/>
+      <feOffset dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.219607843   0 0 0 0 0.282352941   0 0 0 0 0.301960784  0 0 0 0.08 0"/>
+    </filter>
+    <linearGradient id="code-8-c" x1="5.47%" x2="99.95%" y1="53.319%" y2="36.997%">
+      <stop offset="23.3%" stop-color="#F89822"/>
+      <stop offset="100%" stop-color="#C27818"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g opacity="0">
+      <use fill="#000" filter="url(#code-8-a)" xlink:href="#code-8-b"/>
+      <use fill="#FFF" stroke="#38484D" stroke-opacity=".04" stroke-width=".5" xlink:href="#code-8-b"/>
+    </g>
+    <g fill-rule="nonzero" transform="translate(2.5 1.5)">
+      <path fill="#F89820" d="M0.149865241,1.5811497 L4.96951845,0.0515591575 C4.96951845,0.0515591575 5.31171795,-0.127786364 5.22926024,0.204105923 L5.24162889,1.67803751 C5.24162889,1.67803751 5.30141073,1.894489 5.00456297,1.94808651 L3.04619234,2.56033501 L0.149865241,1.5811497 Z"/>
+      <path fill="#F89820" d="M0.149865241,1.5811497 C0.149865241,1.5811497 -0.0397874947,1.62650144 0.0158714602,1.95014795 L0.00556424634,3.37048202 C0.00556424634,3.37048202 -0.0109272959,3.54982755 0.329210762,3.62197804 L5.10557367,5.15981435 C5.10557367,5.15981435 5.26636621,5.22371908 5.24781322,5.02582057 L5.24987466,3.44263252 C5.24987466,3.44263252 5.29522641,3.27977854 4.99837865,3.17258352 L3.04619234,2.56033501 L0.149865241,1.5811497 Z"/>
+      <path fill="url(#code-8-c)" d="M2.25459831,4.24041087 L0.222015738,4.86090515 C0.222015738,4.86090515 -0.0232959525,4.86915092 0.00556424634,5.32885266 C0.0344244452,5.7885544 0.00350280356,6.7141422 0.00350280356,6.7141422 C0.00350280356,6.7141422 0.0241172313,6.88524195 0.259121708,6.7862927 L5.07877491,5.24845639 C5.07877491,5.24845639 5.24987466,5.20516609 5.10557367,5.15775291 C4.96127268,5.11240117 2.25459831,4.24041087 2.25459831,4.24041087 L2.25459831,4.24041087 Z"/>
+    </g>
+  </g>
+</svg>

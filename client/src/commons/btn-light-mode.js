@@ -4,7 +4,7 @@ import { Checkbox, Box, makeStyles } from "@material-ui/core";
 import { HighlightRounded } from "@material-ui/icons";
 import { varfadeIn, varIcon } from "../utilities";
 import { useDispatch, useSelector } from "react-redux";
-import { toogleDarkMode } from "../redux";
+import { toogleLightMode } from "../redux";
 
 function BtnLightMode() {
   const classes = useStyles();
@@ -12,7 +12,7 @@ function BtnLightMode() {
   const lightMode = useSelector((state) => state.lightMode.lightMode);
 
   const onToogle = () => {
-    return dispatch(toogleDarkMode());
+    return dispatch(toogleLightMode());
   };
 
   return (

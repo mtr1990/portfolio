@@ -9,8 +9,8 @@ cloudinary.config({
 });
 
 var self = (module.exports = {
-  // DESTROY CLOUDINARY
-  destroyCloudinary: (removeArray) => {
+  // DELETE CLOUDINARY
+  deleteCloudinary: (removeArray) => {
     cloudinary.api.delete_resources(removeArray, (error, result) => {
       if (error) {
         console.log("Destroy error:", error);
@@ -23,11 +23,13 @@ var self = (module.exports = {
     cloudinary.api.resources(
       {
         type: "upload",
+        max_results: 500,
         prefix: rootUrl + subfolder,
       },
       (error, result) => {
         if (error) console.log("Get Cloudinary:", error);
         let dataCloudinary = result.resources;
+
         dataCloudinary = dataCloudinary.map((item) => {
           return item.public_id;
         });
@@ -36,10 +38,10 @@ var self = (module.exports = {
           .filter((x) => !dataMongodb.includes(x))
           .concat(dataMongodb.filter((x) => !dataCloudinary.includes(x)));
 
-        if (removeArray.length > 0) self.destroyCloudinary(removeArray);
-        console.log("dataCloudinary:", dataCloudinary);
-        console.log("dataMongodb", dataMongodb);
-        console.log("removeArray", removeArray);
+        if (removeArray.length > 0) self.deleteCloudinary(removeArray);
+        console.log("dataCloudinary:", dataCloudinary.length);
+        console.log("dataMongodb", dataMongodb.length);
+        console.log("removeArray", removeArray.length);
       }
     );
   },
@@ -79,10 +81,6 @@ var self = (module.exports = {
               item.imglist.map((item) => item.public_id),
             ];
           });
-          // result = result.map((item) => {
-          //   return item;
-          //   // return item.map((item) => item);
-          // });
 
           result = [].concat(...result);
           result = [].concat(...result);

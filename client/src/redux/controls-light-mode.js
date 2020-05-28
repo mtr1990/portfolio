@@ -8,7 +8,7 @@ const slice = createSlice({
   name: "lightMode",
   initialState,
   reducers: {
-    toogleDarkMode: (state) => {
+    toogleLightMode: (state) => {
       localStorage.setItem("lightMode", JSON.stringify(!state.lightMode));
       return {
         ...state,
@@ -22,4 +22,4 @@ const slice = createSlice({
 export default slice.reducer;
 
 // Actions
-export const { toogleDarkMode } = slice.actions;
+export const { toogleLightMode } = slice.actions;

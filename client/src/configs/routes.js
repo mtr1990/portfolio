@@ -1,11 +1,16 @@
 // PATHS
 import { path_CLIENT, path_GUIDELINE, path_DASHBOARD } from "./paths";
 
-// CLIENT
+// COMMONS
 import { Page404 } from "../commons";
 
 // CLIENT
-import { HomePage, TestPage, AboutPage, ProjectDetailsPage } from "../_client";
+import {
+  HomePage,
+  CurriculumPage,
+  AboutPage,
+  ProjectDetailsPage,
+} from "../_client";
 
 // GUIDELINE
 import {
@@ -39,43 +44,17 @@ const routes = [
     component: HomePage,
   },
   {
-    path: path_CLIENT.about,
+    path: path_CLIENT.about.root,
+    exact: true,
     component: AboutPage,
+  },
+  {
+    path: path_CLIENT.about.curriculum,
+    component: CurriculumPage,
   },
   {
     path: path_CLIENT.projects.byId,
     component: ProjectDetailsPage,
-  },
-  {
-    path: "/test",
-    component: TestPage,
-  },
-
-  // Guideline
-  {
-    path: path_GUIDELINE.root,
-    exact: true,
-    component: GlColorPalettes,
-  },
-  {
-    path: path_GUIDELINE.typography,
-    component: GlTypography,
-  },
-  {
-    path: path_GUIDELINE.buttons,
-    component: GlButtons,
-  },
-  {
-    path: path_GUIDELINE.forms,
-    component: GlForms,
-  },
-  {
-    path: path_GUIDELINE.toast,
-    component: GlSnackbars,
-  },
-  {
-    path: path_GUIDELINE.shadows,
-    component: GlShadows,
   },
 
   // DashboardPage
@@ -121,6 +100,33 @@ const routes = [
   {
     path: path_DASHBOARD.users.create,
     component: UserCreate,
+  },
+
+  // Guideline
+  {
+    path: path_GUIDELINE.root,
+    exact: true,
+    component: GlColorPalettes,
+  },
+  {
+    path: path_GUIDELINE.typography,
+    component: GlTypography,
+  },
+  {
+    path: path_GUIDELINE.buttons,
+    component: GlButtons,
+  },
+  {
+    path: path_GUIDELINE.forms,
+    component: GlForms,
+  },
+  {
+    path: path_GUIDELINE.toast,
+    component: GlSnackbars,
+  },
+  {
+    path: path_GUIDELINE.shadows,
+    component: GlShadows,
   },
 
   // NoMatch

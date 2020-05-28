@@ -1,9 +1,11 @@
 /**
  * CLIENT
  */
-
 export const path_CLIENT = {
-  about: `/about`,
+  about: {
+    root: `/about`,
+    curriculum: `/about/curriculum`,
+  },
   // projects
   projects: {
     root: `/projects/`,

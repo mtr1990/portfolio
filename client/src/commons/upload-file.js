@@ -1,44 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import { Box, makeStyles, IconButton, Typography } from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
 import { Spinners } from ".";
+// import { iUploading } from "../assets";
 
 function MyDropzone(props) {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(null);
-  const { cloudfiles, cloudfolder, setCloudFiles, multiple, label } = props;
+  const {
+    multiple,
+    required,
+    labelText,
+    labelIcon,
+    cloudfiles,
+    cloudfolder,
+    setCloudFiles,
+  } = props;
 
-  const onDrop = (files) => {
-    setIsLoading(true);
-    const uploaders = files.map((file) => {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("folder", cloudfolder);
-      formData.append("api_key", process.env.REACT_APP_CLOUDINARY_KEY);
-      formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_PRESET);
-      return axios
-        .post(process.env.REACT_APP_CLOUDINARY_URL, formData, {
-          headers: { "X-Requested-With": "XMLHttpRequest" },
-        })
-        .then((response) => {
-          const data = response.data;
-          return {
-            public_id: data.public_id,
-            url: data.secure_url,
-          };
-        });
-    });
-    axios.all(uploaders).then((values) => {
-      setCloudFiles(values);
-      setIsLoading(false);
-    });
-  };
+  const maxSize = 1048576 * 3;
 
-  const { getRootProps, getInputProps, isDragReject } = useDropzone({
+  const onDrop = useCallback(
+    (files) => {
+      setIsLoading(true);
+      const uploaders = files.map((file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("folder", cloudfolder);
+        formData.append("api_key", process.env.REACT_APP_CLOUDINARY_KEY);
+        formData.append(
+          "upload_preset",
+          process.env.REACT_APP_CLOUDINARY_PRESET
+        );
+        return axios
+          .post(process.env.REACT_APP_CLOUDINARY_URL, formData, {
+            headers: { "X-Requested-With": "XMLHttpRequest" },
+          })
+          .then((response) => {
+            const data = response.data;
+            return {
+              public_id: data.public_id,
+              url: data.secure_url,
+            };
+          });
+      });
+      axios.all(uploaders).then((values) => {
+        setCloudFiles(values);
+        setIsLoading(false);
+      });
+    },
+    [cloudfolder, setCloudFiles]
+  );
+
+  const {
+    getRootProps,
+    getInputProps,
+    isDragReject,
+    isDragActive,
+    isDragAccept,
+  } = useDropzone({
     onDrop,
     accept: "image/*",
+    maxSize,
     multiple: multiple ? true : false,
   });
 
@@ -59,11 +83,12 @@ function MyDropzone(props) {
         }
       >
         <img src={item.url} alt={item.url} />
+
         <IconButton
+          className={classes.thumb_remove}
           size="small"
           aria-label="delete"
           onClick={removeFile(item)}
-          className={classes.thumb_remove}
         >
           <Delete />
         </IconButton>
@@ -72,34 +97,52 @@ function MyDropzone(props) {
   });
 
   return (
-    <>
-      <Box>
-        <Typography variant="subtitle2" paragraph>
-          {label}
-        </Typography>
+    <Box mb={3}>
+      {/********** LABEL ***********/}
+      <Box className={classes.label}>
+        {labelIcon}
+        <Typography variant="subtitle2">{labelText}</Typography>
       </Box>
+
+      {/********** INPUT ***********/}
       <Box className={classes.wrap}>
-        <div {...getRootProps()} className={classes.input}>
+        <Box {...getRootProps()} className={classes.input}>
           <input {...getInputProps()} />
-          {isDragReject ? (
+          {isDragAccept && (
+            <Typography variant="subtitle2" color="textSecondary">
+              All files will be accepted
+            </Typography>
+          )}
+          {isDragReject && (
             <Typography variant="subtitle2" color="textSecondary">
               File type not accepted, sorry!
             </Typography>
-          ) : (
+          )}
+          {!isDragActive && (
             <Typography variant="subtitle2" color="textSecondary">
               Drag 'n' drop some files here, or click to select files
             </Typography>
           )}
-        </div>
+        </Box>
+
+        {/********** LIST ***********/}
         {isLoading ? (
           <Box height={160} position="relative">
-            <Spinners index={999} />
+            <Spinners index={99} />
           </Box>
         ) : (
+          // <img src={iUploading} alt="Go to about me" />
           <Box className={classes.thumbs}>{thumb}</Box>
         )}
       </Box>
-    </>
+
+      {/********** STATUS ***********/}
+      <Box className={classes.helpertext}>
+        <Typography variant="caption" color="error">
+          {required}
+        </Typography>
+      </Box>
+    </Box>
   );
 }
 
@@ -114,19 +157,15 @@ const useStyles = makeStyles((theme) => ({
   thumbs: {
     display: "flex",
     flexWrap: "wrap",
-    paddingTop: theme.spacing(2),
   },
   thumb: {
-    display: "flex",
     overflow: "hidden",
-    alignItems: "center",
     position: "relative",
-    justifyContent: "center",
+    margin: theme.spacing(1),
     height: theme.spacing(24),
-    margin: theme.spacing(1 ),
+    boxShadow: theme.shadows[12],
     borderRadius: theme.shape.borderRadius,
     backgroundColor: theme.palette.contrast.lower,
-    boxShadow: theme.shadows[12],
     width: "100%",
     "&::before": {
       content: '" "',
@@ -149,13 +188,20 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   thumb_multiple: {
-    width: `calc((100%/4) - ${theme.spacing(1)}px)`,
+    width: `calc((100%/4) - ${theme.spacing(2)}px)`,
   },
   thumb_remove: {
+    zIndex: 99,
     position: "absolute",
     top: theme.spacing(1),
     right: theme.spacing(1),
-    zIndex: 99,
+  },
+  label: {
+    display: "flex",
+    marginBottom: theme.spacing(1),
+    "& svg": {
+      marginRight: theme.spacing(1),
+    },
   },
   input: {
     cursor: "grab",
@@ -164,10 +210,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     padding: theme.spacing(2),
     borderRadius: theme.shape.borderRadius,
-    border: `dashed 1px ${theme.palette.contrast.high}`,
     "&:focus": {
       outline: "none",
-      border: `dashed 1px ${theme.palette.contrast.higher}`,
     },
+  },
+  helpertext: {
+    marginTop: theme.spacing(1),
+    marginLeft: theme.spacing(2),
   },
 }));

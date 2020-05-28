@@ -1,22 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { varWrapBoth, varfadeInRight } from "../utilities";
 import {
   Box,
   Grid,
-  Link,
   Container,
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import { useDispatch } from "react-redux";
-import { show } from "redux-modal";
 import { HeaderClient, BgBody } from "../commons";
 import { CurriculumView } from "./curriculum";
+import { path_CLIENT } from "../configs";
 
 function AboutPage() {
   const classes = useStyles();
-  const dispatch = useDispatch();
 
   return (
     <motion.div
@@ -60,8 +58,12 @@ function AboutPage() {
 
             <motion.div variants={varfadeInRight}>
               <Typography variant="body1" color="textSecondary">
-                To know more about me, you can download&nbsp;
-                <Link onClick={() => dispatch(show("curriculum"))}>my CV</Link>
+                To know more about me, you can view and download&nbsp;
+                <Link to={path_CLIENT.about.curriculum}>
+                  <Box color="primary.main" component="span">
+                    my CV
+                  </Box>
+                </Link>
               </Typography>
             </motion.div>
 
@@ -73,45 +75,39 @@ function AboutPage() {
               </motion.div>
 
               <motion.div variants={varfadeInRight}>
-                <Link
-                  href="tel:+84 093 69 222 79"
-                  variant="body2"
-                  color="textSecondary"
-                >
-                  +84 093 69 222 79
-                </Link>
+                <a href="tel:+84 093 69 222 79">
+                  <Box color="text.secondary" component="span">
+                    +84 093 69 222 79
+                  </Box>
+                </a>
               </motion.div>
 
               <motion.div variants={varfadeInRight}>
-                <Link
-                  href="mailto:hello.mtr1990@gmail.com"
-                  variant="body2"
-                  color="textSecondary"
-                >
-                  hello.mtr1990@gmail.com
-                </Link>
+                <a href="mailto:hello.mtr1990@gmail.com">
+                  <Box color="text.secondary" component="span">
+                    hello.mtr1990@gmail.com
+                  </Box>
+                </a>
               </motion.div>
 
               <motion.div variants={varfadeInRight}>
-                <Link
+                <a
                   href="https://www.linkedin.com/in/mtr1990/"
-                  variant="body2"
-                  color="textSecondary"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Linkedin
-                </Link>
+                  <Box color="text.secondary" component="span">
+                    Linkedin
+                  </Box>
+                </a>
               </motion.div>
 
               <motion.div variants={varfadeInRight}>
-                <Link
-                  href="skype:lufydl1990?chat"
-                  variant="body2"
-                  color="textSecondary"
-                >
-                  Skype
-                </Link>
+                <a href="skype:lufydl1990?chat">
+                  <Box color="text.secondary" component="span">
+                    Skype
+                  </Box>
+                </a>
               </motion.div>
             </Box>
 

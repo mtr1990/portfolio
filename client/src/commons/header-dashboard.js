@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Box,
@@ -18,18 +18,18 @@ import {
 } from "@material-ui/icons";
 import { path_DASHBOARD } from "../configs";
 import { Logo, BtnLogout, BtnLightMode } from ".";
-// import { useSelector, useDispatch } from "react-redux";
-// import { getUsers, getProjects, getCategories, getEmails } from "../redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers, getProjects, getCategories, getEmails } from "../redux";
 
 function HeaderDashboard(props) {
   const classes = useStyles();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { pathname } = useLocation();
 
-  // const projects = useSelector((state) => state.projects.projects);
-  // const users = useSelector((state) => state.users.users);
-  // const categories = useSelector((state) => state.categories.categories);
-  // const emails = useSelector((state) => state.emails.emails);
+  const projects = useSelector((state) => state.projects.projects);
+  const users = useSelector((state) => state.users.users);
+  const categories = useSelector((state) => state.categories.categories);
+  const emails = useSelector((state) => state.emails.emails);
 
   // const getProjectsCallback = useCallback(() => {
   //   batch(() => {
@@ -56,12 +56,12 @@ function HeaderDashboard(props) {
   // }, [dispatch]);
 
   // GET DATA
-  // useEffect(() => {
-  //   dispatch(getProjects());
-  //   dispatch(getCategories());
-  //   dispatch(getUsers());
-  //   dispatch(getEmails());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getProjects());
+    dispatch(getCategories());
+    dispatch(getUsers());
+    dispatch(getEmails());
+  }, [dispatch]);
 
   return (
     <>
@@ -95,8 +95,7 @@ function HeaderDashboard(props) {
                   <PermMedia fontSize="small" />
                 </ListItemIcon>
                 <ListItemText className={classes.menu_text}>
-                  {/* Projects({projects.length}) */}
-                  Projects
+                  Projects({projects.length})
                 </ListItemText>
               </ListItem>
 
@@ -114,8 +113,7 @@ function HeaderDashboard(props) {
                   <SupervisorAccount fontSize="small" />
                 </ListItemIcon>
                 <ListItemText className={classes.menu_text}>
-                  {/* Users({users.length}) */}
-                  Users
+                  Users({users.length})
                 </ListItemText>
               </ListItem>
 
@@ -133,8 +131,7 @@ function HeaderDashboard(props) {
                   <Category fontSize="small" />
                 </ListItemIcon>
                 <ListItemText className={classes.menu_text}>
-                  {/* Categories({categories.length}) */}
-                  Categories
+                  Categories({categories.length})
                 </ListItemText>
               </ListItem>
 
@@ -152,8 +149,7 @@ function HeaderDashboard(props) {
                   <Drafts fontSize="small" />
                 </ListItemIcon>
                 <ListItemText className={classes.menu_text}>
-                  {/* Emails({emails.length}) */}
-                  Emails
+                  Emails({emails.length})
                 </ListItemText>
               </ListItem>
             </List>
@@ -170,10 +166,10 @@ export default HeaderDashboard;
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginBottom: theme.spacing(12),
     padding: `${theme.spacing(2.5)}px 0`,
-    marginBottom: theme.spacing(8),
-    backgroundColor: theme.palette.background.default,
     boxShadow: theme.shadows[25].card.root,
+    backgroundColor: theme.palette.background.default,
   },
   // MENU
   menu_list: {
